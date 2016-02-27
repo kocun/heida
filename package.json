@@ -1,0 +1,45 @@
+{
+  "name": "heida",
+  "private": true,
+  "version": "0.0.1",
+  "description": "HEIDA",
+  "keywords": [],
+  "dependencies": {
+    "ejs": "~2.4.1",
+    "grunt": "0.4.5",
+    "grunt-contrib-clean": "~1.0.0",
+    "grunt-contrib-coffee": "~1.0.0",
+    "grunt-contrib-concat": "~1.0.0",
+    "grunt-contrib-copy": "~0.8.2",
+    "grunt-contrib-cssmin": "~0.14.0",
+    "grunt-contrib-jst": "~0.6.0",
+    "grunt-contrib-less": "1.2.0",
+    "grunt-contrib-uglify": "~0.11.1",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-sails-linker": "~0.10.1",
+    "grunt-sync": "~0.5.2",
+    "include-all": "~0.1.3",
+    "rc": "~1.1.6",
+    "sails": "~0.12.1",
+    "sails-disk": "~0.10.0",
+    "sails-hook-autoreload": "^0.13.1"
+  },
+  "scripts": {
+    "debug": "node debug app.js",
+    "start": "node app.js",
+    "test": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/adilatilgan/heida.git"
+  },
+  "author": "adilatilgan",
+  "license": "",
+  "devDependencies": {
+    "istanbul": "^0.4.2",
+    "jslint": "^0.9.6",
+    "mocha": "^2.4.5",
+    "supertest": "^1.2.0"
+  }
+}
