@@ -1,0 +1,25 @@
+{
+  "name": "heida",
+  "homepage": "https://github.com/kocun/heida",
+  "authors": [
+    "Adil Atılgan <AATILGAN@KU.EDU.TR>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "*",
+    "angular-moment": "*",
+    "angular": "*",
+    "angular-route": "*",
+    "bootstrap": "*"
+  }
+}
