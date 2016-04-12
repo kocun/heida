@@ -6,8 +6,8 @@
  * @description
  * # adminPosHeader
  */
-angular.module('sbAdminApp')
-	.directive('timeline',function() {
+angular.module('heidaApp')
+    .directive('timeline',function() {
     return {
         templateUrl:'scripts/directives/timeline/timeline.html',
         restrict: 'E',

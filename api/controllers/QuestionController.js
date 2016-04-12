@@ -1,7 +1,7 @@
 /**
- * QuestionController
+ * AnswerController
  *
- * @description :: Server-side logic for managing Questions
+ * @description :: Server-side logic for managing Answers
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 

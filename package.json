@@ -9,7 +9,7 @@
     "bower": "^1.7.7",
     "ejs": "~2.4.1",
     "graceful-fs": "^4.1.3",
-    "grunt": "0.4.5",
+    "grunt": "1.0.1",
     "grunt-contrib-clean": "~1.0.0",
     "grunt-contrib-coffee": "~1.0.0",
     "grunt-contrib-concat": "~1.0.0",
@@ -18,13 +18,14 @@
     "grunt-contrib-jst": "~1.0.0",
     "grunt-contrib-less": "1.2.0",
     "grunt-contrib-uglify": "~1.0.0",
-    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-watch": "~1.0.0",
     "grunt-sails-linker": "~0.10.1",
     "grunt-sync": "~0.5.2",
     "include-all": "~0.1.3",
     "lodash": "^4.5.1",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.0",
+    "passport-google-oauth": "^1.0.0",
     "passport-http-bearer": "^1.0.1",
     "passport-ldapauth": "^0.5.0",
     "passport-local": "^1.0.0",
@@ -32,7 +33,8 @@
     "rc": "~1.1.6",
     "sails": "~0.12.1",
     "sails-disk": "~0.10.0",
-    "sails-hook-autoreload": "^0.13.1"
+    "sails-hook-autoreload": "^0.13.1",
+    "sails-mongo": "^0.12.0"
   },
   "scripts": {
     "debug": "node debug app.js",
@@ -48,9 +50,15 @@
   "author": "adilatilgan",
   "license": "",
   "devDependencies": {
+    "eslint": "^2.3.0",
     "istanbul": "^0.4.2",
     "jslint": "^0.9.6",
     "mocha": "^2.4.5",
     "supertest": "^1.2.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true
+    }
   }
 }

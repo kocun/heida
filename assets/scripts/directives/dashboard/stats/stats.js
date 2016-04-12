@@ -6,7 +6,7 @@
  * @description
  * # adminPosHeader
  */
-angular.module('sbAdminApp')
+angular.module('heidaApp')
     .directive('stats',function() {
     	return {
   		templateUrl:'scripts/directives/dashboard/stats/stats.html',
