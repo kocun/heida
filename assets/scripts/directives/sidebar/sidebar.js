@@ -7,7 +7,7 @@
  * # adminPosHeader
  */
 
-angular.module('sbAdminApp')
+angular.module('heidaApp')
   .directive('sidebar',['$location',function() {
     return {
       templateUrl:'scripts/directives/sidebar/sidebar.html',

@@ -1,0 +1,37 @@
+<div>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Groups</h1>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      SubGroups
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name SubGroup</th>
+              <Th>Group</Th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr >
+              <td><input type="text" value="{{subgroup.name}}" ng-model="subgroup.name"></td>
+              <td><select class="form-control" ng-options="group.name for group in groups track by group.id"  ng-model="subgroup.group">
+              </select></td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button type="button" class="btn btn-primary" ng-click="update()">Update</button>
+      <!-- /.table-responsive -->
+    </div>
+    <!-- /.panel-body -->
+  </div>
+</div>
+</div>

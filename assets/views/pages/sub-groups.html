@@ -1,0 +1,36 @@
+<div>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Sub Groups</h1>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Sub Groups
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Group</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="subgroup in subgroups ">
+              <td><a ui-sref="dashboard.sub-groups_edit({id:subgroup.id})">{{subgroup.name}} </a> ({{subgroup.indicators.length}})</td>
+              <td>{{subgroup.group.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <a ui-sref="dashboard.sub-groups_new()"><p class="fa fa-plus-circle"></p></a>
+      <!-- /.table-responsive -->
+    </div>
+    <!-- /.panel-body -->
+  </div>
+</div>
+</div>
+

@@ -6,13 +6,13 @@
  * @description
  * # adminPosHeader
  */
-angular.module('sbAdminApp')
-	.directive('headerNotification',function(){
-		return {
+angular.module('heidaApp')
+    .directive('headerNotification',function(){
+        return {
         templateUrl:'scripts/directives/header/header-notification/header-notification.html',
         restrict: 'E',
         replace: true,
-    	}
-	});
+        }
+    });
 
 

@@ -1,0 +1,37 @@
+<div>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Indicators</h1>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Indicators
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Name</th>
+              <th>subgroup</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="indicator in indicators ">
+              <td>{{indicator.id}}</td>
+              <td><a ui-sref="dashboard.indicators_edit({id:indicator.id})">{{indicator.name}}</a></td>
+              <td>{{indicator.subgroup.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <a ui-sref="dashboard.indicators_new()"><p class="fa fa-plus-circle"></p></a>
+      <!-- /.table-responsive -->
+    </div>
+    <!-- /.panel-body -->
+  </div>
+</div>
+</div>

@@ -1,0 +1,40 @@
+<div>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Departments</h1>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Departments
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table-responsive">
+          <thead>
+            <tr>
+            <th>UserName</th>
+              <th>Name</th>
+              <th>Deparment</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr >
+              <td><input type="text" value="{{user.username}}" ng-model="user.username" disabled=""></td>
+              <td><input type="text" value="{{user.name}}" ng-model="user.name"></td>
+              <td><select class="form-control" ng-options="department.name for department in departments track by department.id" ng-model="user.department[0]">
+                </select></td>
+              <td><input type="text" value="{{user.role}}" ng-model="user.role"></td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" ng-click="update(user)">Update</button>
+      </div>
+      <!-- /.table-responsive -->
+    </div>
+    <!-- /.panel-body -->
+  </div>
+</div>
+</div>
