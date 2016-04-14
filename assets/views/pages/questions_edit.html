@@ -1,12 +1,12 @@
 <div>
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Groups</h1>
+      <h1 class="page-header">Questions</h1>
     </div>
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      Criterias
+      Questions
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
@@ -14,18 +14,18 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Criteria</th>
-              <th>Multiple</th>
+              <th>Name</th>
+              <th>Value</th>
+              <th>type</th>
             </tr>
           </thead>
           <tbody>
             <tr >
-              <td>
-                <textarea class="form-control" rows="3" value="{{criteria.name}}">{{criteria.name}}</textarea>
-              </td>
-              <td>
-                <input type="checkbox" value="" ng-model="criteria.multiple">
-              </td>
+              <td><input type="text" value="{{question.name}}" ng-model="question.name"></td>
+              <td><input type="text" value="{{question.value}}" ng-model="question.value"></td>
+              <td><input type="text" value="{{question.type}}" ng-model="question.type"></td>
+              <td><select class="form-control" ng-options="criteria.name for criteria in criterias track by criteria.id"  ng-model="question.criteria">
+              </select></td>
             </tr>
           </tbody>
         </table>

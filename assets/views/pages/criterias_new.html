@@ -15,19 +15,25 @@
           <thead>
             <tr>
               <th>Name Criteria</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr >
-              <td><input type="text" value="{{criteria.name}}" ng-model="criteria.name"></td>
-            </tr>
-          </tbody>
-        </table>
+              <th>Multiple</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                <td>
+                  <textarea value="{{criteria.name}}" ng-model="criteria.name" ></textarea>
+                </td>
+                <td>
+                  <input type="checkbox" value="" ng-model="criteria.multiple">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button type="button" class="btn btn-primary" ng-click="save(criteria)">Update</button>
+        <!-- /.table-responsive -->
       </div>
-      <button type="button" class="btn btn-primary" ng-click="save(criteria)">Update</button>
-      <!-- /.table-responsive -->
+      <!-- /.panel-body -->
     </div>
-    <!-- /.panel-body -->
   </div>
-</div>
 </div>

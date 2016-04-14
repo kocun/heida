@@ -17,6 +17,8 @@
               <th>Code</th>
               <th>Name</th>
               <th>subgroup</th>
+              <th>Value Type</th>
+              <th>Public</th>
             </tr>
           </thead>
           <tbody>
@@ -24,6 +26,8 @@
               <td>{{indicator.id}}</td>
               <td><a ui-sref="dashboard.indicators_edit({id:indicator.id})">{{indicator.name}}</a></td>
               <td>{{indicator.subgroup.name}}</td>
+              <td>{{indicator.valueType}}</td>
+              <td>{{indicator.public}}</td>
             </tr>
           </tbody>
         </table>

@@ -9,12 +9,13 @@
 angular.module('heidaApp')
   .controller('IndicatorCtrl', function($scope, $http, Restangular) {
 
-    Restangular.all('/api/indicator').getList().then(function(indicators) {
+    Restangular.all('/api/indicator?limit=-1').getList().then(function(indicators) {
       $scope.indicators = indicators;
     });
 
   }).controller('IndicatorEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
     console.log($stateParams.id);
+
     Restangular.all('/api/subgroup').getList().then(function(subgroups) {
       $scope.subgroups = subgroups;
     });
@@ -22,6 +23,7 @@ angular.module('heidaApp')
       $scope.indicator = indicator;
     });
     $scope.update = function() {
+      console.log($scope.indicator.plain());
       $scope.indicator.save();
       $state.go('dashboard.indicators', $stateParams, {
         reload: true,

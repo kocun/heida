@@ -17,7 +17,7 @@ module.exports = {
       }).exec(function(err, user) {
         res.json(user);
       });
-    }else{
+    } else {
       res.json({});
     }
   },
@@ -27,10 +27,10 @@ module.exports = {
   process: function(req, res) {
     console.log(req.param('provider'));
     var provider = req.param('provider') || 'local';
-    console.log("1-"+provider);
+    console.log("1-" + provider);
     passport.authenticate(provider, function(err, user, info) {
 
-      console.log("err:"+err);
+      console.log("err:" + err);
       console.log(user);
       console.log(info);
       if ((err) || (!user)) {
@@ -46,7 +46,23 @@ module.exports = {
   logout: function(req, res) {
     req.logout();
     res.send('logout successful');
-  }
+  },
+  callback: function(req, res) {
+    passport.authenticate('google', function(err, user, info) {
+      console.log("err:" + err);
+      console.log(user);
+      console.log(info);
+      if ((err) || (!user)) {
+        req.flash('message');
+        return res.redirect('/#/login');
+      }
+      req.logIn(user, function(err) {
+        if (err) res.send(err);
+        return res.redirect("/#/dashboard/home");
+      });
+    })(req, res);
+  },
+
 };
 
 module.exports.blueprints = {

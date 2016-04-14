@@ -27,8 +27,10 @@ module.exports.policies = {
 
   '*': 'authenticated',
   AuthController: {
-    'process': true
+    'process': true,
+    'callback':true
   }
+
 
   /***************************************************************************
    *                                                                          *

@@ -16,6 +16,7 @@
             <tr>
               <th>username</th>
               <th>Name</th>
+              <th>Email</th>
               <th>Department</th>
               <th>role</th>
             </tr>
@@ -24,10 +25,16 @@
             <tr ng-repeat="user in users ">
               <td><a ui-sref="dashboard.users_edit({id:user.id})">{{user.username}}</a></td>
               <td>{{user.name}}</td>
-              <td >
+              <td>{{user.email}}</td>
+              <td>
               {{user.department[0].name}}
               </td>
-              <td>{{user.role}}</td>
+              <td ng-switch on="user.role">
+                <div ng-switch-when="1">Read-only</div>
+                <div ng-switch-when="2">Member</div>
+                <div ng-switch-when="3">Editor</div>
+                <div ng-switch-when="4">Admin</div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -38,3 +45,4 @@
   </div>
 </div>
 </div>
+

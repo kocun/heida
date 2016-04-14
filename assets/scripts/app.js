@@ -261,7 +261,7 @@ angular
       }).state('dashboard.departments_new', {
         controller: 'DepartmentNewCtrl',
         templateUrl: 'views/pages/departments_new.html',
-        url: '/departments/',
+        url: '/departments/new',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -318,7 +318,7 @@ angular
       }).state('dashboard.groups_new', {
         controller: 'GroupNewCtrl',
         templateUrl: 'views/pages/groups_new.html',
-        url: '/groups/',
+        url: '/groups/new',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -356,7 +356,7 @@ angular
       }).state('dashboard.sub-groups_new', {
         controller: 'SubgroupNewCtrl',
         templateUrl: 'views/pages/sub-groups_new.html',
-        url: '/sub-groups/',
+        url: '/sub-groups/new',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -413,7 +413,7 @@ angular
       }).state('dashboard.indicators_new', {
         controller: 'IndicatorNewCtrl',
         templateUrl: 'views/pages/indicators_new.html',
-        url: '/indicators/',
+        url: '/indicators/new',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -469,7 +469,7 @@ angular
       }).state('dashboard.criterias_new', {
         controller: 'CriteriaNewCtrl',
         templateUrl: 'views/pages/criterias_new.html',
-        url: '/criterias',
+        url: '/criterias/new',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -502,8 +502,118 @@ angular
             })
           }
         }
+      }).state('dashboard.questions', {
+        controller: 'QuestionCtrl',
+        templateUrl: 'views/pages/questions.html',
+        url: '/questions',
+        resolve: {
+          loadMyFiles: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'heidaApp',
+              files: [
+                'scripts/controllers/questions.js',
+                'scripts/directives/timeline/timeline.js',
+                'scripts/directives/notifications/notifications.js',
+                'scripts/directives/chat/chat.js',
+                'scripts/directives/dashboard/stats/stats.js'
+              ]
+            })
+          }
+        }
+      }).state('dashboard.questions_new', {
+        controller: 'QuestionNewCtrl',
+        templateUrl: 'views/pages/questions_new.html',
+        url: '/questions/new',
+        resolve: {
+          loadMyFiles: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'heidaApp',
+              files: [
+                'scripts/controllers/questions.js',
+                'scripts/directives/timeline/timeline.js',
+                'scripts/directives/notifications/notifications.js',
+                'scripts/directives/chat/chat.js',
+                'scripts/directives/dashboard/stats/stats.js'
+              ]
+            })
+          }
+        }
+      }).state('dashboard.questions_edit', {
+        controller: 'QuestionEditCtrl',
+        templateUrl: 'views/pages/questions_edit.html',
+        url: '/questions/:id',
+        resolve: {
+          loadMyFiles: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'heidaApp',
+              files: [
+                'scripts/controllers/questions.js',
+                'scripts/directives/timeline/timeline.js',
+                'scripts/directives/notifications/notifications.js',
+                'scripts/directives/chat/chat.js',
+                'scripts/directives/dashboard/stats/stats.js'
+              ]
+            })
+          }
+        }
+      }).state('dashboard.data', {
+        controller: 'DataCtrl',
+        templateUrl: 'views/pages/data.html',
+        url: '/data',
+        resolve: {
+          loadMyFiles: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'heidaApp',
+              files: [
+                'scripts/controllers/datas.js',
+                'scripts/directives/timeline/timeline.js',
+                'scripts/directives/notifications/notifications.js',
+                'scripts/directives/chat/chat.js',
+                'scripts/directives/dashboard/stats/stats.js'
+              ]
+            })
+          }
+        }
+      }).state('dashboard.report', {
+        controller: 'DataReportCtrl',
+        templateUrl: 'views/pages/reports.html',
+        url: '/report',
+        resolve: {
+          loadMyFiles: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'heidaApp',
+              files: [
+                'scripts/controllers/datas.js',
+                'scripts/directives/timeline/timeline.js',
+                'scripts/directives/notifications/notifications.js',
+                'scripts/directives/chat/chat.js',
+                'scripts/directives/dashboard/stats/stats.js'
+              ]
+            })
+          }
+        }
+      }).state('dashboard.report_detail', {
+        templateUrl: 'views/pages/reports_detail.html',
+        url: '/report/detail/:department/:indicator',
+        controller: 'DataReportDetailCtrl',
+        resolve: {
+          loadMyFile: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+                name: 'chart.js',
+                files: [
+                  'bower_components/angular-chart.js/dist/angular-chart.min.js',
+                  'bower_components/angular-chart.js/dist/angular-chart.css'
+                ]
+              }),
+              $ocLazyLoad.load({
+                name: 'heidaApp',
+                files: ['scripts/controllers/datas.js']
+              })
+          }
+        }
       })
 
-
-
   }]);
+
+
+
