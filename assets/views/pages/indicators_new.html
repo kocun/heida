@@ -16,22 +16,32 @@
             <tr>
               <th>Code</th>
               <th>Name</th>
-              <th>subgroup</th>            </tr>
-            </thead>
-            <tbody>
-              <tr >
-                <td><input type="text" value="{{indicator.code}}" ng-model="indicator.code" disabled></td>
-                <td><input type="text" value="{{indicator.name}}" ng-model="indicator.name"></td>
-                <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id"  ng-model="indicator.subgroup">
-                </select></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <button type="button" class="btn btn-primary" ng-click="save(indicator)">Update</button>
-        <!-- /.table-responsive -->
+              <th>subgroup</th>
+              <th>Value Type</th>
+              <th>public</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr >
+              <td><input type="text" value="{{indicator.code}}" ng-model="indicator.code" disabled></td>
+              <td><input type="text" value="{{indicator.name}}" ng-model="indicator.name"></td>
+              <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id"  ng-model="indicator.subgroup">
+              </select></td>
+              <td><select class="form-control"   ng-model="indicator.valueType">
+                <option value="yes/no">Yes / No </option>
+                <option value="numeric">Numeric </option>
+              </select></td>
+              <td>
+                <input type="checkbox" value="" ng-model="indicator.public">
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <!-- /.panel-body -->
+      <button type="button" class="btn btn-primary" ng-click="save(indicator)">Update</button>
+      <!-- /.table-responsive -->
     </div>
+    <!-- /.panel-body -->
   </div>
+</div>
 </div>

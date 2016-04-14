@@ -45,8 +45,15 @@ module.exports.routes = {
   'get /api/auth/process/:provider': {
     controller: 'AuthController',
     action: 'process'
+  },
+  'get /api/auth/google/callback': {
+    controller: 'AuthController',
+    action: 'callback'
+  },
+  'get /api/data/:department/:indicator': {
+    controller: 'DataController',
+    action: 'chart'
   }
-
   /***************************************************************************
    *                                                                          *
    * Custom routes here...                                                    *

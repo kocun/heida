@@ -1,5 +1,5 @@
 /**
- * Department.js
+ * Data.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -8,16 +8,20 @@
 module.exports = {
   autoPK: true,
   attributes: {
-    //
-    // Every deprtment chooses Indicators, and answers them
-    //
-    name: {
-      type: 'string',
+    department:{
+      model:'Department'
     },
-    user: {
-      collection: 'user',
-      via: 'department'
-
+    indicator:{
+      model:'Indicator'
+    },
+    year : {
+      type:'string'
+    },
+    value:{
+      type:'integer'
+    },
+    answers:{
+      type:'array'
     }
   }
 };

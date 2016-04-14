@@ -12,9 +12,13 @@ module.exports = {
     // Admin can create criterias
     name : {
       type:'string',
-
-
     },
-
+    questions:{
+      collection:'Question',
+      via:'criteria'
+    },
+    multiple:{
+      type:'boolean'
+    }
   }
 };

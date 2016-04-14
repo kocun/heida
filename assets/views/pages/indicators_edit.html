@@ -16,6 +16,8 @@
             <tr>
               <th>Indicator</th>
               <Th>Sub-Group</Th>
+              <Th>Value Type</Th>
+              <Th>Public</Th>
             </tr>
           </thead>
           <tbody>
@@ -23,6 +25,13 @@
               <td><input type="text" value="{{indicator.name}}" ng-model="indicator.name"></td>
               <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id"  ng-model="indicator.subgroup">
               </select></td>
+              <td><select class="form-control"   ng-model="indicator.valueType">
+              <option value="yes/no">Yes / No </option>
+              <option value="numeric">Numeric </option>
+              </select></td>
+              <td>
+                <input type="checkbox" value="" ng-model="indicator.public">
+              </td>
             </tr>
           </tbody>
         </table>

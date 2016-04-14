@@ -25,6 +25,13 @@ module.exports = {
       type: 'string',
       required: true,
     },
+    valueType:{
+      enum:['yes/no','numeric'],
+    },
+    public:{
+      type:'boolean',
+      default:false
+    },
     subgroup: {
       model: 'SubGroup'
     }

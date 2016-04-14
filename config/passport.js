@@ -146,19 +146,54 @@ function getLDAPConfiguration(req, callback) {
 passport.use(new GoogleStrategy({
     clientID: '412383755015-qs4k8eevr0e0nobo7monck1q5drjeupm.apps.googleusercontent.com',
     clientSecret: 'Y85wV4DCm42QndTuW0gKQaTz',
-    callbackURL: "http://localhost:1337/auth/google/callback",
+    callbackURL: "http://localhost:1337/api/auth/google/callback",
     scope : ['profile', 'email'] ,
     passReqToCallback: true
   },
   function(request, accessToken, refreshToken, profile, done) {
     console.log("google Come");
-    User.findOrCreate({
-      googleId: profile.id
+    console.log(profile);
+
+    process.nextTick(function() {
+
+      findByUsername(profile.id, function(err, userdb) {
+
+        if (err)
+          return done(null, err);
+        if (!userdb) {
+          var usr = {
+            username: profile.id,
+            name: profile.displayName,
+            password: 'N/A',
+            email: profile.emails[0].value,
+            role: 4
+          };
+          User.create(usr).exec(function(err, created) {
+            if (created) {
+              return done(null, created);
+            }
+          });
+        } else {
+          var returnUser = {
+            username: userdb.username,
+            createdAt: userdb.createdAt,
+            id: userdb.id
+          };
+          return done(null, returnUser, {
+            message: 'Logged In Successfully'
+          });
+        }
+      });
+
+    });
+
+   /* User.findOrCreate({
+      username: profile.id
     }, function(err, user) {
       console.log(err);
       console.log(user);
       return done(err, user);
-    });
+    });*/
   }
 ));
 module.exports.http = {

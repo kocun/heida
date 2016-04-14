@@ -6,10 +6,19 @@
  */
 
 module.exports = {
-
-
+  autoPK: true,
   attributes: {
-
+    name: {
+      type: 'string',
+    },
+    value: {
+      type: 'string',
+    },
+    type: {
+      type: 'string',
+    },
+    criteria: {
+      model: 'Criteria'
+    }
   }
 };
-

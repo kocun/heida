@@ -22,8 +22,7 @@ angular.module('heidaApp')
       $scope.departments = departments;
     });
     $scope.update = function() {
-
-      $scope.user.save();
+      $scope.user.put();
       $state.go('dashboard.users', $stateParams, {
         reload: true,
         inherit: true
