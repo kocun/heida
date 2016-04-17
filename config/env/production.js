@@ -24,7 +24,7 @@ module.exports = {
   /***************************************************************************
    * Set the port in the production environment to 80                        *
    ***************************************************************************/
-  port: 80,
+  port: 8081,
   admin: {
     user: 'admin',
     pass: 'admin',
@@ -36,14 +36,11 @@ module.exports = {
     ldapou: 'usr',
     ldapcn: 'cn',
   },
-  mongo: {
-    adapter: 'sails-mongo',
-    host: '10.11.254.100',
-    port: 27017,
-    // user: 'username',
-    // password: 'password',
-    database: 'heida'
-  },
+
+  migrate: 'safe',
+  models: {
+    connection: 'mongo_prod'
+  }
 
   /***************************************************************************
    * Set the log level in production environment to "silent"                 *
