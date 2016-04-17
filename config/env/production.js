@@ -24,8 +24,26 @@ module.exports = {
   /***************************************************************************
    * Set the port in the production environment to 80                        *
    ***************************************************************************/
-
-  // port: 80,
+  port: 80,
+  admin: {
+    user: 'admin',
+    pass: 'admin',
+    role: 'admin'
+  },
+  ldap: {
+    url: 'ldap://login.ku.edu.tr:389',
+    ldapo: 'ku',
+    ldapou: 'usr',
+    ldapcn: 'cn',
+  },
+  mongo: {
+    adapter: 'sails-mongo',
+    host: '10.11.254.100',
+    port: 27017,
+    // user: 'username',
+    // password: 'password',
+    database: 'heida'
+  },
 
   /***************************************************************************
    * Set the log level in production environment to "silent"                 *
