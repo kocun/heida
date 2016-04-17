@@ -40,6 +40,13 @@ module.exports = {
   migrate: 'safe',
   models: {
     connection: 'mongo_prod'
+  },
+  // This a test account you should replace it .
+  google: {
+    clientID: '412383755015-qs4k8eevr0e0nobo7monck1q5drjeupm.apps.googleusercontent.com',
+    clientSecret: 'Y85wV4DCm42QndTuW0gKQaTz',
+    callbackURL: 'http://localhost:1337/api/auth/google/callback',
+    scope: ['profile', 'email'],
   }
 
   /***************************************************************************
