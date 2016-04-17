@@ -166,7 +166,7 @@ angular
       }).state('dashboard.criterianew', {
         controller: 'CriteriaCtrl',
         templateUrl: 'views/pages/criteria_new.html',
-        url: '/criteria/new',
+        url: '/criteria/',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -261,7 +261,7 @@ angular
       }).state('dashboard.departments_new', {
         controller: 'DepartmentNewCtrl',
         templateUrl: 'views/pages/departments_new.html',
-        url: '/departments/new',
+        url: '/departments/',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
