@@ -42,7 +42,7 @@
 config/local.js
 config/google.js
 
-
+views/layout.ejs
 
 
 ################################################
