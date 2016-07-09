@@ -51,6 +51,7 @@
   "license": "",
   "devDependencies": {
     "eslint": "^2.3.0",
+    "grunt-wiredep": "^3.0.1",
     "istanbul": "^0.4.2",
     "jslint": "^0.9.6",
     "mocha": "^2.4.5",

@@ -16,7 +16,7 @@
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
-  'bower_components/bootswatch/dist/css/bootstrap.css',
+  'assets/bower_components/bootswatch/dist/css/bootstrap.css',
   'styles/**/*.css'
 ];
 
@@ -26,7 +26,7 @@ var jsFilesToInject = [
 
   // Load sails.io before everything else
   'js/dependencies/sails.io.js',
-  '/bower_components/jquery/dist/jquery.js',
+  'assets/bower_components/jquery/dist/jquery.js',
   '/bower_components/angular/angular.js',
   '/bower_components/angular-route/angular-route.js',
   '/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
