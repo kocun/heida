@@ -15,6 +15,7 @@ angular
     'angular-loading-bar',
     'restangular'
 
+
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
     $ocLazyLoadProvider.config({
