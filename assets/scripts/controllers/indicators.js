@@ -14,7 +14,12 @@ angular.module('heidaApp')
     });
 
   }).controller('IndicatorEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
-    console.log($stateParams.id);
+     $scope.opts= [
+      {id:0,val:"Not Relevant"},
+      {id:1,val:"Low"},
+      {id:2,val:"Moderately"},
+      {id:3,val:"Highly"}
+    ];
 
     Restangular.all('/api/subgroup').getList().then(function(subgroups) {
       $scope.subgroups = subgroups;
@@ -23,7 +28,6 @@ angular.module('heidaApp')
       $scope.indicator = indicator;
     });
     $scope.update = function() {
-      console.log($scope.indicator.plain());
       $scope.indicator.save();
       $state.go('dashboard.indicators', $stateParams, {
         reload: true,
@@ -31,12 +35,19 @@ angular.module('heidaApp')
       });
     }
   }).controller('IndicatorNewCtrl', function($scope, $http, Restangular, $state, $stateParams) {
+
     Restangular.all('/api/subgroup').getList().then(function(subgroups) {
       $scope.subgroups = subgroups;
+    });
+    Restangular.all('/api/goal').getList().then(function(goals) {
+      $scope.goals_to_add = goals;
+      $scope.goals = goals;
+      console.log(goals_to_add);
     });
     Restangular.all('/api/indicator').getList().then(function(indicators) {
       $scope.indicators = indicators;
     });
+
     $scope.save = function(indicator) {
       $scope.indicators.post(indicator);
       $state.go('dashboard.indicators', $stateParams, {

@@ -14,17 +14,18 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Code</th>
+
               <th>Name</th>
               <th>subgroup</th>
               <th>Value Type</th>
               <th>public</th>
+
             </tr>
           </thead>
           <tbody>
             <tr >
-              <td><input type="text" value="{{indicator.code}}" ng-model="indicator.code" disabled></td>
-              <td><input type="text" value="{{indicator.name}}" ng-model="indicator.name"></td>
+              <input type="hidden"  ng-model="indicator.code" disabled>
+              <td><input type="text"  ng-model="indicator.name"></td>
               <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id"  ng-model="indicator.subgroup">
               </select></td>
               <td><select class="form-control"   ng-model="indicator.valueType">
@@ -33,6 +34,44 @@
               </select></td>
               <td>
                 <input type="checkbox" value="" ng-model="indicator.public">
+              </td>
+              </tr>
+              <tr>
+              <td >Goal 1
+                <select ng-model="indicator.goal1">
+                  <option value="0">Not Relevant</option>
+                  <option value="1">Low</option>
+                  <option value="2">Moderately</option>
+                  <option value="3">Highly</option>
+              </select></td>
+              <td >Goal 2
+                <select ng-model="indicator.goal2">
+                  <option value="0">Not Relevant</option>
+                  <option value="1">Low</option>
+                  <option value="2">Moderately</option>
+                  <option value="3">Highly</option>
+              </select></td>
+              <td >Goal 3
+                <select ng-model="indicator.goal3">
+                  <option value="0">Not Relevant</option>
+                  <option value="1">Low</option>
+                  <option value="2">Moderately</option>
+                  <option value="3">Highly</option>
+              </select></td>
+              <td >Goal 4
+                <select ng-model="indicator.goal4">
+                  <option value="0">Not Relevant</option>
+                  <option value="1">Low</option>
+                  <option value="2">Moderately</option>
+                  <option value="3">Highly</option>
+              </select></td>
+              <td >Goal 5
+                <select ng-model="indicator.goal5">
+                  <option value="0">Not Relevant</option>
+                  <option value="1">Low</option>
+                  <option value="2">Moderately</option>
+                  <option value="3">Highly</option>
+              </select></td>
               </td>
             </tr>
           </tbody>
