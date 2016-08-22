@@ -14,8 +14,6 @@ angular
     'ui.bootstrap',
     'angular-loading-bar',
     'restangular'
-
-
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
     $ocLazyLoadProvider.config({
@@ -278,6 +276,63 @@ angular
             })
           }
         }
+      }).state('dashboard.goals', {
+        controller: 'GoalCtrl',
+        templateUrl: 'views/pages/goals.html',
+        url: '/goals/',
+        resolve: {
+          loadMyFiles: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'heidaApp',
+              files: [
+                'scripts/controllers/goals.js',
+                'scripts/directives/timeline/timeline.js',
+                'scripts/directives/notifications/notifications.js',
+                'scripts/directives/chat/chat.js',
+                'scripts/directives/dashboard/stats/stats.js'
+
+              ]
+            })
+          }
+        }
+      }).state('dashboard.goals_new', {
+        controller: 'GoalNewCtrl',
+        templateUrl: 'views/pages/goals_new.html',
+        url: '/goals/',
+        resolve: {
+          loadMyFiles: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'heidaApp',
+              files: [
+                'scripts/controllers/goals.js',
+                'scripts/directives/timeline/timeline.js',
+                'scripts/directives/notifications/notifications.js',
+                'scripts/directives/chat/chat.js',
+                'scripts/directives/dashboard/stats/stats.js'
+
+              ]
+            })
+          }
+        }
+      }).state('dashboard.goals_edit', {
+        controller: 'GoalEditCtrl',
+        templateUrl: 'views/pages/goals_edit.html',
+        url: '/goals/:id',
+        resolve: {
+          loadMyFiles: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'heidaApp',
+              files: [
+                'scripts/controllers/goals.js',
+                'scripts/directives/timeline/timeline.js',
+                'scripts/directives/notifications/notifications.js',
+                'scripts/directives/chat/chat.js',
+                'scripts/directives/dashboard/stats/stats.js'
+
+              ]
+            })
+          }
+        }
       }).state('dashboard.groups', {
         controller: 'GroupCtrl',
         templateUrl: 'views/pages/groups.html',
@@ -319,7 +374,7 @@ angular
       }).state('dashboard.groups_new', {
         controller: 'GroupNewCtrl',
         templateUrl: 'views/pages/groups_new.html',
-        url: '/groups/new',
+        url: '/groups/',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -443,7 +498,8 @@ angular
                 'scripts/directives/timeline/timeline.js',
                 'scripts/directives/notifications/notifications.js',
                 'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
+                'scripts/directives/dashboard/stats/stats.js',
+                'scripts/directives/dashboard/selectd.js'
 
               ]
             })
@@ -570,7 +626,10 @@ angular
                 'scripts/directives/timeline/timeline.js',
                 'scripts/directives/notifications/notifications.js',
                 'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
+                'scripts/directives/dashboard/stats/stats.js',
+                'bower_components/ng-dialog/js/ngDialog.js',
+                'bower_components/ng-dialog/css/ngDialog.css'
+
               ]
             })
           }

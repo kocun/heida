@@ -50,7 +50,7 @@ module.exports.routes = {
     controller: 'AuthController',
     action: 'callback'
   },
-  'get /api/data/:department/:indicator': {
+  'get /api/data/:indicator': {
     controller: 'DataController',
     action: 'chart'
   }

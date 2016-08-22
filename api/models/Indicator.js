@@ -34,6 +34,26 @@ module.exports = {
     },
     subgroup: {
       model: 'SubGroup'
+    },
+    goal1:{
+      type:'integer',
+      enum:[0,1,2,3]
+    },
+    goal2:{
+      type:'integer',
+      enum:[0,1,2,3]
+    },
+    goal3:{
+      type:'integer',
+      enum:[0,1,2,3]
+    },
+    goal4:{
+      type:'integer',
+      enum:[0,1,2,3]
+    },
+    goal5:{
+      type:'integer',
+      enum:[0,1,2,3]
     }
 
   },

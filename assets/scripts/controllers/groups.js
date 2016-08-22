@@ -6,6 +6,7 @@
  * # MainCtrl
  * Controller of the heidaApp
  */
+
 angular.module('heidaApp')
   .controller('GroupCtrl', function($scope, $http, Restangular) {
     Restangular.all('/api/group').getList().then(function(groups) {
@@ -29,6 +30,7 @@ angular.module('heidaApp')
       });
     }
   }).controller('GroupNewCtrl', function($scope, $http, Restangular, $state, $stateParams) {
+
     Restangular.all('/api/group').getList().then(function(groups) {
       $scope.groups = groups;
     });
