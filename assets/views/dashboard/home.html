@@ -7,18 +7,16 @@
   </div>
   <!-- /.row -->
   <div class="row">
-
     <a ui-sref="dashboard.users">
-      <stats number="12" comments="Users" colour="primary" type="user"></stats>
+      <stats number="{{users.length}}" comments="Users" colour="primary" type="user"></stats>
     </a>
     <a ui-sref="dashboard.departments">
-      <stats number="18" comments="Departments" colour="yellow" type="users"></stats>
+      <stats number="{{departments.length}}" comments="Departments" colour="yellow" type="users"></stats>
     </a>
     <a ui-sref="dashboard.report">
       <stats number="24" comments="Success Indicators" colour="green" type="arrows-h"></stats>
     </a>
   </div>
-
   <!-- /.panel -->
   <div class="row">
     <div class="col-lg-12">
