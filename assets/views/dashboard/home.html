@@ -1,50 +1,91 @@
 <div>
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Dashboard</h1>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Dashboard</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /.row -->
+  <div class="row">
+
+    <stats number="12" comments="Users" colour="primary" type="user"></stats>
+    <stats number="18" comments="Departments" colour="yellow" type="users"></stats>
+    <stats number="24" comments="Success Indicators" colour="green" type="arrows-h"></stats>
+
+  </div>
+
+  <!-- /.panel -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa-clock-o fa-fw"></i> Last 5 Reports
         </div>
-        <!-- /.col-lg-12 -->
+        <!-- /.panel-heading -->
+
+        <table class="table">
+          <thead>
+          <th>indicator</th>
+          <th>Department</th>
+          </thead>
+          <tbody>
+          <tr ng-repeat="data in datas">
+            <td>
+              <a ui-sref="dashboard.report_detail({department:data.department.id,indicator:data.indicator.id})">{{data.indicator.name}}</a>
+            </td>
+            <td>
+              {{data.department.name}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <!-- /.panel-body -->
+      </div>
+      <!-- /.panel -->
     </div>
-    <!-- /.row -->
-    <div class="row">
+  </div>
+  <!-- /.row -->
 
-        <stats number="12" comments="Users" colour="primary" type="user"></stats>
-        <stats number="18" comments="Departments" colour="yellow" type="users"></stats>
-        <stats number="24" comments="Success Indicators" colour="green" type="arrows-h"></stats>
 
-    </div>
-
-    <!-- /.panel -->
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-clock-o fa-fw"></i> Last 5 Reports
-                </div>
-                <!-- /.panel-heading -->
-
-              <table class="table">
-                <thead>
-                <th>indicator</th>
-                <th>Department</th>
-                </thead>
-                <tbody>
-                <tr ng-repeat="data in datas">
-                  <td >
-                    <a ui-sref="dashboard.report_detail({department:data.department.id,indicator:data.indicator.id})">{{data.indicator.name}}</a>
-                  </td>
-                  <td >
-                    {{data.department.name}}
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
+  <!-- /.panel -->
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa-eye fa-fw"></i> Instructions
         </div>
+
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+          Lorem ipsum dolor sit amet, sea appetere adversarium ex, duo inani impetus ut, et pro facer honestatis. Summo
+          efficiendi eam ne, ne pro apeirian dissentias complectitur. Pri vidisse moderatius philosophia in, est
+          detraxit recusabo expetendis at. Duo novum vivendo interpretaris at, aeterno dissentiunt consequuntur vel cu,
+          pri at munere virtute interpretaris. Oratio posidonium efficiantur ei mel, cu possit minimum appareat duo, ad
+          cum nostro viderer contentiones. Duo ridens labore cu.
+          <!-- /.panel-body -->
+        </div>
+      </div>
+      <!-- /.panel -->
     </div>
-    <!-- /.row -->
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa-book fa-fw"></i> Glossary
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+          Lorem ipsum dolor sit amet, sea appetere adversarium ex, duo inani impetus ut, et pro facer honestatis. Summo
+          efficiendi eam ne, ne pro apeirian dissentias complectitur. Pri vidisse moderatius philosophia in, est
+          detraxit recusabo expetendis at. Duo novum vivendo interpretaris at, aeterno dissentiunt consequuntur vel cu,
+          pri at munere virtute interpretaris. Oratio posidonium efficiantur ei mel, cu possit minimum appareat duo, ad
+          cum nostro viderer contentiones. Duo ridens labore cu.
+          <!-- /.panel-body -->
+        </div>
+      </div>
+      <!-- /.panel -->
+    </div>
+  </div>
+  <!-- /.row -->
 </div>
 
 <!--MFDPS_STUD:SuperMFDPS-->
