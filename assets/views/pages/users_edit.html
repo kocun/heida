@@ -1,46 +1,42 @@
-<div>
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Departments</h1>
+<div class="row">
+      <h1 class="page-header">Edit User's Information</h1>
+</div>
+<div class="row mb20">
+    <div class="col-lg-6">
+      <label for="edit-username" class="control-label">
+        Username
+      </label>
+      <input type="text" value="{{user.username}}" ng-model="user.username" id="edit-username" class="form-control" />
+    </div>
+    <div class="col-lg-6">
+      <label for="edit-name" class="control-label">
+        Name
+      </label>
+      <input type="text" value="{{user.name}}" ng-model="user.name" id="edit-name" class="form-control" />
     </div>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      Departments
-    </div>
-    <!-- /.panel-heading -->
-    <div class="panel-body">
-      <div class="table-responsive">
-        <table class="table-responsive">
-          <thead>
-            <tr>
-              <th>UserName</th>
-              <th>Name</th>
-              <th>Deparment</th>
-              <th>Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr >
-              <td><input type="text" value="{{user.username}}" ng-model="user.username" disabled=""></td>
-              <td><input type="text" value="{{user.name}}" ng-model="user.name"></td>
-              <td><select class="form-control" ng-options="department.name for department in departments track by department.id" ng-model="user.department[0]">
-              </select></td>
-              <td>
-                <select class="form-control" ng-model="user.role">
-                  <option value="1">Red-Only</option>
-                  <option value="2">Member</option>
-                  <option value="3">Editor</option>
-                  <option value="4">Admin</option>
-                </select>
-              </tr>
-            </tbody>
-          </table>
-          <button type="button" class="btn btn-primary" ng-click="update(user)">Update</button>
-        </div>
-        <!-- /.table-responsive -->
-      </div>
-      <!-- /.panel-body -->
-    </div>
+<div class="row mb20">
+  <div class="col-lg-6">
+    <label for="edit-user-department" class="control-label">
+      Department
+    </label>
+    <select class="form-control" ng-options="department.name for department in departments track by department.id" ng-model="user.department[0]" id="edit-user-department"></select>
+  </div>
+  <div class="col-lg-6">
+    <label for="edit-user-role" class="control-label">
+      Role
+    </label>
+    <select class="form-control" ng-model="user.role" id="edit-user-role">
+      <option value="1">Read-Only</option>
+      <option value="2">Member</option>
+      <option value="3">Editor</option>
+      <option value="4">Admin</option>
+    </select>
   </div>
 </div>
+<div class="row mb20">
+  <div class="col-lg-4">
+    <button type="button" class="btn btn-primary" ng-click="update(user)">Update</button>
+  </div>
+</div>
+
