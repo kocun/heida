@@ -8,10 +8,15 @@
   <!-- /.row -->
   <div class="row">
 
-    <stats number="12" comments="Users" colour="primary" type="user"></stats>
-    <stats number="18" comments="Departments" colour="yellow" type="users"></stats>
-    <stats number="24" comments="Success Indicators" colour="green" type="arrows-h"></stats>
-
+    <a ui-sref="dashboard.users">
+      <stats number="12" comments="Users" colour="primary" type="user"></stats>
+    </a>
+    <a ui-sref="dashboard.departments">
+      <stats number="18" comments="Departments" colour="yellow" type="users"></stats>
+    </a>
+    <a ui-sref="dashboard.report">
+      <stats number="24" comments="Success Indicators" colour="green" type="arrows-h"></stats>
+    </a>
   </div>
 
   <!-- /.panel -->
