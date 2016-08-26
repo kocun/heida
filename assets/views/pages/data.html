@@ -1,96 +1,87 @@
-<div>
+<div class="create-reports-page">
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">data</h1>
-    </div>
+    <h1 class="page-header">Create Reports</h1>
   </div>
-  <div class="panel panel-primary " id="panel{{state}}" >
-    <div class="panel-heading">
+  <!-- /.table-responsive -->
+  <div class="row">
 
-    </div>
-    <!-- /.panel-heading -->
-    <div class="panel-body">
-      <div class="table-responsive">
-        <table class="table" border="1">
-          <thead>
+    <form name="myForm" >
+      <table id="panel{{state}}" class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Department</th>
+            <th>Goal</th>
+            <th>Group</th>
+            <th>Sub-Group</th>
+          </tr>
+        </thead>
+        <tbody>
             <tr>
-              <th>Department</th>
-              <th>Goal</th>
-              <th>Group</th>
-              <th>Sub-Group</th>
-            </tr>
-          </thead>
-          <tbody>
-            <form name="myForm" >
-              <tr>
-                <td><select class="form-control" ng-options="department.name for department in departments track by department.id"  ng-model="data.department" style="width: 200px;" required>
-                </select></td>
-                <td> <select class="form-control" style="width: 100px; "  ng-model="data.goal" ng-change="filter(data.goal,null,null)" >
-                  <option value="goal1">Goal 1</option>
-                  <option value="goal2">Goal 2</option>
-                  <option value="goal3">Goal 3</option>
-                  <option value="goal4">Goal 4</option>
-                  <option value="goal5">Goal 5</option>
-                  </select>
-                </td>
-                <td><select class="form-control" ng-options="group.name for group in groups track by group.id"  ng-model="data.group" ng-change="filter(null,data.group.id,null)" style="width: 200px;" required>
-                </select></td>
-                <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id "  ng-model="data.subgroup" ng-change="filter(null,data.group.id,data.subgroup.id)" style="width: 200px;" required>
-                </select></td>
-                </tr>
-                <tr>
-                  <td colspan="4">
-                    <div ng-repeat="indicator in indicators">
-                      <a ng-click="addData(indicator)">{{indicator.name}}</a>
-                    </div>
-                  </td>
-                <!--<td>Year : <select class="form-control" ng-model="data.year" style="width: 100px;" required>
-                  <option>2010</option>
-                  <option>2011</option>
-                  <option>2012</option>
-                  <option>2013</option>
-                  <option>2014</option>
-                  <option>2016</option>
-                  <option>2017</option>
-                  <option>2018</option>
-                  <option>2019</option>
-                  <option>2020</option>
-                </select></td>
-                <td ng-switch="data.indicator.valueType" > Value :
-                  <div ng-switch-when='yes/no'>
-                    <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="data.value" value="1" checked="" required>Yes
-                    <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="data.value" value="0" checked="" required>No
-                  </div>
-                  <div ng-switch-when='numeric'><input type="text" ng-model="data.value" ></div>
-                  <div ng-switch-default='numeric'><input type="text" ng-model="data.value" ></div>
-                </td>
-                <td>
-                  Public : <input type="checkbox" value="" ng-model="data.indicator.public">
-                </td>-->
+              <td><select class="form-control" ng-options="department.name for department in departments track by department.id"  ng-model="data.department" style="width: 200px;" required>
+              </select></td>
+              <td> <select class="form-control" style="width: 100px; "  ng-model="data.goal" ng-change="filter(data.goal,null,null)" >
+                <option value="goal1">Goal 1</option>
+                <option value="goal2">Goal 2</option>
+                <option value="goal3">Goal 3</option>
+                <option value="goal4">Goal 4</option>
+                <option value="goal5">Goal 5</option>
+                </select>
+              </td>
+              <td><select class="form-control" ng-options="group.name for group in groups track by group.id"  ng-model="data.group" ng-change="filter(null,data.group.id,null)" style="width: 200px;" required>
+              </select></td>
+              <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id "  ng-model="data.subgroup" ng-change="filter(null,data.group.id,data.subgroup.id)" style="width: 200px;" required>
+              </select></td>
               </tr>
-             <!-- <tr ng-repeat="criteria in data.criterias " >  <td>{{criteria.name}}</td><td colspan="5">
-              <div ng-repeat="question in criteria.questions ">
-                <label>
-                  <input type="radio"  name="{{question.id}}" ng-model="$parent.id" value="{{question.name}}" ng-change="next(data,criteria,question.id,$parent.$index)">{{question.name}}
-                </label>
-              </div>
+              <tr>
+                <td colspan="4">
+                  <div ng-repeat="indicator in indicators">
+                    <a ng-click="addData(indicator)">{{indicator.name}}</a>
+                  </div>
+                </td>
+              <!--<td>Year : <select class="form-control" ng-model="data.year" style="width: 100px;" required>
+                <option>2010</option>
+                <option>2011</option>
+                <option>2012</option>
+                <option>2013</option>
+                <option>2014</option>
+                <option>2016</option>
+                <option>2017</option>
+                <option>2018</option>
+                <option>2019</option>
+                <option>2020</option>
+              </select></td>
+              <td ng-switch="data.indicator.valueType" > Value :
+                <div ng-switch-when='yes/no'>
+                  <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="data.value" value="1" checked="" required>Yes
+                  <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="data.value" value="0" checked="" required>No
+                </div>
+                <div ng-switch-when='numeric'><input type="text" ng-model="data.value" ></div>
+                <div ng-switch-default='numeric'><input type="text" ng-model="data.value" ></div>
+              </td>
+              <td>
+                Public : <input type="checkbox" value="" ng-model="data.indicator.public">
+              </td>-->
+            </tr>
+           <!-- <tr ng-repeat="criteria in data.criterias " >  <td>{{criteria.name}}</td><td colspan="5">
+            <div ng-repeat="question in criteria.questions ">
+              <label>
+                <input type="radio"  name="{{question.id}}" ng-model="$parent.id" value="{{question.name}}" ng-change="next(data,criteria,question.id,$parent.$index)">{{question.name}}
+              </label>
             </div>
-          </td></tr>-->
-        </tbody>
-      </table>
-    </div>
-    <div ng-switch="completed">
-      <div ng-switch-when='false'>
-        <button  type="button" class="btn btn-primary" ng-click="next(data,criteria,null)" ng-disabled="myForm.$invalid">Next</button>
+          </div>
+        </td></tr>-->
+      </tbody>
+    </table>
+
+      <div ng-switch="completed">
+        <div ng-switch-when='false'>
+          <button  type="button" class="btn btn-primary" ng-click="next(data,criteria,null)" ng-disabled="myForm.$invalid">Next</button>
+        </div>
+        <div ng-switch-when='true'>
+          <button  type="button" class="btn btn-danger" ng-click="save()" ng-disabled="myForm.$invalid">Save</button>
+        </div>
       </div>
-      <div ng-switch-when='true'>
-        <button  type="button" class="btn btn-danger" ng-click="save()" ng-disabled="myForm.$invalid">Save</button>
-      </div>
-    </div>
-    <!-- /.table-responsive -->
+    </form>
   </div>
-</form>
-<!-- /.panel-body -->
-</div>
-</div>
+  <!-- /.table-responsive -->
 </div>
