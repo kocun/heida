@@ -1,21 +1,34 @@
 /* General CSS  Start */
+.logo-heida {
+  display: block;
+  background: url('../images/logo-heida.png');
+  width: 346px;
+  height: 117px;
+}
 .mb20 {
   margin-bottom: 20px;
 }
+
+.mb40 {
+  margin-bottom: 40px;
+}
+
 .text-center {
   text-align: center;
 }
+
 /* General CSS  End */
 
 /* Bootstrap Encapsulation Start */
 .page-header {
-  margin:16px 0 20px!important;
+  margin: 16px 0 20px !important;
 }
+
 /* Bootstrap Encapsulation End */
 
 /* Table Css Start */
 .table td {
-  padding: 15px 10px!important;
+  padding: 15px 10px !important;
 }
 
 .table thead th {
@@ -24,13 +37,179 @@
   background-color: #E8ECEF;
   color: #949394;
 }
+
 /* Table Css End */
+
+/* Login Page Start */
+.login-content {
+  padding: 30px 20px;
+  margin: 20% 0 0 33%;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  box-shadow: 0 20px 40px -25px;
+  -webkit-box-shadow: 0 20px 40px -25px;
+  -moz-box-shadow: 0 20px 40px -25px;
+  background-color: #ffffff;
+}
+.btn-social {
+  position: relative;
+  padding-left: 44px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+.btn-social > :first-child {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  line-height: 34px;
+  font-size: 1.6em;
+  text-align: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.2)
+}
+
+.btn-social.btn-lg {
+  padding-left: 61px
+}
+
+.btn-social.btn-lg > :first-child {
+  line-height: 45px;
+  width: 45px;
+  font-size: 1.8em
+}
+
+.btn-social.btn-sm {
+  padding-left: 38px
+}
+
+.btn-social.btn-sm > :first-child {
+  line-height: 28px;
+  width: 28px;
+  font-size: 1.4em
+}
+
+.btn-social.btn-xs {
+  padding-left: 30px
+}
+
+.btn-social.btn-xs > :first-child {
+  line-height: 20px;
+  width: 20px;
+  font-size: 1.2em
+}
+
+.btn-social-icon {
+  position: relative;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 34px;
+  width: 34px;
+  padding: 0
+}
+
+.btn-social-icon > :first-child {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  line-height: 34px;
+  font-size: 1.6em;
+  text-align: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.2)
+}
+
+.btn-social-icon.btn-lg {
+  padding-left: 61px
+}
+
+.btn-social-icon.btn-lg > :first-child {
+  line-height: 45px;
+  width: 45px;
+  font-size: 1.8em
+}
+
+.btn-social-icon.btn-sm {
+  padding-left: 38px
+}
+
+.btn-social-icon.btn-sm > :first-child {
+  line-height: 28px;
+  width: 28px;
+  font-size: 1.4em
+}
+
+.btn-social-icon.btn-xs {
+  padding-left: 30px
+}
+
+.btn-social-icon.btn-xs > :first-child {
+  line-height: 20px;
+  width: 20px;
+  font-size: 1.2em
+}
+
+.btn-social-icon > :first-child {
+  border: none;
+  text-align: center;
+  width: 100% !important
+}
+
+.btn-social-icon.btn-lg {
+  height: 45px;
+  width: 45px;
+  padding-left: 0;
+  padding-right: 0
+}
+
+.btn-social-icon.btn-sm {
+  height: 30px;
+  width: 30px;
+  padding-left: 0;
+  padding-right: 0
+}
+
+.btn-social-icon.btn-xs {
+  height: 22px;
+  width: 22px;
+  padding-left: 0;
+  padding-right: 0
+}
+
+.btn-google {
+  color: #fff;
+  background-color: #dd4b39;
+  border-color: rgba(0, 0, 0, 0.2)
+}
+
+.btn-google:focus, .btn-google.focus {
+  color: #fff;
+  background-color: #c23321;
+  border-color: rgba(0, 0, 0, 0.2)
+}
+
+.btn-google:hover {
+  color: #fff;
+  background-color: #c23321;
+  border-color: rgba(0, 0, 0, 0.2)
+}
+
+/* Login Page End */
 
 /* Users Page Start */
 .users-page {
 
 }
+
 .users-page .user-list-item {
   cursor: pointer;
 }
+
 /* Users Page End */
