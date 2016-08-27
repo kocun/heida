@@ -12,6 +12,14 @@ angular.module('heidaApp')
       $scope.goals = goals;
     });
 
+    $scope.save = function(goal) {
+      goal.relevancy="Not Relevant";
+      $scope.goals.post(goal);
+      $state.go('dashboard.goals', $stateParams, {
+        reload: true,
+        inherit: true
+      });
+    }
   }).controller('GoalEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
 
     Restangular.all('/api/goal').getList().then(function(goals) {
@@ -23,18 +31,6 @@ angular.module('heidaApp')
     });
     $scope.update = function() {
       $scope.goal.save();
-      $state.go('dashboard.goals', $stateParams, {
-        reload: true,
-        inherit: true
-      });
-    }
-  }).controller('GoalNewCtrl', function($scope, $http, Restangular, $state, $stateParams) {
-    Restangular.all('/api/goal').getList().then(function(goals) {
-      $scope.goals = goals;
-    });
-    $scope.save = function(goal) {
-      goal.relevancy="Not Relevant";
-      $scope.goals.post(goal);
       $state.go('dashboard.goals', $stateParams, {
         reload: true,
         inherit: true
