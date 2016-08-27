@@ -5,6 +5,9 @@
   width: 346px;
   height: 117px;
 }
+.padding-none {
+
+}
 .mb20 {
   margin-bottom: 20px;
 }
@@ -251,3 +254,12 @@
   text-decoration: none;
 }
 /* Groups Page End */
+
+/* Sub Groups Page Start */
+.subgroups-page a.add-subgroup {
+  cursor: pointer;
+}
+.subgroups-page a.add-subgroup:hover {
+  text-decoration: none;
+}
+/* Sub Groups Page End */
