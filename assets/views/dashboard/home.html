@@ -1,98 +1,97 @@
-<div>
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Dashboard</h1>
-    </div>
-    <!-- /.col-lg-12 -->
-  </div>
-  <!-- /.row -->
-  <div class="row">
-    <a ui-sref="dashboard.users">
-      <stats number="{{users.length}}" comments="Users" colour="primary" type="user"></stats>
-    </a>
-    <a ui-sref="dashboard.departments">
-      <stats number="{{departments.length}}" comments="Departments" colour="yellow" type="users"></stats>
-    </a>
-    <a ui-sref="dashboard.report">
-      <stats number="24" comments="Success Indicators" colour="green" type="arrows-h"></stats>
-    </a>
-  </div>
-  <!-- /.panel -->
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <i class="fa fa-clock-o fa-fw"></i> Last 5 Reports
-        </div>
-        <!-- /.panel-heading -->
-
-        <table class="table">
-          <thead>
-          <th>indicator</th>
-          <th>Department</th>
-          </thead>
-          <tbody>
-          <tr ng-repeat="data in datas">
-            <td>
-              <a ui-sref="dashboard.report_detail({department:data.department.id,indicator:data.indicator.id})">{{data.indicator.name}}</a>
-            </td>
-            <td>
-              {{data.department.name}}
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <!-- /.panel-body -->
+<div class="flex-container">
+  <div class="flex-content">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Dashboard</h1>
       </div>
-      <!-- /.panel -->
+      <!-- /.col-lg-12 -->
     </div>
-  </div>
-  <!-- /.row -->
+    <!-- /.row -->
+    <div class="row">
+      <a ui-sref="dashboard.users">
+        <stats number="{{users.length}}" comments="Users" colour="primary" type="user"></stats>
+      </a>
+      <a ui-sref="dashboard.departments">
+        <stats number="{{departments.length}}" comments="Departments" colour="yellow" type="users"></stats>
+      </a>
+      <a ui-sref="dashboard.report">
+        <stats number="24" comments="Success Indicators" colour="green" type="arrows-h"></stats>
+      </a>
+    </div>
+    <!-- /.panel -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <i class="fa fa-clock-o fa-fw"></i> Last 5 Reports
+          </div>
+          <!-- /.panel-heading -->
 
-
-  <!-- /.panel -->
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <i class="fa fa-eye fa-fw"></i> Instructions
-        </div>
-
-        <!-- /.panel-heading -->
-        <div class="panel-body">
-          Lorem ipsum dolor sit amet, sea appetere adversarium ex, duo inani impetus ut, et pro facer honestatis. Summo
-          efficiendi eam ne, ne pro apeirian dissentias complectitur. Pri vidisse moderatius philosophia in, est
-          detraxit recusabo expetendis at. Duo novum vivendo interpretaris at, aeterno dissentiunt consequuntur vel cu,
-          pri at munere virtute interpretaris. Oratio posidonium efficiantur ei mel, cu possit minimum appareat duo, ad
-          cum nostro viderer contentiones. Duo ridens labore cu.
+          <table class="table">
+            <thead>
+            <th>indicator</th>
+            <th>Department</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="data in datas">
+              <td>
+                <a ui-sref="dashboard.report_detail({department:data.department.id,indicator:data.indicator.id})">{{data.indicator.name}}</a>
+              </td>
+              <td>
+                {{data.department.name}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
           <!-- /.panel-body -->
         </div>
+        <!-- /.panel -->
       </div>
-      <!-- /.panel -->
     </div>
-    <div class="col-lg-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <i class="fa fa-book fa-fw"></i> Glossary
+    <!-- /.row -->
+
+
+    <!-- /.panel -->
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <i class="fa fa-eye fa-fw"></i> Instructions
+          </div>
+
+          <!-- /.panel-heading -->
+          <div class="panel-body">
+            Lorem ipsum dolor sit amet, sea appetere adversarium ex, duo inani impetus ut, et pro facer honestatis. Summo
+            efficiendi eam ne, ne pro apeirian dissentias complectitur. Pri vidisse moderatius philosophia in, est
+            detraxit recusabo expetendis at. Duo novum vivendo interpretaris at, aeterno dissentiunt consequuntur vel cu,
+            pri at munere virtute interpretaris. Oratio posidonium efficiantur ei mel, cu possit minimum appareat duo, ad
+            cum nostro viderer contentiones. Duo ridens labore cu.
+            <!-- /.panel-body -->
+          </div>
         </div>
-        <!-- /.panel-heading -->
-        <div class="panel-body">
-          Lorem ipsum dolor sit amet, sea appetere adversarium ex, duo inani impetus ut, et pro facer honestatis. Summo
-          efficiendi eam ne, ne pro apeirian dissentias complectitur. Pri vidisse moderatius philosophia in, est
-          detraxit recusabo expetendis at. Duo novum vivendo interpretaris at, aeterno dissentiunt consequuntur vel cu,
-          pri at munere virtute interpretaris. Oratio posidonium efficiantur ei mel, cu possit minimum appareat duo, ad
-          cum nostro viderer contentiones. Duo ridens labore cu.
-          <!-- /.panel-body -->
-        </div>
+        <!-- /.panel -->
       </div>
-      <!-- /.panel -->
+      <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <i class="fa fa-book fa-fw"></i> Glossary
+          </div>
+          <!-- /.panel-heading -->
+          <div class="panel-body">
+            Lorem ipsum dolor sit amet, sea appetere adversarium ex, duo inani impetus ut, et pro facer honestatis. Summo
+            efficiendi eam ne, ne pro apeirian dissentias complectitur. Pri vidisse moderatius philosophia in, est
+            detraxit recusabo expetendis at. Duo novum vivendo interpretaris at, aeterno dissentiunt consequuntur vel cu,
+            pri at munere virtute interpretaris. Oratio posidonium efficiantur ei mel, cu possit minimum appareat duo, ad
+            cum nostro viderer contentiones. Duo ridens labore cu.
+            <!-- /.panel-body -->
+          </div>
+        </div>
+        <!-- /.panel -->
+      </div>
     </div>
   </div>
-  <!-- /.row -->
+  <div class="flex-footer dashboard-footer">
+    <b>© Copyright 2015 by <a href="#">HEIDA |&nbsp;Koç University</a>. All rights reserved.</b><br/>
+    This project has been funded with support from the European Commission. This website reflects the views only of the project consortium, and the Commission cannot be held responsible for any use which may be made of the information contained therein.
+  </div>
 </div>
-
-<div class="dashboard-footer">
-  <b>© Copyright 2015 by <a href="#">HEIDA |&nbsp;Koç University</a>. All rights reserved.</b><br/>
-  This project has been funded with support from the European Commission. This website reflects the views only of the project consortium, and the Commission cannot be held responsible for any use which may be made of the information contained therein.
-</div>
-<!--MFDPS_STUD:SuperMFDPS-->
