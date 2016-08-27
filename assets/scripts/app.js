@@ -234,7 +234,6 @@ angular
               name: 'heidaApp',
               files: [
                 'scripts/controllers/departments.js'
-
               ]
             })
           }
@@ -309,12 +308,7 @@ angular
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
-                'scripts/controllers/groups.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-
+                'scripts/controllers/groups.js'
               ]
             })
           }
@@ -324,26 +318,6 @@ angular
         controller: 'GroupEditCtrl',
         templateUrl: 'views/pages/groups_edit.html',
         url: '/groups/:id',
-        resolve: {
-          loadMyFiles: function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name: 'heidaApp',
-              files: [
-                'scripts/controllers/groups.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-
-              ]
-            })
-          }
-        }
-      })
-      .state('dashboard.groups_new', {
-        controller: 'GroupNewCtrl',
-        templateUrl: 'views/pages/groups_new.html',
-        url: '/groups/',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({

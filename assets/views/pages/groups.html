@@ -1,33 +1,29 @@
-<div>
+<div class="groups-page">
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Groups</h1>
-    </div>
+    <h1 class="page-header">Groups</h1>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      Groups
+  <div class="row">
+    <a ng-click="addGroup=true" ng-hide="addGroup" class="pull-right mb20 add-group">
+      <i class="fa fa-plus-circle"></i> Add New Group
+    </a>
+
+    <div class="input-group mb40" ng-show="addGroup">
+      <input type="text" value="{{group.name}}" ng-model="group.name" class="form-control" placeholder="Add New Group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="save(group)">Add</button>
+      </span>
     </div>
-    <!-- /.panel-heading -->
-    <div class="panel-body">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="group in groups ">
-              <td><a ui-sref="dashboard.groups_edit({id:group.id})">{{group.name}} </a>({{group.subs.length}})</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <a ui-sref="dashboard.groups_new()"><p class="fa fa-plus-circle"></p></a>
-      <!-- /.table-responsive -->
-    </div>
-    <!-- /.panel-body -->
+    <table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="group in groups">
+        <td><a ui-sref="dashboard.groups_edit({id:group.id})">{{group.name}} </a>({{group.subs.length}})</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
-</div>
 </div>
