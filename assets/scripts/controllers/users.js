@@ -7,14 +7,14 @@
  * Controller of the heidaApp
  */
 angular.module('heidaApp')
-  .controller('UserCtrl', ['$scope', '$http', function($scope, $http, Restangular) {
+  .controller('UserCtrl', function($scope, $http, Restangular) {
     Restangular.all('/api/user').getList().then(function(users) {
       $scope.users = users;
     });
     Restangular.all('/api/department').getList().then(function(departments) {
       $scope.departments = departments;
     });
-  }]).controller('UserEditCtrl', function($scope, $position, Restangular, $stateParams, $state) {
+  }).controller('UserEditCtrl', function($scope, $position, Restangular, $stateParams, $state) {
     Restangular.one('/api/user', $stateParams.id).get().then(function(user) {
       $scope.user = user;
     });
