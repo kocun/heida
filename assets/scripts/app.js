@@ -280,26 +280,6 @@ angular
           }
         }
       })
-      .state('dashboard.goals_new', {
-        controller: 'GoalNewCtrl',
-        templateUrl: 'views/pages/goals_new.html',
-        url: '/goals/',
-        resolve: {
-          loadMyFiles: function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name: 'heidaApp',
-              files: [
-                'scripts/controllers/goals.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-
-              ]
-            })
-          }
-        }
-      })
       .state('dashboard.goals_edit', {
         controller: 'GoalEditCtrl',
         templateUrl: 'views/pages/goals_edit.html',

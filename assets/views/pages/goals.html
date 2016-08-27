@@ -1,33 +1,28 @@
-<div>
+<div class="goals-page">
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Goals</h1>
-    </div>
+    <h1 class="page-header">Goals</h1>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      Goals
-    </div>
-    <!-- /.panel-heading -->
-    <div class="panel-body">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="goal in goals ">
-              <td><a ui-sref="dashboard.goals_edit({id:goal.id})">{{goal.name}} </a>({{goal.groups.length}})</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <a ui-sref="dashboard.goals_new()"><p class="fa fa-plus-circle"></p></a>
-      <!-- /.table-responsive -->
-    </div>
-    <!-- /.panel-body -->
+  <div class="row">
+    <a ng-click="addGoals=true" ng-hide="addGoals" class="pull-right mb20 add-department">
+      <i class="fa fa-plus-circle"></i> Add New Goals
+    </a>
+    <!--<div class="input-group mb40" ng-show="addGoals">-->
+      <!--<input type="text" value="{{goal.name}}" ng-model="department.name" class="form-control" placeholder="Goal Name">-->
+      <!--<span class="input-group-btn">-->
+        <!--<button class="btn btn-default" type="button" ng-click="save(department)">Add</button>-->
+      <!--</span>-->
+    <!--</div>-->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="goal in goals ">
+          <td><a ui-sref="dashboard.goals_edit({id:goal.id})">{{goal.name}} </a>({{goal.groups.length}})</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</div>
 </div>
