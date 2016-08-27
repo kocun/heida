@@ -29,6 +29,18 @@ nav {
           order:0;
 }
 
+.navbar {
+  min-height: auto;
+}
+
+.navbar-brand {
+  padding:3px 15px;
+}
+
+.navbar-brand img {
+  height: 43px;
+}
+
 .flex-content, #page-wrapper {
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
