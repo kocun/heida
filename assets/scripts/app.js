@@ -343,32 +343,7 @@ angular
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
-                'scripts/controllers/sub-groups.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-
-              ]
-            })
-          }
-        }
-      })
-      .state('dashboard.sub-groups_new', {
-        controller: 'SubgroupNewCtrl',
-        templateUrl: 'views/pages/sub-groups_new.html',
-        url: '/sub-groups/new',
-        resolve: {
-          loadMyFiles: function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name: 'heidaApp',
-              files: [
-                'scripts/controllers/sub-groups.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-
+                'scripts/controllers/sub-groups.js'
               ]
             })
           }
