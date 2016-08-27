@@ -206,7 +206,7 @@ module.exports.http = {
 
 };
 
-// Google clien ID  : 412383755015-qs4k8eevr0e0nobo7monck1q5drjeupm.apps.googleusercontent.com
+// Google client ID  : 412383755015-qs4k8eevr0e0nobo7monck1q5drjeupm.apps.googleusercontent.com
 // Client Secret : Y85wV4DCm42QndTuW0gKQaTz
 //
 //

@@ -8,11 +8,8 @@
  */
 angular.module('heidaApp')
   .controller('LoginCtrl', function($scope, $http, $position) {
-
     $http.get('/api/me').
     success(function(data) {
-
-      $scope.me = data;
+        $scope.me = data;
     });
-
   });

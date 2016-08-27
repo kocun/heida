@@ -18,7 +18,7 @@ angular
   .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
     $ocLazyLoadProvider.config({
       debug: false,
-      events: true,
+      events: true
     });
     $urlRouterProvider.otherwise('/login');
 
@@ -29,14 +29,13 @@ angular
         resolve: {
           loadMyDirectives: function($ocLazyLoad) {
             return $ocLazyLoad.load({
-                name: 'heidaApp',
-                files: [
-                  'scripts/directives/header/header.js',
-                  'scripts/directives/header/header-notification/header-notification.js',
-                  'scripts/directives/sidebar/sidebar.js',
-                  'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
-                ]
-              }),
+              name: 'heidaApp',
+              files: [
+                'scripts/directives/header/header.js',
+                'scripts/directives/sidebar/sidebar.js',
+                'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
+              ]
+            }),
               $ocLazyLoad.load({
                 name: 'toggle-switch',
                 files: ["bower_components/angular-toggle-switch/angular-toggle-switch.min.js",
@@ -47,14 +46,14 @@ angular
                 name: 'ngAnimate',
                 files: ['bower_components/angular-animate/angular-animate.js']
               }),
-            $ocLazyLoad.load({
-              name: 'ngCookies',
-              files: ['bower_components/angular-cookies/angular-cookies.js']
-            }),
-            $ocLazyLoad.load({
-              name: 'ngResource',
-              files: ['bower_components/angular-resource/angular-resource.js']
-            })
+              $ocLazyLoad.load({
+                name: 'ngCookies',
+                files: ['bower_components/angular-cookies/angular-cookies.js']
+              }),
+              $ocLazyLoad.load({
+                name: 'ngResource',
+                files: ['bower_components/angular-resource/angular-resource.js']
+              })
           }
         }
       })
@@ -69,8 +68,6 @@ angular
               files: [
                 'scripts/controllers/main.js',
                 'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
                 'scripts/directives/dashboard/stats/stats.js'
               ]
             })
@@ -86,8 +83,19 @@ angular
         url: '/blank'
       })
       .state('login', {
+        url: '/login',
+        controller: 'LoginCtrl',
         templateUrl: 'views/pages/login.html',
-        url: '/login'
+        resolve: {
+          loadMyFiles: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'heidaApp',
+              files: [
+                'scripts/controllers/login.js'
+              ]
+            })
+          }
+        }
       })
       .state('dashboard.chart', {
         templateUrl: 'views/chart.html',
@@ -96,12 +104,12 @@ angular
         resolve: {
           loadMyFile: function($ocLazyLoad) {
             return $ocLazyLoad.load({
-                name: 'chart.js',
-                files: [
-                  'bower_components/angular-chart.js/dist/angular-chart.min.js',
-                  'bower_components/angular-chart.js/dist/angular-chart.css'
-                ]
-              }),
+              name: 'chart.js',
+              files: [
+                'bower_components/angular-chart.js/dist/angular-chart.min.js',
+                'bower_components/angular-chart.js/dist/angular-chart.css'
+              ]
+            }),
               $ocLazyLoad.load({
                 name: 'heidaApp',
                 files: ['scripts/controllers/chartContoller.js']
@@ -136,7 +144,8 @@ angular
       .state('dashboard.grid', {
         templateUrl: 'views/ui-elements/grid.html',
         url: '/grid'
-      }).state('dashboard.profile', {
+      })
+      .state('dashboard.profile', {
         controller: 'LoginCtrl',
         templateUrl: 'views/pages/profile.html',
         url: '/profile',
@@ -154,7 +163,8 @@ angular
             })
           }
         }
-      }).state('dashboard.criterianew', {
+      })
+      .state('dashboard.criterianew', {
         controller: 'CriteriaCtrl',
         templateUrl: 'views/pages/criteria_new.html',
         url: '/criteria/',
@@ -173,7 +183,8 @@ angular
             })
           }
         }
-      }).state('dashboard.users', {
+      })
+      .state('dashboard.users', {
         controller: 'UserCtrl',
         templateUrl: 'views/pages/users.html',
         url: '/users/',
@@ -192,7 +203,8 @@ angular
             })
           }
         }
-      }).state('dashboard.users_edit', {
+      })
+      .state('dashboard.users_edit', {
         controller: 'UserEditCtrl',
         templateUrl: 'views/pages/users_edit.html',
         url: '/users/:id',
@@ -211,7 +223,8 @@ angular
             })
           }
         }
-      }).state('dashboard.departments', {
+      })
+      .state('dashboard.departments', {
         controller: 'DepartmentCtrl',
         templateUrl: 'views/pages/departments.html',
         url: '/departments/',
@@ -220,17 +233,13 @@ angular
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
-                'scripts/controllers/departments.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-
+                'scripts/controllers/departments.js'
               ]
             })
           }
         }
-      }).state('dashboard.departments_edit', {
+      })
+      .state('dashboard.departments_edit', {
         controller: 'DepartmentEditCtrl',
         templateUrl: 'views/pages/departments_edit.html',
         url: '/departments/:id',
@@ -249,26 +258,8 @@ angular
             })
           }
         }
-      }).state('dashboard.departments_new', {
-        controller: 'DepartmentNewCtrl',
-        templateUrl: 'views/pages/departments_new.html',
-        url: '/departments/',
-        resolve: {
-          loadMyFiles: function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name: 'heidaApp',
-              files: [
-                'scripts/controllers/departments.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-
-              ]
-            })
-          }
-        }
-      }).state('dashboard.goals', {
+      })
+      .state('dashboard.goals', {
         controller: 'GoalCtrl',
         templateUrl: 'views/pages/goals.html',
         url: '/goals/',
@@ -287,26 +278,8 @@ angular
             })
           }
         }
-      }).state('dashboard.goals_new', {
-        controller: 'GoalNewCtrl',
-        templateUrl: 'views/pages/goals_new.html',
-        url: '/goals/',
-        resolve: {
-          loadMyFiles: function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name: 'heidaApp',
-              files: [
-                'scripts/controllers/goals.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-
-              ]
-            })
-          }
-        }
-      }).state('dashboard.goals_edit', {
+      })
+      .state('dashboard.goals_edit', {
         controller: 'GoalEditCtrl',
         templateUrl: 'views/pages/goals_edit.html',
         url: '/goals/:id',
@@ -325,7 +298,8 @@ angular
             })
           }
         }
-      }).state('dashboard.groups', {
+      })
+      .state('dashboard.groups', {
         controller: 'GroupCtrl',
         templateUrl: 'views/pages/groups.html',
         url: '/groups/',
@@ -334,17 +308,13 @@ angular
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
-                'scripts/controllers/groups.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-
+                'scripts/controllers/groups.js'
               ]
             })
           }
         }
-      }).state('dashboard.groups_edit', {
+      })
+      .state('dashboard.groups_edit', {
         controller: 'GroupEditCtrl',
         templateUrl: 'views/pages/groups_edit.html',
         url: '/groups/:id',
@@ -363,26 +333,8 @@ angular
             })
           }
         }
-      }).state('dashboard.groups_new', {
-        controller: 'GroupNewCtrl',
-        templateUrl: 'views/pages/groups_new.html',
-        url: '/groups/',
-        resolve: {
-          loadMyFiles: function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name: 'heidaApp',
-              files: [
-                'scripts/controllers/groups.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-
-              ]
-            })
-          }
-        }
-      }).state('dashboard.sub-groups', {
+      })
+      .state('dashboard.sub-groups', {
         controller: 'SubgroupCtrl',
         templateUrl: 'views/pages/sub-groups.html',
         url: '/sub-groups/',
@@ -401,7 +353,8 @@ angular
             })
           }
         }
-      }).state('dashboard.sub-groups_new', {
+      })
+      .state('dashboard.sub-groups_new', {
         controller: 'SubgroupNewCtrl',
         templateUrl: 'views/pages/sub-groups_new.html',
         url: '/sub-groups/new',
@@ -420,7 +373,8 @@ angular
             })
           }
         }
-      }).state('dashboard.sub-groups_edit', {
+      })
+      .state('dashboard.sub-groups_edit', {
         controller: 'SubgroupEditCtrl',
         templateUrl: 'views/pages/sub-groups_edit.html',
         url: '/sub-groups/:id',
@@ -439,7 +393,8 @@ angular
             })
           }
         }
-      }).state('dashboard.indicators', {
+      })
+      .state('dashboard.indicators', {
         controller: 'IndicatorCtrl',
         templateUrl: 'views/pages/indicators.html',
         url: '/indicators/',
@@ -458,7 +413,8 @@ angular
             })
           }
         }
-      }).state('dashboard.indicators_new', {
+      })
+      .state('dashboard.indicators_new', {
         controller: 'IndicatorNewCtrl',
         templateUrl: 'views/pages/indicators_new.html',
         url: '/indicators/new',
@@ -477,7 +433,8 @@ angular
             })
           }
         }
-      }).state('dashboard.indicators_edit', {
+      })
+      .state('dashboard.indicators_edit', {
         controller: 'IndicatorEditCtrl',
         templateUrl: 'views/pages/indicators_edit.html',
         url: '/indicators/:id',
@@ -497,7 +454,8 @@ angular
             })
           }
         }
-      }).state('dashboard.criterias', {
+      })
+      .state('dashboard.criterias', {
         controller: 'CriteriaCtrl',
         templateUrl: 'views/pages/criterias.html',
         url: '/criterias',
@@ -515,7 +473,8 @@ angular
             })
           }
         }
-      }).state('dashboard.criterias_new', {
+      })
+      .state('dashboard.criterias_new', {
         controller: 'CriteriaNewCtrl',
         templateUrl: 'views/pages/criterias_new.html',
         url: '/criterias/new',
@@ -533,7 +492,8 @@ angular
             })
           }
         }
-      }).state('dashboard.criterias_edit', {
+      })
+      .state('dashboard.criterias_edit', {
         controller: 'CriteriaEditCtrl',
         templateUrl: 'views/pages/criterias_edit.html',
         url: '/criterias/:id',
@@ -551,7 +511,8 @@ angular
             })
           }
         }
-      }).state('dashboard.questions', {
+      })
+      .state('dashboard.questions', {
         controller: 'QuestionCtrl',
         templateUrl: 'views/pages/questions.html',
         url: '/questions',
@@ -569,7 +530,8 @@ angular
             })
           }
         }
-      }).state('dashboard.questions_new', {
+      })
+      .state('dashboard.questions_new', {
         controller: 'QuestionNewCtrl',
         templateUrl: 'views/pages/questions_new.html',
         url: '/questions/new',
@@ -587,7 +549,8 @@ angular
             })
           }
         }
-      }).state('dashboard.questions_edit', {
+      })
+      .state('dashboard.questions_edit', {
         controller: 'QuestionEditCtrl',
         templateUrl: 'views/pages/questions_edit.html',
         url: '/questions/:id',
@@ -605,7 +568,8 @@ angular
             })
           }
         }
-      }).state('dashboard.data', {
+      })
+      .state('dashboard.data', {
         controller: 'DataCtrl',
         templateUrl: 'views/pages/data.html',
         url: '/data',
@@ -626,7 +590,8 @@ angular
             })
           }
         }
-      }).state('dashboard.report', {
+      })
+      .state('dashboard.report', {
         controller: 'DataReportCtrl',
         templateUrl: 'views/pages/reports.html',
         url: '/report',
@@ -644,19 +609,20 @@ angular
             })
           }
         }
-      }).state('dashboard.report_detail', {
+      })
+      .state('dashboard.report_detail', {
         templateUrl: 'views/pages/reports_detail.html',
         url: '/report/detail/:department/:indicator',
         controller: 'DataReportDetailCtrl',
         resolve: {
           loadMyFile: function($ocLazyLoad) {
             return $ocLazyLoad.load({
-                name: 'chart.js',
-                files: [
-                  'bower_components/angular-chart.js/dist/angular-chart.min.js',
-                  'bower_components/angular-chart.js/dist/angular-chart.css'
-                ]
-              }),
+              name: 'chart.js',
+              files: [
+                'bower_components/angular-chart.js/dist/angular-chart.min.js',
+                'bower_components/angular-chart.js/dist/angular-chart.css'
+              ]
+            }),
               $ocLazyLoad.load({
                 name: 'heidaApp',
                 files: ['scripts/controllers/datas.js']
