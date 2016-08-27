@@ -29,13 +29,13 @@ angular
         resolve: {
           loadMyDirectives: function($ocLazyLoad) {
             return $ocLazyLoad.load({
-                name: 'heidaApp',
-                files: [
-                  'scripts/directives/header/header.js',
-                  'scripts/directives/sidebar/sidebar.js',
-                  'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
-                ]
-              }),
+              name: 'heidaApp',
+              files: [
+                'scripts/directives/header/header.js',
+                'scripts/directives/sidebar/sidebar.js',
+                'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
+              ]
+            }),
               $ocLazyLoad.load({
                 name: 'toggle-switch',
                 files: ["bower_components/angular-toggle-switch/angular-toggle-switch.min.js",
@@ -46,14 +46,14 @@ angular
                 name: 'ngAnimate',
                 files: ['bower_components/angular-animate/angular-animate.js']
               }),
-            $ocLazyLoad.load({
-              name: 'ngCookies',
-              files: ['bower_components/angular-cookies/angular-cookies.js']
-            }),
-            $ocLazyLoad.load({
-              name: 'ngResource',
-              files: ['bower_components/angular-resource/angular-resource.js']
-            })
+              $ocLazyLoad.load({
+                name: 'ngCookies',
+                files: ['bower_components/angular-cookies/angular-cookies.js']
+              }),
+              $ocLazyLoad.load({
+                name: 'ngResource',
+                files: ['bower_components/angular-resource/angular-resource.js']
+              })
           }
         }
       })
@@ -104,12 +104,12 @@ angular
         resolve: {
           loadMyFile: function($ocLazyLoad) {
             return $ocLazyLoad.load({
-                name: 'chart.js',
-                files: [
-                  'bower_components/angular-chart.js/dist/angular-chart.min.js',
-                  'bower_components/angular-chart.js/dist/angular-chart.css'
-                ]
-              }),
+              name: 'chart.js',
+              files: [
+                'bower_components/angular-chart.js/dist/angular-chart.min.js',
+                'bower_components/angular-chart.js/dist/angular-chart.css'
+              ]
+            }),
               $ocLazyLoad.load({
                 name: 'heidaApp',
                 files: ['scripts/controllers/chartContoller.js']
@@ -233,11 +233,7 @@ angular
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
-                'scripts/controllers/departments.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
+                'scripts/controllers/departments.js'
 
               ]
             })
@@ -248,26 +244,6 @@ angular
         controller: 'DepartmentEditCtrl',
         templateUrl: 'views/pages/departments_edit.html',
         url: '/departments/:id',
-        resolve: {
-          loadMyFiles: function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name: 'heidaApp',
-              files: [
-                'scripts/controllers/departments.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-
-              ]
-            })
-          }
-        }
-      })
-      .state('dashboard.departments_new', {
-        controller: 'DepartmentNewCtrl',
-        templateUrl: 'views/pages/departments_new.html',
-        url: '/departments/',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -687,12 +663,12 @@ angular
         resolve: {
           loadMyFile: function($ocLazyLoad) {
             return $ocLazyLoad.load({
-                name: 'chart.js',
-                files: [
-                  'bower_components/angular-chart.js/dist/angular-chart.min.js',
-                  'bower_components/angular-chart.js/dist/angular-chart.css'
-                ]
-              }),
+              name: 'chart.js',
+              files: [
+                'bower_components/angular-chart.js/dist/angular-chart.min.js',
+                'bower_components/angular-chart.js/dist/angular-chart.css'
+              ]
+            }),
               $ocLazyLoad.load({
                 name: 'heidaApp',
                 files: ['scripts/controllers/datas.js']
