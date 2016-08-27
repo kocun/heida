@@ -41,6 +41,11 @@ nav {
   height: 43px;
 }
 
+.logout-button {
+  padding:15px;
+  display: inline-block!important;
+}
+
 .flex-content, #page-wrapper {
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
@@ -53,13 +58,36 @@ nav {
           min-height: auto!important;
 }
 
+.flex-content {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.layout-padding {
+  padding: 0 30px;
+}
+
+.flex-footer {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+
 .dashboard-footer {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
   font-size: 10px;
   padding: 10px;
   border-top: 1px solid #e7e7e7;
   background: #f8f8f8;
+}
+
+.sidebar-nav .fa.arrow:before { content: "\f106"; }
+
+#page-wrapper .layout-wrapper > .ng-scope:not(.flex-container) {
+  padding:0 30px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#page-wrapper .layout-wrapper > .ng-scope > .flex-content {
+  padding:0 30px;
 }
