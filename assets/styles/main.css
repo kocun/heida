@@ -233,3 +233,12 @@
 }
 
 /* Users Page End */
+
+/* Departments Page Start */
+.departments-page a.add-department {
+  cursor: pointer;
+}
+.departments-page a.add-department:hover {
+  text-decoration: none;
+}
+/* Departments Page End */
