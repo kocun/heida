@@ -242,3 +242,12 @@
   text-decoration: none;
 }
 /* Departments Page End */
+
+/* Groups Page Start */
+.groups-page a.add-group {
+  cursor: pointer;
+}
+.groups-page a.add-group:hover {
+  text-decoration: none;
+}
+/* Groups Page End */

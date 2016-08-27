@@ -8,10 +8,18 @@
  */
 
 angular.module('heidaApp')
-  .controller('GroupCtrl', function($scope, $http, Restangular) {
+  .controller('GroupCtrl', function($scope, $http, Restangular, $stateParams, $state) {
     Restangular.all('/api/group').getList().then(function(groups) {
       $scope.groups = groups;
     });
+
+    $scope.save = function(group) {
+      $scope.groups.post(group);
+      $state.go('dashboard.groups', $stateParams, {
+        reload: true,
+        inherit: true
+      });
+    }
 
   }).controller('GroupEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
 
@@ -24,19 +32,6 @@ angular.module('heidaApp')
     });
     $scope.update = function() {
       $scope.group.save();
-      $state.go('dashboard.groups', $stateParams, {
-        reload: true,
-        inherit: true
-      });
-    }
-  }).controller('GroupNewCtrl', function($scope, $http, Restangular, $state, $stateParams) {
-
-    Restangular.all('/api/group').getList().then(function(groups) {
-      $scope.groups = groups;
-    });
-    $scope.save = function(group) {
-
-      $scope.groups.post(group);
       $state.go('dashboard.groups', $stateParams, {
         reload: true,
         inherit: true
