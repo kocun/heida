@@ -7,7 +7,7 @@
  * Controller of the heidaApp
  */
 angular.module('heidaApp')
-  .controller('LoginCtrl', function($scope, $http, $position) {
+  .controller('LoginCtrl', function($scope, $http) {
     $http.get('/api/me').
     success(function(data) {
         $scope.me = data;

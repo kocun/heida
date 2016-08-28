@@ -67,20 +67,11 @@ angular
               name: 'heidaApp',
               files: [
                 'scripts/controllers/main.js',
-                'scripts/directives/timeline/timeline.js',
                 'scripts/directives/dashboard/stats/stats.js'
               ]
             })
           }
         }
-      })
-      .state('dashboard.form', {
-        templateUrl: 'views/form.html',
-        url: '/form'
-      })
-      .state('dashboard.blank', {
-        templateUrl: 'views/pages/blank.html',
-        url: '/blank'
       })
       .state('login', {
         url: '/login',
@@ -117,34 +108,6 @@ angular
           }
         }
       })
-      .state('dashboard.table', {
-        templateUrl: 'views/table.html',
-        url: '/table'
-      })
-      .state('dashboard.panels-wells', {
-        templateUrl: 'views/ui-elements/panels-wells.html',
-        url: '/panels-wells'
-      })
-      .state('dashboard.buttons', {
-        templateUrl: 'views/ui-elements/buttons.html',
-        url: '/buttons'
-      })
-      .state('dashboard.notifications', {
-        templateUrl: 'views/ui-elements/notifications.html',
-        url: '/notifications'
-      })
-      .state('dashboard.typography', {
-        templateUrl: 'views/ui-elements/typography.html',
-        url: '/typography'
-      })
-      .state('dashboard.icons', {
-        templateUrl: 'views/ui-elements/icons.html',
-        url: '/icons'
-      })
-      .state('dashboard.grid', {
-        templateUrl: 'views/ui-elements/grid.html',
-        url: '/grid'
-      })
       .state('dashboard.profile', {
         controller: 'LoginCtrl',
         templateUrl: 'views/pages/profile.html',
@@ -159,26 +122,6 @@ angular
                 'scripts/directives/notifications/notifications.js',
                 'scripts/directives/chat/chat.js',
                 'scripts/directives/dashboard/stats/stats.js'
-              ]
-            })
-          }
-        }
-      })
-      .state('dashboard.criterianew', {
-        controller: 'CriteriaCtrl',
-        templateUrl: 'views/pages/criteria_new.html',
-        url: '/criteria/',
-        resolve: {
-          loadMyFiles: function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name: 'heidaApp',
-              files: [
-                'scripts/controllers/criteria.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-
               ]
             })
           }
@@ -343,32 +286,7 @@ angular
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
-                'scripts/controllers/sub-groups.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-
-              ]
-            })
-          }
-        }
-      })
-      .state('dashboard.sub-groups_new', {
-        controller: 'SubgroupNewCtrl',
-        templateUrl: 'views/pages/sub-groups_new.html',
-        url: '/sub-groups/new',
-        resolve: {
-          loadMyFiles: function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name: 'heidaApp',
-              files: [
-                'scripts/controllers/sub-groups.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-
+                'scripts/controllers/sub-groups.js'
               ]
             })
           }
@@ -474,25 +392,6 @@ angular
           }
         }
       })
-      .state('dashboard.criterias_new', {
-        controller: 'CriteriaNewCtrl',
-        templateUrl: 'views/pages/criterias_new.html',
-        url: '/criterias/new',
-        resolve: {
-          loadMyFiles: function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name: 'heidaApp',
-              files: [
-                'scripts/controllers/criterias.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-              ]
-            })
-          }
-        }
-      })
       .state('dashboard.criterias_edit', {
         controller: 'CriteriaEditCtrl',
         templateUrl: 'views/pages/criterias_edit.html',
@@ -516,25 +415,6 @@ angular
         controller: 'QuestionCtrl',
         templateUrl: 'views/pages/questions.html',
         url: '/questions',
-        resolve: {
-          loadMyFiles: function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name: 'heidaApp',
-              files: [
-                'scripts/controllers/questions.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-              ]
-            })
-          }
-        }
-      })
-      .state('dashboard.questions_new', {
-        controller: 'QuestionNewCtrl',
-        templateUrl: 'views/pages/questions_new.html',
-        url: '/questions/new',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -600,11 +480,7 @@ angular
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
-                'scripts/controllers/datas.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
+                'scripts/controllers/datas.js'
               ]
             })
           }

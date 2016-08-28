@@ -19,4 +19,7 @@ angular.module('heidaApp')
     });
 
     // Get Success Indicators but not yet
+    Restangular.all('/api/data').getList().then(function (datas) {
+      $scope.datas = datas;
+    });
   });
