@@ -27,13 +27,13 @@
           </div>
           <!-- /.panel-heading -->
 
-          <table class="table">
+          <table class="table table-bordered">
             <thead>
-            <th>indicator</th>
+            <th>Indicator</th>
             <th>Department</th>
             </thead>
             <tbody>
-            <tr ng-repeat="data in datas">
+            <tr ng-repeat="data in datas | limitTo:-5">
               <td>
                 <a ui-sref="dashboard.report_detail({department:data.department.id,indicator:data.indicator.id})">{{data.indicator.name}}</a>
               </td>
