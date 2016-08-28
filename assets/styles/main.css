@@ -263,3 +263,12 @@
   text-decoration: none;
 }
 /* Sub Groups Page End */
+
+/* Criteria Page Start */
+.criteria-page a.add-criteria {
+  cursor: pointer;
+}
+.criteria-page a.add-criteria:hover {
+  text-decoration: none;
+}
+/* Criteria Page End */
