@@ -39,7 +39,7 @@ module.exports = {
 
   migrate: 'safe',
   models: {
-    connection: 'mongo_prod'
+    connection: 'mongo'
   },
   // This a test account you should replace it .
   google: {
