@@ -164,26 +164,6 @@ angular
           }
         }
       })
-      .state('dashboard.criterianew', {
-        controller: 'CriteriaCtrl',
-        templateUrl: 'views/pages/criteria_new.html',
-        url: '/criteria/',
-        resolve: {
-          loadMyFiles: function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name: 'heidaApp',
-              files: [
-                'scripts/controllers/criteria.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-
-              ]
-            })
-          }
-        }
-      })
       .state('dashboard.users', {
         controller: 'UserCtrl',
         templateUrl: 'views/pages/users.html',
@@ -434,25 +414,6 @@ angular
         controller: 'CriteriaCtrl',
         templateUrl: 'views/pages/criterias.html',
         url: '/criterias',
-        resolve: {
-          loadMyFiles: function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name: 'heidaApp',
-              files: [
-                'scripts/controllers/criterias.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-              ]
-            })
-          }
-        }
-      })
-      .state('dashboard.criterias_new', {
-        controller: 'CriteriaNewCtrl',
-        templateUrl: 'views/pages/criterias_new.html',
-        url: '/criterias/new',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
