@@ -467,25 +467,6 @@ angular
           }
         }
       })
-      .state('dashboard.questions_new', {
-        controller: 'QuestionNewCtrl',
-        templateUrl: 'views/pages/questions_new.html',
-        url: '/questions/new',
-        resolve: {
-          loadMyFiles: function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name: 'heidaApp',
-              files: [
-                'scripts/controllers/questions.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
-              ]
-            })
-          }
-        }
-      })
       .state('dashboard.questions_edit', {
         controller: 'QuestionEditCtrl',
         templateUrl: 'views/pages/questions_edit.html',

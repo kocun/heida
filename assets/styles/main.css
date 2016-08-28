@@ -272,3 +272,12 @@
   text-decoration: none;
 }
 /* Criteria Page End */
+
+/* Questions Page Start */
+.questions-page a.add-question {
+  cursor: pointer;
+}
+.questions-page a.add-question:hover {
+  text-decoration: none;
+}
+/* Questions Page End */
