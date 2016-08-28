@@ -1,24 +1,25 @@
-<div>
+<div class="profile-page">
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Profile</h1>
-    </div>
+    <h1 class="page-header">{{me.name}}'s Profile</h1>
   </div>
-  <div class="panel panel-default">
-    <div class="row">
-      <div class="form-group">
-        <div class="panel-heading">
-          User Profile
-        </div>
-        <div class="panel-body">
-          <label>Full Name</label>
-          <input class="form-control"  ng-model="me.name"  disabled>
-          <label>User Name</label>
-          <input class="form-control"  ng-model="me.username" disabled>
-          <!--      <p class="help-block">Example block-level help text here.</p>-->
-          <label>Email</label>
-          <input class="form-control"  ng-model="me.email" disabled>
-        </div>
+  <!-- /.table-responsive -->
+  <div class="row">
+
+    <div class="col-lg-1 profile-picture">
+      <img src="{{me.avatar}}" alt="{{me.name}}" />
+    </div>
+    <div class="col-lg-8">
+      <div class="col-lg-12 mb20">
+        <label>Full Name</label>
+        {{me.name}}
+      </div>
+      <div class="col-lg-12 mb20">
+        <label>User Name</label>
+        {{me.username}}
+      </div>
+      <div class="col-lg-12">
+        <label>Email</label>
+        {{me.email}}
       </div>
     </div>
   </div>

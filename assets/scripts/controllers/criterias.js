@@ -7,14 +7,7 @@
  * Controller of the heidaApp
  */
 angular.module('heidaApp')
-  .controller('CriteriaCtrl', function($scope, $http, Restangular) {
-
-    Restangular.all('/api/criteria').getList().then(function(criterias) {
-      $scope.criterias = criterias;
-    });
-
-  }).controller('CriteriaNewCtrl', function($scope, $http, Restangular, $state, $stateParams) {
-
+  .controller('CriteriaCtrl', function($scope, $http, Restangular, $state, $stateParams) {
     Restangular.all('/api/criteria').getList().then(function(criterias) {
       $scope.criterias = criterias;
     });
@@ -25,6 +18,7 @@ angular.module('heidaApp')
         inherit: true
       });
     }
+
   }).controller('CriteriaEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
     Restangular.all('/api/criteria').getList().then(function(criterias) {
       $scope.criterias = criterias;

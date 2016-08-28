@@ -11,7 +11,7 @@ module.exports = {
     key: {
       type: 'string',
       unique: true,
-      primaryKey: true,
+      primaryKey: true
     },
     url: {
       type: 'string'
@@ -22,6 +22,6 @@ module.exports = {
     role: {
       enum: ['4', '3', '2', '1']
     }
-  },
+  }
 
 };
