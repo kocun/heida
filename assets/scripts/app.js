@@ -67,20 +67,11 @@ angular
               name: 'heidaApp',
               files: [
                 'scripts/controllers/main.js',
-                'scripts/directives/timeline/timeline.js',
                 'scripts/directives/dashboard/stats/stats.js'
               ]
             })
           }
         }
-      })
-      .state('dashboard.form', {
-        templateUrl: 'views/form.html',
-        url: '/form'
-      })
-      .state('dashboard.blank', {
-        templateUrl: 'views/pages/blank.html',
-        url: '/blank'
       })
       .state('login', {
         url: '/login',
@@ -116,34 +107,6 @@ angular
               })
           }
         }
-      })
-      .state('dashboard.table', {
-        templateUrl: 'views/table.html',
-        url: '/table'
-      })
-      .state('dashboard.panels-wells', {
-        templateUrl: 'views/ui-elements/panels-wells.html',
-        url: '/panels-wells'
-      })
-      .state('dashboard.buttons', {
-        templateUrl: 'views/ui-elements/buttons.html',
-        url: '/buttons'
-      })
-      .state('dashboard.notifications', {
-        templateUrl: 'views/ui-elements/notifications.html',
-        url: '/notifications'
-      })
-      .state('dashboard.typography', {
-        templateUrl: 'views/ui-elements/typography.html',
-        url: '/typography'
-      })
-      .state('dashboard.icons', {
-        templateUrl: 'views/ui-elements/icons.html',
-        url: '/icons'
-      })
-      .state('dashboard.grid', {
-        templateUrl: 'views/ui-elements/grid.html',
-        url: '/grid'
       })
       .state('dashboard.profile', {
         controller: 'LoginCtrl',

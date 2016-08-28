@@ -6,7 +6,7 @@
   height: 117px;
 }
 .padding-none {
-
+  padding: 0;
 }
 .mb20 {
   margin-bottom: 20px;
@@ -226,11 +226,19 @@
 
 /* Login Page End */
 
-/* Users Page Start */
-.users-page {
-
+/* Profile Page Start */
+.profile-page .profile-picture img {
+  width: 100%;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
 }
+.profile-page label {
+  display: block;
+}
+/* Profile Page End */
 
+/* Users Page Start */
 .users-page .user-list-item {
   cursor: pointer;
 }

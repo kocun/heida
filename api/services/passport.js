@@ -166,7 +166,8 @@ passport.use(new GoogleStrategy({
             name: profile.displayName,
             password: 'N/A',
             email: profile.emails[0].value,
-            role: 4
+            role: 4,
+            avatar: profile.photos
           };
           User.create(usr).exec(function(err, created) {
             if (created) {
@@ -177,7 +178,8 @@ passport.use(new GoogleStrategy({
           var returnUser = {
             username: userdb.username,
             createdAt: userdb.createdAt,
-            id: userdb.id
+            id: userdb.id,
+            avatar: userdb.avatar
           };
           return done(null, returnUser, {
             message: 'Logged In Successfully'
