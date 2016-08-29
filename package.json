@@ -7,7 +7,7 @@
   "dependencies": {
     "bcrypt": "^0.8.5",
     "bower": "^1.7.7",
-    "ejs": "~2.4.1",
+    "ejs": "~2.5.1",
     "graceful-fs": "^4.1.3",
     "grunt": "1.0.1",
     "grunt-contrib-clean": "~1.0.0",
@@ -16,11 +16,11 @@
     "grunt-contrib-copy": "~1.0.0",
     "grunt-contrib-cssmin": "~1.0.0",
     "grunt-contrib-jst": "~1.0.0",
-    "grunt-contrib-less": "1.3.0",
-    "grunt-contrib-uglify": "~1.0.0",
+    "grunt-contrib-less": "1.4.0",
+    "grunt-contrib-uglify": "~2.0.0",
     "grunt-contrib-watch": "~1.0.0",
     "grunt-sails-linker": "~0.10.1",
-    "grunt-sync": "~0.5.2",
+    "grunt-sync": "~0.6.2",
     "include-all": "~0.1.3",
     "lodash": "^4.5.1",
     "passport": "^0.3.2",
@@ -54,8 +54,8 @@
     "grunt-wiredep": "^3.0.1",
     "istanbul": "^0.4.2",
     "jslint": "^0.10.1",
-    "mocha": "^2.4.5",
-    "supertest": "^1.2.0"
+    "mocha": "^3.0.2",
+    "supertest": "^2.0.0"
   },
   "eslintConfig": {
     "env": {
