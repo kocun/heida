@@ -27,6 +27,9 @@ module.exports = {
     email: {
       type: 'email'
     },
+    avatar:{
+	    type:'string'
+    },
     role: {
       enum: [4, 3, 2, 1]
       //4 - admin , 3 - editor 2- read-only 3- public
