@@ -167,7 +167,7 @@ passport.use(new GoogleStrategy({
             password: 'N/A',
             email: profile.emails[0].value,
             role: 4,
-            avatar: profile.photos
+            avatar: profile.photos[0]}
           };
           User.create(usr).exec(function(err, created) {
             if (created) {
