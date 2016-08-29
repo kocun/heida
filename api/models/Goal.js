@@ -8,6 +8,10 @@
 module.exports = {
 
   attributes: {
+	  status : {
+		  type:'integer',
+		  unique: true
+	  },
 	  name:{
 		  type:'string'
 	  }
