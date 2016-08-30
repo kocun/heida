@@ -29,15 +29,15 @@
 
           <table class="table table-bordered">
             <thead>
-            <th class="col-lg-8">Indicator</th>
-            <th>Department</th>
+            <th class="col-lg-10">Indicator</th>
+            <th class="text-center">Department</th>
             </thead>
             <tbody>
             <tr ng-repeat="data in datas | limitTo:-5">
               <td>
                 <a ui-sref="dashboard.report_detail({department:data.department.id,indicator:data.indicator.id})">{{data.indicator.name}}</a>
               </td>
-              <td>
+              <td class="text-center">
                 {{data.department.name}}
               </td>
             </tr>
