@@ -479,7 +479,7 @@ angular
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
-                'scripts/controllers/datas.js'
+                'scripts/controllers/report.js'
               ]
             })
           }
@@ -500,7 +500,7 @@ angular
             }),
               $ocLazyLoad.load({
                 name: 'heidaApp',
-                files: ['scripts/controllers/datas.js']
+                files: ['scripts/controllers/report.js']
               })
           }
         }
