@@ -465,7 +465,6 @@ angular
                 'scripts/directives/dashboard/stats/stats.js',
                 'bower_components/ng-dialog/js/ngDialog.js',
                 'bower_components/ng-dialog/css/ngDialog.css'
-
               ]
             })
           }
