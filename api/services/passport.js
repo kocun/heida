@@ -175,7 +175,6 @@ passport.use(new GoogleStrategy({
           User.create(usr).exec(function(err, created) {
 		  console.log(created);
 	    if(err)
-		    console.log(err);
 	            return(null,err);
             if (created) {
 		    console.log("returning");
