@@ -20,8 +20,8 @@ module.exports = {
   // models: {
   //   connection: 'someMongodbServer'
   // }
-  host: '127.0.0.1',
-  port: 1337,
+  host: '12.33.220',
+  port: 137,
   google: {
     clientID: '412383755015-qs4k8eevr0e0nobo7monck1q5drjeupm.apps.googleusercontent.com',
     clientSecret: 'Y85wV4DCm42QndTuW0gKQaTz',

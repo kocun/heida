@@ -2,6 +2,7 @@ var passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy,
   LdapStrategy = require('passport-ldapauth').Strategy,
   GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
+  _=require('underscore'),
   bcrypt = require('bcrypt');
 
 // Passport session setup.
@@ -51,7 +52,6 @@ function findByUsername(u, fn) {
 // with a user object.
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    console.log("local");
     // asynchronous verification, for effect...
     process.nextTick(function() {
       // Find the user by username. If there is no user with the given
@@ -87,11 +87,8 @@ passport.use(new LocalStrategy(
 
 passport.use(new LdapStrategy(getLDAPConfiguration,
   function(user, done) {
-
     process.nextTick(function() {
-
       findByUsername(user.uid, function(err, userdb) {
-
         if (err)
           return done(null, err);
         if (!userdb) {
@@ -151,27 +148,40 @@ passport.use(new GoogleStrategy({
     passReqToCallback: true
   },
   function(request, accessToken, refreshToken, profile, done) {
-    console.log("google Come");
-    console.log(profile);
-
     process.nextTick(function() {
-
       findByUsername(profile.id, function(err, userdb) {
 
         if (err)
           return done(null, err);
         if (!userdb) {
+	  var role = 1;
+	  if(_.findIndex(sails.config.admins,{email:profile.emails[0].value})>-1)
+	  {
+	  	role=4;
+	  }
+	  else{
+		  role=1;
+	  }
+	  console.log(role);
+
           var usr = {
             username: profile.id,
             name: profile.displayName,
             password: 'N/A',
             email: profile.emails[0].value,
-            role: 4,
+            role: role,
             avatar: profile.photos[0].value
           };
           User.create(usr).exec(function(err, created) {
+		  console.log(created);
+	    if(err)
+		    console.log(err);
+	            return(null,err);
             if (created) {
-              return done(null, created);
+		    console.log("returning");
+              return done(null, created, {
+			             message: 'Logged In Successfully'
+			           });
             }
           });
         } else {
