@@ -289,3 +289,12 @@
   text-decoration: none;
 }
 /* Questions Page End */
+
+/* Questions Page Start */
+.indicators-page a.add-indicator {
+  cursor: pointer;
+}
+.indicators-page a.add-indicator:hover {
+  text-decoration: none;
+}
+/* Questions Page End */
