@@ -14,19 +14,5 @@ module.exports.bootstrap = function(cb) {
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
   //
-  User.findOrCreate(
-    // Search for user with "admin" flag
-    {
-      username: sails.config.admin.username || 'admin'
-    },
-    // Create one if no such user is found
-    {
-      username: sails.config.admin.username || 'admin',
-      password: sails.config.admin.password || 'admin',
-      role: sails.config.admin.role || 4
-    }
-  ).exec(function createFindCB(error, createdOrFoundRecords) {
-      cb();
-  });
- // cb();
+  cb();
 };
