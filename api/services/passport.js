@@ -2,7 +2,7 @@ var passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy,
   LdapStrategy = require('passport-ldapauth').Strategy,
   GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
-  _=require('underscore'),
+  _ = require('underscore'),
   bcrypt = require('bcrypt');
 
 // Passport session setup.
@@ -154,15 +154,15 @@ passport.use(new GoogleStrategy({
         if (err)
           return done(null, err);
         if (!userdb) {
-	  var role = 1;
-	  if(_.findIndex(sails.config.admins,{email:profile.emails[0].value})>-1)
-	  {
-	  	role=4;
-	  }
-	  else{
-		  role=1;
-	  }
-	  console.log(role);
+          var role = 1;
+          if (_.findIndex(sails.config.admins, {
+              email: profile.emails[0].value
+            }) > -1) {
+            role = 4;
+          } else {
+            role = 1;
+          }
+          console.log(role);
 
           var usr = {
             username: profile.id,
@@ -173,14 +173,14 @@ passport.use(new GoogleStrategy({
             avatar: profile.photos[0].value
           };
           User.create(usr).exec(function(err, created) {
-		  console.log(created);
-	    if(err)
-	            return(null,err);
+            console.log(created);
+            if (err)
+              return (null, err);
             if (created) {
-		    console.log("returning");
+              console.log("returning");
               return done(null, created, {
-			             message: 'Logged In Successfully'
-			           });
+                message: 'Logged In Successfully'
+              });
             }
           });
         } else {
