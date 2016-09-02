@@ -245,56 +245,11 @@
 
 /* Users Page End */
 
-/* Departments Page Start */
-.departments-page a.add-department {
+/* Admin Tabs Start */
+.departments-page a, .subdepartments-page a, .groups-page a, .subgroups-page a, .criteria-page a, .questions-page a, .indicators-page a {
   cursor: pointer;
 }
-.departments-page a.add-department:hover {
+.departments-page a:hover, .subdepartments-page a:hover, .groups-page a:hover, .subgroups-page a:hover, .criteria-page a:hover, .questions-page a:hover, .indicators-page a:hover {
   text-decoration: none;
 }
-/* Departments Page End */
-
-/* Groups Page Start */
-.groups-page a.add-group {
-  cursor: pointer;
-}
-.groups-page a.add-group:hover {
-  text-decoration: none;
-}
-/* Groups Page End */
-
-/* Sub Groups Page Start */
-.subgroups-page a.add-subgroup {
-  cursor: pointer;
-}
-.subgroups-page a.add-subgroup:hover {
-  text-decoration: none;
-}
-/* Sub Groups Page End */
-
-/* Criteria Page Start */
-.criteria-page a.add-criteria {
-  cursor: pointer;
-}
-.criteria-page a.add-criteria:hover {
-  text-decoration: none;
-}
-/* Criteria Page End */
-
-/* Questions Page Start */
-.questions-page a.add-question {
-  cursor: pointer;
-}
-.questions-page a.add-question:hover {
-  text-decoration: none;
-}
-/* Questions Page End */
-
-/* Questions Page Start */
-.indicators-page a.add-indicator {
-  cursor: pointer;
-}
-.indicators-page a.add-indicator:hover {
-  text-decoration: none;
-}
-/* Questions Page End */
+/* Admin Tabs End */

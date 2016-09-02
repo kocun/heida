@@ -17,7 +17,7 @@ module.exports = {
   attributes: {
     name: {
       type: 'string',
-      required: true,
+      required: true
     },
     group: {
       model: 'Group'
@@ -26,6 +26,5 @@ module.exports = {
       collection: 'Indicator',
       via: 'subgroup'
     }
-
   }
 };

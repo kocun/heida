@@ -10,10 +10,10 @@ module.exports = {
   attributes: {
     name: {
       type: 'string',
-      required: true,
+      required: true
     },
     department: {
       model: 'Department'
-    },
+    }
   }
 };
