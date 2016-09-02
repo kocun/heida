@@ -3,7 +3,7 @@
     <h1 class="page-header">Departments</h1>
   </div>
   <div class="row">
-    <a ng-click="addDepartment=true" ng-hide="addDepartment" class="pull-right mb20 add-department">
+    <a ng-click="addDepartment=true" ng-hide="addDepartment" class="pull-right mb20 add-department" ng-if="me.role == 4">
       <i class="fa fa-plus-circle"></i> Add New Department
     </a>
 

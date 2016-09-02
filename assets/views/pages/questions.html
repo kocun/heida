@@ -3,7 +3,7 @@
     <h1 class="page-header">Questions</h1>
   </div>
   <div class="row">
-    <a ng-click="addQuestion=true" ng-hide="addQuestion" class="pull-right mb20 add-question">
+    <a ng-click="addQuestion=true" ng-hide="addQuestion" class="pull-right mb20 add-question" ng-if="me.role == 4">
       <i class="fa fa-plus-circle"></i> Add New Question
     </a>
     <div ng-show="addQuestion">

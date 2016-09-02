@@ -3,7 +3,7 @@
     <h1 class="page-header">Groups</h1>
   </div>
   <div class="row">
-    <a ng-click="addGroup=true" ng-hide="addGroup" class="pull-right mb20 add-group">
+    <a ng-click="addGroup=true" ng-hide="addGroup" class="pull-right mb20 add-group" ng-if="me.role == 4">
       <i class="fa fa-plus-circle"></i> Add New Group
     </a>
 

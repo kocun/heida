@@ -3,7 +3,7 @@
     <h1 class="page-header">Goals</h1>
   </div>
   <div class="row">
-    <a ng-click="addGoals=true" ng-hide="addGoals" class="pull-right mb20 add-department">
+    <a ng-click="addGoals=true" ng-hide="addGoals" class="pull-right mb20 add-department"  ng-if="me.role == 4">
       <i class="fa fa-plus-circle"></i> Add New Goals
     </a>
     <div class="row mb40" ng-show="addGoals">
