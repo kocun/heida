@@ -18,6 +18,11 @@ module.exports = {
       collection: 'user',
       via: 'department'
 
+    },
+    subs: {
+      collection: 'SubDepartment',
+      via: 'department'
+
     }
   }
 };
