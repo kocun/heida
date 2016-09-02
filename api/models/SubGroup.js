@@ -18,8 +18,6 @@ module.exports = {
     name: {
       type: 'string',
       required: true,
-
-
     },
     group: {
       model: 'Group'
