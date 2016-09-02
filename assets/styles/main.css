@@ -246,10 +246,10 @@
 /* Users Page End */
 
 /* Admin Tabs Start */
-.departments-page a, .subdepartments-page a, .groups-page a, .subgroups-page a, .criteria-page a, .questions-page a, .indicators-page a {
+.departments-page a, .subdepartments-page a, .groups-page a, .subgroups-page a, .criteria-page a, .questions-page a, .indicators-page a, .goals-page a {
   cursor: pointer;
 }
-.departments-page a:hover, .subdepartments-page a:hover, .groups-page a:hover, .subgroups-page a:hover, .criteria-page a:hover, .questions-page a:hover, .indicators-page a:hover {
+.departments-page a:hover, .subdepartments-page a:hover, .groups-page a:hover, .subgroups-page a:hover, .criteria-page a:hover, .questions-page a:hover, .indicators-page a:hover, .goals-page a:hover {
   text-decoration: none;
 }
 /* Admin Tabs End */
