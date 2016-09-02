@@ -1,14 +1,14 @@
 <div class="subgroups-page">
   <div class="row">
-    <h1 class="page-header">Sub Groups</h1>
+    <h1 class="page-header">Sub-Groups</h1>
   </div>
   <div class="row">
     <a ng-click="addSubgroup=true" ng-hide="addSubgroup" class="pull-right mb20 add-subgroup">
-      <i class="fa fa-plus-circle"></i> Add New Sub Group
+      <i class="fa fa-plus-circle"></i> Add New Sub-Group
     </a>
     <div class="row mb40" ng-show="addSubgroup">
       <div class="col-lg-4">
-        <input type="text" value="{{subgroup.name}}" ng-model="subgroup.name" class="form-control col-lg-6" placeholder="Add New Sub Group" />
+        <input type="text" value="{{subgroup.name}}" ng-model="subgroup.name" class="form-control col-lg-6" placeholder="Add New Sub-Group" />
       </div>
       <div class="col-lg-4">
         <select class="form-control col-lg-6" ng-options="group.name for group in groups track by group.id"  ng-model="subgroup.group"></select>

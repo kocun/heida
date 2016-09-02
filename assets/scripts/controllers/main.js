@@ -23,7 +23,7 @@ angular.module('heidaApp')
       $scope.groups = groups;
     });
 
-    // Get Subgroups
+    // Get Sub-Groups
     Restangular.all('/api/subGroup').getList().then(function (subgroups) {
       $scope.subgroups = subgroups;
     });
@@ -36,6 +36,11 @@ angular.module('heidaApp')
     // Get Departments
     Restangular.all('/api/department').getList().then(function (departments) {
       $scope.departments = departments;
+    });
+
+    // Get Sub-Departments
+    Restangular.all('/api/subdepartment').getList().then(function (subdepartments) {
+      $scope.subdepartments = subdepartments;
     });
 
     // Get Criterias
