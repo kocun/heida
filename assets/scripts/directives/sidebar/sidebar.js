@@ -37,4 +37,5 @@ angular.module('heidaApp')
         };
       }
     }
-  }]);
+  }])
+

@@ -1,9 +1,9 @@
-<div class="groups-page">
+<div class="groups-page" ng-if="me.role == 4">
   <div class="row">
     <h1 class="page-header">Groups</h1>
   </div>
   <div class="row">
-    <a ng-click="addGroup=true" ng-hide="addGroup" class="pull-right mb20 add-group" ng-if="me.role == 4">
+    <a ng-click="addGroup=true" ng-hide="addGroup" class="pull-right mb20 add-group">
       <i class="fa fa-plus-circle"></i> Add New Group
     </a>
 

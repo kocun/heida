@@ -32,7 +32,7 @@ module.exports = {
     },
     role: {
       enum: [4, 3, 2, 1]
-      //4 - admin , 3 - editor 2- read-only 3- public
+      //4 - admin , 3 - editor 2- member 1- read-only
     },
     department: {
       collection: 'department',
