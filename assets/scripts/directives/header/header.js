@@ -9,9 +9,9 @@
 angular.module('heidaApp')
     .directive('header',function(){
         return {
-        templateUrl:'scripts/directives/header/header.html',
-        restrict: 'E',
-        replace: true,
+          templateUrl:'scripts/directives/header/header.html',
+          restrict: 'E',
+          replace: true
         }
     });
 

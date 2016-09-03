@@ -1,9 +1,9 @@
-<div class="indicators-page">
+<div class="indicators-page" ng-if="me.role == 4">
   <div class="row">
     <h1 class="page-header">Indicators</h1>
   </div>
   <div class="row">
-    <a ng-click="addIndicator=true" ng-hide="addIndicator" class="pull-right mb20 add-indicator" ng-if="me.role == 4">
+    <a ng-click="addIndicator=true" ng-hide="addIndicator" class="pull-right mb20 add-indicator">
       <i class="fa fa-plus-circle"></i> Add New Indicator
     </a>
 

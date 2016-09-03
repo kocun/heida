@@ -1,9 +1,9 @@
-<div class="goals-page">
+<div class="goals-page" ng-if="me.role == 4">
   <div class="row">
     <h1 class="page-header">Goals</h1>
   </div>
   <div class="row">
-    <a ng-click="addGoals=true" ng-hide="addGoals" class="pull-right mb20 add-department"  ng-if="me.role == 4">
+    <a ng-click="addGoals=true" ng-hide="addGoals" class="pull-right mb20 add-department">
       <i class="fa fa-plus-circle"></i> Add New Goals
     </a>
     <div class="row mb40" ng-show="addGoals">
