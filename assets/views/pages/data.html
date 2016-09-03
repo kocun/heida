@@ -20,10 +20,13 @@
           <td>
             <select class="form-control"
                       ng-options="department.name for department in departments track by department.id"
-                      ng-model="data.department" required></select>
+                      ng-model="data.department" required>
+                        <option value=""></option>
+                      </select>
           </td>
           <td>
             <select class="form-control" ng-model="data.goal" ng-change="filter(data.goal,null,null)">
+              <option value=""></option>
               <option value="goal1">Goal 1</option>
               <option value="goal2">Goal 2</option>
               <option value="goal3">Goal 3</option>
@@ -33,9 +36,11 @@
           </td>
           <td><select class="form-control" ng-options="group.name for group in groups track by group.id"
                       ng-model="data.group" ng-change="filter(null,data.group.id,null)" required>
+                      <option value=""></option>
           </select></td>
           <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id "
                       ng-model="data.subgroup" ng-change="filter(null,data.group.id,data.subgroup.id)" required>
+                      <option value=""></option>
           </select></td>
         </tr>
         </tbody>
