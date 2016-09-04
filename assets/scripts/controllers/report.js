@@ -1,6 +1,10 @@
 angular.module('heidaApp')
 
 .controller('DataReportCtrl', function ($scope, $http, Restangular, $state, $stateParams, $timeout) {
+  $http.get('/api/me').
+    success(function(data) {
+      $scope.me = data;
+    });
   Restangular.all('/api/data/').getList().then(function (datas) {
     $scope.datas = datas;
   });

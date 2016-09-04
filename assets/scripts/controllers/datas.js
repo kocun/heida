@@ -11,6 +11,10 @@ angular.module('heidaApp', ['ngDialog'])
     $scope.state = 0;
     $scope.data;
     $scope.ind = "";
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
     Restangular.all('/api/group').getList().then(function (groups) {
       $scope.groups = groups;
     });

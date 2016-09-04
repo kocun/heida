@@ -238,14 +238,10 @@
 }
 /* Profile Page End */
 
-/* Users Page Start */
-.users-page .user-list-item {
+/* Admin Tabs Start */
+.users-page .list-item,  .departments-page .list-item, .subdepartments-page .list-item, .groups-page .list-item, .subgroups-page .list-item, .criteria-page .list-item, .questions-page .list-item, .indicators-page .list-item, .goals-page .list-item{
   cursor: pointer;
 }
-
-/* Users Page End */
-
-/* Admin Tabs Start */
 .departments-page a, .subdepartments-page a, .groups-page a, .subgroups-page a, .criteria-page a, .questions-page a, .indicators-page a, .goals-page a {
   cursor: pointer;
 }

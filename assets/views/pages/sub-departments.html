@@ -26,8 +26,8 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="subdepartment in subdepartments">
-        <td><a ui-sref="dashboard.sub-departments_edit({id:subdepartment.id})">{{subdepartment.name}}</a></td>
+      <tr ng-repeat="subdepartment in subdepartments" ui-sref="dashboard.sub-departments_edit({id:subdepartment.id})" class="list-item" title="Edit {{subdepartment.name}}">
+        <td>{{subdepartment.name}}</td>
         <td>{{subdepartment.department.name}}</td>
       </tr>
       </tbody>
