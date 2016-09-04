@@ -10,6 +10,7 @@
         <th>Period</th>
         <th>Value ({{ind.valueType}})</th>
         <th>Public</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -35,6 +36,11 @@
         </td>
         <td>
           <input type="checkbox" id="{{data.id}}_public" disabled value="true" ng-model="data.public">
+        </td>
+        <td>
+          <a ng-click="editDataRow(data)" class="pull-right" style="margin-bottom:10px;">
+            <i class="fa fa-pencil"></i> Edit
+          </a>
         </td>
       </tr>
       <!-- <tr ng-show="addNewRowtoIndicator">
@@ -63,16 +69,16 @@
       </tr> -->
 
 
-      <tr ng-show="addNewRowtoIndicator">
-        <td colspan="5">
+      <tr ng-show="addNewRowtoIndicator || editRowtoIndicator">
+        <td colspan="6">
 
           <div ng-show="addNewScreens.screen1">
             <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Type of Unit</label>
-                  <select class="form-control" id="new_department" ng-model="newData.departmentIndex" required>
-                    <option ng-repeat="department in departments" value="{{$index}}" ng-selected="{{department.id == newData.departmentId}}">{{department.name}}</option>
+                  <select class="form-control" id="new_department" ng-change="newData.departmentIndex = $index" ng-model="newData.departmentId" required>
+                    <option ng-repeat="department in departments" value="{{department.id}}" ng-selected="{{department.id == newData.departmentId}}">{{department.name}}</option>
                     <option value="custom">Other</option>
                   </select>
                 </div>
@@ -80,13 +86,13 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Type of Sub Unit</label>
-                  <select class="form-control" id="new_subUnit" ng-model="newData.subUnitId" ng-disabled="newData.departmentIndex == 'custom'">
+                  <select class="form-control" id="new_subUnit" ng-model="newData.subUnitId" ng-disabled="!newData.departmentId || newData.departmentId == 'custom'">
                     <option ng-repeat="subUnit in subUnits(newData.departmentIndex)" value="{{subUnit.id}}" ng-selected="{{subUnit.id == newData.subUnitId}}">{{subUnit.name}}</option>
                     <option value="custom">Other</option>
                   </select>
                 </div>
               </div>
-              <div class="col-md-4" ng-show="newData.departmentIndex == 'custom' || newData.subUnitId == 'custom'">
+              <div class="col-md-4" ng-show="newData.departmentId == 'custom' || newData.subUnitId == 'custom'">
                 <div class="form-group">
                   <label>Other</label>
                   <input  class="form-control" type="text" id="new_otherUnit" ng-model="newData.otherUnit"/>
@@ -95,7 +101,9 @@
             </div>
             <div class="row">
               <div class="col-sm-12 text-right">
-                <button type="button" class="btn btn-primary" ng-disabled="!((newData.subUnitId && newData.subUnitId != 'custom') || (newData.otherUnit && newData.otherUnit.trim() != ''))" ng-click="addNewScreens.screen1=false;addNewScreens.screen2=true">Next</button>
+                <button type="button" class="btn btn-primary" ng-disabled="!((newData.subUnitId && newData.subUnitId != 'custom') || (newData.otherUnit && newData.otherUnit.trim() != ''))" ng-click="addNewScreens.screen1=false;addNewScreens.screen2=true">
+                  <i class="fa fa-arrow-circle-right"></i>
+                </button>
               </div>
             </div>
           </div>
@@ -143,17 +151,16 @@
                   </div>
                 </div>
               </div>
-
             </div>
             <div class="row">
               <div class="col-sm-6 text-left">
                 <button type="button" class="btn btn-primary" ng-click="addNewScreens.screen2=false;addNewScreens.screen1=true">
-                  Prev Btn
+                  <i class="fa fa-arrow-circle-left"></i>
                 </button>
               </div>
               <div class="col-sm-6 text-right">
                 <button type="button" class="btn btn-primary" ng-click="addNewScreens.screen2=false;addNewScreens.screen3=true;getIndicators();" ng-disabled="secondScreenIsInvalid">
-                  Next Btn
+                  <i class="fa fa-arrow-circle-right"></i>
                 </button>
               </div>
             </div>
@@ -162,20 +169,23 @@
           <div ng-show="addNewScreens.screen3">
             <div class="row">
               <div class="col-md-12">
-                <select class="form-control" id="new_indicators" multiple ng-multiple="true" ng-model="newData.indicators" required>
-                  <option ng-repeat="item in indicatorArr" value="{{item.id}}" >{{item.name}}</option>
-                </select>
+                <div class="form-group">
+                    <label>Indicators</label>
+                    <select class="form-control" id="new_indicators" multiple ng-multiple="true" ng-model="newData.indicators" required>
+                      <option ng-repeat="item in indicatorArr" value="{{item.id}}" ng-selected="{{selectIndicatorIfAvailable(item,newData)}}">{{item.name}}</option>
+                    </select>
+                </div>
               </div>
             </div>
             <div class="row" style="margin-top:15px;">
               <div class="col-sm-6 text-left">
                 <button type="button" class="btn btn-primary" ng-click="addNewScreens.screen3=false;addNewScreens.screen2=true">
-                  Prev Btn
+                  <i class="fa fa-arrow-circle-left"></i>
                 </button>
               </div>
               <div class="col-sm-6 text-right">
                 <button type="button" class="btn btn-primary" ng-click="addNewScreens.screen3=false;addNewScreens.screen4=true" ng-disabled="newData.indicators.length == 0">
-                  Next Btn
+                  <i class="fa fa-arrow-circle-right"></i>
                 </button>
               </div>
             </div>
@@ -194,7 +204,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Time Period</label>
-                  <select class="form-control" id="new_periodType" ng-model="newData.periodType" ng-change="newData.valuesOfYears = []" required ng-disabled="!newData.public">
+                  <select class="form-control" id="new_periodType" ng-model="newData.periodType" ng-change="newData.year = []" required ng-disabled="!newData.public">
                     <option ng-repeat="period in periodArrObj" value="{{period.value}}" ng-selected="{{period.value == newData.periodType}}">{{period.label}}</option>
                   </select>
                 </div>
@@ -202,29 +212,29 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Year</label>
-                  <select class="form-control" id="new_period" ng-model="newData.year"  multiple ng-multiple="true" ng-change="prepareValuesArea(newData.year)" required ng-disabled="!newData.periodType">
+                  <select class="form-control" id="new_period" ng-model="newData.year"  multiple ng-multiple="true" required ng-disabled="!newData.periodType">
                     <option ng-repeat="per in periodRange(newData.periodType)" value="{{per}}" ng-selected="{{per == newData.year}}">{{per}}</option>
                   </select>
                 </div>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-2" ng-repeat="selectedYear in newData.valuesOfYears">
+              <div class="col-md-2" ng-repeat="selectedYear in newData.year">
                 <div class="form-group">
-                  <label>Value of {{selectedYear.label}}</label>
-                  <input class="form-control" type="text" id="new_value_{{$index}}" ng-model="newData[selectedYear.modelName]"/>
+                  <label>Value of {{selectedYear}}</label>
+                  <input class="form-control" type="text" id="new_value_{{$index}}" ng-model="newData.yearsValues[selectedYear]"/>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-6 text-left">
                 <button type="button" class="btn btn-primary" ng-click="addNewScreens.screen4=false;addNewScreens.screen3=true">
-                  Prev Btn
+                  <i class="fa fa-arrow-circle-left"></i>
                 </button>
               </div>
               <div class="col-sm-6 text-right">
                 <button type="button" class="btn btn-primary" ng-click="addNewScreens.screen4=false;addNewScreens.screen5=true" ng-disabled="!newData.public || !newData.periodType || !newData.year">
-                  Next Btn
+                  <i class="fa fa-arrow-circle-right"></i>
                 </button>
               </div>
             </div>
@@ -247,12 +257,12 @@
             <div class="row">
               <div class="col-sm-6 text-left">
                 <button type="button" class="btn btn-primary" ng-click="addNewScreens.screen5=false;addNewScreens.screen4=true">
-                  Prev Btn
+                  <i class="fa fa-arrow-circle-left"></i>
                 </button>
               </div>
               <div class="col-sm-6 text-right">
-                <button type="button" class="btn btn-primary" ng-click="console.log('DONE!')">
-                  Done btn
+                <button type="button" class="btn btn-primary" ng-click="saveNewData(newData);">
+                  <i class="fa fa-floppy-o"></i>
                 </button>
               </div>
             </div>
@@ -265,9 +275,9 @@
     </tbody>
   </table>
   <div class="clearfix text-right" style="margin:10px 0;">
-    <button type="button" ng-show="addNewRowtoIndicator" class="btn btn-success" ng-click="addRow()" ng-disabled="newData.isInvalid">Add</button>
-    <button type="button" ng-show="addNewRowtoIndicator" class="btn btn-danger" ng-click="addNewRowtoIndicator=false">Cancel</button>
-    <button type="button" class="btn btn-primary" ng-hide="addNewRowtoIndicator" ng-click="done(data,ind)">Done</button>
+    <button type="button" ng-show="addNewRowtoIndicator || editRowtoIndicator" class="btn btn-success" ng-click="addRow()" ng-disabled="newData.isInvalid">Add</button>
+    <button type="button" ng-show="addNewRowtoIndicator || editRowtoIndicator" class="btn btn-danger" ng-click="cancelNewData();">Cancel</button>
+    <button type="button" class="btn btn-primary" ng-hide="addNewRowtoIndicator || editRowtoIndicator" ng-click="done(data,ind)">Done</button>
   </div>
 
 
