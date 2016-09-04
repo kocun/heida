@@ -217,13 +217,29 @@ angular
       .state('dashboard.sub-departments', {
         controller: 'SubdepartmentCtrl',
         templateUrl: 'views/pages/sub-departments.html',
-        url: '/sub-departments/',
+        url: '/sub-departments',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
                 'scripts/controllers/sub-departments.js'
+              ]
+            })
+          }
+        }
+      })
+      .state('dashboard.sub-departments_edit', {
+        controller: 'SubdepartmentEditCtrl',
+        templateUrl: 'views/pages/sub-departments_edit.html',
+        url: '/sub-departments/:id',
+        resolve: {
+          loadMyFiles: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'heidaApp',
+              files: [
+                'scripts/controllers/sub-departments.js'
+
               ]
             })
           }

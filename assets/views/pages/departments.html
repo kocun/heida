@@ -20,8 +20,8 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="department in departments">
-        <td><a ui-sref="dashboard.departments_edit({id:department.id})">{{department.name}}</a></td>
+      <tr ng-repeat="department in departments"  class="list-item" ui-sref="dashboard.departments_edit({id:department.id})" title="Edit {{department.name}}">
+        <td>{{department.name}}</td>
       </tr>
       </tbody>
     </table>

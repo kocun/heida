@@ -1,4 +1,4 @@
-<div class="criteria-page">
+<div class="criteria-page" ng-if="me.role == 4">
   <div class="row">
     <h1 class="page-header">Criterias</h1>
   </div>
@@ -8,7 +8,7 @@
     </a>
     <div class="row mb40" ng-show="addCriteria">
       <div class="col-lg-4">
-        <input type="text" value="{{criteria.name}}" ng-model="criteria.name" class="form-control col-lg-6" placeholder="Add New Criteria" />
+        <textarea class="form-control" rows="3" value="{{criteria.name}}" placeholder="Add New Criteria"></textarea>
       </div>
       <div class="col-lg-4">
         <label for="criteria-checkbox">Multiple</label>
@@ -23,13 +23,13 @@
       <thead>
       <tr>
         <th>Name</th>
-        <th>Multiple</th>
+        <th class="col-lg-1 text-center">Multiple</th>
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="criteria in criterias ">
-        <td><a ui-sref="dashboard.criterias_edit({id:criteria.id})">{{criteria.name}}</a></td>
-        <td>{{criteria.multiple}}</td>
+      <tr ng-repeat="criteria in criterias" ui-sref="dashboard.criterias_edit({id:criteria.id})" class="list-item" title="Edit {{criteria.name}}">
+        <td>{{criteria.name}}</td>
+        <td class="col-lg-1 text-center">{{criteria.multiple}}</td>
       </tr>
       </tbody>
     </table>

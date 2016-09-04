@@ -23,12 +23,14 @@
       <tr>
         <th>Name</th>
         <th>Group</th>
+        <th class="col-lg-1 text-center">Indicator Count</th>
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="subgroup in subgroups">
-        <td><a ui-sref="dashboard.sub-groups_edit({id:subgroup.id})">{{subgroup.name}} </a> ({{subgroup.indicators.length}})</td>
+      <tr ng-repeat="subgroup in subgroups" ui-sref="dashboard.sub-groups_edit({id:subgroup.id})" class="list-item" title="Edit {{subgroup.group.name}}">
+        <td>{{subgroup.name}}</td>
         <td>{{subgroup.group.name}}</td>
+        <td class="col-lg-1 text-center">{{subgroup.indicators.length}}</td>
       </tr>
       </tbody>
     </table>

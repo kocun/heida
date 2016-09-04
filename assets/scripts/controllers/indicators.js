@@ -8,6 +8,10 @@
  */
 angular.module('heidaApp')
   .controller('IndicatorCtrl', function($scope, $http, Restangular, $state, $stateParams) {
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
 
     Restangular.all('/api/indicator?limit=-1').getList().then(function(indicators) {
       $scope.indicators = indicators;
@@ -19,7 +23,6 @@ angular.module('heidaApp')
     Restangular.all('/api/goal').getList().then(function(goals) {
       $scope.goals_to_add = goals;
       $scope.goals = goals;
-      console.log(goals_to_add);
     });
     Restangular.all('/api/indicator').getList().then(function(indicators) {
       $scope.indicators = indicators;
@@ -34,6 +37,12 @@ angular.module('heidaApp')
     }
 
   }).controller('IndicatorEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
+
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
+
      $scope.opts= [
       {id:0,val:"Not Relevant"},
       {id:1,val:"Low"},

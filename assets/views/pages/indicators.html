@@ -81,17 +81,17 @@
     <table class="table table-bordered table-striped">
       <thead>
       <tr>
-        <th class="col-lg-5">Code</th>
+        <th class="col-lg-2">Code</th>
         <th>Name</th>
         <th>subgroup</th>
         <th>Value Type</th>
-        <th>Public</th>
+        <th class="col-lg-1">Public</th>
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="indicator in indicators ">
-        <td class="col-lg-5">{{indicator.id}}</td>
-        <td><a ui-sref="dashboard.indicators_edit({id:indicator.id})">{{indicator.name}}</a></td>
+      <tr ng-repeat="indicator in indicators "  ui-sref="dashboard.indicators_edit({id:indicator.id})" class="list-item" title="Edit {{indicator.name}}">
+        <td class="col-lg-2">{{indicator.id}}</td>
+        <td>{{indicator.name}}</td>
         <td>{{indicator.subgroup.name}}</td>
         <td>{{indicator.valueType}}</td>
         <td>{{indicator.public}}</td>

@@ -8,6 +8,10 @@
  */
 angular.module('heidaApp')
   .controller('GoalCtrl', function($scope, $http, Restangular, $state, $stateParams) {
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
     Restangular.all('/api/goal').getList().then(function(goals) {
       $scope.goals = goals;
     });
@@ -20,6 +24,11 @@ angular.module('heidaApp')
       });
     }
   }).controller('GoalEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
+
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
 
     Restangular.all('/api/goal').getList().then(function(goals) {
       $scope.goals = goals;

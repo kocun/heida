@@ -7,7 +7,11 @@
  * Controller of the heidaApp
  */
 angular.module('heidaApp')
-  .controller('MainCtrl', function($scope, $position, Restangular) {
+  .controller('MainCtrl', function($scope, $position, Restangular, $http) {
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
 
     // Get Users
     Restangular.all('/api/user').getList().then(function(users) {

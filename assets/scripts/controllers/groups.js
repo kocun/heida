@@ -9,6 +9,10 @@
 
 angular.module('heidaApp')
   .controller('GroupCtrl', function($scope, $http, Restangular, $stateParams, $state) {
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
     Restangular.all('/api/group').getList().then(function(groups) {
       $scope.groups = groups;
     });
@@ -22,6 +26,11 @@ angular.module('heidaApp')
     }
 
   }).controller('GroupEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
+
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
 
     Restangular.all('/api/group').getList().then(function(groups) {
       $scope.groups = groups;

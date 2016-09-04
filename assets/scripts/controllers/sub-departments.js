@@ -8,6 +8,10 @@
  */
 angular.module('heidaApp')
   .controller('SubdepartmentCtrl', function($scope, $http, Restangular, $state, $stateParams) {
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
     Restangular.all('/api/department').getList().then(function(departments) {
       $scope.departments = departments;
     });
@@ -25,6 +29,11 @@ angular.module('heidaApp')
       });
     }
   }).controller('SubdepartmentEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
+
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
 
     Restangular.all('/api/department').getList().then(function(departments) {
       $scope.departments = departments;
