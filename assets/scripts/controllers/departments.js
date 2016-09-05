@@ -8,7 +8,11 @@
  */
 
 angular.module('heidaApp')
-  .controller('DepartmentCtrl', function($scope, $position, Restangular, $stateParams, $state) {
+  .controller('DepartmentCtrl', function($scope, $position, Restangular, $stateParams, $state, $http) {
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
     Restangular.all('/api/department').getList().then(function(departments) {
       $scope.departments = departments;
     });
@@ -28,7 +32,11 @@ angular.module('heidaApp')
         inherit: false
       });
     }
-  }).controller('DepartmentEditCtrl', function($scope, $position, Restangular, $stateParams, $state) {
+  }).controller('DepartmentEditCtrl', function($scope, $position, Restangular, $stateParams, $state, $http) {
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
     Restangular.one('/api/department', $stateParams.id).get().then(function(department) {
       $scope.department = department;
     });

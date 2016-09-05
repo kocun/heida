@@ -8,6 +8,10 @@
  */
 angular.module('heidaApp')
   .controller('QuestionCtrl', function($scope, $http, Restangular, $state, $stateParams) {
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
 
     Restangular.all('/api/criteria').getList().then(function(criterias) {
       $scope.criterias = criterias;
@@ -25,6 +29,10 @@ angular.module('heidaApp')
     }
 
   }).controller('QuestionEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
     Restangular.all('/api/criteria').getList().then(function(criterias) {
       $scope.criterias = criterias;
     });
