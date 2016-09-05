@@ -1,69 +1,58 @@
-<div>
+<div class="indicators-page" ng-if="me.role == 4">
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Indicators</h1>
-    </div>
+    <h1 class="page-header">Edit {{indicators.name}}</h1>
+
+
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Subgroup</th>
+        <th>Value Type</th>
+        <th>Public</th>
+        <th>Goal 1</th>
+        <th>Goal 2</th>
+        <th>Goal 3</th>
+        <th>Goal 4</th>
+        <th>Goal 5</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <input type="hidden"  value="{{indicator.code}}" ng-model="indicator.code" disabled>
+        <td><input type="text" class="form-control" value="{{indicator.name}}" ng-model="indicator.name"></td>
+        <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id"  ng-model="indicator.subgroup">
+        </select></td>
+        <td><select class="form-control" ng-model="indicator.valueType">
+          <option value="yes/no">Yes / No </option>
+          <option value="numeric">Numeric </option>
+        </select></td>
+        <td class="text-center">
+          <input type="checkbox" value="" ng-model="indicator.public">
+        </td>
+        <td>
+          <select  class="form-control" ng-model="indicator.goal1" ng-options="opt.id as opt.val for opt in opts"></select>
+        </td>
+        <td>
+          <select  class="form-control" ng-model="indicator.goal2" ng-options="opt.id as opt.val for opt in opts ">
+          </select>
+        </td>
+        <td>
+          <select  class="form-control" ng-model="indicator.goal3" ng-options="opt.id as opt.val for opt in opts ">
+          </select>
+        </td>
+        <td>
+          <select  class="form-control" ng-model="indicator.goal4" ng-options="opt.id as opt.val for opt in opts ">
+          </select>
+        </td>
+        <td>
+          <select  class="form-control" ng-model="indicator.goal5" ng-options="opt.id as opt.val for opt in opts ">
+          </select>
+        </td>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-primary pull-right" ng-click="update()">Update</button>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      Indicators
-    </div>
-    <!-- /.panel-heading -->
-    <div class="panel-body">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Indicator</th>
-              <Th>Sub-Group</Th>
-              <Th>Value Type</Th>
-              <Th>Public</Th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr >
-              <td><input type="text" value="{{indicator.name}}" ng-model="indicator.name"></td>
-              <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id"  ng-model="indicator.subgroup">
-              </select></td>
-              <td><select class="form-control"   ng-model="indicator.valueType">
-              <option value="yes/no">Yes / No </option>
-              <option value="numeric">Numeric </option>
-              </select></td>
-              <td>
-                <input type="checkbox" value="" ng-model="indicator.public">
-              </td>
-             </tr>
-              <tr>
-              <td >Goal 1 {{opts[0].val}}
-                <select  class="form-control" ng-model="indicator.goal1" ng-options="opt.id as opt.val for opt in opts">
-                </select>
-              </td>
-              <td >Goal 2
-                <select  class="form-control" ng-model="indicator.goal2" ng-options="opt.id as opt.val for opt in opts ">
-                </select>
-              </td>
-              <td >Goal 3
-                <select  class="form-control" ng-model="indicator.goal3" ng-options="opt.id as opt.val for opt in opts ">
-                </select>
-              </td>
-              <td >Goal 4
-                <select  class="form-control" ng-model="indicator.goal4" ng-options="opt.id as opt.val for opt in opts ">
-                </select>
-              </td>
-              <td >Goal 5
-                <select  class="form-control" ng-model="indicator.goal5" ng-options="opt.id as opt.val for opt in opts ">
-                </select>
-              </td>
-              </td>
-              <tr>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <button type="button" class="btn btn-primary" ng-click="update()">Update</button>
-      <!-- /.table-responsive -->
-    </div>
-    <!-- /.panel-body -->
-  </div>
-</div>
 </div>

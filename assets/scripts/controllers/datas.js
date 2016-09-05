@@ -11,6 +11,10 @@ angular.module('heidaApp', ['ngDialog'])
     $scope.state = 0;
     $scope.data;
     $scope.ind = "";
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
     Restangular.all('/api/group').getList().then(function (groups) {
       $scope.groups = groups;
     });
@@ -235,7 +239,7 @@ angular.module('heidaApp', ['ngDialog'])
         indicator: $scope.data.indicator.id,
         year: $scope.data.year,
         value: $scope.data.value,
-        answer: $scope.data.answers,
+        answer: $scope.data.answers
       };
       datas.post(dat);
       $state.go('dashboard.data', $stateParams, {
@@ -245,34 +249,4 @@ angular.module('heidaApp', ['ngDialog'])
     }
 
 
-  }).controller('DataReportCtrl', function ($scope, $http, Restangular, $state, $stateParams, $timeout) {
-  Restangular.all('/api/data/').getList().then(function (datas) {
-    $scope.datas = datas;
-  });
-
-}).controller('DataReportDetailCtrl', function ($scope, $http, Restangular, $state, $stateParams, $timeout) {
-  Restangular.all('/api/data/' + $stateParams.department + '/' + $stateParams.indicator).getList().then(function (data) {
-    $scope.data = data;
-    console.log(data[0].department);
-    $scope.dept = $scope.data[0].department.name;
-    $scope.ind = $scope.data[0].indicator.name;
-    var lbl = [];
-    var dt = [];
-    for (var i = 0; i < $scope.data.length; i++) {
-      lbl.push($scope.data[i].year)
-      dt.push($scope.data[i].value);
-    }
-    $scope.bar = {
-
-      labels: lbl,
-      series: ['Series A'],
-
-      data: [
-        dt
-
-      ]
-
-    };
-  });
-
-});
+  })

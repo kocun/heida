@@ -32,6 +32,7 @@ angular
               name: 'heidaApp',
               files: [
                 'scripts/directives/header/header.js',
+                'scripts/controllers/login.js',
                 'scripts/directives/sidebar/sidebar.js',
                 'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
               ]
@@ -67,6 +68,7 @@ angular
               name: 'heidaApp',
               files: [
                 'scripts/controllers/main.js',
+                'scripts/controllers/login.js',
                 'scripts/directives/dashboard/stats/stats.js'
               ]
             })
@@ -77,6 +79,20 @@ angular
         url: '/login',
         controller: 'LoginCtrl',
         templateUrl: 'views/pages/login.html',
+        resolve: {
+          loadMyFiles: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'heidaApp',
+              files: [
+                'scripts/controllers/login.js'
+              ]
+            })
+          }
+        }
+      })
+      .state('sidebar', {
+        templateUrl: 'views/pages/sidebar.html',
+        controller: 'LoginCtrl',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -130,17 +146,13 @@ angular
       .state('dashboard.users', {
         controller: 'UserCtrl',
         templateUrl: 'views/pages/users.html',
-        url: '/users/',
+        url: '/users',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
-                'scripts/controllers/users.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js'
+                'scripts/controllers/users.js'
 
               ]
             })
@@ -170,7 +182,7 @@ angular
       .state('dashboard.departments', {
         controller: 'DepartmentCtrl',
         templateUrl: 'views/pages/departments.html',
-        url: '/departments/',
+        url: '/departments',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -202,10 +214,41 @@ angular
           }
         }
       })
+      .state('dashboard.sub-departments', {
+        controller: 'SubdepartmentCtrl',
+        templateUrl: 'views/pages/sub-departments.html',
+        url: '/sub-departments',
+        resolve: {
+          loadMyFiles: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'heidaApp',
+              files: [
+                'scripts/controllers/sub-departments.js'
+              ]
+            })
+          }
+        }
+      })
+      .state('dashboard.sub-departments_edit', {
+        controller: 'SubdepartmentEditCtrl',
+        templateUrl: 'views/pages/sub-departments_edit.html',
+        url: '/sub-departments/:id',
+        resolve: {
+          loadMyFiles: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'heidaApp',
+              files: [
+                'scripts/controllers/sub-departments.js'
+
+              ]
+            })
+          }
+        }
+      })
       .state('dashboard.goals', {
         controller: 'GoalCtrl',
         templateUrl: 'views/pages/goals.html',
-        url: '/goals/',
+        url: '/goals',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -245,7 +288,7 @@ angular
       .state('dashboard.groups', {
         controller: 'GroupCtrl',
         templateUrl: 'views/pages/groups.html',
-        url: '/groups/',
+        url: '/groups',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -280,7 +323,7 @@ angular
       .state('dashboard.sub-groups', {
         controller: 'SubgroupCtrl',
         templateUrl: 'views/pages/sub-groups.html',
-        url: '/sub-groups/',
+        url: '/sub-groups',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -315,7 +358,7 @@ angular
       .state('dashboard.indicators', {
         controller: 'IndicatorCtrl',
         templateUrl: 'views/pages/indicators.html',
-        url: '/indicators/',
+        url: '/indicators',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -465,7 +508,6 @@ angular
                 'scripts/directives/dashboard/stats/stats.js',
                 'bower_components/ng-dialog/js/ngDialog.js',
                 'bower_components/ng-dialog/css/ngDialog.css'
-
               ]
             })
           }
@@ -480,7 +522,7 @@ angular
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
-                'scripts/controllers/datas.js'
+                'scripts/controllers/report.js'
               ]
             })
           }
@@ -501,7 +543,7 @@ angular
             }),
               $ocLazyLoad.load({
                 name: 'heidaApp',
-                files: ['scripts/controllers/datas.js']
+                files: ['scripts/controllers/report.js']
               })
           }
         }
