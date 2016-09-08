@@ -1,27 +1,21 @@
 /**
- * Data.js
+ * DataDetail.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
 module.exports = {
-  autoPK: true,
+
   attributes: {
-    department:{
-      model:'Department'
-    },
-    indicator:{
+    indicator : {
       model:'Indicator'
     },
-    year : {
-      type:'string'
+    criteria : {
+      model:'Criteria'
     },
-    value:{
-      type:'integer'
-    },
-    answers:{
-      collection:'DataDetail'
+    question:{
+      model:'Question'
     }
   }
 };
