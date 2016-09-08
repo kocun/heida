@@ -37,7 +37,6 @@ module.exports.routes = {
     action: 'me'
 
   },
-
   'post /api/auth/process/:provider': {
     controller: 'AuthController',
     action: 'process'
@@ -50,7 +49,7 @@ module.exports.routes = {
     controller: 'AuthController',
     action: 'callback'
   },
-  'get /api/data/:indicator': {
+  'get /api/data/indicator/:indicator': {
     controller: 'DataController',
     action: 'chart'
   }
