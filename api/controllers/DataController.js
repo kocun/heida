@@ -10,7 +10,7 @@ module.exports = {
   chart: function (req, res) {
     Data.find({
       indicator: req.param('indicator'),
-    }).sort('year ASC').populate('department').populate('indicator').exec(function (err, datas) {
+    }).sort('year ASC').populate('department').populate('indicator').populate('answers').exec(function (err, datas) {
       console.log(datas);
       return res.json(datas);
     });
@@ -28,6 +28,3 @@ module.exports = {
   }
 
 };
-
-
-
