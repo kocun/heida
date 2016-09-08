@@ -21,7 +21,7 @@ module.exports = {
       type:'integer'
     },
     answers:{
-      type:'array'
+      collection:'DataDetail'
     }
   }
 };
