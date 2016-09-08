@@ -11,7 +11,6 @@ module.exports = {
     Data.find({
       indicator: req.param('indicator'),
     }).sort('year ASC').populate('department').populate('indicator').populate('answers').exec(function (err, datas) {
-      console.log(datas);
       return res.json(datas);
     });
   },
@@ -29,7 +28,7 @@ module.exports = {
   },
 
   find:function(req,res){
-    console.log("Fİnd all");
+
     Data.find().populate("department").populate("indicator").populate("answers").exec(function(err,data){
       res.json(data);
     });
@@ -37,7 +36,7 @@ module.exports = {
 
   findOne:function(req,res)
   {
-    console.log("get one");
+    
     Data.findOne(req.param('id')).populate("department").populate("indicator").populate("answers").exec(function(err,data){
       res.json(data);
     });
