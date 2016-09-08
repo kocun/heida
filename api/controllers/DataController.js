@@ -16,14 +16,30 @@ module.exports = {
     });
   },
   create: function (req, res) {
-    console.log(req.body);
+
     Data.create({
       department: req.body.department,
       indicator: req.body.indicator,
-      year: req.body.year.val,
-      value: req.body.value
+      year: req.body.year,
+      value: req.body.value,
+      answers:req.body.answers
     }).exec(function (err, created) {
       return res.json(created);
+    });
+  },
+
+  find:function(req,res){
+    console.log("Fİnd all");
+    Data.find().populate("department").populate("indicator").populate("answers").exec(function(err,data){
+      res.json(data);
+    });
+  },
+
+  findOne:function(req,res)
+  {
+    console.log("get one");
+    Data.findOne(req.param('id')).populate("department").populate("indicator").populate("answers").exec(function(err,data){
+      res.json(data);
     });
   }
 
