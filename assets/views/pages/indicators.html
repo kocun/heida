@@ -1,41 +1,102 @@
-<div>
+<div class="indicators-page" ng-if="me.role == 4">
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Indicators</h1>
-    </div>
+    <h1 class="page-header">Indicators</h1>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      Indicators
+  <div class="row">
+    <a ng-click="addIndicator=true" ng-hide="addIndicator" class="pull-right mb20 add-indicator">
+      <i class="fa fa-plus-circle"></i> Add New Indicator
+    </a>
+
+    <div ng-show="addIndicator">
+
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Subgroup</th>
+          <th>Value Type</th>
+          <th>Public</th>
+          <th>Goal 1</th>
+          <th>Goal 2</th>
+          <th>Goal 3</th>
+          <th>Goal 4</th>
+          <th>Goal 5</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <input type="hidden"  ng-model="indicator.code" disabled>
+          <td><input type="text"  ng-model="indicator.name"></td>
+          <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id"  ng-model="indicator.subgroup">
+          </select></td>
+          <td><select class="form-control" ng-model="indicator.valueType">
+            <option value="yes/no">Yes / No </option>
+            <option value="numeric">Numeric </option>
+          </select></td>
+          <td class="text-center">
+            <input type="checkbox" value="" ng-model="indicator.public">
+          </td>
+          <td>
+            <select class="form-control" ng-model="indicator.goal1">
+              <option value="0">Not Relevant</option>
+              <option value="1">Low</option>
+              <option value="2">Moderately</option>
+              <option value="3">Highly</option>
+            </select></td>
+          <td>
+            <select class="form-control" ng-model="indicator.goal2">
+              <option value="0">Not Relevant</option>
+              <option value="1">Low</option>
+              <option value="2">Moderately</option>
+              <option value="3">Highly</option>
+            </select></td>
+          <td>
+            <select class="form-control" ng-model="indicator.goal3">
+              <option value="0">Not Relevant</option>
+              <option value="1">Low</option>
+              <option value="2">Moderately</option>
+              <option value="3">Highly</option>
+            </select></td>
+          <td>
+            <select class="form-control" ng-model="indicator.goal4">
+              <option value="0">Not Relevant</option>
+              <option value="1">Low</option>
+              <option value="2">Moderately</option>
+              <option value="3">Highly</option>
+            </select></td>
+          <td>
+            <select class="form-control" ng-model="indicator.goal5">
+              <option value="0">Not Relevant</option>
+              <option value="1">Low</option>
+              <option value="2">Moderately</option>
+              <option value="3">Highly</option>
+            </select></td>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <button class="btn btn-primary pull-right mb40" type="button" ng-click="save(indicator)">Add</button>
     </div>
-    <!-- /.panel-heading -->
-    <div class="panel-body">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Code</th>
-              <th>Name</th>
-              <th>subgroup</th>
-              <th>Value Type</th>
-              <th>Public</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="indicator in indicators ">
-              <td>{{indicator.id}}</td>
-              <td><a ui-sref="dashboard.indicators_edit({id:indicator.id})">{{indicator.name}}</a></td>
-              <td>{{indicator.subgroup.name}}</td>
-              <td>{{indicator.valueType}}</td>
-              <td>{{indicator.public}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <a ui-sref="dashboard.indicators_new()"><p class="fa fa-plus-circle"></p></a>
-      <!-- /.table-responsive -->
-    </div>
-    <!-- /.panel-body -->
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th class="col-lg-2">Code</th>
+        <th>Name</th>
+        <th>subgroup</th>
+        <th>Value Type</th>
+        <th class="col-lg-1">Public</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="indicator in indicators "  ui-sref="dashboard.indicators_edit({id:indicator.id})" class="list-item" title="Edit {{indicator.name}}">
+        <td class="col-lg-2">{{indicator.id}}</td>
+        <td>{{indicator.name}}</td>
+        <td>{{indicator.subgroup.name}}</td>
+        <td>{{indicator.valueType}}</td>
+        <td>{{indicator.public}}</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
-</div>
 </div>

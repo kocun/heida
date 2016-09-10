@@ -1,4 +1,4 @@
-<div class="groups-page">
+<div class="groups-page" ng-if="me.role == 4">
   <div class="row">
     <h1 class="page-header">Groups</h1>
   </div>
@@ -17,11 +17,13 @@
       <thead>
       <tr>
         <th>Name</th>
+        <th class="col-lg-1 text-center">Subgroup Count</th>
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="group in groups">
-        <td><a ui-sref="dashboard.groups_edit({id:group.id})">{{group.name}} </a>({{group.subs.length}})</td>
+      <tr ng-repeat="group in groups" ui-sref="dashboard.groups_edit({id:group.id})" class="list-item" title="Edit {{group.name}}">
+        <td>{{group.name}}</td>
+        <td class="text-center col-lg-1">{{group.subs.length}}</td>
       </tr>
       </tbody>
     </table>

@@ -1,39 +1,32 @@
-<div>
+<div class="criteria-page" ng-if="me.role == 4">
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Questions</h1>
-    </div>
+    <h1 class="page-header">Edit {{question.name}}</h1>
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Value</th>
+        <th class="col-lg-1 text-center">Type</th>
+        <th>Criteria</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          <input type="text" class="form-control" value="{{question.name}}" ng-model="question.name">
+        </td>
+        <td>
+          <input type="text" class="form-control" value="{{question.value}}" ng-model="question.value">
+        </td>
+        <td class="col-lg-1 text-center">
+          <input type="text" class="form-control" value="{{question.type}}" ng-model="question.type">
+        </td>
+        <td>
+          <select class="form-control" ng-options="criteria.name for criteria in criterias track by criteria.id"  ng-model="question.criteria"></select>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-primary pull-right" ng-click="update()">Update</button>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      Questions
-    </div>
-    <!-- /.panel-heading -->
-    <div class="panel-body">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Value</th>
-              <th>type</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr >
-              <td><input type="text" value="{{question.name}}" ng-model="question.name"></td>
-              <td><input type="text" value="{{question.value}}" ng-model="question.value"></td>
-              <td><input type="text" value="{{question.type}}" ng-model="question.type"></td>
-              <td><select class="form-control" ng-options="criteria.name for criteria in criterias track by criteria.id"  ng-model="question.criteria">
-              </select></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <button type="button" class="btn btn-primary" ng-click="update()">Update</button>
-      <!-- /.table-responsive -->
-    </div>
-    <!-- /.panel-body -->
-  </div>
-</div>
 </div>

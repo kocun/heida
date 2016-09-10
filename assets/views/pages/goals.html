@@ -1,4 +1,4 @@
-<div class="goals-page">
+<div class="goals-page" ng-if="me.role == 4">
   <div class="row">
     <h1 class="page-header">Goals</h1>
   </div>
@@ -6,21 +6,33 @@
     <a ng-click="addGoals=true" ng-hide="addGoals" class="pull-right mb20 add-department">
       <i class="fa fa-plus-circle"></i> Add New Goals
     </a>
-    <!--<div class="input-group mb40" ng-show="addGoals">-->
-      <!--<input type="text" value="{{goal.name}}" ng-model="department.name" class="form-control" placeholder="Goal Name">-->
-      <!--<span class="input-group-btn">-->
-        <!--<button class="btn btn-default" type="button" ng-click="save(department)">Add</button>-->
-      <!--</span>-->
-    <!--</div>-->
-    <table class="table">
+    <div class="row mb40" ng-show="addGoals">
+      <div class="col-lg-4">
+        <input type="text" value="{{goal.name}}" ng-model="goal.name" class="form-control col-lg-6" placeholder="Add New Goal" />
+      </div>
+      <div class="col-lg-4">
+        <select class="form-control col-lg-6"  ng-model="goal.relevancy">
+          <option value="Not Relevant">Not Relevant</option>
+          <option value="Low">Low</option>
+          <option value="Moderately">Moderately</option>
+          <option value="Highly">Highly</option>
+        </select>
+      </div>
+      <div class="col-lg-4">
+        <button class="btn btn-primary" type="button" ng-click="save(goal)">Add</button>
+      </div>
+    </div>
+    <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>Name</th>
+          <th class="col-lg-10">Name</th>
+          <th>Relevancy</th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="goal in goals ">
-          <td><a ui-sref="dashboard.goals_edit({id:goal.id})">{{goal.name}} </a>({{goal.groups.length}})</td>
+        <tr ng-repeat="goal in goals" class="list-item" ui-sref="dashboard.goals_edit({id:goal.id})" title="Edit {{goal.name}}">
+          <td class="col-lg-10">{{goal.name}}</td>
+          <td>{{goal.relevancy}}</td>
         </tr>
       </tbody>
     </table>

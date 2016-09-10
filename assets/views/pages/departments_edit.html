@@ -1,33 +1,18 @@
-<div>
+<div class="departments-page" ng-if="me.role == 4">
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Departments</h1>
-    </div>
+    <h1 class="page-header">Edit {{department.name}}</h1>
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr >
+        <td><input type="text" value="{{department.name}}" ng-model="department.name" class="form-control"></td>
+      </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-primary pull-right" ng-click="update()">Update</button>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      Departments
-    </div>
-    <!-- /.panel-heading -->
-    <div class="panel-body">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr >
-              <td><input type="text" value="{{department.name}}" ng-model="department.name"></td>
-            </tr>
-          </tbody>
-        </table>
-        <button type="button" class="btn btn-primary" ng-click="update(department)">Update</button>
-      </div>
-      <!-- /.table-responsive -->
-    </div>
-    <!-- /.panel-body -->
-  </div>
-</div>
 </div>

@@ -1,4 +1,4 @@
-<div class="questions-page">
+<div class="questions-page" ng-if="me.role == 4">
   <div class="row">
     <h1 class="page-header">Questions</h1>
   </div>
@@ -32,15 +32,15 @@
       <tr>
         <th>Question</th>
         <th>Value</th>
-        <th>Type</th>
+        <th class="col-lg-1 text-center">Type</th>
         <th>Criteria</th>
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="question in questions ">
-        <td><a ui-sref="dashboard.questions_edit({id:question.id})">{{question.name}}</a></td>
+      <tr ng-repeat="question in questions" ui-sref="dashboard.questions_edit({id:question.id})" class="list-item" title="Edit {{question.name}}">
+        <td>{{question.name}}</td>
         <td>{{question.value}}</td>
-        <td>{{question.type}}</td>
+        <td class="col-lg-1 text-center">{{question.type}}</td>
         <td>{{question.criteria.name}}</td>
       </tr>
       </tbody>

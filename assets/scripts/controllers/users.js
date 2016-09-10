@@ -8,6 +8,10 @@
  */
 angular.module('heidaApp')
   .controller('UserCtrl', function($scope, $http, Restangular) {
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
     Restangular.all('/api/user').getList().then(function(users) {
       $scope.users = users;
     });

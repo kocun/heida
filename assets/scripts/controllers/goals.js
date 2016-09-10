@@ -7,13 +7,16 @@
  * Controller of the heidaApp
  */
 angular.module('heidaApp')
-  .controller('GoalCtrl', function($scope, $http, Restangular) {
+  .controller('GoalCtrl', function($scope, $http, Restangular, $state, $stateParams) {
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
     Restangular.all('/api/goal').getList().then(function(goals) {
       $scope.goals = goals;
     });
 
     $scope.save = function(goal) {
-      goal.relevancy="Not Relevant";
       $scope.goals.post(goal);
       $state.go('dashboard.goals', $stateParams, {
         reload: true,
@@ -21,6 +24,11 @@ angular.module('heidaApp')
       });
     }
   }).controller('GoalEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
+
+    $http.get('/api/me').
+      success(function(data) {
+        $scope.me = data;
+      });
 
     Restangular.all('/api/goal').getList().then(function(goals) {
       $scope.goals = goals;
