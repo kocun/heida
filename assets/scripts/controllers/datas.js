@@ -576,12 +576,12 @@ angular.module('heidaApp', ['ngDialog'])
     }
 
     // New
-    $scope.selectIndicatorIfAvailable = function(itemId,data){
+    $scope.selectIndicatorIfAvailable = function(item,data){
       var i = 0, iL = data.selectedIndicators.length;
-      debugger;
+
       for (; i < iL ; i++ ) {
         debugger;
-        if ( itemId == data.selectedIndicators[i] ) {
+        if ( item.id == data.selectedIndicators[i] ) {
           return true;
         }
       }
