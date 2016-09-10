@@ -14,8 +14,13 @@ module.exports = {
     criteria : {
       model:'Criteria'
     },
+<<<<<<< HEAD
     question:{
       model:'Question'
+=======
+    questions:{
+      collection:'Question'
+>>>>>>> ec4c1e9b9da4cec2d7fe457b117b325f577ab17e
     }
   }
 };
