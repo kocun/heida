@@ -11,7 +11,6 @@ module.exports = function(req, res, next) {
   // Todo : Read Them from cache
   Authorization.findOne(req.path + ':' + req.method).exec(function(err, auth) {
     //if End point found check authorization
-
     if (auth) {
       if (req.user.role >= auth.role) {
         return next();
