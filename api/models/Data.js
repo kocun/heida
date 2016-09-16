@@ -6,22 +6,26 @@
  */
 
 module.exports = {
-  autoPK: true,
-  attributes: {
-    department:{
-      model:'Department'
-    },
-    indicator:{
-      model:'Indicator'
-    },
-    year : {
-      type:'string'
-    },
-    value:{
-      type:'integer'
-    },
-    answers:{
-      collection:'DataDetail'
+    autoPK: true,
+    attributes: {
+        department: {
+            model: 'Department'
+        },
+        indicator: {
+            model: 'Indicator'
+        },
+        years: {
+            collection: 'Years'
+        },
+        criterias: {
+            collection: 'DataDetail'
+        },
+        periodType: {
+            type: 'string',
+            enum: ['academic', 'calendar']
+        },
+        public: {
+            type: 'string'
+        }
     }
-  }
 };
