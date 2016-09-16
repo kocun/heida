@@ -6,7 +6,7 @@
  * # MainCtrl
  * Controller of the heidaApp
  */
-angular.module('heidaApp', ['ngDialog'])
+angular.module('heidaApp', ['ngDialog', 'ngPDFViewer' ])
   .controller('DataCtrl', function ($scope, $http, Restangular, $state, $stateParams, ngDialog) {
     $scope.state = 0;
     $scope.data;
@@ -251,7 +251,7 @@ angular.module('heidaApp', ['ngDialog'])
 
   })
 
-  .controller('DataReportCtrl', function ($scope, $http, Restangular, $state, $stateParams, $timeout) {
+  .controller('DataReportCtrl', 'PDFViewerService',  function ($scope, $http, Restangular, $state, $stateParams, $timeout, pdf) {
     $http.get('/api/me').
       success(function(data) {
         $scope.me = data;
