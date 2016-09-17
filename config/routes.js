@@ -52,7 +52,11 @@ module.exports.routes = {
   'get /api/data/indicator/:indicator': {
     controller: 'DataController',
     action: 'chart'
-  }
+  },
+  'get /api/search/:text': {
+    controller: 'IndicatorController',
+    action: 'search'
+  },
   /***************************************************************************
    *                                                                          *
    * Custom routes here...                                                    *
