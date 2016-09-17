@@ -38,9 +38,10 @@ nav {
 }
 
 .navbar-brand img {
+  display: inline-block;
   height: 43px;
+  margin-right: 10px;
 }
-
 .logout-button {
   padding:15px;
   display: inline-block!important;
