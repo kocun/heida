@@ -7,7 +7,7 @@
  * Controller of the heidaApp
  */
 angular.module('heidaApp', ['ngDialog'])
-  .controller('DataCtrl', function ($scope, $http, Restangular, $state, $stateParams, ngDialog) {
+  .controller('DataCtrl', function ($scope, $http, $compile, Restangular, $state, $stateParams, ngDialog) {
     $scope.state = 0;
     $scope.data;
     $scope.ind = "";
