@@ -502,10 +502,6 @@ angular
               name: 'heidaApp',
               files: [
                 'scripts/controllers/datas.js',
-                'scripts/directives/timeline/timeline.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/chat/chat.js',
-                'scripts/directives/dashboard/stats/stats.js',
                 'bower_components/ng-dialog/js/ngDialog.js',
                 'bower_components/ng-dialog/css/ngDialog.css'
               ]
