@@ -12,7 +12,6 @@ module.exports = {
 		});
 	},
 	find: function (req, res) {
-
 		DataDetail.find().populate('criteria').populate('indicator').populate('question').exec(function (err, datadetails) {
 			res.json(datadetails);
 		});
