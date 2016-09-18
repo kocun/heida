@@ -204,14 +204,37 @@ angular.module('heidaApp', ['ngDialog'])
        obj.subGroup = data.subGroupId;
        obj.subUnit = data.subUnitId;
        obj.group = $scope.groups[data.groupIndex].id;*/
+      debugger;
+      if ( $scope.editRowtoIndicator ) {
 
-      var datas = Restangular.all('/api/data');
-      datas.post(obj);
-      $state.go('dashboard.data', $stateParams, {
-        reload: true,
-        inherit: true
-      });
+        var maniReq = {
+          method: 'PUT',
+          url: '/api/data/'+data.id,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: obj
+        }
 
+        $http(maniReq).then(function(){
+          $state.go('dashboard.data', $stateParams, {
+            reload: true,
+            inherit: true
+          });
+        }, function(err){console.log(err)});
+      } else {
+        var datas = Restangular.all('/api/data');
+        datas.post(obj);
+        $state.go('dashboard.data', $stateParams, {
+          reload: true,
+          inherit: true
+        });
+      }
+    }
+
+    $scope.changeYearValueType = function(yearStr) {
+      if ( !$scope.newData[yearStr] )
+        $scope.newData.yearsValues[yearStr] = undefined;
     }
 
     $scope.cancelNewData = function(){

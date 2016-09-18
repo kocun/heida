@@ -13,7 +13,7 @@ module.exports = {
             type: 'string'
         },
         value: {
-            type: 'integer'
+            type: 'string'
         }
     }
 };
