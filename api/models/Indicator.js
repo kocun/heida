@@ -19,18 +19,17 @@ module.exports = {
   attributes: {
     code: {
       type: 'string',
-      unique: true,
+      unique: true
     },
     name: {
       type: 'string',
-      required: true,
+      required: true
     },
     valueType:{
-      enum:['yes/no','numeric'],
+      enum:['yes/no','numeric','other']
     },
     public:{
-      type:'boolean',
-      default:false
+      enum:['Public','Staff Only','Not Sure']
     },
     subgroup: {
       model: 'SubGroup'
@@ -56,7 +55,7 @@ module.exports = {
       enum:[0,1,2,3]
     }
 
-  },
+  }
   /*  afterCreate: function(created, cb) {
       console.log(created.id);
 
