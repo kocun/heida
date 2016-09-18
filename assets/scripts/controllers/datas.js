@@ -204,7 +204,6 @@ angular.module('heidaApp', ['ngDialog'])
        obj.subGroup = data.subGroupId;
        obj.subUnit = data.subUnitId;
        obj.group = $scope.groups[data.groupIndex].id;*/
-      debugger;
       if ( $scope.editRowtoIndicator ) {
 
         var maniReq = {
