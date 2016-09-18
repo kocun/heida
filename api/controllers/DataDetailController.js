@@ -7,13 +7,11 @@
 
 module.exports = {
 	findAll: function (req, res) {
-
 		DataDetail.find().populate('criteria').populate('indicator').populate('question').exec(function (err, datadetails) {
 			res.json(datadetails);
 		});
 	},
 	find: function (req, res) {
-		
 		DataDetail.find().populate('criteria').populate('indicator').populate('question').exec(function (err, datadetails) {
 			res.json(datadetails);
 		});
