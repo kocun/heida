@@ -3,7 +3,7 @@
     <i class="fa fa-plus-circle"></i> Add New
   </a>
   <table class="table">
-    <thead>
+    <thead ng-hide="addNewRowtoIndicator || editRowtoIndicator">
     <tr>
       <th width="200">Department</th>
       <th width="75">Public</th>
@@ -12,7 +12,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="data in currentDatas">
+    <tr ng-repeat="data in currentDatas" ng-hide="addNewRowtoIndicator || editRowtoIndicator">
       <td ng-bind="data.departmentName" style="padding: 10px 5px 5px!important">
 
       </td>
