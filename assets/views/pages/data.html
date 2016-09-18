@@ -9,34 +9,28 @@
       <table id="panel{{state}}" class="table table-bordered">
         <thead>
         <tr>
-          <th>Department</th>
-          <th>Goal</th>
           <th>Group</th>
-          <th>Sub-Group</th>
+          <th width="45%">Sub-Group</th>
+          <th width="145"></th>
         </tr>
         </thead>
         <tbody>
         <tr>
-          <td>
-            <select class="form-control"
-                      ng-options="department.name for department in departments track by department.id"
-                      ng-model="data.department" required></select>
-          </td>
-          <td>
-            <select class="form-control" ng-model="data.goal" ng-change="filter(data.goal,null,null)">
-              <option value="goal1">Goal 1</option>
-              <option value="goal2">Goal 2</option>
-              <option value="goal3">Goal 3</option>
-              <option value="goal4">Goal 4</option>
-              <option value="goal5">Goal 5</option>
-          </select>
-          </td>
           <td><select class="form-control" ng-options="group.name for group in groups track by group.id"
-                      ng-model="data.group" ng-change="filter(null,data.group.id,null)" required>
+                      ng-model="data.group" ng-change="getSubGroups(data.group.id)" required>
           </select></td>
           <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id "
-                      ng-model="data.subgroup" ng-change="filter(null,data.group.id,data.subgroup.id)" required>
+                      ng-model="data.subgroup" required>
           </select></td>
+          <td>
+            <button type="button" class="btn btn-danger pull-left" ng-click="clearFilter();data.subgroup = undefined;data.group = undefined;">
+              Clear
+            </button>
+            <button type="button" class="btn btn-primary pull-right" ng-click="filter(data.subgroup.id);"
+                    ng-disabled="!(data.subgroup && data.group)">
+              Filter
+            </button>
+          </td>
         </tr>
         </tbody>
       </table>
