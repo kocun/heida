@@ -8,7 +8,7 @@
 module.exports = {
 
     search: function(req, res) {
-			
+
         Indicator.find({
             name: {
                 'contains': req.params.text
@@ -16,5 +16,5 @@ module.exports = {
         }).exec(function(err, indicators) {
             return res.json(indicators);
         });
-    },
+    }
 };
