@@ -336,12 +336,17 @@ angular.module('heidaApp', ['ngDialog'])
         $scope.subgroups = subgroups;
       });
     }
-    $scope.filter = function (subgroup) {
+    $scope.filterState = false;
+    $scope.filter = function (subgroup,goal) {
       Restangular.all('/api/indicator?subgroup=' + subgroup).getList().then(function (indicators) {
         $scope.indicators = indicators;
+        $scope.filterGoal = goal;
+        $scope.filterState = true;
       });
     }
     $scope.clearFilter = function (subgroup) {
+      $scope.filterState = false;
+      $scope.filterGoal = false;
       Restangular.all('/api/indicator').getList().then(function (indicators) {
         $scope.indicators = indicators;
       });
