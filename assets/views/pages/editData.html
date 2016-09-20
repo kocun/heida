@@ -86,6 +86,7 @@
                 <select class="form-control" id="new_period" ng-model="newData.year" ng-change="prepareYearsValues();"  multiple ng-multiple="true" required ng-disabled="!newData.periodType">
                   <option ng-repeat="per in periodRange(newData.periodType)" value="{{per}}" ng-selected="{{per == newData.year}}">{{per}}</option>
                 </select>
+                <i class="info-text">You can select more by holding "CTRL" key</i>
               </div>
             </div>
           </div>
@@ -115,6 +116,7 @@
                 <select class="form-control" id="new_survey_{{survey.id}}" ng-model="newData.criterias[survey.id]"  multiple ng-multiple="true" required ng-if="survey.multiple == true">
                   <option ng-repeat="answer in survey.questions" value="{{answer.id}}" ng-selected="{{answer.id == newData.criterias[survey.id]}}">{{answer.name}}</option>
                 </select>
+                <i ng-if="survey.multiple == true" class="info-text">You can select more by holding "CTRL" key</i>
                 <select class="form-control" id="new_survey_{{survey.id}}" ng-model="newData.criterias[survey.id]" required ng-if="!(survey.multiple == true)">
                   <option ng-repeat="answer in survey.questions" value="{{answer.id}}" ng-selected="{{answer.id == newData.criterias[survey.id]}}">{{answer.name}}</option>
                 </select>
