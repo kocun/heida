@@ -91,10 +91,13 @@ angular.module('heidaApp', ['ngDialog'])
     }];
 
     $scope.addRow = function () {
-      $scope.newData.indicator = $scope.ind.id;
       $scope.newData.indicatorName = $scope.ind.name;
       $scope.newData.subGroupId = $scope.ind.subgroup.id;
+      $scope.newData.group = $scope.ind.subgroup.group;
       $scope.newData.yearNotSelected = true;
+      $scope.newData[$scope.ind.valueType ? $scope.ind.valueType.toLowerCase().replace('/','') : 'other'] = true;
+      $scope.newData.public = $scope.ind.public;
+      $scope.newData.indicator = $scope.ind.id;
       $scope.newData.group = $scope.ind.subgroup.group;
     }
 
@@ -156,6 +159,10 @@ angular.module('heidaApp', ['ngDialog'])
       }
 
       editData.id = data.id;
+
+      editData[$scope.ind.valueType ? $scope.ind.valueType.toLowerCase().replace('/','') : 'other'] = true;
+      editData.public = $scope.ind.public;
+      editData.indicator = $scope.ind.id;
 
       editData.editMode = true;
 
@@ -266,9 +273,10 @@ angular.module('heidaApp', ['ngDialog'])
           datasObj.departmentId =  pureData.department || pureData.department.id;
           datasObj.departmentName = pureData.department.name;
           datasObj.value = pureData.value;
-          datasObj.public = pureData.public || pureData.indicator.public;
-          datasObj.indicator = pureData.indicator.id || pureData.criterias.indicator;
-          datasObj.indicatorName = pureData.indicator.name;
+          datasObj[$scope.ind.valueType ? $scope.ind.valueType.toLowerCase().replace('/','') : 'other'] = true;
+          datasObj.public = $scope.ind.public;
+          datasObj.indicator = $scope.ind.id;
+          datasObj.indicatorName = $scope.ind.name;
           datasObj.id = pureData.id;
           datasObj.criterias = pureData.criterias;
 
@@ -323,75 +331,19 @@ angular.module('heidaApp', ['ngDialog'])
     }
 
     $scope.completed = false;
-    $scope.filter = function (goal, group, subgroup) {
-      if (group)
-        Restangular.all('/api/subGroup?group=' + group).getList().then(function (subgroups) {
-          $scope.subgroups = subgroups;
-        });
-      if (subgroup)
-        Restangular.all('/api/indicator?subgroup=' + subgroup).getList().then(function (indicators) {
-          $scope.indicators = indicators;
-        });
+    $scope.getSubGroups = function (group) {
+      Restangular.all('/api/subGroup?group=' + group).getList().then(function (subgroups) {
+        $scope.subgroups = subgroups;
+      });
     }
-
-    /*$scope.next = function(data, criteria, question, index) {
-
-      if ($scope.state == 0) {
-        $scope.data.answers = [];
-        $scope.data.criterias = [];
-
-      }
-      console.log($scope.state + "-" + $scope.criterias.length);
-      if ($scope.state < $scope.criterias.length) {
-        console.log("Small");
-        $scope.data.criterias.push($scope.criterias[$scope.state]);
-      } else {
-        console.log("Big");
-        $scope.completed = true;
-      }
-      if (index) {
-        console.log("index");
-        $scope.data.answers[index] = question;
-      } else if (index > -1) {
-        console.log("no index" + index);
-        $scope.data.answers[index] = question;
-      }
-      console.log($scope.data.answers);
-      if (!$scope.criterias[state]) {
-        console.log("no state");
-
-        Restangular.all('/api/criteria').getList().then(function (criterias) {
-          $scope.criterias = criterias;
-          $scope.data.criterias.push(criterias[state]);
-          $scope.state++;
-        });
-      } else {
-        console.log("else");
-        $scope.data.criterias.push($scope.criterias[state]);
-        console.log($scope.data.criterias);
-      }
-      $scope.state++;
-
-      if ($scope.state == 0) {
-        $scope.data.answers = [];
-        $scope.data.criterias = [];
-
-      }
-
-      console.log($scope.state + "-" + $scope.criterias.length);
-      if ($scope.state < $scope.criterias.length) {
-        console.log("Small");
-        $scope.data.criterias.push($scope.criterias[$scope.state]);
-      } else {
-        console.log("Big");
-        $scope.completed = true;
-      }
-      if (index) {
-        console.log("index");
-        $scope.data.answers[index] = question;
-      } else if (index > -1) {
-        console.log("no index" + index);
-        $scope.data.answers[index] = question;
-      }
-    }*/
+    $scope.filter = function (subgroup) {
+      Restangular.all('/api/indicator?subgroup=' + subgroup).getList().then(function (indicators) {
+        $scope.indicators = indicators;
+      });
+    }
+    $scope.clearFilter = function (subgroup) {
+      Restangular.all('/api/indicator').getList().then(function (indicators) {
+        $scope.indicators = indicators;
+      });
+    }
   })
