@@ -30,11 +30,16 @@
           <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id"  ng-model="indicator.subgroup">
           </select></td>
           <td><select class="form-control" ng-model="indicator.valueType">
-            <option value="yes/no">Yes / No </option>
-            <option value="numeric">Numeric </option>
+            <option value="yes/no">Yes / No</option>
+            <option value="numeric">Numeric</option>
+            <option value="other">Other</option>
           </select></td>
           <td class="text-center">
-            <input type="checkbox" value="" ng-model="indicator.public">
+            <select class="form-control" ng-model="indicator.public">
+              <option value="public">Public</option>
+              <option value="staffonly">Staff Only</option>
+              <option value="notsure">Not Sure</option>
+            </select>
           </td>
           <td>
             <select class="form-control" ng-model="indicator.goal1">

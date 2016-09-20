@@ -1,21 +1,27 @@
 <div style="margin-top:15px;">
-  <a ng-click="addNewRowtoIndicator=true" ng-hide="addNewRowtoIndicator" class="pull-right" style="margin-bottom:10px;">
+  <a ng-click="addNewRowtoIndicator=true;addRow();" ng-hide="addNewRowtoIndicator" class="pull-right" style="margin-bottom:10px;">
     <i class="fa fa-plus-circle"></i> Add New
   </a>
   <table class="table">
-    <thead>
+    <thead ng-hide="addNewRowtoIndicator || editRowtoIndicator">
     <tr>
-      <th>Department</th>
+      <th width="200">Department</th>
       <th width="75">Public</th>
-      <th></th>
+      <th>Year:Value</th>
+      <th width="55"></th>
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="data in currentDatas">
+    <tr ng-repeat="data in currentDatas" ng-hide="addNewRowtoIndicator || editRowtoIndicator">
       <td ng-bind="data.departmentName" style="padding: 10px 5px 5px!important">
 
       </td>
       <td ng-bind="data.public" style="padding:10px 5px 5px!important">
+      </td>
+      <td style="padding:10px 5px 5px!important">
+        <span ng-repeat="yearval in data.yearsValues">
+          (<b>{{yearval.year}} :</b>  {{yearval.value}})
+        </span>
       </td>
       <td style="padding:10px 5px 5px!important">
         <a ng-click="editDataRow(data)" class="pull-right" style="margin-bottom:10px;">
@@ -24,7 +30,7 @@
       </td>
     </tr>
     <tr ng-show="currentDatas.length == 0">
-      <td colspan="3">
+      <td colspan="4">
         <div class="no-data text-center pull-left" style="width:100%; color:#999999;" >
           No data available
         </div>
@@ -33,9 +39,8 @@
 
 
     <tr ng-show="addNewRowtoIndicator || editRowtoIndicator">
-      <td colspan="3">
-
-        <div ng-show="addNewScreens.screen1">
+      <td colspan="4">
+        <div>
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
@@ -62,119 +67,23 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-12 text-right">
-              <button type="button" class="btn btn-primary" ng-disabled="!((newData.subUnitId && newData.subUnitId != 'custom') || (newData.otherUnit && newData.otherUnit.trim() != ''))" ng-click="addNewScreens.screen1=false;addNewScreens.screen2=true">
-                <i class="fa fa-arrow-circle-right"></i>
-              </button>
-            </div>
-          </div>
         </div>
 
-        <div ng-show="addNewScreens.screen2">
+        <div>
+          <hr/>
           <div class="row">
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Goals</label>
-                <select ng-change="secondScreenIsInvalidFunc()" class="form-control" multiple ng-multiple="true" id="new_goals" ng-model="newData.goals" required>
-                  <option ng-repeat="goal in goals" value="{{goal.id}}">{{goal.name}}</option>
-                  <option value="custom">Add a new goal</option>
-                </select>
-
-                <div ng-show="newData.goals.indexOf('custom') > -1" style="margin-top:5px;">
-                  <label>Add new goal</label>
-                  <input class="form-control" type="text" ng-change="secondScreenIsInvalidFunc()" id="new_otherGoal" ng-model="newData.otherGoal"/>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Groups</label>
-                <select class="form-control" id="new_group" ng-model="newData.groupIndex" ng-change="secondScreenIsInvalidFunc()" required>
-                  <option ng-repeat="group in groups" ng-selected="{{group.id == newData.group}}" value="{{$index}}">{{group.name}}</option>
-                  <option value="custom">Other</option>
-                </select>
-                <div ng-show="newData.groupIndex == 'custom'" style="margin-top:5px;">
-                  <label>Other Group</label>
-                  <input class="form-control" type="text" id="new_otherGroup" ng-model="newData.otherGroup" ng-change="secondScreenIsInvalidFunc()"/>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Sub Groups</label>
-                <select class="form-control" id="new_group" ng-model="newData.subGroupId" ng-change="secondScreenIsInvalidFunc()" required>
-                  <option ng-repeat="subGroup in subGroups(newData.groupIndex)" value="{{subGroup.id}}" ng-selected="{{subGroup.id == newData.subGroupId}}" >{{subGroup.name}}</option>
-                  <option value="custom">Other</option>
-                </select>
-                <div ng-show="newData.subGroupId == 'custom'" style="margin-top:5px;">
-                  <label>Other Group</label>
-                  <input class="form-control" type="text" id="new_otherSubGroup" ng-model="newData.otherSubGroup" ng-change="secondScreenIsInvalidFunc()"/>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6 text-left">
-              <button type="button" class="btn btn-primary" ng-click="addNewScreens.screen2=false;addNewScreens.screen1=true">
-                <i class="fa fa-arrow-circle-left"></i>
-              </button>
-            </div>
-            <div class="col-sm-6 text-right">
-              <button type="button" class="btn btn-primary" ng-click="addNewScreens.screen2=false;addNewScreens.screen3=true;getIndicators();" ng-disabled="secondScreenIsInvalid">
-                <i class="fa fa-arrow-circle-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div ng-show="addNewScreens.screen3">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Indicators</label>
-                <select class="form-control" id="new_indicators" ng-model="newData.indicator" required>
-                  <option ng-repeat="item in indicatorArr" value="{{item.id}}" ng-selected="{{item.id == newData.indicator}}">{{item.name}}</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="row" style="margin-top:15px;">
-            <div class="col-sm-6 text-left">
-              <button type="button" class="btn btn-primary" ng-click="addNewScreens.screen3=false;addNewScreens.screen2=true">
-                <i class="fa fa-arrow-circle-left"></i>
-              </button>
-            </div>
-            <div class="col-sm-6 text-right">
-              <button type="button" class="btn btn-primary" ng-click="addNewScreens.screen3=false;addNewScreens.screen4=true" ng-disabled="!newData.indicator">
-                <i class="fa fa-arrow-circle-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div ng-show="addNewScreens.screen4">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Access/Visibility of Ind.</label>
-                <select class="form-control" id="new_public" ng-model="newData.public" required>
-                  <option ng-repeat="item in accessToIndicators" value="{{item}}" ng-selected="{{item == newData.public}}" >{{item}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="form-group">
                 <label>Time Period</label>
-                <select class="form-control" id="new_periodType" ng-model="newData.periodType" ng-change="newData.year = []" required ng-disabled="!newData.public">
+                <select class="form-control" id="new_periodType" ng-model="newData.periodType" ng-change="newData.year = [];newData.yearNotSelected = false;" required>
                   <option ng-repeat="period in periodArrObj" value="{{period.value}}" ng-selected="{{period.value == newData.periodType}}">{{period.label}}</option>
                 </select>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="form-group">
                 <label>Year</label>
-                <select class="form-control" id="new_period" ng-model="newData.year" ng-change="prepareYearsValues()"  multiple ng-multiple="true" required ng-disabled="!newData.periodType">
+                <select class="form-control" id="new_period" ng-model="newData.year" ng-change="prepareYearsValues();"  multiple ng-multiple="true" required ng-disabled="!newData.periodType">
                   <option ng-repeat="per in periodRange(newData.periodType)" value="{{per}}" ng-selected="{{per == newData.year}}">{{per}}</option>
                 </select>
               </div>
@@ -183,26 +92,22 @@
           <div class="row">
             <div class="col-md-2" ng-repeat="selectedYear in newData.year">
               <div class="form-group">
-                <label>Value of {{selectedYear}}</label>
-                <input class="form-control" type="text" id="new_value_{{$index}}" ng-model="newData.yearsValues[selectedYear]"/>
+                <label>Value of {{selectedYear}}
+                  <span ng-show="newData.numeric">(%)</span>
+                  <span ng-show="newData.yesno">(Yes/No)</span>
+                </label>
+                <input ng-show="!newData.yesno" class="form-control" type="text" id="new_value_{{$index}}" ng-hide="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]"/>
+                <select ng-show="newData.yesno" class="form-control" id="new_value_{{$index}}_yesno" ng-show="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]">
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6 text-left">
-              <button type="button" class="btn btn-primary" ng-click="addNewScreens.screen4=false;addNewScreens.screen3=true">
-                <i class="fa fa-arrow-circle-left"></i>
-              </button>
-            </div>
-            <div class="col-sm-6 text-right">
-              <button type="button" class="btn btn-primary" ng-click="addNewScreens.screen4=false;addNewScreens.screen5=true" ng-disabled="!newData.public || !newData.periodType || !newData.year">
-                <i class="fa fa-arrow-circle-right"></i>
-              </button>
             </div>
           </div>
         </div>
 
-        <div ng-show="addNewScreens.screen5">
+        <div>
+          <hr/>
           <div class="row">
             <div class="col-md-12">
               <div class="form-group" ng-repeat="survey in criterias">
@@ -218,13 +123,12 @@
           </div>
           <div class="row">
             <div class="col-sm-6 text-left">
-              <button type="button" class="btn btn-primary" ng-click="addNewScreens.screen5=false;addNewScreens.screen4=true">
-                <i class="fa fa-arrow-circle-left"></i>
-              </button>
+              <button type="button" class="btn btn-danger" ng-click="cancelNewData();">Cancel</button>
             </div>
             <div class="col-sm-6 text-right">
-              <button type="button" class="btn btn-primary" ng-click="saveNewData(newData);">
-                <i class="fa fa-floppy-o"></i>
+              <button type="button" class="btn btn-primary" ng-click="saveNewData(newData);"
+                      ng-disabled="!(newData.subUnitId && !newData.yearNotSelected)">
+                Save
               </button>
             </div>
           </div>
@@ -232,91 +136,6 @@
 
       </td>
     </tr>
-
-
     </tbody>
   </table>
-  <div class="clearfix text-right" style="margin:10px 0;">
-    <button type="button" ng-show="addNewRowtoIndicator || editRowtoIndicator" class="btn btn-success" ng-click="addRow()" ng-disabled="newData.isInvalid">Add</button>
-    <button type="button" ng-show="addNewRowtoIndicator || editRowtoIndicator" class="btn btn-danger" ng-click="cancelNewData();">Cancel</button>
-    <button type="button" class="btn btn-primary" ng-hide="addNewRowtoIndicator || editRowtoIndicator || currentDatas.length == 0" ng-click="done(data,ind)">Done</button>
-  </div>
-
-
-  <!--
-    <table class="table" border="0">
-      <thead>
-      <tr>
-        <th>
-          Department
-        </th>
-        <th>
-
-
-        </th>
-        <th>Value ({{ind.valueType}})</th>
-        <th>Public</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr ng-repeat="data in datas">
-        <td><select class="form-control" ng-model="data.department" style="width: 100px;" required
-                    ng-options="department.name for department in departments track by department.id"></td>
-
-        <td>
-          <select class="form-control" ng-model="data.year" style="width: 100px;" required
-                  ng-options="calendar.val for calendar in calendar track by data.year.val">
-          </select>
-        </td>
-        <td ng-switch="ind.valueType">
-          <div ng-switch-when='yes/no'>
-            <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="data.value" value="1"
-                   checked="" required>Yes
-            <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="data.value" value="0"
-                   checked="" required>No
-          </div>
-          <div ng-switch-when='numeric'><input type="text" ng-model="data.value"></div>
-          <div ng-switch-default='numeric'><input type="text" ng-model="data.value"></div>
-        </td>
-        <td>
-          <input type="checkbox" value="" ng-model="data.public">
-        </td>
-      </tr>
-     <tr>
-        <td><select class="form-control" ng-model="data.department" style="width: 100px;" required
-                    ng-options="department.name for department in departments"></td>
-        <td>
-          <select class="form-control" ng-model="data.year" style="width: 100px;" required
-                  ng-options="calendar.val for calendar in calendar">
-          </select>
-        </td>
-        <td ng-switch="ind.valueType">
-          <div ng-switch-when='yes/no'>
-            <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="data.value" value="1"
-                   checked="" required>Yes
-            <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="data.value" value="0"
-                   checked="" required>No
-          </div>
-          <div ng-switch-when='numeric'><input type="text" ng-model="data.value"></div>
-          <div ng-switch-default='numeric'><input type="text" ng-model="data.value"></div>
-        </td>
-        <td>
-          <input type="checkbox" value="" ng-model="data.public">
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <button type="button" class="btn btn-primary" ng-click="done(data,ind)"
-                  ng-disabled="myForm.$invalid">Done
-          </button>
-        </td>
-        <td colspan="2">
-          <button type="button" class="btn btn-success" ng-click="next(data,criteria,null)"
-                  ng-disabled="myForm.$invalid">Add More
-          </button>
-        </td>
-      </tr>
-      </tbody>
-    </table> -->
-
 </div>
