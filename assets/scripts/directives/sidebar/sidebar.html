@@ -4,19 +4,19 @@
       <li class=" text-right show-on-mobile">
           <a class="nav navbar-top-links navbar-right logout-button" ui-sref="login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
       </li>
-      <sidebar-search></sidebar-search>
+      <li class="sidebar-search">
+        <div class="input-group custom-search-form">
+          <input type="text" class="form-control" placeholder="Search Indicator" ng-model="searchText">
+        <span class="input-group-btn">
+            <a class="btn btn-default" type="button" ui-sref="dashboard.search({text:searchText})">
+              <i class="fa fa-search"></i>
+            </a>
+        </span>
+        </div>
+      </li>
       <li ui-sref-active="active">
         <a ui-sref="dashboard.home"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
       </li>
-      <!--<li ui-sref-active="active">
-        <a ui-sref="dashboard.chart"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span></span></a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="dashboard.table"><i class="fa fa-table fa-fw"></i> Tables</a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="dashboard.form"><i class="fa fa-edit fa-fw"></i> Forms</a>
-      </li>-->
       <li ng-class="{active: collapseVar==1}" ng-if="me.role == 4">{{dropDown}}
         <a href="" ng-click="check(1)"><i class="fa fa-wrench fa-fw"></i> Admin<span
         class="fa arrow"></span></a>

@@ -33,8 +33,7 @@ angular
               files: [
                 'scripts/directives/header/header.js',
                 'scripts/controllers/login.js',
-                'scripts/directives/sidebar/sidebar.js',
-                'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
+                'scripts/directives/sidebar/sidebar.js'
               ]
             }),
               $ocLazyLoad.load({
@@ -544,7 +543,21 @@ angular
           }
         }
       })
-
+      .state('dashboard.search', {
+        controller: 'SearchCtrl',
+        templateUrl: 'views/pages/search.html',
+        url: '/search/:text',
+        resolve: {
+          loadMyFiles: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'heidaApp',
+              files: [
+                'scripts/controllers/search.js'
+              ]
+            })
+          }
+        }
+      })
   }]);
 
 

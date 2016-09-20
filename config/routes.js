@@ -56,7 +56,7 @@ module.exports.routes = {
   'get /api/search/:text': {
     controller: 'IndicatorController',
     action: 'search'
-  },
+  }
   /***************************************************************************
    *                                                                          *
    * Custom routes here...                                                    *
