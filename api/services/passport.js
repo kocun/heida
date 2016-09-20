@@ -162,7 +162,7 @@ passport.use(new GoogleStrategy({
           } else {
             role = 1;
           }
-          console.log(role);
+          
 
           var usr = {
             username: profile.id,
