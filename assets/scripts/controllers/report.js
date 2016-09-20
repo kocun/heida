@@ -50,8 +50,7 @@ angular.module('heidaApp')
     $scope.ind = $scope.data.indicator.name;
 
     $scope.data.valueType = $stateParams.valueType;
-
-    if ( $stateParams.valueType == "numeric" ) {
+    if ( $stateParams.valueType != "yesno" ) {
       var lbl = [];
       var dt = [];
       for (var i = 0; i < $scope.data.years.length; i++) {
@@ -59,15 +58,11 @@ angular.module('heidaApp')
         dt.push($scope.data.years[i].value);
       }
       $scope.bar = {
-
         labels: lbl,
         series: ['Series A'],
-
         data: [
           dt
-
         ]
-
       };
     } else {
       document.getElementById("canvas_container").classList.add("ng-hide");

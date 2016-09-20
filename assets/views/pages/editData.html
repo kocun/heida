@@ -60,9 +60,9 @@
                 </select>
               </div>
             </div>
-            <div class="col-md-4" ng-show="newData.departmentId == 'custom' || newData.subUnitId == 'custom'">
+            <div class="col-md-4" ng-show="newData.departmentId == 'custom' || newData.subUnitId">
               <div class="form-group">
-                <label>Other</label>
+                <label>Please write the name of your unit</label>
                 <input  class="form-control" type="text" id="new_otherUnit" ng-model="newData.otherUnit"/>
               </div>
             </div>
@@ -94,11 +94,11 @@
             <div class="col-md-2" ng-repeat="selectedYear in newData.year">
               <div class="form-group">
                 <label>Value of {{selectedYear}}
-                  <span ng-show="newData.numeric">(%)</span>
+                  <span ng-show="newData.percentage">(%)</span>
                   <span ng-show="newData.yesno">(Yes/No)</span>
                 </label>
-                <input ng-show="!newData.yesno" class="form-control" type="text" id="new_value_{{$index}}" ng-hide="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]"/>
-                <select ng-show="newData.yesno" class="form-control" id="new_value_{{$index}}_yesno" ng-show="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]">
+                <input ng-if="!newData.yesno" class="form-control" type="text" id="new_value_{{$index}}" ng-hide="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]"/>
+                <select ng-if="newData.yesno" class="form-control" id="new_value_{{$index}}_yesno" ng-show="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]">
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>
