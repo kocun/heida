@@ -40,26 +40,7 @@ angular.module('heidaApp', ['ngDialog'])
       $scope.goals = goals;
     });
 
-
-    $scope.done = function (data, ind) {
-      var datas = Restangular.all('/api/data');
-      var dat = {
-        department: data.department.id,
-        indicator: ind.id,
-        year: data.year,
-        value: data.value
-        //answer: $scope.data.answers,
-      };
-      datas.post(dat);
-      $state.go('dashboard.data', $stateParams, {
-        reload: true,
-        inherit: true
-      });
-
-    };
-
-    // New
-    $scope.yearArr = (function(){
+    $scope.calendarArr = (function(){
       var thisYear = new Date().getFullYear();
 
       var selectArr = [];
@@ -78,7 +59,6 @@ angular.module('heidaApp', ['ngDialog'])
       return selectArr;
     })();
 
-    // New
     $scope.academicArr = (function(){
       var thisYear = new Date().getFullYear();
 
@@ -98,38 +78,29 @@ angular.module('heidaApp', ['ngDialog'])
       return selectArr;
     })();
 
-    // New
     $scope.periodRange = function (type) {
       return $scope[type+"Arr"];
     }
 
-    // New
     $scope.periodArrObj = [{
-      value: "year",
+      value: "calendar",
       label: 'Calendar Year'
     }, {
       value: "academic",
       label: 'Academic Year'
     }];
 
-    // New
     $scope.addRow = function () {
-      var datas = Restangular.all('/api/data/'+$scope.ind.id);
-      var data = {
-        department: $scope.newData.indicatorId,
-        indicator: $scope.ind.id,
-        year: $scope.newData.year,
-        value: $scope.newData.value,
-        public: $scope.newData.public
-      };
-      datas.post(data);
-      $state.go('dashboard.data', $stateParams, {
-        reload: true,
-        inherit: true
-      });
+      $scope.newData.indicatorName = $scope.ind.name;
+      $scope.newData.subGroupId = $scope.ind.subgroup.id;
+      $scope.newData.group = $scope.ind.subgroup.group;
+      $scope.newData.yearNotSelected = true;
+      $scope.newData[$scope.ind.valueType ? $scope.ind.valueType.toLowerCase().replace('/','') : 'other'] = true;
+      $scope.newData.public = $scope.ind.public;
+      $scope.newData.indicator = $scope.ind.id;
+      $scope.newData.group = $scope.ind.subgroup.group;
     }
 
-    // New
     $scope.subUnits = function(departmentId){
       if ( departmentId && departmentId != "custom" ) {
         var k = 0, kL = $scope.departments.length;
@@ -144,72 +115,14 @@ angular.module('heidaApp', ['ngDialog'])
       return subs;
     }
 
-    // New
-    $scope.subGroups = function(groupIndex){
-      if ( groupIndex && groupIndex != "custom" )
-        return $scope.groups[groupIndex].subs;
-      else
-        return $scope.subgroups;
-    }
-
-    // New
-    $scope.secondScreenIsInvalid = true;
-
-    // New
-    $scope.secondScreenIsInvalidFunc = function(){
-      var state = true;
-
-      if ( $scope.newData.goals && ( ( $scope.newData.goals.length > 0 && !($scope.newData.goals.indexOf('custom') > -1) ) || ( $scope.newData.otherGoal &&  $scope.newData.otherGoal.trim != "" )  ) ) {
-        if ( $scope.newData.groupIndex && $scope.newData.groupIndex != 'custom' ) {
-          if ( $scope.newData.subGroupId && (( $scope.newData.subGroupId != 'custom') || ( $scope.newData.otherSubGroup && $scope.newData.otherSubGroup.trim != "" )) ) {
-            state = false;
-          }
-        } else if ($scope.newData.otherGroup && $scope.newData.otherGroup.trim != "") {
-          if ( $scope.newData.subGroupId && (( $scope.newData.subGroupId != 'custom') || ( $scope.newData.otherSubGroup && $scope.newData.otherSubGroup.trim != "" )) ) {
-            state = false;
-          }
-        }
-      }
-
-      $scope.secondScreenIsInvalid = state;
-    }
-
-    // New
-    $scope.getIndicators = function(){
-
-      var indicatorArr = [];
-
-      $scope.newData.indicators = [];
-
-      if ($scope.newData.subGroupId == 'custom') {
-        indicatorArr = $scope.indicators;
-      } else {
-        var i, iL = $scope.subgroups.length;
-
-        for ( i = 0; i < iL; i++ ) {
-          if ($scope.newData.subGroupId == $scope.subgroups[i].id){
-            indicatorArr = $scope.subgroups[i].indicators;
-            break;
-          }
-        }
-      }
-
-      $scope.indicatorArr = indicatorArr;
-    }
-
-    // New
     $scope.accessToIndicators = ["Public","Staff only","Not sure"];
 
-    // New
     var _resetScreens = function(){
       $scope.addNewScreens.screen1 = true;
       $scope.addNewScreens.screen2 = false;
       $scope.addNewScreens.screen3 = false;
-      $scope.addNewScreens.screen4 = false;
-      $scope.addNewScreens.screen5 = false;
     }
 
-    // New
     var _prepareDataToEdit = function(data) {
 
       var originalData = data;
@@ -245,13 +158,17 @@ angular.module('heidaApp', ['ngDialog'])
         editData.criterias = criteriasObj;
       }
 
+      editData.id = data.id;
+
+      editData[$scope.ind.valueType ? $scope.ind.valueType.toLowerCase().replace('/','') : 'other'] = true;
+      editData.public = $scope.ind.public;
+      editData.indicator = $scope.ind.id;
+
       editData.editMode = true;
 
       return editData;
 
     }
-
-    // New
 
     $scope.prepareYearsValues = function () {
       for ( var key in $scope.newData.yearsValues ) {
@@ -261,7 +178,6 @@ angular.module('heidaApp', ['ngDialog'])
       }
     }
 
-    // New
     $scope.saveNewData = function(data){
       var obj = {};
       obj.department = data.departmentId;
@@ -295,48 +211,56 @@ angular.module('heidaApp', ['ngDialog'])
        obj.subGroup = data.subGroupId;
        obj.subUnit = data.subUnitId;
        obj.group = $scope.groups[data.groupIndex].id;*/
+      if ( $scope.editRowtoIndicator ) {
 
-
-      var datas = Restangular.all('/api/data');
-      datas.post(obj);
-      $state.go('dashboard.data', $stateParams, {
-        reload: true,
-        inherit: true
-      });
-
-    }
-
-    // New
-    $scope.cancelNewData = function(){
-      $scope.addNewRowtoIndicator = false;
-      $scope.editRowtoIndicator = false;
-      _resetScreens();
-      $scope.newData = {value:1, isInvalid: true, yearsValues: {}, criterias: {} };
-    }
-
-    // New
-    $scope.editDataRow = function(data){
-      $scope.newData = _prepareDataToEdit(data);
-      _resetScreens();
-      $scope.editRowtoIndicator = true;
-    }
-
-    // New
-    $scope.selectIndicatorIfAvailable = function(item,data){
-      var i = 0, iL = data.selectedIndicators.length;
-
-      for (; i < iL ; i++ ) {
-        if ( item.id == data.selectedIndicators[i] ) {
-          return true;
+        var maniReq = {
+          method: 'PUT',
+          url: '/api/data/'+data.id,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: obj
         }
+
+        $http(maniReq).then(function(){
+          $state.go('dashboard.data', $stateParams, {
+            reload: true,
+            inherit: true
+          });
+        }, function(err){console.log(err)});
+      } else {
+        var datas = Restangular.all('/api/data');
+        datas.post(obj);
+        $state.go('dashboard.data', $stateParams, {
+          reload: true,
+          inherit: true
+        });
       }
     }
 
-    // New
-    $scope.addData = function (indicator) {
-      $scope.addNewScreens = {screen1:true}; //...
-      $scope.newData = {value:1, isInvalid: true, yearsValues: {}, criterias: {} }; //...
+    $scope.changeYearValueType = function(yearStr) {
+      if ( !$scope.newData[yearStr] )
+        $scope.newData.yearsValues[yearStr] = undefined;
+    }
 
+    $scope.cancelNewData = function(){
+      $scope.addNewRowtoIndicator = false;
+      $scope.editRowtoIndicator = false;
+      $scope.newData = {value:1, isInvalid: true, yearsValues: {}, criterias: {} };
+    }
+
+    $scope.editDataRow = function(data){
+      $scope.newData = _prepareDataToEdit(data);
+      $scope.newData.indicator = $scope.ind.id;
+      $scope.newData.indicatorName = $scope.ind.name;
+      $scope.newData.subGroupId = $scope.ind.subgroup.id;
+      $scope.newData.group = $scope.ind.subgroup.group;
+      $scope.editRowtoIndicator = true;
+    }
+
+    $scope.addData = function (indicator) {
+      $scope.cancelNewData();
+      $scope.newData = {value:1, isInvalid: true, yearsValues: {}, criterias: {} }; //...
       $scope.ind = indicator;
       var datas = $scope.allDatas;
 
@@ -344,15 +268,15 @@ angular.module('heidaApp', ['ngDialog'])
       var i, iL = datas.length;
       for ( i = 0 ; i < iL ; i++ ) {
         var pureData = datas[i];
-
         if ( pureData.indicator && pureData.indicator.id == $scope.ind.id ) {
           var datasObj = {};
           datasObj.departmentId =  pureData.department || pureData.department.id;
           datasObj.departmentName = pureData.department.name;
           datasObj.value = pureData.value;
-          datasObj.public = pureData.public || pureData.indicator.public;
-          datasObj.indicator = pureData.indicator.id || pureData.criterias.indicator;
-          datasObj.indicatorName = pureData.indicator.name;
+          datasObj[$scope.ind.valueType ? $scope.ind.valueType.toLowerCase().replace('/','') : 'other'] = true;
+          datasObj.public = $scope.ind.public;
+          datasObj.indicator = $scope.ind.id;
+          datasObj.indicatorName = $scope.ind.name;
           datasObj.id = pureData.id;
           datasObj.criterias = pureData.criterias;
 
@@ -382,7 +306,6 @@ angular.module('heidaApp', ['ngDialog'])
 
           $scope.currentDatas.push(datasObj);
         }
-
       }
 
       angular.element('.js-temp-data-content').remove();
@@ -397,7 +320,6 @@ angular.module('heidaApp', ['ngDialog'])
       });
     };
 
-    // New
     $scope.checkNewData = function(){
       if ( $scope.newData.departmentId && $scope.newData.departmentId != ""
         && $scope.newData.periodType && $scope.newData.periodType != ""
@@ -408,119 +330,20 @@ angular.module('heidaApp', ['ngDialog'])
       }
     }
 
-    //$scope.criterias = [];
     $scope.completed = false;
-    $scope.filter = function (goal, group, subgroup) {
-      if (group)
-        Restangular.all('/api/subGroup?group=' + group).getList().then(function (subgroups) {
-          $scope.subgroups = subgroups;
-        });
-      if (subgroup)
-        Restangular.all('/api/indicator?subgroup=' + subgroup).getList().then(function (indicators) {
-          $scope.indicators = indicators;
-        });
+    $scope.getSubGroups = function (group) {
+      Restangular.all('/api/subGroup?group=' + group).getList().then(function (subgroups) {
+        $scope.subgroups = subgroups;
+      });
     }
-
-    $scope.next = function(data, criteria, question, index) {
-
-      if ($scope.state == 0) {
-        $scope.data.answers = [];
-        $scope.data.criterias = [];
-
-      }
-      console.log($scope.state + "-" + $scope.criterias.length);
-      if ($scope.state < $scope.criterias.length) {
-        console.log("Small");
-        $scope.data.criterias.push($scope.criterias[$scope.state]);
-      } else {
-        console.log("Big");
-        $scope.completed = true;
-      }
-      if (index) {
-        console.log("index");
-        $scope.data.answers[index] = question;
-      } else if (index > -1) {
-        console.log("no index" + index);
-        $scope.data.answers[index] = question;
-      }
-      console.log($scope.data.answers);
-      if (!$scope.criterias[state]) {
-        console.log("no state");
-
-        Restangular.all('/api/criteria').getList().then(function (criterias) {
-          $scope.criterias = criterias;
-          $scope.data.criterias.push(criterias[state]);
-          $scope.state++;
-        });
-      } else {
-        console.log("else");
-        $scope.data.criterias.push($scope.criterias[state]);
-        console.log($scope.data.criterias);
-      }
-      $scope.state++;
-
-      if ($scope.state == 0) {
-        $scope.data.answers = [];
-        $scope.data.criterias = [];
-
-      }
-
-      console.log($scope.state + "-" + $scope.criterias.length);
-      if ($scope.state < $scope.criterias.length) {
-        console.log("Small");
-        $scope.data.criterias.push($scope.criterias[$scope.state]);
-      } else {
-        console.log("Big");
-        $scope.completed = true;
-      }
-      if (index) {
-        console.log("index");
-        $scope.data.answers[index] = question;
-      } else if (index > -1) {
-        console.log("no index" + index);
-        $scope.data.answers[index] = question;
-      }
-      // console.log("index");
-      // console.log(index);
-      // console.log("state");
-      // console.log($scope.state);
-      // console.log("criteria");
-      // console.log(criteria);
-      // console.log("question");
-      // console.log(question);
-      // console.log("answers");
-      // console.log($scope.data.answers);
-      // if (!$scope.criterias[state ]) {
-      //   console.log("no state");
-
-      //   Restangular.all('/api/criteria').getList().then(function(criterias) {
-      //     $scope.criterias=criterias;
-      //     $scope.data.criterias.push(criterias[state]);
-      //     $scope.state++;
-      //   });
-      // } else {
-      //   console.log("else");
-      //   $scope.data.criterias.push($scope.criterias[state ]);
-      //   console.log($scope.data.criterias);
-      // }
-      // $scope.state++;
-      //}
-
-      $scope.save = function () {
-        var datas = Restangular.all('/api/data');
-        var dat = {
-          department: $scope.data.department.id,
-          indicator: $scope.data.indicator.id,
-          year: $scope.data.year,
-          value: $scope.data.value,
-          answer: $scope.data.answers
-        };
-        datas.post(dat);
-        $state.go('dashboard.data', $stateParams, {
-          reload: true,
-          inherit: true
-        });
-      }
-
+    $scope.filter = function (subgroup) {
+      Restangular.all('/api/indicator?subgroup=' + subgroup).getList().then(function (indicators) {
+        $scope.indicators = indicators;
+      });
+    }
+    $scope.clearFilter = function (subgroup) {
+      Restangular.all('/api/indicator').getList().then(function (indicators) {
+        $scope.indicators = indicators;
+      });
     }
   })
