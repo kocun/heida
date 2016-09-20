@@ -160,7 +160,7 @@ angular.module('heidaApp', ['ngDialog'])
 
       editData.id = data.id;
 
-      editData[$scope.ind.valueType ? $scope.ind.valueType.toLowerCase().replace('/','') : 'other'] = true;
+      editData[$scope.ind.valueType ? $scope.ind.valueType.toLowerCase().replace('/','') : 'percentage'] = true;
       editData.public = $scope.ind.public;
       editData.indicator = $scope.ind.id;
 
