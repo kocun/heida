@@ -6,32 +6,72 @@ angular.module('heidaApp')
       $scope.me = data;
     });
   Restangular.all('/api/data/').getList().then(function (datas) {
-    $scope.datas = datas;
+    $scope.datas = $scope.allDatas = datas;
   });
+  Restangular.all('/api/indicator').getList().then(function (indicators) {
+    $scope.indicators = indicators;
+  });
+  Restangular.all('/api/department').getList().then(function (departments) {
+    $scope.departments = departments;
+  });
+  $scope.clearFilter = function () {
+    $scope.datas = $scope.allDatas;
+  }
+
+  $scope.filter = function () {
+    var i = 0, iL = $scope.allDatas.length;
+    var filteredDatas = [];
+    for (; i < iL; i++) {
+      var obj = $scope.allDatas[i];
+
+      if ( $scope.filteredDepartment && !$scope.filteredIndicator ) {
+        if (obj.department && obj.department.id == $scope.filteredDepartment) {
+          filteredDatas.push(obj)
+        }
+      } else if ( !$scope.filteredDepartment && $scope.filteredIndicator ) {
+        if ( obj.indicator && obj.indicator.id == $scope.filteredIndicator) {
+          filteredDatas.push(obj)
+        }
+      } else {
+        if ( obj.department && obj.indicator && obj.indicator.id == $scope.filteredIndicator && obj.department.id == $scope.filteredDepartment ) {
+          filteredDatas.push(obj)
+        }
+      }
+    }
+
+    $scope.datas = filteredDatas;
+  }
 })
 .controller('DataReportDetailCtrl', function ($scope, $http, Restangular, $state, $stateParams, $timeout) {
-  Restangular.all('/api/data/' + $stateParams.department + '/' + $stateParams.indicator).getList().then(function (data) {
+  $http.get('/api/data/' + $stateParams.dataId).
+  success(function(data) {
     $scope.data = data;
-    console.log(data[0].department);
-    $scope.dept = $scope.data[0].department.name;
-    $scope.ind = $scope.data[0].indicator.name;
-    var lbl = [];
-    var dt = [];
-    for (var i = 0; i < $scope.data.length; i++) {
-      lbl.push($scope.data[i].year);
-      dt.push($scope.data[i].value);
+    $scope.dept = $scope.data.department.name;
+    $scope.ind = $scope.data.indicator.name;
+
+    $scope.data.valueType = $stateParams.valueType;
+
+    if ( $stateParams.valueType == "numeric" ) {
+      var lbl = [];
+      var dt = [];
+      for (var i = 0; i < $scope.data.years.length; i++) {
+        lbl.push($scope.data.years[i].year);
+        dt.push($scope.data.years[i].value);
+      }
+      $scope.bar = {
+
+        labels: lbl,
+        series: ['Series A'],
+
+        data: [
+          dt
+
+        ]
+
+      };
+    } else {
+      document.getElementById("canvas_container").classList.add("ng-hide");
     }
-    $scope.bar = {
-
-      labels: lbl,
-      series: ['Series A'],
-
-      data: [
-        dt
-
-      ]
-
-    };
   });
 
 });
