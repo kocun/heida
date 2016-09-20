@@ -3,20 +3,29 @@
     <h1 class="page-header">Criterias</h1>
   </div>
   <div class="row">
-<a ng-click="addCriteria=true" ng-hide="addCriteria" class="pull-right mb20 add-criteria">
+    <a ng-click="addCriteria=true" ng-hide="addCriteria" class="pull-right mb20 add-criteria">
       <i class="fa fa-plus-circle"></i> Add New Criteria
     </a>
-    <div class="row mb40" ng-show="addCriteria">
-      <div class="col-lg-4">
-        <textarea class="form-control" rows="3" value="{{criteria.name}}" placeholder="Add New Criteria"></textarea>
-      </div>
-      <div class="col-lg-4">
-        <label for="criteria-checkbox">Multiple</label>
-        <input type="checkbox" value="" ng-model="criteria.multiple" id="criteria-checkbox" />
-      </div>
-      <div class="col-lg-4">
-        <button class="btn btn-primary" type="button" ng-click="save(criteria)">Add</button>
-      </div>
+    <div ng-show="addCriteria">
+      <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+          <th>Criteria</th>
+          <th>Multiple</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <textarea class="form-control" rows="3" value="{{criteria.name}}" placeholder="Add New Criteria"></textarea>
+          </td>
+          <td>
+            <input type="checkbox" value="" ng-model="criteria.multiple" id="criteria-checkbox" />
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-primary pull-right mb40" ng-click="save(criteria)">Add</button>
     </div>
 
     <table class="table table-striped table-bordered">
