@@ -9,7 +9,7 @@ module.exports = {
 
   chart: function (req, res) {
     Data.find({
-      indicator: req.param('indicator'),
+      indicator: req.param('indicator')
     }).sort('year ASC').populate('department').populate('indicator').populate('criterias').exec(function (err, datas) {
       return res.json(datas);
     });
@@ -21,7 +21,7 @@ module.exports = {
       years: req.body.years,
       criterias:req.body.criterias,
       periodType: req.body.periodType,
-      public: req.body.public,
+      public: req.body.public
     }).exec(function (err, created) {
       return res.json(created);
     });
