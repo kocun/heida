@@ -526,7 +526,7 @@ angular
       })
       .state('dashboard.report_detail', {
         templateUrl: 'views/pages/reports_detail.html',
-        url: '/report/detail/:department/:indicator',
+        url: '/report/detail/:dataId/:valueType',
         controller: 'DataReportDetailCtrl',
         resolve: {
           loadMyFile: function($ocLazyLoad) {

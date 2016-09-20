@@ -3,6 +3,39 @@
     <h1 class="page-header">Reports</h1>
   </div>
   <div class="row">
+
+    <form name="myForm">
+      <table id="panel{{state}}" class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Indicator</th>
+          <th width="30%">Department</th>
+          <th width="145"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><select class="form-control" ng-model="filteredIndicator">
+            <option ng-repeat="indicator in indicators" value="{{indicator.id}}">{{indicator.name}}</option>
+          </select></td>
+          <td><select class="form-control" ng-model="filteredDepartment">
+            <option ng-repeat="department in departments" value="{{department.id}}">{{department.name}}</option>
+          </select></td>
+          <td>
+            <button type="button" class="btn btn-danger pull-left" ng-click="clearFilter();filteredIndicator = undefined;filteredDepartment = undefined;">
+              Clear
+            </button>
+            <button type="button" class="btn btn-primary pull-right" ng-click="filter();"
+                    ng-disabled="!(filteredIndicator || filteredDepartment)">
+              Filter
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+  <div class="row">
     <table class="table table-bordered table-striped">
       <thead>
       <th>indicator</th>
@@ -11,7 +44,7 @@
       <tbody>
       <tr ng-repeat="data in datas">
         <td >
-          <a ui-sref="dashboard.report_detail({department:data.department.id,indicator:data.indicator.id})">{{data.indicator.name}}</a>
+          <a ui-sref="dashboard.report_detail({dataId:data.id, valueType:data.indicator.valueType})">{{data.indicator.name}}</a>
         </td>
         <td >
           {{data.department.name}}
