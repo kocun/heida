@@ -44,19 +44,37 @@
       <th>Sub-Group</th>
       <th>Data Type</th>
       <th>Status</th>
-      <th>Actions</th>
+      <th colspan="4">Actions</th>
       </thead>
       <tbody>
       <tr ng-repeat="data in datas">
         <td>IC</td>
         <td>
-          <a ui-sref="dashboard.report_detail({dataId:data.id, valueType:data.indicator.valueType})">{{data.indicator.name}}</a>
+          {{data.indicator.name}}
         </td>
         <td>
-          {{data.group}}
+          {{data.group.name}}
         </td>
         <td>
-          {{data.department.name}}
+          {{data.subgroup.name}}
+        </td>
+        <td>
+          {{data.indicator.valueType}}
+        </td>
+        <td>
+          status
+        </td>
+        <td>
+          Edit
+        </td>
+        <td>
+          <a ui-sref="dashboard.report_detail({dataId:data.id, valueType:data.indicator.valueType})">Visualize (Graph/Table)</a>
+        </td>
+        <td>
+          Print
+        </td>
+        <td>
+          Delete
         </td>
       </tr>
       </tbody>
