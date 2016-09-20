@@ -38,15 +38,24 @@
   <div class="row">
     <table class="table table-bordered table-striped">
       <thead>
-      <th>indicator</th>
-      <th>Department</th>
+      <th>Indicator Code</th>
+      <th>Indicator Name</th>
+      <th>Group</th>
+      <th>Sub-Group</th>
+      <th>Data Type</th>
+      <th>Status</th>
+      <th>Actions</th>
       </thead>
       <tbody>
       <tr ng-repeat="data in datas">
-        <td >
+        <td>IC</td>
+        <td>
           <a ui-sref="dashboard.report_detail({dataId:data.id, valueType:data.indicator.valueType})">{{data.indicator.name}}</a>
         </td>
-        <td >
+        <td>
+          {{data.group}}
+        </td>
+        <td>
           {{data.department.name}}
         </td>
       </tr>
