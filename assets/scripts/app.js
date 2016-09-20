@@ -181,7 +181,7 @@ angular
       .state('dashboard.departments', {
         controller: 'DepartmentCtrl',
         templateUrl: 'views/pages/departments.html',
-        url: '/departments',
+        url: '/units',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -196,7 +196,7 @@ angular
       .state('dashboard.departments_edit', {
         controller: 'DepartmentEditCtrl',
         templateUrl: 'views/pages/departments_edit.html',
-        url: '/departments/:id',
+        url: '/units/:id',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -216,7 +216,7 @@ angular
       .state('dashboard.sub-departments', {
         controller: 'SubdepartmentCtrl',
         templateUrl: 'views/pages/sub-departments.html',
-        url: '/sub-departments',
+        url: '/sub-units',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -231,7 +231,7 @@ angular
       .state('dashboard.sub-departments_edit', {
         controller: 'SubdepartmentEditCtrl',
         templateUrl: 'views/pages/sub-departments_edit.html',
-        url: '/sub-departments/:id',
+        url: '/sub-units/:id',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
             return $ocLazyLoad.load({
