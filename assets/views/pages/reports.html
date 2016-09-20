@@ -38,16 +38,43 @@
   <div class="row">
     <table class="table table-bordered table-striped">
       <thead>
-      <th>indicator</th>
-      <th>Department</th>
+      <th>Indicator Code</th>
+      <th>Indicator Name</th>
+      <th>Group</th>
+      <th>Sub-Group</th>
+      <th>Data Type</th>
+      <th>Status</th>
+      <th colspan="4">Actions</th>
       </thead>
       <tbody>
       <tr ng-repeat="data in datas">
-        <td >
-          <a ui-sref="dashboard.report_detail({dataId:data.id, valueType:data.indicator.valueType})">{{data.indicator.name}}</a>
+        <td>IC</td>
+        <td>
+          {{data.indicator.name}}
         </td>
-        <td >
-          {{data.department.name}}
+        <td>
+          {{data.group.name}}
+        </td>
+        <td>
+          {{data.subgroup.name}}
+        </td>
+        <td>
+          {{data.indicator.valueType}}
+        </td>
+        <td>
+          status
+        </td>
+        <td>
+          Edit
+        </td>
+        <td>
+          <a ui-sref="dashboard.report_detail({dataId:data.id, valueType:data.indicator.valueType})">Visualize (Graph/Table)</a>
+        </td>
+        <td>
+          Print
+        </td>
+        <td>
+          Delete
         </td>
       </tr>
       </tbody>
