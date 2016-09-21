@@ -87,7 +87,7 @@
     <table class="table table-bordered table-striped">
       <thead>
       <tr>
-        <th class="col-lg-2">Code</th>
+        <th width="5%"">Code</th>
         <th>Name</th>
         <th>subgroup</th>
         <th>Value Type</th>
@@ -97,7 +97,7 @@
       <tbody>
       <tr ng-repeat="indicator in indicators " ui-sref="dashboard.indicators_edit({id:indicator.id})" class="list-item"
           title="Edit {{indicator.name}}">
-        <td class="col-lg-2">{{indicator.code}}</td>
+        <td>{{indicator.code}}</td>
         <td>{{indicator.name}}</td>
         <td>{{indicator.subgroup.name}}</td>
         <td>{{indicator.valueType}}</td>
