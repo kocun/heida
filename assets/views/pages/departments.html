@@ -1,14 +1,14 @@
 <div class="departments-page" ng-if="me.role == 4">
   <div class="row">
-    <h1 class="page-header">Departments</h1>
+    <h1 class="page-header">Units</h1>
   </div>
   <div class="row">
     <a ng-click="addDepartment=true" ng-hide="addDepartment" class="pull-right mb20 add-department">
-      <i class="fa fa-plus-circle"></i> Add New Department
+      <i class="fa fa-plus-circle"></i> Add New Unit
     </a>
 
     <div class="input-group mb40" ng-show="addDepartment">
-      <input type="text" value="{{department.name}}" ng-model="department.name" class="form-control" placeholder="Add New Department">
+      <input type="text" value="{{department.name}}" ng-model="department.name" class="form-control" placeholder="Add New Unit">
       <span class="input-group-btn">
         <button class="btn btn-default" type="button" ng-click="save(department)">Add</button>
       </span>
