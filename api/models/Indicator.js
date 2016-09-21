@@ -19,7 +19,7 @@ module.exports = {
     attributes: {
         code: {
             type: 'string',
-            primaryKey: true,
+            unique:true,
             required: true
         },
         name: {
