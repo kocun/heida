@@ -6,11 +6,13 @@
   <div class="row">
 
     <form name="myForm">
+      <h4>Indicators</h4>
       <table id="panel{{state}}" class="table table-bordered">
         <thead>
         <tr>
           <th>Group</th>
-          <th width="45%">Sub-Group</th>
+          <th width="35%">Sub-Group</th>
+          <th width="125">Goals</th>
           <th width="145"></th>
         </tr>
         </thead>
@@ -23,30 +25,37 @@
                       ng-model="data.subgroup" required>
           </select></td>
           <td>
-            <button type="button" class="btn btn-danger pull-left" ng-click="clearFilter();data.subgroup = undefined;data.group = undefined;">
+            <select class="form-control" ng-model="data.filterGoal" required>
+              <option value="goal1">Goal 1</option>
+              <option value="goal2">Goal 2</option>
+              <option value="goal3">Goal 3</option>
+              <option value="goal4">Goal 4</option>
+              <option value="goal5">Goal 5</option>
+            </select>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger pull-left" ng-click="clearFilter();data.subgroup = undefined;data.group = undefined;data.filterGoal = undefined;">
               Clear
             </button>
-            <button type="button" class="btn btn-primary pull-right" ng-click="filter(data.subgroup.id);"
-                    ng-disabled="!(data.subgroup && data.group)">
+            <button type="button" class="btn btn-primary pull-right" ng-click="filter(data.subgroup.id,data.filterGoal);"
+                    ng-disabled="!(data.subgroup && data.group && data.filterGoal)">
               Filter
             </button>
           </td>
         </tr>
         </tbody>
       </table>
-
-      <h4>Indicators</h4>
-
-      <table class="table table-bordered">
-        <tbody>
-        <tr ng-repeat="indicator in indicators">
-          <td>
-            <a ng-click="addData(indicator)">{{indicator.name}}</a>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-
+      <div ng-show="filterState">-
+        <table class="table table-bordered">
+          <tbody>
+          <tr ng-repeat="indicator in indicators" ng-show="indicator[filterGoal] == 3">
+            <td>
+              <a ng-click="addData(indicator)">{{indicator.name}}</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </form>
   </div>
   <!-- /.table-responsive -->

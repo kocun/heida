@@ -60,9 +60,9 @@
                 </select>
               </div>
             </div>
-            <div class="col-md-4" ng-show="newData.departmentId == 'custom' || newData.subUnitId == 'custom'">
+            <div class="col-md-4" ng-show="newData.departmentId == 'custom' || newData.subUnitId">
               <div class="form-group">
-                <label>Other</label>
+                <label>Please write the name of your unit</label>
                 <input  class="form-control" type="text" id="new_otherUnit" ng-model="newData.otherUnit"/>
               </div>
             </div>
@@ -86,6 +86,7 @@
                 <select class="form-control" id="new_period" ng-model="newData.year" ng-change="prepareYearsValues();"  multiple ng-multiple="true" required ng-disabled="!newData.periodType">
                   <option ng-repeat="per in periodRange(newData.periodType)" value="{{per}}" ng-selected="{{per == newData.year}}">{{per}}</option>
                 </select>
+                <i class="info-text">You can select more by holding "CTRL" key</i>
               </div>
             </div>
           </div>
@@ -93,11 +94,11 @@
             <div class="col-md-2" ng-repeat="selectedYear in newData.year">
               <div class="form-group">
                 <label>Value of {{selectedYear}}
-                  <span ng-show="newData.numeric">(%)</span>
+                  <span ng-show="newData.percentage">(%)</span>
                   <span ng-show="newData.yesno">(Yes/No)</span>
                 </label>
-                <input ng-show="!newData.yesno" class="form-control" type="text" id="new_value_{{$index}}" ng-hide="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]"/>
-                <select ng-show="newData.yesno" class="form-control" id="new_value_{{$index}}_yesno" ng-show="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]">
+                <input ng-if="!newData.yesno" class="form-control" type="text" id="new_value_{{$index}}" ng-hide="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]"/>
+                <select ng-if="newData.yesno" class="form-control" id="new_value_{{$index}}_yesno" ng-show="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]">
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>
@@ -115,6 +116,7 @@
                 <select class="form-control" id="new_survey_{{survey.id}}" ng-model="newData.criterias[survey.id]"  multiple ng-multiple="true" required ng-if="survey.multiple == true">
                   <option ng-repeat="answer in survey.questions" value="{{answer.id}}" ng-selected="{{answer.id == newData.criterias[survey.id]}}">{{answer.name}}</option>
                 </select>
+                <i ng-if="survey.multiple == true" class="info-text">You can select more by holding "CTRL" key</i>
                 <select class="form-control" id="new_survey_{{survey.id}}" ng-model="newData.criterias[survey.id]" required ng-if="!(survey.multiple == true)">
                   <option ng-repeat="answer in survey.questions" value="{{answer.id}}" ng-selected="{{answer.id == newData.criterias[survey.id]}}">{{answer.name}}</option>
                 </select>
