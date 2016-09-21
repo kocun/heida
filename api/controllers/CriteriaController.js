@@ -8,7 +8,7 @@
 module.exports = {
 
   find: function (req, res) {
-    Criteria.find({sort :'name ASC'}).popoulate('questions').exec(function (err, criterias) {
+    Criteria.find({sort :'name ASC'}).populate('questions').exec(function (err, criterias) {
       res.json(criterias);
     });
   }
