@@ -26,13 +26,11 @@
       <thead>
         <tr>
           <th class="col-lg-10">Name</th>
-          <th>Relevancy</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="goal in goals" class="list-item" ui-sref="dashboard.goals_edit({id:goal.id})" title="Edit {{goal.name}}">
           <td class="col-lg-10">{{goal.name}}</td>
-          <td>{{goal.relevancy}}</td>
         </tr>
       </tbody>
     </table>

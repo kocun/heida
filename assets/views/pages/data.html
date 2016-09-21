@@ -10,20 +10,14 @@
       <table id="panel{{state}}" class="table table-bordered">
         <thead>
         <tr>
+          <th width="125">Goals</th>
           <th>Group</th>
           <th width="35%">Sub-Group</th>
-          <th width="125">Goals</th>
           <th width="145"></th>
         </tr>
         </thead>
         <tbody>
         <tr>
-          <td><select class="form-control" ng-options="group.name for group in groups track by group.id"
-                      ng-model="data.group" ng-change="getSubGroups(data.group.id)" required>
-          </select></td>
-          <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id "
-                      ng-model="data.subgroup" required>
-          </select></td>
           <td>
             <select class="form-control" ng-model="data.filterGoal" required>
               <option value="goal1">Goal 1</option>
@@ -33,6 +27,12 @@
               <option value="goal5">Goal 5</option>
             </select>
           </td>
+          <td><select class="form-control" ng-options="group.name for group in groups track by group.id"
+                      ng-model="data.group" ng-change="getSubGroups(data.group.id)" required>
+          </select></td>
+          <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id "
+                      ng-model="data.subgroup" required>
+          </select></td>
           <td>
             <button type="button" class="btn btn-danger pull-left" ng-click="clearFilter();data.subgroup = undefined;data.group = undefined;data.filterGoal = undefined;">
               Clear
