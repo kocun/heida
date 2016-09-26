@@ -249,14 +249,27 @@
 }
 /* Profile Page End */
 
+/* Report Page Start */
+.report-page .success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+.report-page .not-success {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+/* Report Page End */
+
 /* Admin Tabs Start */
 .users-page .list-item,  .departments-page .list-item, .subdepartments-page .list-item, .groups-page .list-item, .subgroups-page .list-item, .criteria-page .list-item, .questions-page .list-item, .indicators-page .list-item, .goals-page .list-item, .create-reports-page .list-item{
   cursor: pointer;
 }
-.departments-page a, .subdepartments-page a, .groups-page a, .subgroups-page a, .criteria-page a, .questions-page a, .indicators-page a, .goals-page a, .create-reports-page a {
+.departments-page a, .subdepartments-page a, .groups-page a, .subgroups-page a, .criteria-page a, .questions-page a, .indicators-page a, .goals-page a, .create-reports-page a, .report-page a {
   cursor: pointer;
 }
-.departments-page a:hover, .subdepartments-page a:hover, .groups-page a:hover, .subgroups-page a:hover, .criteria-page a:hover, .questions-page a:hover, .indicators-page a:hover, .goals-page a:hover, .create-reports-page a:hover {
+.departments-page a:hover, .subdepartments-page a:hover, .groups-page a:hover, .subgroups-page a:hover, .criteria-page a:hover, .questions-page a:hover, .indicators-page a:hover, .goals-page a:hover, .create-reports-page a:hover, .report-page a:hover {
   text-decoration: none;
 }
 /* Admin Tabs End */

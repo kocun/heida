@@ -543,6 +543,26 @@ angular
           }
         }
       })
+      .state('dashboard.report_print', {
+        templateUrl: 'views/pages/reports_detail.html',
+        url: '/report/detail/:dataId/:valueType/print',
+        controller: 'DataReportDetailCtrl',
+        resolve: {
+          loadMyFile: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'chart.js',
+              files: [
+                'bower_components/angular-chart.js/dist/angular-chart.min.js',
+                'bower_components/angular-chart.js/dist/angular-chart.css'
+              ]
+            }),
+              $ocLazyLoad.load({
+                name: 'heidaApp',
+                files: ['scripts/controllers/report.js']
+              })
+          }
+        }
+      })
       .state('dashboard.search', {
         controller: 'SearchCtrl',
         templateUrl: 'views/pages/search.html',
