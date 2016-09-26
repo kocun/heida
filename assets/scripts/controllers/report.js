@@ -84,7 +84,7 @@ angular.module('heidaApp')
   if(printReport[2] == 'print') {
     setTimeout(function(){
       window.print();
-    }, 100);
+    }, 300);
   }
 });
 
