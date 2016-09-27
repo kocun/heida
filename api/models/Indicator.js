@@ -27,7 +27,7 @@ module.exports = {
             required: true
         },
         valueType: {
-            enum: ['Yes / No', 'Numeric', 'Percentage']
+            enum: ['yes/no', 'numeric', 'percentage']
         },
         public: {
             enum: ['Public', 'Staff Only', 'Not Sure']
@@ -94,4 +94,5 @@ module.exports = {
 
         cb();
       }*/
+
 };
