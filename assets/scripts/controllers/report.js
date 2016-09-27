@@ -1,6 +1,6 @@
 angular.module('heidaApp')
 
-.controller('DataReportCtrl', function ($scope, $http, Restangular, $state, $stateParams, $timeout) {
+.controller('DataReportCtrl', function ($scope, $http, Restangular, $state, $stateParams, $location) {
   $http.get('/api/me').
     success(function(data) {
       $scope.me = data;
@@ -41,8 +41,19 @@ angular.module('heidaApp')
 
     $scope.datas = filteredDatas;
   }
+
+    $scope.deleteReport = function(dataId) {
+      $http.delete('/api/data/' + dataId.dataId)
+        .success(function () {
+          $state.go('dashboard.report', $stateParams, {
+            reload: true,
+            inherit: true
+          });
+        })
+    }
+
 })
-.controller('DataReportDetailCtrl', function ($scope, $http, Restangular, $state, $stateParams, $timeout) {
+.controller('DataReportDetailCtrl', function ($scope, $http, Restangular, $state, $stateParams, $location) {
   $http.get('/api/data/' + $stateParams.dataId).
   success(function(data) {
     $scope.data = data;
@@ -69,5 +80,11 @@ angular.module('heidaApp')
     }
   });
 
+  var printReport = $location.path().split('/').slice([4],[7]);
+  if(printReport[2] == 'print') {
+    setTimeout(function(){
+      window.print();
+    }, 300);
+  }
 });
 

@@ -48,38 +48,40 @@
       </thead>
       <tbody>
       <tr ng-repeat="data in datas">
-        <td>IC</td>
+        <td>
+          {{data.indicator.code}}</td>
         <td>
           {{data.indicator.name}}
         </td>
         <td>
-          {{data.group.name}}
+          {{data.department.name}}
         </td>
         <td>
-          {{data.subgroup.name}}
+          {{data.indicator.subgroup}}
         </td>
         <td>
           {{data.indicator.valueType}}
         </td>
-        <td>
-          status
+        <td ng-if="data.answer" class="success">
+          Success
+        </td>
+        <td ng-if="!data.answer" class="not-success">
+          Not Success
         </td>
         <td>
-          Edit
+          <a ui-sref="dashboard.data(editDataRow(data))">Edit</a>
         </td>
         <td>
           <a ui-sref="dashboard.report_detail({dataId:data.id, valueType:data.indicator.valueType})">Visualize (Graph/Table)</a>
         </td>
         <td>
-          Print
+          <a ui-sref="dashboard.report_print({dataId:data.id, valueType:data.indicator.valueType})">Print</a>
         </td>
         <td>
-          Delete
+          <a ng-click="deleteReport({dataId:data.id})" href="">Delete</a>
         </td>
       </tr>
       </tbody>
     </table>
-
-    <pdfviewer src="test.pdf" on-page-load='pageLoaded(page,total)' id="viewer"></pdfviewer>
   </div>
 </div>

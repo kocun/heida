@@ -6,20 +6,16 @@
     <table class="table table-bordered">
       <thead>
       <tr>
+        <th width="7%">Code</th>
         <th>Name</th>
         <th>Subgroup</th>
         <th>Value Type</th>
         <th>Public</th>
-        <th>Goal 1</th>
-        <th>Goal 2</th>
-        <th>Goal 3</th>
-        <th>Goal 4</th>
-        <th>Goal 5</th>
       </tr>
       </thead>
       <tbody>
       <tr>
-        <input type="hidden"  value="{{indicator.code}}" ng-model="indicator.code" disabled>
+        <td><input type="text" class="form-control" value="{{indicator.code}}" ng-model="indicator.code"></td>
         <td><input type="text" class="form-control" value="{{indicator.name}}" ng-model="indicator.name"></td>
         <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id"  ng-model="indicator.subgroup">
         </select></td>
@@ -30,24 +26,6 @@
         </select></td>
         <td class="text-center">
           <input type="checkbox" value="" ng-model="indicator.public">
-        </td>
-        <td>
-         {{indicator.goal1}}
-        </td>
-        <td>
-          {{indicator.goal2}}
-        </td>
-        <td>
-          {{indicator.goal3}}
-        </td>
-        <td>
-          {{indicator.goal4}}
-        </td>
-        <td>
-          {{indicator.goal5}}
-          <!--<select  class="form-control" ng-model="indicator.goal5" ng-options="opt.id as opt.val for opt in opts ">-->
-          <!--</select>-->
-        </td>
         </td>
       </tr>
       </tbody>
