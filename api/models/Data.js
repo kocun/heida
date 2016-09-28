@@ -11,6 +11,9 @@ module.exports = {
         department: {
             model: 'Department'
         },
+        subDepartmen:{
+          model: 'SubDepartment'
+        },
         departmentDesc: {
             type: 'string'
         },
