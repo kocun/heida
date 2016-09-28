@@ -11,7 +11,7 @@ module.exports = {
         department: {
             model: 'Department'
         },
-        subDepartmen:{
+        subDepartment:{
           model: 'SubDepartment'
         },
         departmentDesc: {
