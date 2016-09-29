@@ -8,18 +8,22 @@
       <table id="panel{{state}}" class="table table-bordered">
         <thead>
         <tr>
-          <th>Indicator</th>
-          <th width="30%">Department</th>
+          <th>Unit</th>
+          <th>Sub-Unit-Name of Unit</th>
+          <th width="30%">Indicator</th>
           <th width="145"></th>
         </tr>
         </thead>
         <tbody>
         <tr>
-          <td><select class="form-control" ng-model="filteredIndicator">
-            <option ng-repeat="indicator in indicators" value="{{indicator.id}}">{{indicator.name}}</option>
-          </select></td>
           <td><select class="form-control" ng-model="filteredDepartment">
             <option ng-repeat="department in departments" value="{{department.id}}">{{department.name}}</option>
+          </select></td>
+          <td><select class="form-control" ng-model="filteredSubdepartment">
+            <option ng-repeat="subdepartment in subdepartments" value="{{subdepartment.id}}">{{subdepartment.name}}</option>
+          </select></td>
+          <td><select class="form-control" ng-model="filteredIndicator">
+            <option ng-repeat="indicator in indicators" value="{{indicator.id}}">{{indicator.name}}</option>
           </select></td>
           <td>
             <button type="button" class="btn btn-danger pull-left" ng-click="clearFilter();filteredIndicator = undefined;filteredDepartment = undefined;">
@@ -57,16 +61,16 @@
           {{data.department.name}}
         </td>
         <td>
-          {{data.indicator.subgroup}}
+          {{data.indicator.subgroup.name}}
         </td>
         <td>
           {{data.indicator.valueType}}
         </td>
         <td ng-if="data.answer" class="success">
-          Success
+          Completed
         </td>
         <td ng-if="!data.answer" class="not-success">
-          Not Success
+          Incomplete
         </td>
         <td>
           <a ui-sref="dashboard.data(editDataRow(data))">Edit</a>
