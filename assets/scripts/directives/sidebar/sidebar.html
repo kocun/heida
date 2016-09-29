@@ -17,13 +17,20 @@
       <li ui-sref-active="active">
         <a ui-sref="dashboard.home"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
       </li>
-      <li ng-class="{active: collapseVar==1}" ng-if="me.role == 4">{{dropDown}}
-        <a href="" ng-click="check(1)"><i class="fa fa-wrench fa-fw"></i> Admin<span
+      <li ng-class="{active: adminCollapseVar==1}" ng-if="me.role == 4">{{dropDown}}
+        <a href="" ng-click="adminCollapse(1)"><i class="fa fa-wrench fa-fw"></i> Admin Menu<span
         class="fa arrow"></span></a>
-        <ul class="nav nav-second-level" collapse="collapseVar!=1" >
+        <ul class="nav nav-second-level" collapse="adminCollapseVar!=1" >
           <li ui-sref-active="active">
             <a ui-sref="dashboard.users">Users</a>
           </li>
+        </ul>
+        <!-- /.nav-second-level -->
+      </li>
+      <li ng-class="{active: editorCollapseVar==1}" ng-if="me.role == 3 || me.role == 4">{{dropDown}}
+        <a href="" ng-click="editorCollapse(1)"><i class="fa fa-wrench fa-fw"></i> Editor Menu<span
+          class="fa arrow"></span></a>
+        <ul class="nav nav-second-level" collapse="editorCollapseVar!=1" >
           <li ui-sref-active="active">
             <a ui-sref="dashboard.departments">Units</a>
           </li>
