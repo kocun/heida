@@ -26,12 +26,12 @@
             <option ng-repeat="indicator in indicators" value="{{indicator.id}}">{{indicator.name}}</option>
           </select></td>
           <td>
-            <button type="button" class="btn btn-danger pull-left" ng-click="clearFilter();filteredIndicator = undefined;filteredDepartment = undefined;">
-              Clear
-            </button>
             <button type="button" class="btn btn-primary pull-right" ng-click="filter();"
                     ng-disabled="!(filteredIndicator || filteredDepartment)">
               Filter
+            </button>
+            <button type="button" class="btn btn-danger pull-left" ng-click="clearFilter();filteredIndicator = undefined;filteredDepartment = undefined;">
+              Clear
             </button>
           </td>
         </tr>
