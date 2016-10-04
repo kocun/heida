@@ -7,14 +7,15 @@
 
 module.exports = {
 
-    search: function(req, res) {
+  search: function(req, res) {
 
-        Indicator.find({
-            name: {
-                'contains': req.params.text
-            }
-        }).exec(function(err, indicators) {
-            return res.json(indicators);
-        });
-    }
+    Indicator.find({
+      name: {
+        'contains': req.params.text
+      }
+    }).populate('subgroup').exec(function(err, indicators) {
+      return res.json(indicators);
+
+    });
+  }
 };
