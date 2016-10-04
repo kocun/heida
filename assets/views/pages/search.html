@@ -6,12 +6,18 @@
     <table class="table table-striped table-bordered">
       <thead>
       <tr>
+        <th>Indicator Code</th>
         <th>Indicator Name</th>
+        <th>Unit</th>
+        <th>Subunit</th>
       </tr>
       </thead>
       <tbody>
       <tr ng-repeat="data in searchDatas"  class="list-item">
+        <td>{{data.code}}</td>
         <td>{{data.name}}</td>
+        <td>{{data.group}}</td>
+        <td>{{data.subgroup}}</td>
       </tr>
       </tbody>
     </table>
