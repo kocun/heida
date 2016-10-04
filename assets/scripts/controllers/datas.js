@@ -133,6 +133,8 @@ angular.module('heidaApp', ['ngDialog'])
       editData.departmentId = data.departmentId.id || data.departmentId;
 
       editData.subdepartments = $scope.subUnits(editData.departmentId);
+      editData.otherUnit = editData.departmentDesc;
+      editData.subUnitId = editData.subdepartment;
 
       var year = [];
 
@@ -181,6 +183,8 @@ angular.module('heidaApp', ['ngDialog'])
     $scope.saveNewData = function(data){
       var obj = {};
       obj.department = data.departmentId;
+      obj.subdepartment = data.subUnitId;
+      obj.departmentDesc = data.otherUnit;
       obj.indicator = data.indicator;
 
       var yearArr = [];
@@ -192,7 +196,6 @@ angular.module('heidaApp', ['ngDialog'])
         });
       }
       obj.years = yearArr;
-
 
       var criteriaArr = [];
 
