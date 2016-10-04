@@ -8,16 +8,14 @@
       <tr>
         <th>Indicator Code</th>
         <th>Indicator Name</th>
-        <th>Unit</th>
-        <th>Subunit</th>
+        <th>Sub-Group</th>
       </tr>
       </thead>
       <tbody>
       <tr ng-repeat="data in searchDatas"  class="list-item">
         <td>{{data.code}}</td>
         <td>{{data.name}}</td>
-        <td>{{data.group}}</td>
-        <td>{{data.subgroup}}</td>
+        <td>{{data.subgroup.name}}</td>
       </tr>
       </tbody>
     </table>
