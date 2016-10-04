@@ -273,7 +273,6 @@ angular.module('heidaApp', ['ngDialog'])
           datasObj.departmentId =  pureData.department || pureData.department.id;
           datasObj.departmentName = pureData.department.name;
           datasObj.value = pureData.value;
-          debugger;
           datasObj[$scope.ind.valueType ? $scope.ind.valueType.toLowerCase().replace('/','') : 'numeric'] = true;
           datasObj.public = $scope.ind.public;
           datasObj.indicator = $scope.ind.id;
