@@ -17,7 +17,8 @@ module.exports = {
       }).exec(function(err, user) {
         res.json(user);
       });
-    } else {
+    }
+    else {
       res.json({});
     }
   },
@@ -38,7 +39,9 @@ module.exports = {
         return res.redirect('/#/login');
       }
       req.logIn(user, function(err) {
-        if (err) res.send(err);
+        if (err) {
+          res.send(err);
+        }
         return res.redirect("/#/dashboard/home");
       });
     })(req, res);
@@ -57,7 +60,9 @@ module.exports = {
         return res.redirect('/#/login');
       }
       req.logIn(user, function(err) {
-        if (err) res.send(err);
+        if (err) {
+          res.send(err);
+        }
         return res.redirect("/#/dashboard/home");
       });
     })(req, res);
