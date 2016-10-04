@@ -273,7 +273,8 @@ angular.module('heidaApp', ['ngDialog'])
           datasObj.departmentId =  pureData.department || pureData.department.id;
           datasObj.departmentName = pureData.department.name;
           datasObj.value = pureData.value;
-          datasObj[$scope.ind.valueType ? $scope.ind.valueType.toLowerCase().replace('/','') : 'other'] = true;
+          debugger;
+          datasObj[$scope.ind.valueType ? $scope.ind.valueType.toLowerCase().replace('/','') : 'numeric'] = true;
           datasObj.public = $scope.ind.public;
           datasObj.indicator = $scope.ind.id;
           datasObj.indicatorName = $scope.ind.name;
@@ -351,4 +352,14 @@ angular.module('heidaApp', ['ngDialog'])
         $scope.indicators = indicators;
       });
     }
+
+    $scope.validatePercentage = function(val,objName){
+      var currentValue;
+      if ( val > 100 ) {
+        var strVal = (""+val);
+        var currentValue = parseInt(strVal.substring(0, strVal.length - 1));
+        $scope.newData.yearsValues[objName] = currentValue;
+      }
+    }
+
   })
