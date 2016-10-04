@@ -43,13 +43,18 @@ angular.module('heidaApp')
   }
 
     $scope.deleteReport = function(dataId) {
-      $http.delete('/api/data/' + dataId.dataId)
-        .success(function () {
-          $state.go('dashboard.report', $stateParams, {
-            reload: true,
-            inherit: true
-          });
-        })
+      if (confirm('Are you sure you want to delete this indicator?')) {
+        $http.delete('/api/data/' + dataId.dataId)
+          .success(function () {
+            $state.go('dashboard.report', $stateParams, {
+              reload: true,
+              inherit: true
+            });
+          })
+      } else {
+        // Do nothing!
+      }
+
     }
 
 })
