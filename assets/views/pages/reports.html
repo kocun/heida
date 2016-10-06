@@ -9,8 +9,7 @@
         <thead>
         <tr>
           <th>Unit</th>
-          <th>Sub-Unit-Name of Unit</th>
-          <th width="30%">Indicator</th>
+          <th width="60%">Indicator</th>
           <th width="145"></th>
         </tr>
         </thead>
@@ -18,9 +17,6 @@
         <tr>
           <td><select class="form-control" ng-model="filteredDepartment">
             <option ng-repeat="department in departments" value="{{department.id}}">{{department.name}}</option>
-          </select></td>
-          <td><select class="form-control" ng-model="filteredSubdepartment">
-            <option ng-repeat="subdepartment in subdepartments" value="{{subdepartment.id}}">{{subdepartment.name}}</option>
           </select></td>
           <td><select class="form-control" ng-model="filteredIndicator">
             <option ng-repeat="indicator in indicators" value="{{indicator.id}}">{{indicator.name}}</option>
@@ -44,8 +40,7 @@
       <thead>
       <th>Indicator Code</th>
       <th>Indicator Name</th>
-      <th>Group</th>
-      <th>Sub-Group</th>
+      <th>Unit</th>
       <th>Data Type</th>
       <th>Status</th>
       <th colspan="4">Actions</th>
@@ -59,9 +54,6 @@
         </td>
         <td>
           {{data.department.name}}
-        </td>
-        <td>
-          {{data.indicator.subgroup.name}}
         </td>
         <td>
           {{data.indicator.valueType}}
