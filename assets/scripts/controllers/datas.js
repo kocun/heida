@@ -133,6 +133,8 @@ angular.module('heidaApp', ['ngDialog'])
       editData.departmentId = data.departmentId.id || data.departmentId;
 
       editData.subdepartments = $scope.subUnits(editData.departmentId);
+      editData.otherUnit = editData.departmentDesc;
+      editData.subUnitId = editData.subdepartment;
 
       var year = [];
 
@@ -181,6 +183,8 @@ angular.module('heidaApp', ['ngDialog'])
     $scope.saveNewData = function(data){
       var obj = {};
       obj.department = data.departmentId;
+      obj.subdepartment = data.subUnitId;
+      obj.departmentDesc = data.otherUnit;
       obj.indicator = data.indicator;
 
       var yearArr = [];
@@ -192,7 +196,6 @@ angular.module('heidaApp', ['ngDialog'])
         });
       }
       obj.years = yearArr;
-
 
       var criteriaArr = [];
 
@@ -273,7 +276,7 @@ angular.module('heidaApp', ['ngDialog'])
           datasObj.departmentId =  pureData.department || pureData.department.id;
           datasObj.departmentName = pureData.department.name;
           datasObj.value = pureData.value;
-          datasObj[$scope.ind.valueType ? $scope.ind.valueType.toLowerCase().replace('/','') : 'other'] = true;
+          datasObj[$scope.ind.valueType ? $scope.ind.valueType.toLowerCase().replace('/','') : 'numeric'] = true;
           datasObj.public = $scope.ind.public;
           datasObj.indicator = $scope.ind.id;
           datasObj.indicatorName = $scope.ind.name;
@@ -351,4 +354,14 @@ angular.module('heidaApp', ['ngDialog'])
         $scope.indicators = indicators;
       });
     }
+
+    $scope.validatePercentage = function(val,objName){
+      var currentValue;
+      if ( val > 100 ) {
+        var strVal = (""+val);
+        var currentValue = parseInt(strVal.substring(0, strVal.length - 1));
+        $scope.newData.yearsValues[objName] = currentValue;
+      }
+    }
+
   })
