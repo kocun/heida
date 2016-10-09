@@ -34,12 +34,12 @@
                       ng-model="data.subgroup" required>
           </select></td>
           <td>
-            <button type="button" class="btn btn-danger pull-left" ng-click="clearFilter();data.subgroup = undefined;data.group = undefined;data.filterGoal = undefined;">
-              Clear
-            </button>
             <button type="button" class="btn btn-primary pull-right" ng-click="filter(data.subgroup.id,data.filterGoal);"
                     ng-disabled="!(data.subgroup && data.group && data.filterGoal)">
               Filter
+            </button>
+            <button type="button" class="btn btn-danger pull-left" ng-click="clearFilter();data.subgroup = undefined;data.group = undefined;data.filterGoal = undefined;">
+              Clear
             </button>
           </td>
         </tr>
