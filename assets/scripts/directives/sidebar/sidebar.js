@@ -17,16 +17,32 @@ angular.module('heidaApp')
       },
       controller:function($scope){
         $scope.selectedMenu = 'dashboard';
-        $scope.collapseVar = 0;
+        $scope.adminCollapseVar = 0;
+        $scope.editorCollapseVar = 0;
         $scope.multiCollapseVar = 0;
 
-        $scope.check = function(x){
+        $scope.adminCollapse = function(x){
 
-          if(x==$scope.collapseVar)
-            $scope.collapseVar = 0;
-          else
-            $scope.collapseVar = x;
+          if(x==$scope.adminCollapseVar) {
+            $scope.adminCollapseVar = 0;
+          }
+          else {
+            $scope.adminCollapseVar = x;
+            $scope.editorCollapseVar = 0;
+          }
+
         };
+
+        $scope.editorCollapse = function(x) {
+          if(x==$scope.editorCollapseVar) {
+            $scope.editorCollapseVar = 0;
+          }
+          else {
+            $scope.editorCollapseVar = x;
+            $scope.adminCollapseVar = 0;
+          }
+
+        }
 
         $scope.multiCheck = function(y){
 

@@ -8,26 +8,26 @@
       <table id="panel{{state}}" class="table table-bordered">
         <thead>
         <tr>
-          <th>Indicator</th>
-          <th width="30%">Department</th>
+          <th>Unit</th>
+          <th width="60%">Indicator</th>
           <th width="145"></th>
         </tr>
         </thead>
         <tbody>
         <tr>
-          <td><select class="form-control" ng-model="filteredIndicator">
-            <option ng-repeat="indicator in indicators" value="{{indicator.id}}">{{indicator.name}}</option>
-          </select></td>
           <td><select class="form-control" ng-model="filteredDepartment">
             <option ng-repeat="department in departments" value="{{department.id}}">{{department.name}}</option>
           </select></td>
+          <td><select class="form-control" ng-model="filteredIndicator">
+            <option ng-repeat="indicator in indicators" value="{{indicator.id}}">{{indicator.name}}</option>
+          </select></td>
           <td>
-            <button type="button" class="btn btn-danger pull-left" ng-click="clearFilter();filteredIndicator = undefined;filteredDepartment = undefined;">
-              Clear
-            </button>
             <button type="button" class="btn btn-primary pull-right" ng-click="filter();"
                     ng-disabled="!(filteredIndicator || filteredDepartment)">
               Filter
+            </button>
+            <button type="button" class="btn btn-danger pull-left" ng-click="clearFilter();filteredIndicator = undefined;filteredDepartment = undefined;">
+              Clear
             </button>
           </td>
         </tr>
@@ -40,8 +40,7 @@
       <thead>
       <th>Indicator Code</th>
       <th>Indicator Name</th>
-      <th>Group</th>
-      <th>Sub-Group</th>
+      <th>Unit</th>
       <th>Data Type</th>
       <th>Status</th>
       <th colspan="4">Actions</th>
@@ -57,16 +56,13 @@
           {{data.department.name}}
         </td>
         <td>
-          {{data.indicator.subgroup}}
-        </td>
-        <td>
           {{data.indicator.valueType}}
         </td>
         <td ng-if="data.answer" class="success">
-          Success
+          Completed
         </td>
         <td ng-if="!data.answer" class="not-success">
-          Not Success
+          Incomplete
         </td>
         <td>
           <a ui-sref="dashboard.data(editDataRow(data))">Edit</a>
