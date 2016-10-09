@@ -1,3 +1,5 @@
-# heida
+# HEIDA Project
 
-a [Sails](http://sailsjs.org) application
+**HEIDA** refers to "**Data driven decision making for internationalization of higher education: Bridging the gap between faculty and admin using effective communication platforms**"
+
+
