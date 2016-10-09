@@ -19,6 +19,8 @@ module.exports = {
       department: req.body.department,
       indicator: req.body.indicator,
       years: req.body.years,
+      subDepartment: req.body.subdepartment,
+      departmentDesc: req.body.departmentDesc,
       criterias: req.body.criterias,
       periodType: req.body.periodType,
       public: req.body.public
@@ -38,8 +40,6 @@ module.exports = {
 
         Department.findOne(data.department.id).populate('subs').exec(function(err, department) {
           data.department_sub = department;
-          console.log(department);
-          console.log(data);
           res.json(data);
         });
 
