@@ -24,16 +24,23 @@ angular.module('heidaApp')
     for (; i < iL; i++) {
       var obj = $scope.allDatas[i];
 
-      if ( $scope.filteredDepartment && !$scope.filteredIndicator ) {
+      if ( $scope.filteredDepartment ) {
         if (obj.department && obj.department.id == $scope.filteredDepartment) {
           filteredDatas.push(obj)
         }
-      } else if ( !$scope.filteredDepartment && $scope.filteredIndicator ) {
+      }
+      if ($scope.filteredIndicator ) {
         if ( obj.indicator && obj.indicator.id == $scope.filteredIndicator) {
           filteredDatas.push(obj)
         }
-      } else {
-        if ( obj.department && obj.indicator && obj.indicator.id == $scope.filteredIndicator && obj.department.id == $scope.filteredDepartment ) {
+      }
+      if($scope.filteredSubDepartment) {
+        if ( obj.subDepartment && obj.subDepartment.id == $scope.filteredSubDepartment ) {
+          filteredDatas.push(obj)
+        }
+      }
+      if($scope.filteredDepartmentDesc) {
+        if ( obj.departmentDesc && obj.departmentDesc.id == $scope.filteredDepartmentDesc ) {
           filteredDatas.push(obj)
         }
       }

@@ -8,15 +8,23 @@
       <table id="panel{{state}}" class="table table-bordered">
         <thead>
         <tr>
-          <th>Unit</th>
-          <th width="60%">Indicator</th>
-          <th width="145"></th>
+          <th width="22%">Unit</th>
+          <th width="22%">Sub-Unit</th>
+          <th width="22%">Name Of Unit</th>
+          <th width="22%">Indicator</th>
+          <th width="12%"></th>
         </tr>
         </thead>
         <tbody>
         <tr>
           <td><select class="form-control" ng-model="filteredDepartment">
             <option ng-repeat="department in departments" value="{{department.id}}">{{department.name}}</option>
+          </select></td>
+          <td><select class="form-control" ng-model="filteredSubDepartment">
+            <option ng-repeat="subdepartment in subdepartment" value="{{subDepartment.id}}">{{subDepartment.name}}</option>
+          </select></td>
+          <td><select class="form-control" ng-model="filteredDepartmentDesc">
+            <option ng-repeat="department in departments" value="{{departmentDesc.name}}">{{departmentDesc.name}}</option>
           </select></td>
           <td><select class="form-control" ng-model="filteredIndicator">
             <option ng-repeat="indicator in indicators" value="{{indicator.id}}">{{indicator.name}}</option>
