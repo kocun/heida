@@ -13,13 +13,21 @@ angular
     'ui.router',
     'ui.bootstrap',
     'angular-loading-bar',
-    'restangular'
+    'restangular',
+    'pascalprecht.translate'
   ])
-  .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider','$translateProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider,$translateProvider) {
     $ocLazyLoadProvider.config({
       debug: false,
       events: true
     });
+    $translateProvider
+      .useStaticFilesLoader({
+        prefix: '/scripts/translations/',
+        suffix: '.json'
+      })
+      .preferredLanguage('tr')
+      .useMissingTranslationHandlerLog();
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider

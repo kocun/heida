@@ -51,11 +51,16 @@
   "author": "adilatilgan",
   "license": "",
   "devDependencies": {
+    "browser-sync": "^2.17.3",
     "eslint": "^3.0.1",
     "grunt-wiredep": "^3.0.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
     "istanbul": "^0.4.2",
     "jslint": "^0.10.1",
     "mocha": "^3.0.2",
+    "run-sequence": "^1.2.2",
     "supertest": "^2.0.0"
   },
   "eslintConfig": {
