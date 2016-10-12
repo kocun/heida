@@ -133,8 +133,9 @@ angular.module('heidaApp', ['ngDialog'])
       editData.departmentId = data.departmentId.id || data.departmentId;
 
       editData.subdepartments = $scope.subUnits(editData.departmentId);
-      editData.otherUnit = editData.departmentDesc;
-      editData.subUnitId = editData.subdepartment;
+      editData.otherUnit = originalData.departmentDesc || originalData.otherUnit;
+      editData.subUnitId = originalData.subUnitId;
+      editData.subDepartmentLists = originalData.subDepartmentLists || originalData.department_sub.subs;
 
       var year = [];
 
@@ -143,7 +144,7 @@ angular.module('heidaApp', ['ngDialog'])
       for (; i < iL ; i++ ) {
         var obj = data.yearsValues[i];
         year.push(obj.year);
-        yearsValues[obj.year] = obj.value;
+        yearsValues[obj.year] = (data.numeric || data.percentage) ? 1*obj.value : obj.value;
       }
 
       editData.year = year;
@@ -183,7 +184,10 @@ angular.module('heidaApp', ['ngDialog'])
     $scope.saveNewData = function(data){
       var obj = {};
       obj.department = data.departmentId;
-      obj.subdepartment = data.subUnitId;
+      obj.subDepartment = {
+        "id" : data.subUnitId
+      };
+
       obj.departmentDesc = data.otherUnit;
       obj.indicator = data.indicator;
 
@@ -282,6 +286,12 @@ angular.module('heidaApp', ['ngDialog'])
           datasObj.indicatorName = $scope.ind.name;
           datasObj.id = pureData.id;
           datasObj.criterias = pureData.criterias;
+          datasObj.otherUnit = pureData.departmentDesc;
+          $http.get('/api/data/' + datasObj.id).success(function(item) {
+            datasObj.subUnitId = item.department_sub.id;
+            datasObj.subDepartmentLists = item.department_sub.subs;
+          });
+
 
           if ( !datasObj.departmentName ) {
             var k = 0, kL = $scope.departments.length;
