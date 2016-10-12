@@ -8,15 +8,23 @@
       <table id="panel{{state}}" class="table table-bordered">
         <thead>
         <tr>
-          <th>Unit</th>
-          <th width="60%">Indicator</th>
-          <th width="145"></th>
+          <th width="22%">Unit</th>
+          <th width="22%">Sub-Unit</th>
+          <th width="22%">Name Of Unit</th>
+          <th width="22%">Indicator</th>
+          <th width="12%"></th>
         </tr>
         </thead>
         <tbody>
         <tr>
           <td><select class="form-control" ng-model="filteredDepartment">
             <option ng-repeat="department in departments" value="{{department.id}}">{{department.name}}</option>
+          </select></td>
+          <td><select class="form-control" ng-model="filteredSubDepartment">
+            <option ng-repeat="subdepartment in subdepartment" value="{{subDepartment.id}}">{{subDepartment.name}}</option>
+          </select></td>
+          <td><select class="form-control" ng-model="filteredDepartmentDesc">
+            <option ng-repeat="department in departments" value="{{departmentDesc.name}}">{{departmentDesc.name}}</option>
           </select></td>
           <td><select class="form-control" ng-model="filteredIndicator">
             <option ng-repeat="indicator in indicators" value="{{indicator.id}}">{{indicator.name}}</option>
@@ -43,6 +51,7 @@
       <th>Unit</th>
       <th>Data Type</th>
       <th>Status</th>
+      <th width="135">Values</th>
       <th colspan="4">Actions</th>
       </thead>
       <tbody>
@@ -65,15 +74,17 @@
           Incomplete
         </td>
         <td>
+          <div ng-repeat="yearval in data.years">
+            (<b>{{yearval.year}} :</b>  {{yearval.value}})
+          </div>
+        </td>
+        <td>
           <a ui-sref="dashboard.data(editDataRow(data))">Edit</a>
-        </td>
-        <td>
+          <br/>
           <a ui-sref="dashboard.report_detail({dataId:data.id, valueType:data.indicator.valueType})">Visualize (Graph/Table)</a>
-        </td>
-        <td>
+          <br/>
           <a ui-sref="dashboard.report_print({dataId:data.id, valueType:data.indicator.valueType})">Print</a>
-        </td>
-        <td>
+          <br/>
           <a ng-click="deleteReport({dataId:data.id})" href="">Delete</a>
         </td>
       </tr>
