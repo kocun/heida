@@ -51,7 +51,6 @@
       <th>Unit</th>
       <th>Data Type</th>
       <th>Status</th>
-      <th width="135">Values</th>
       <th colspan="4">Actions</th>
       </thead>
       <tbody>
@@ -73,18 +72,21 @@
         <td ng-if="!data.answer" class="not-success">
           Incomplete
         </td>
-        <td>
-          <div ng-repeat="yearval in data.years">
-            (<b>{{yearval.year}} :</b>  {{yearval.value}})
-          </div>
-        </td>
+        <!--<td>-->
+          <!--<div ng-repeat="yearval in data.years">-->
+            <!--(<b>{{yearval.year}} :</b>  {{yearval.value}})-->
+          <!--</div>-->
+        <!--</td>-->
         <td>
           <a ui-sref="dashboard.data(editDataRow(data))">Edit</a>
-          <br/>
+        </td>
+        <td>
           <a ui-sref="dashboard.report_detail({dataId:data.id, valueType:data.indicator.valueType})">Visualize (Graph/Table)</a>
-          <br/>
+        </td>
+        <td>
           <a ui-sref="dashboard.report_print({dataId:data.id, valueType:data.indicator.valueType})">Print</a>
-          <br/>
+        </td>
+        <td>
           <a ng-click="deleteReport({dataId:data.id})" href="">Delete</a>
         </td>
       </tr>
