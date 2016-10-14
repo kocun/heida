@@ -37,9 +37,8 @@ module.exports = {
     Data.findOne(req.param('id')).populate("department").populate("subDepartment").populate("indicator").populate("criterias").populate("years").exec(function(err, data) {
       Indicator.findOne(data.indicator).populate('subgroup').exec(function(err, indicator) {
         data.indicator = indicator;
-
-        Department.findOne(data.department.id).populate('subs').exec(function(err, department) {
-          data.department_sub = department;
+        SubDepartment.findOne(data.subDepartment.id).exec(function(err, sd) {
+          data.subDepartment=sd;
           res.json(data);
         });
 
