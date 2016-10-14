@@ -8,33 +8,28 @@
       <table id="panel{{state}}" class="table table-bordered">
         <thead>
         <tr>
-          <th width="21%">Unit</th>
-          <th width="21%">Sub-Unit</th>
-          <th width="21%">Name Of Unit</th>
-          <th width="21%">Indicator</th>
+          <th width="28%">Unit</th>
+          <th width="28%">Sub-Unit</th>
+          <th width="28%">Indicator</th>
           <th width="16%"></th>
         </tr>
         </thead>
         <tbody>
         <tr>
-          <td><select class="form-control" ng-model="filteredDepartment">
-            <option ng-repeat="department in departments" value="{{department.id}}">{{department.name}}</option>
+          <td><select class="form-control" ng-model="filteredDepartment" ng-options="department.name for department in departments track by department.id"
+                      ng-change="getSubDepartments(filteredDepartment)">
           </select></td>
-          <td><select class="form-control" ng-model="filteredSubDepartment">
-            <option ng-repeat="subdepartment in subdepartment" value="{{subDepartment.id}}">{{subDepartment.name}}</option>
-          </select></td>
-          <td><select class="form-control" ng-model="filteredDepartmentDesc">
-            <option ng-repeat="department in departments" value="{{departmentDesc.name}}">{{departmentDesc.name}}</option>
+          <td><select class="form-control" ng-model="filteredSubDepartment" ng-options="subdepartment.name for subdepartment in subdepartments track by subdepartment.id">
           </select></td>
           <td><select class="form-control" ng-model="filteredIndicator">
             <option ng-repeat="indicator in indicators" value="{{indicator.id}}">{{indicator.name}}</option>
           </select></td>
           <td>
             <button type="button" class="btn btn-primary" ng-click="filter();"
-                    ng-disabled="!(filteredIndicator || filteredDepartment)">
+                    ng-disabled="!(filteredIndicator || filteredSubDepartment)">
               Filter
             </button>
-            <button type="button" class="btn btn-danger pull-right" ng-click="clearFilter();filteredIndicator = undefined;filteredDepartment = undefined;">
+            <button type="button" class="btn btn-danger pull-right" ng-click="clearFilter();filteredIndicator = undefined;filteredSubDepartment = undefined;">
               Clear
             </button>
           </td>

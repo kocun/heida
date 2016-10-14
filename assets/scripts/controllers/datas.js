@@ -134,7 +134,6 @@ angular.module('heidaApp', ['ngDialog'])
 
       editData.subdepartments = $scope.subUnits(editData.departmentId);
       editData.otherUnit = originalData.departmentDesc || originalData.otherUnit;
-    debugger;
       editData.subUnitId = originalData.subDepartment || originalData.subUnitId.id;
       editData.subDepartmentLists = originalData.subDepartmentLists;
 
@@ -186,7 +185,6 @@ angular.module('heidaApp', ['ngDialog'])
       var obj = {};
       obj.department = data.departmentId;
       obj.subDepartment = data.subUnitId;
-debugger;
       obj.departmentDesc = data.otherUnit;
       obj.indicator = data.indicator;
 
