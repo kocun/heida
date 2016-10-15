@@ -47,7 +47,6 @@
                 <label>Type of Unit</label>
                 <select class="form-control" id="new_department" ng-change="subUnits(newData.departmentId)" ng-model="newData.departmentId" required>
                   <option ng-repeat="department in departments" value="{{department.id}}" ng-selected="{{department.id == newData.departmentId}}">{{department.name}}</option>
-                  <option value="custom">Other</option>
                 </select>
               </div>
             </div>
@@ -56,7 +55,6 @@
                 <label>Type of Sub Unit</label>
                 <select class="form-control" id="new_subUnit" ng-model="newData.subUnitId" ng-disabled="!newData.departmentId || newData.departmentId == 'custom'">
                   <option ng-repeat="subUnit in newData.subdepartments" value="{{subUnit.id}}" ng-selected="{{subUnit.id == newData.subUnitId}}">{{subUnit.name}}</option>
-                  <option value="custom">Other</option>
                 </select>
               </div>
             </div>
