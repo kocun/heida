@@ -6,7 +6,6 @@
   <div class="row">
 
     <form name="myForm">
-      <h4>Indicators</h4>
       <table id="panel{{state}}" class="table table-bordered">
         <thead>
         <tr>
@@ -34,11 +33,11 @@
                       ng-model="data.subgroup" required>
           </select></td>
           <td>
-            <button type="button" class="btn btn-primary pull-right" ng-click="filter(data.subgroup.id,data.filterGoal);"
+            <button type="button" class="btn btn-primary" ng-click="filter(data.subgroup.id,data.filterGoal);"
                     ng-disabled="!(data.subgroup && data.group && data.filterGoal)">
               Filter
             </button>
-            <button type="button" class="btn btn-danger pull-left" ng-click="clearFilter();data.subgroup = undefined;data.group = undefined;data.filterGoal = undefined;">
+            <button type="button" class="btn btn-danger pull-right" ng-click="clearFilter();data.subgroup = undefined;data.group = undefined;data.filterGoal = undefined;">
               Clear
             </button>
           </td>
