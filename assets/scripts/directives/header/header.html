@@ -4,8 +4,13 @@
       <img src="images/header-logo.png" alt="heida"/>
       <img src="images/koc-logo.png" alt="koc university"/>
     </a>
+    <button ng-show="lang == 'tr'" ng-click="changeLanguage('tr')" translate="BUTTON_LANG_TR"></button>
+    <button ng-show="lang == 'en'" ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></button>
   </div>
-  <a class="nav navbar-top-links navbar-right logout-button hide-on-mobile" ui-sref="login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+
+
+  <a class="nav navbar-top-links navbar-right logout-button hide-on-mobile" ui-sref="login"><i
+    class="fa fa-sign-out fa-fw"></i> Logout</a>
   <!-- /.navbar-header -->
   <header-notification></header-notification>
 
