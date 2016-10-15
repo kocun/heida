@@ -14,40 +14,39 @@ angular.module('heidaApp')
   Restangular.all('/api/department').getList().then(function (departments) {
     $scope.departments = departments;
   });
+
   $scope.clearFilter = function () {
     $scope.datas = $scope.allDatas;
   }
 
-  $scope.filter = function () {
-    var i = 0, iL = $scope.allDatas.length;
-    var filteredDatas = [];
-    for (; i < iL; i++) {
-      var obj = $scope.allDatas[i];
-
-      if ( $scope.filteredDepartment ) {
-        if (obj.department && obj.department.id == $scope.filteredDepartment) {
-          filteredDatas.push(obj)
-        }
-      }
-      if ($scope.filteredIndicator ) {
-        if ( obj.indicator && obj.indicator.id == $scope.filteredIndicator) {
-          filteredDatas.push(obj)
-        }
-      }
-      if($scope.filteredSubDepartment) {
-        if ( obj.subDepartment && obj.subDepartment.id == $scope.filteredSubDepartment ) {
-          filteredDatas.push(obj)
-        }
-      }
-      if($scope.filteredDepartmentDesc) {
-        if ( obj.departmentDesc && obj.departmentDesc.id == $scope.filteredDepartmentDesc ) {
-          filteredDatas.push(obj)
-        }
-      }
-    }
-
-    $scope.datas = filteredDatas;
+  $scope.getSubDepartments = function (department) {
+    Restangular.all('/api/subDepartment?department=' + department.id).getList().then(function (subdepartments) {
+      $scope.subdepartments = subdepartments;
+    });
   }
+    $scope.filter = function () {
+      var i = 0, iL = $scope.allDatas.length;
+      var filteredDatas = [];
+      for (; i < iL; i++) {
+        var obj = $scope.allDatas[i];
+
+        if ( $scope.filteredDepartment && !$scope.filteredIndicator ) {
+          if (obj.department && obj.department.id == $scope.filteredDepartment) {
+            filteredDatas.push(obj)
+          }
+        } else if ( !$scope.filteredDepartment && $scope.filteredIndicator ) {
+          if ( obj.indicator && obj.indicator.id == $scope.filteredIndicator) {
+            filteredDatas.push(obj)
+          }
+        } else {
+          if ( obj.department && obj.indicator && obj.indicator.id == $scope.filteredIndicator && obj.department.id == $scope.filteredDepartment ) {
+            filteredDatas.push(obj)
+          }
+        }
+      }
+
+      $scope.datas = filteredDatas;
+    }
 
     $scope.deleteReport = function(dataId) {
       if (confirm('Are you sure you want to delete this indicator?')) {
@@ -96,7 +95,7 @@ angular.module('heidaApp')
   if(printReport[2] == 'print') {
     setTimeout(function(){
       window.print();
-    }, 1000);
+    }, 2000);
   }
 });
 
