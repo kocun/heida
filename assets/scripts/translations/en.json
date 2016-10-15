@@ -1,4 +1,9 @@
 {
   "HELLO": "Hello",
-  "Sign in with Google":"Sign in with Google"
+  "Sign in with Google": "Sign in with Google",
+  "Academic Unit": "Academic Unit",
+  "Non-Academic / Administrative Unit": "Non-Academic / Administrative Unit",
+  "Research Unit": "Research Unit",
+  "Other": "Other"
 }
+
