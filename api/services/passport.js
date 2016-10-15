@@ -26,7 +26,8 @@ function findById(id, fn) {
 
     if (err) {
       return fn(null, null);
-    } else {
+    }
+    else {
       return fn(null, user);
     }
   });
@@ -41,7 +42,8 @@ function findByUsername(u, fn) {
     if (err) {
       return fn(null, null);
       // The User was found successfully!
-    } else {
+    }
+    else {
       return fn(null, user);
     }
   });
@@ -59,18 +61,20 @@ passport.use(new LocalStrategy(
       // indicate failure and set a flash message. Otherwise, return the
       // authenticated `user`.
       findByUsername(username, function(err, user) {
-        if (err)
+        if (err) {
           return done(null, err);
+        }
         if (!user) {
           return done(null, false, {
             message: 'Unknown user ' + username
           });
         }
         bcrypt.compare(password, user.password, function(err, res) {
-          if (!res)
+          if (!res) {
             return done(null, false, {
               message: 'Invalid Password'
             });
+          }
           var returnUser = {
             username: user.username,
             createdAt: user.createdAt,
@@ -89,8 +93,9 @@ passport.use(new LdapStrategy(getLDAPConfiguration,
   function(user, done) {
     process.nextTick(function() {
       findByUsername(user.uid, function(err, userdb) {
-        if (err)
+        if (err) {
           return done(null, err);
+        }
         if (!userdb) {
           var usr = {
             username: user.uid,
@@ -104,7 +109,8 @@ passport.use(new LdapStrategy(getLDAPConfiguration,
               return done(null, created);
             }
           });
-        } else {
+        }
+        else {
           var returnUser = {
             username: userdb.username,
             createdAt: userdb.createdAt,
@@ -150,19 +156,25 @@ passport.use(new GoogleStrategy({
   function(request, accessToken, refreshToken, profile, done) {
     process.nextTick(function() {
       findByUsername(profile.id, function(err, userdb) {
-
-        if (err)
+        if (err) {
           return done(null, err);
+        }
         if (!userdb) {
+          console.log("u");
+          console.log(sails.config.admins);
+          console.log(profile.emails[0].value);
+          console.log(_.findIndex(sails.config.admins, {
+            email: profile.emails[0].value
+          }));
           var role = 1;
           if (_.findIndex(sails.config.admins, {
               email: profile.emails[0].value
             }) > -1) {
             role = 4;
-          } else {
+          }
+          else {
             role = 1;
           }
-          
 
           var usr = {
             username: profile.id,
@@ -174,8 +186,9 @@ passport.use(new GoogleStrategy({
           };
           User.create(usr).exec(function(err, created) {
             console.log(created);
-            if (err)
+            if (err) {
               return (null, err);
+            }
             if (created) {
               console.log("returning");
               return done(null, created, {
@@ -183,7 +196,8 @@ passport.use(new GoogleStrategy({
               });
             }
           });
-        } else {
+        }
+        else {
           var returnUser = {
             username: userdb.username,
             createdAt: userdb.createdAt,
@@ -199,11 +213,11 @@ passport.use(new GoogleStrategy({
     });
 
     /* User.findOrCreate({
-       username: profile.id
+     username: profile.id
      }, function(err, user) {
-       console.log(err);
-       console.log(user);
-       return done(err, user);
+     console.log(err);
+     console.log(user);
+     return done(err, user);
      });*/
   }
 ));
