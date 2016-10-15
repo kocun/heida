@@ -10,18 +10,18 @@
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
-      <div class="col-lg-12 col-sm-12 ng-scope" id="bar-chart" >
-        <div ng-hide="!(data.valueType == 'yesno')">
-          <p ng-repeat="year in data.years">
-            <b>{{year.year}} :</b> {{year.value}}
-          </p>
-        </div>
-        <div id="canvas_container" class="chart-container">
+      <div class="col-lg-12 col-sm-12 ng-scope pull-left" id="bar-chart" >
+        <div id="canvas_container" class="chart-container clearfix">
           <b ng-if="(data.valueType == 'percentage')">(%)<br/></b>
           <canvas ng-if="(data.valueType == 'percentage')" id="line" class="chart chart-line ng-isolate-scope" data="bar.data" labels="bar.labels" series="bar.series" options="bar.options" width="514" height="257" style="width: 514px; height: 257px;">
           </canvas>
 
           <canvas ng-if="(data.valueType == 'numeric')" id="bar" class="chart chart-bar ng-isolate-scope" data="bar.data" labels="bar.labels" series="bar.series" options="bar.options" width="514" height="257" style="width: 514px; height: 257px;"></canvas></div>
+      </div>
+      <div class="pull-left clearfix" style="padding: 15px 0 0; width: 100%;">
+        <div class="col-sm-3 text-center" ng-repeat="year in data.years" style="padding: 5px 0;">
+          <b>{{year.year}} :</b> {{year.value}}
+        </div>
       </div>
     </div>
     <!-- /.table-responsive -->
