@@ -65,12 +65,16 @@ angular.module('heidaApp')
 
 })
 .controller('DataReportDetailCtrl', function ($scope, $http, Restangular, $state, $stateParams, $location) {
+
+  Restangular.all('/api/criteria').getList().then(function (criterias) {
+    $scope.criterias = criterias;
+  });
+
   $http.get('/api/data/' + $stateParams.dataId).
   success(function(data) {
     $scope.data = data;
     $scope.dept = $scope.data.department.name;
     $scope.ind = $scope.data.indicator.name;
-
     $scope.data.valueType = $stateParams.valueType;
     if ( $stateParams.valueType != "yesno" ) {
       var lbl = [];
@@ -89,6 +93,31 @@ angular.module('heidaApp')
     } else {
       document.getElementById("canvas_container").classList.add("ng-hide");
     }
+
+    $scope.criteriasAndAnswers = [];
+
+    $scope.criterias.forEach(function (item, i) {
+      var criObj = {};
+      criObj.name = item.name;
+      criObj.answers = [];
+
+      item.questions.forEach(function (answer) {
+        var myCriteriaAnswer = data.criterias[i].question;
+
+        if (item.multiple == true) {
+          myCriteriaAnswer.forEach(function (myAnswer) {
+            if (answer.id == myAnswer) {
+              criObj.answers.push(answer.name);
+            }
+          })
+        } else {
+          if (answer.id == myCriteriaAnswer) {
+            criObj.answers.push(answer.name);
+          }
+        }
+      })
+      $scope.criteriasAndAnswers.push(criObj)
+    })
   });
 
   var printReport = $location.path().split('/').slice([4],[7]);
