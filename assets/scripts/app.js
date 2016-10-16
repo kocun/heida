@@ -509,8 +509,8 @@ angular
         }
       })
       .state('dashboard.data_edit', {
-        controller: 'DataCtrl',
-        templateUrl: 'views/pages/editData.html',
+        controller: 'DataEditCtrl',
+        templateUrl: 'views/pages/edit_data_page.html',
         url: '/data/:id',
         resolve: {
           loadMyFiles: function($ocLazyLoad) {
