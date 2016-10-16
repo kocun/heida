@@ -402,6 +402,59 @@ angular.module('heidaApp', ['ngDialog'])
       $scope.goals = goals;
     });
 
+    Restangular.one('/api/data', $stateParams.id).get().then(function() {
+      $scope.cancelNewData();
+      $scope.newData = {value:1, isInvalid: true, yearsValues: {}, criterias: {} }; //...
+      var datas = $scope.allDatas;
+      $scope.currentDatas = [];
+      var i, iL = datas.length;
+      for ( i = 0 ; i < iL ; i++ ) {
+        var pureData = datas[i];
+        $scope.ind = pureData.indicator;
+        if ( pureData.indicator && pureData.indicator.id == $scope.ind.id ) {
+          var datasObj = {};
+          datasObj.departmentId =  pureData.department || pureData.department.id;
+          datasObj.departmentName = pureData.department.name;
+          datasObj.value = pureData.value;
+          datasObj[$scope.ind.valueType ? $scope.ind.valueType.toLowerCase().replace('/','') : 'numeric'] = true;
+          datasObj.public = $scope.ind.public;
+          datasObj.indicator = $scope.ind.id;
+          datasObj.indicatorName = $scope.ind.name;
+          datasObj.id = pureData.id;
+          datasObj.criterias = pureData.criterias;
+          datasObj.otherUnit = pureData.departmentDesc;
+          datasObj.subUnitId = pureData.subDepartment;
+
+
+          if ( !datasObj.departmentName ) {
+            var k = 0, kL = $scope.departments.length;
+
+            for (;k < kL; k++) {
+              if ( $scope.departments[k].id == datasObj.departmentId ) {
+                datasObj.departmentName = $scope.departments[k].name;
+                break;
+              }
+            }
+          }
+
+          if (pureData.periodType) {
+            datasObj.periodType = pureData.periodType
+          } else {
+            if ( pureData.year.indexOf('-')  < 0 ) {  // if year value is just a year like "2013". Not "2012-2013".
+              datasObj.periodType = "year";
+            } else {
+              datasObj.periodType = "academic";
+            }
+          }
+          datasObj.year = pureData.year;
+
+          datasObj.yearsValues = pureData.years;
+
+          $scope.currentDatas.push(datasObj);
+        }
+      }
+
+    });
     $scope.calendarArr = (function(){
       var thisYear = new Date().getFullYear();
 
@@ -624,71 +677,6 @@ angular.module('heidaApp', ['ngDialog'])
       $scope.editRowtoIndicator = true;
     }
 
-    Restangular.one('/api/data', $stateParams.id).get().then(function(indicator) {
-
-      debugger;
-      $scope.cancelNewData();
-      $scope.newData = {value:1, isInvalid: true, yearsValues: {}, criterias: {} }; //...
-      $scope.ind = indicator;
-      var datas = $scope.allDatas;
-      $scope.currentDatas = [];
-      var i, iL = datas.length;
-      for ( i = 0 ; i < iL ; i++ ) {
-        var pureData = datas[i];
-        if ( pureData.indicator && pureData.indicator.id == $scope.ind.id ) {
-          var datasObj = {};
-          datasObj.departmentId =  pureData.department || pureData.department.id;
-          datasObj.departmentName = pureData.department.name;
-          datasObj.value = pureData.value;
-          datasObj[$scope.ind.valueType ? $scope.ind.valueType.toLowerCase().replace('/','') : 'numeric'] = true;
-          datasObj.public = $scope.ind.public;
-          datasObj.indicator = $scope.ind.id;
-          datasObj.indicatorName = $scope.ind.name;
-          datasObj.id = pureData.id;
-          datasObj.criterias = pureData.criterias;
-          datasObj.otherUnit = pureData.departmentDesc;
-          datasObj.subUnitId = pureData.subDepartment;
-
-
-          if ( !datasObj.departmentName ) {
-            var k = 0, kL = $scope.departments.length;
-
-            for (;k < kL; k++) {
-              if ( $scope.departments[k].id == datasObj.departmentId ) {
-                datasObj.departmentName = $scope.departments[k].name;
-                break;
-              }
-            }
-          }
-
-          if (pureData.periodType) {
-            datasObj.periodType = pureData.periodType
-          } else {
-            if ( pureData.year.indexOf('-')  < 0 ) {  // if year value is just a year like "2013". Not "2012-2013".
-              datasObj.periodType = "year";
-            } else {
-              datasObj.periodType = "academic";
-            }
-          }
-          datasObj.year = pureData.year;
-
-          datasObj.yearsValues = pureData.years;
-
-          $scope.currentDatas.push(datasObj);
-        }
-      }
-
-      angular.element('.js-temp-data-content').remove();
-
-      var templatePath = 'views/pages/editData.html';
-      var elem = angular.element(event.target);
-      $http.get(templatePath).success(function(response) {
-        var newNode = angular.element(response);
-        newNode.addClass('js-temp-data-content');
-        var contents = newNode.insertAfter(elem);
-        $compile(contents)($scope);
-      });
-    });
 
     $scope.checkNewData = function(){
       if ( $scope.newData.departmentId && $scope.newData.departmentId != ""
@@ -715,5 +703,4 @@ angular.module('heidaApp', ['ngDialog'])
         $scope.newData.yearsValues[objName] = currentValue;
       }
     }
-
   })
