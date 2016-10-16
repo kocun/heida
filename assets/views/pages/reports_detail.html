@@ -23,6 +23,19 @@
           <b>{{year.year}} :</b> {{year.value}}
         </div>
       </div>
+
+      <div class="pull-left clearfix" style="padding: 15px 0 0; width: 100%;">
+        <h4>Criterias</h4>
+        <ul>
+          <li class="col-sm-12" ng-repeat="criterias in criteriasAndAnswers" style="padding: 5px 0;">
+            <b>{{criterias.name}}</b>
+            <span style="display: block" ng-repeat="answer in criterias.answers">
+              {{answer}}
+            </span>
+          </li>
+        </ul>
+
+      </div>
     </div>
     <!-- /.table-responsive -->
   </div>
