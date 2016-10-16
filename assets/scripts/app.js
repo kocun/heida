@@ -508,6 +508,23 @@ angular
           }
         }
       })
+      .state('dashboard.data_edit', {
+        controller: 'DataEditCtrl',
+        templateUrl: 'views/pages/edit_data_page.html',
+        url: '/data/:id',
+        resolve: {
+          loadMyFiles: function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name: 'heidaApp',
+              files: [
+                'scripts/controllers/datas.js',
+                'bower_components/ng-dialog/js/ngDialog.js',
+                'bower_components/ng-dialog/css/ngDialog.css'
+              ]
+            })
+          }
+        }
+      })
       .state('dashboard.report', {
         controller: 'DataReportCtrl',
         templateUrl: 'views/pages/reports.html',
