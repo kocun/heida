@@ -46,7 +46,6 @@
       <th>Unit</th>
       <th>Sub-Unit</th>
       <th>Name Of Unit</th>
-      <th>Data Type</th>
       <th>Status</th>
       <th colspan="4">Actions</th>
       </thead>
@@ -66,25 +65,17 @@
         <td>
           {{data.departmentDesc}}
         </td>
-        <td>
-          {{data.indicator.valueType}}
-        </td>
         <td ng-if="data.answer" class="success">
           Completed
         </td>
         <td ng-if="!data.answer" class="not-success">
           Incomplete
         </td>
-        <!--<td>-->
-          <!--<div ng-repeat="yearval in data.years">-->
-            <!--(<b>{{yearval.year}} :</b>  {{yearval.value}})-->
-          <!--</div>-->
-        <!--</td>-->
         <td>
           <a ui-sref="dashboard.data_edit({id:data.id})">Edit</a>
         </td>
         <td>
-          <a ui-sref="dashboard.report_detail({dataId:data.id, valueType:data.indicator.valueType})">Visualize (Graph/Table)</a>
+          <a ui-sref="dashboard.report_detail({dataId:data.id, valueType:data.indicator.valueType})">Visualize</a>
         </td>
         <td>
           <a ui-sref="dashboard.report_print({dataId:data.id, valueType:data.indicator.valueType})">Print</a>
