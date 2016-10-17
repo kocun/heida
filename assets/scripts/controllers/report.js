@@ -127,7 +127,7 @@ angular.module('heidaApp')
   if(printReport[2] == 'print') {
     setTimeout(function(){
       window.print();
-    }, 3000);
+    }, 2000);
   }
 });
 
