@@ -281,22 +281,18 @@
     padding-bottom:20px;
     width: 94%;
     height:auto;
+    font-size: 12px;
   }
-  .report-detail-years {
-    width: 50%;
-    display: inline-block;
+  .report-detail .page-header {
+    font-size: 18px;
   }
-  .report-detail-subunit {
-    width:50%;
-    display: inline-block;
-  }
-  .report-detail-department-desc {
-    width:50%;
-    display: inline-block;
+  .report-detail .panel-default {
+    border:0
   }
   .report-detail-chart {
-    width: 50%;
-    height: 50%;
+    width: 100%!important;
+    height: 50%!important;
+    display: inline-block;
   }
 }
 
