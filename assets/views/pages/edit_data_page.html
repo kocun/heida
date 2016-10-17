@@ -96,7 +96,7 @@
                   </label>
                   <input ng-if="newData.numeric" class="form-control" type="number" id="new_value_{{$index}}" ng-hide="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]"/>
                   <input ng-if="newData.percentage" ng-change="validatePercentage(newData.yearsValues[selectedYear], selectedYear)" class="form-control" type="number" id="new_value_{{$index}}_percentage" ng-hide="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]"/>
-                  <select ng-if="newData.yesno" class="form-control" id="new_value_{{$index}}_yesno" ng-show="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]">
+                  <select ng-if="newData.yesno" class="form-control" id="new_value_{{$index}}_yesno" ng-model="newData.yearsValues[selectedYear]">
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                   </select>
