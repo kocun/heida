@@ -77,7 +77,7 @@ angular.module('heidaApp', ['ngDialog'])
 
       return selectArr;
     })();
-
+debugger;
     $scope.periodRange = function (type) {
       return $scope[type+"Arr"];
     }
@@ -403,6 +403,7 @@ angular.module('heidaApp', ['ngDialog'])
     });
 
     Restangular.one('/api/data', $stateParams.id).get().then(function() {
+      debugger;
       $scope.cancelNewData();
       $scope.newData = {value:1, isInvalid: true, yearsValues: {}, criterias: {} }; //...
       var datas = $scope.allDatas;
