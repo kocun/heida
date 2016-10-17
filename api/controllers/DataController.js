@@ -35,13 +35,17 @@ module.exports = {
   },
   findOne: function(req, res) {
     Data.findOne(req.param('id')).populate("department").populate("subDepartment").populate("indicator").populate("criterias").populate("years").exec(function(err, data) {
-      Indicator.findOne(data.indicator).populate('subgroup').exec(function(err, indicator) {
-        data.indicator = indicator;
-        SubDepartment.findOne(data.subDepartment.id).exec(function(err, sd) {
-          data.subDepartment=sd;
-          res.json(data);
+      Indicator.findOne(data.indicator).populate('subgroup').exec(function(err, ind) {
+        console.log(ind);
+        Group.findOne(ind.subgroup.group).exec(function(err, grp) {
+          console.log(grp);
+          ind.group = grp;
+          data.indicator = ind;
+          SubDepartment.findOne(data.subDepartment.id).exec(function(err, sd) {
+            data.subDepartment = sd;
+            res.json(data);
+          });
         });
-
       });
     });
   }
