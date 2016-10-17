@@ -272,4 +272,16 @@
 .departments-page a:hover, .subdepartments-page a:hover, .groups-page a:hover, .subgroups-page a:hover, .criteria-page a:hover, .questions-page a:hover, .indicators-page a:hover, .goals-page a:hover, .create-reports-page a:hover, .report-page a:hover, .data-edit-page a:hover {
   text-decoration: none;
 }
+@media print{
+  .report-detail {
+    position:relative;
+    display:table;
+    table-layout:fixed;
+    padding-top:20px;
+    padding-bottom:20px;
+    width: 94%;
+    height:auto;
+  }
+}
+
 /* Admin Tabs End */
