@@ -10,35 +10,88 @@
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
-      <div class="col-lg-12 col-sm-12 ng-scope pull-left" id="bar-chart" >
+      <div class="pull-right hidden-print">
+        <b>Report Date:</b>{{data.createdAt | date:'dd/MM/yyyy @ h:mma'}}
+        <br/>
+        <b>Last Updated Date:</b>{{data.updatedAt | date:'dd/MM/yyyy @ h:mma'}}
+      </div>
+      <div class="col-lg-6 col-sm-6 ng-scope pull-left" id="bar-chart">
         <div id="canvas_container" class="chart-container clearfix">
           <b ng-if="(data.valueType == 'percentage')">(%)<br/></b>
-          <canvas ng-if="(data.valueType == 'percentage')" id="line" class="chart chart-line ng-isolate-scope" data="bar.data" labels="bar.labels" series="bar.series" options="bar.options" width="514" height="257" style="width: 514px; height: 257px;">
+          <canvas ng-if="(data.valueType == 'percentage')" id="line" class="chart chart-line ng-isolate-scope report-detail-chart" data="bar.data" labels="bar.labels" series="bar.series" options="bar.options">
           </canvas>
 
-          <canvas ng-if="(data.valueType == 'numeric')" id="bar" class="chart chart-bar ng-isolate-scope" data="bar.data" labels="bar.labels" series="bar.series" options="bar.options" width="514" height="257" style="width: 514px; height: 257px;"></canvas></div>
-      </div>
-      <div class="pull-left clearfix" style="padding: 15px 0 0; width: 100%;">
-        <div class="col-sm-3 text-center" ng-repeat="year in data.years" style="padding: 5px 0;">
-          <b>{{year.year}} :</b> {{year.value}}
+          <canvas ng-if="(data.valueType == 'numeric')" id="bar" class="chart chart-bar ng-isolate-scope report-detail-chart" data="bar.data" labels="bar.labels" series="bar.series" options="bar.options"></canvas>
         </div>
       </div>
-      <div class="pull-left clearfix" style="padding: 15px 0 0; width: 100%;">
-        <div class="col-sm-3 text-center" style="padding: 5px 0;">
+      <div class="visible-print col-lg-6 col-md-6">
+        <div class="report-detail-subunit" style="padding: 5px 0;">
+          <b>Unit :</b> {{data.department.name}}
+        </div>
+        <div class="report-detail-subunit" style="padding: 5px 0;">
           <b>Sub-Unit :</b> {{data.subDepartment.name}}
         </div>
-        <div class="col-sm-3 text-center" style="padding: 5px 0;">
+        <div class="report-detail-department-desc" style="padding: 5px 0;">
           <b>Name of Unit:</b> {{data.departmentDesc}}
         </div>
+        <div class="report-detail-department-desc" style="padding: 5px 0;">
+          <b>Indicator Code:</b> {{data.indicator.code}}
+        </div>
+        <div class="report-detail-department-desc" style="padding: 5px 0;">
+          <b>Group / Subgroup:</b> {{data.groupName}} / {{data.indicator.subgroup.name}}
+        </div>
+        <div class="report-detail-department-desc" style="padding: 5px 0;">
+          <b>Value type:</b> {{data.indicator.valueType}}
+        </div>
+        <div class="report-detail-department-desc" style="padding: 5px 0;">
+          <b>Public</b> {{data.public}}
+        </div>
+        <div class="report-detail-years" ng-repeat="year in data.years" style="padding: 5px 0;">
+          <b>{{year.year}} :</b> {{year.value}}
+        </div>
+        <b>Report Date:</b>{{data.createdAt | date:'dd/MM/yyyy @ h:mma'}}
+        <br/>
+        <b>Last Updated Date:</b>{{data.updatedAt | date:'dd/MM/yyyy @ h:mma'}}
+
       </div>
-      <div class="pull-left clearfix" style="padding: 15px 0 0; width: 100%;">
+      <div class="col-lg-6 col-sm-5 clearfix report-detail-infos" style="padding: 15px 0 0">
+        <div class="pull-left clearfix hidden-print" style="padding: 15px 0 0;">
+
+          <div class="report-detail-subunit" style="padding: 5px 0;">
+            <b>Unit :</b> {{data.department.name}}
+          </div>
+          <div class="report-detail-subunit" style="padding: 5px 0;">
+            <b>Sub-Unit :</b> {{data.subDepartment.name}}
+          </div>
+          <div class="report-detail-department-desc" style="padding: 5px 0;">
+            <b>Name of Unit:</b> {{data.departmentDesc}}
+          </div>
+          <div class="report-detail-department-desc" style="padding: 5px 0;">
+            <b>Indicator Code:</b> {{data.indicator.code}}
+          </div>
+          <div class="report-detail-department-desc" style="padding: 5px 0;">
+            <b>Group / Subgroup:</b> {{data.groupName}} / {{data.indicator.subgroup.name}}
+          </div>
+          <div class="report-detail-department-desc" style="padding: 5px 0;">
+            <b>Value type:</b> {{data.indicator.valueType}}
+          </div>
+          <div class="report-detail-department-desc" style="padding: 5px 0;">
+            <b>Public</b> {{data.public}}
+          </div>
+          <div class="report-detail-years hidden-print" ng-repeat="year in data.years" style="padding: 5px 0;">
+            <b>{{year.year}} :</b> {{year.value}}
+          </div>
+        </div>
+      </div>
+
+      <div class="pull-left clearfix" style="padding: 15px 0 0;">
         <h4>Criterias</h4>
         <ul>
           <li class="col-sm-12" ng-repeat="criterias in criteriasAndAnswers" style="padding: 5px 0;">
             <b>{{criterias.name}}</b>
-            <span style="display: block" ng-repeat="answer in criterias.answers">
-              {{answer}}
-            </span>
+              <span style="display: block" ng-repeat="answer in criterias.answers">
+                {{answer}}
+              </span>
           </li>
         </ul>
 
