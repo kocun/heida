@@ -282,6 +282,22 @@
     width: 94%;
     height:auto;
   }
+  .report-detail-years {
+    width: 50%;
+    display: inline-block;
+  }
+  .report-detail-subunit {
+    width:50%;
+    display: inline-block;
+  }
+  .report-detail-department-desc {
+    width:50%;
+    display: inline-block;
+  }
+  .report-detail-chart {
+    width: 50%;
+    height: 50%;
+  }
 }
 
 /* Admin Tabs End */
