@@ -73,6 +73,9 @@ angular.module('heidaApp')
   $http.get('/api/data/' + $stateParams.dataId).
   success(function(data) {
     $scope.data = data;
+
+    $http.get('/api/group/' + $scope.data.indicator.subgroup.group).success(function(grp) { $scope.data.groupName = grp.name;});
+
     $scope.dept = $scope.data.department.name;
     $scope.ind = $scope.data.indicator.name;
     $scope.data.valueType = $stateParams.valueType;
@@ -124,7 +127,7 @@ angular.module('heidaApp')
   if(printReport[2] == 'print') {
     setTimeout(function(){
       window.print();
-    }, 3000);
+    }, 2000);
   }
 });
 

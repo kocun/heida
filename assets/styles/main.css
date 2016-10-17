@@ -281,6 +281,21 @@
     padding-bottom:20px;
     width: 94%;
     height:auto;
+    font-size: 12px;
+  }
+  .report-detail .page-header {
+    font-size: 18px;
+  }
+  .report-detail .panel-default {
+    border:0
+  }
+  .report-detail .report-detail-print-container {
+    width: 45%!important;
+  }
+  .report-detail-chart {
+    width: 50%!important;
+    height: 50%!important;
+    display: inline-block;
   }
 }
 
