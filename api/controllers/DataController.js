@@ -19,7 +19,7 @@ module.exports = {
       department: req.body.department,
       indicator: req.body.indicator,
       years: req.body.years,
-      subDepartment: req.body.subdepartment,
+      subDepartment: req.body.subDepartment,
       departmentDesc: req.body.departmentDesc,
       criterias: req.body.criterias,
       periodType: req.body.periodType,
