@@ -77,7 +77,6 @@ angular.module('heidaApp', ['ngDialog'])
 
       return selectArr;
     })();
-debugger;
     $scope.periodRange = function (type) {
       return $scope[type+"Arr"];
     }
@@ -144,7 +143,7 @@ debugger;
       for (; i < iL ; i++ ) {
         var obj = data.yearsValues[i];
         year.push(obj.year);
-        yearsValues[obj.year] = (data.numeric || data.percentage) ? 1*obj.value : obj.value;
+        yearsValues[obj.year] = (data.numeric || data.percentage || data.yesno) ? 1*obj.value : obj.value;
       }
 
       editData.year = year;
@@ -369,7 +368,7 @@ debugger;
     }
 
   })
-  .controller('DataEditCtrl', function ($scope, $http, $compile, Restangular, $state, $stateParams, ngDialog) {
+  .controller('DataEditCtrl', function ($scope, $http, $compile, Restangular, $state, $stateParams, ngDialog, $location) {
     $scope.state = 0;
     $scope.data;
     $scope.ind = "";
@@ -403,16 +402,17 @@ debugger;
     });
 
     Restangular.one('/api/data', $stateParams.id).get().then(function() {
-      debugger;
       $scope.cancelNewData();
       $scope.newData = {value:1, isInvalid: true, yearsValues: {}, criterias: {} }; //...
       var datas = $scope.allDatas;
+
+      var dataIdPath = $location.path().split('/').slice([3],[6]);
       $scope.currentDatas = [];
       var i, iL = datas.length;
       for ( i = 0 ; i < iL ; i++ ) {
         var pureData = datas[i];
         $scope.ind = pureData.indicator;
-        if ( pureData.indicator && pureData.indicator.id == $scope.ind.id ) {
+        if ( pureData.indicator && pureData.indicator.id == $scope.ind.id && dataIdPath == pureData.id) {
           var datasObj = {};
           datasObj.departmentId =  pureData.department || pureData.department.id;
           datasObj.departmentName = pureData.department.name;
@@ -556,11 +556,10 @@ debugger;
       var year = [];
 
       var i = 0, iL = data.yearsValues.length;
-
       for (; i < iL ; i++ ) {
         var obj = data.yearsValues[i];
         year.push(obj.year);
-        yearsValues[obj.year] = (data.numeric || data.percentage) ? 1*obj.value : obj.value;
+        yearsValues[obj.year] = (data.numeric || data.percentage || data.yesno) ? 1*obj.value : obj.value;
       }
 
       editData.year = year;
