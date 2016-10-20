@@ -14,7 +14,12 @@ angular.module('heidaApp')
   Restangular.all('/api/department').getList().then(function (departments) {
     $scope.departments = departments;
   });
-
+  Restangular.all('/api/group').getList().then(function (groups) {
+    $scope.groups = groups;
+  });
+  Restangular.all('/api/subGroup').getList().then(function (subgroups) {
+    $scope.subgroups = subgroups;
+  });
   $scope.clearFilter = function () {
     $scope.datas = $scope.allDatas;
   }
@@ -24,7 +29,7 @@ angular.module('heidaApp')
       $scope.subdepartments = subdepartments;
     });
   }
-    $scope.filter = function () {
+    $scope.filterUnit = function () {
       var i = 0, iL = $scope.allDatas.length;
       var filteredDatas = [];
       for (; i < iL; i++) {
@@ -47,6 +52,42 @@ angular.module('heidaApp')
 
       $scope.datas = filteredDatas;
     }
+
+    $scope.getSubGroups = function (group) {
+      Restangular.all('/api/subGroup?group=' + group).getList().then(function (subgroups) {
+        $scope.subgroups = subgroups;
+      });
+    }
+    $scope.filterState = false;
+    $scope.filterGroup = function (subgroup,goal) {
+
+      debugger;
+      Restangular.all('/api/indicator?subgroup=' + subgroup).getList().then(function (indicators) {
+        $scope.indicators = indicators;
+        $scope.filterGoal = goal;
+        $scope.filterState = true;
+      });
+
+      var i = 0, iL = $scope.allDatas.length;
+      var filteredDatas = [];
+      for (; i < iL; i++) {
+        var obj = $scope.allDatas[i];
+
+        if ( $scope.filteredGoal && !$scope.filteredGroup ) {
+          if (obj.goal && obj.indicator.goal == $scope.filteredGoal) {
+            filteredDatas.push(obj)
+          }
+        } else if ( !$scope.filteredGoal && $scope.filteredGroup ) {
+          if ( obj.group && obj.group.id == $scope.filteredGroup) {
+            filteredDatas.push(obj)
+          }
+        }
+        }
+
+      $scope.datas = filteredDatas;
+
+      console.log($scope.datas)
+      }
 
     $scope.deleteReport = function(dataId) {
       if (confirm('Are you sure you want to delete this indicator?')) {
