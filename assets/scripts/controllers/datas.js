@@ -192,7 +192,7 @@ angular.module('heidaApp', ['ngDialog'])
       for (var year in data.yearsValues) {
         yearArr.push({
           "year":year,
-          "value": data.yearsValues[year]*1
+          "value": $scope.ind.valueType == "yes/no" ? data.yearsValues[year] : data.yearsValues[year]*1
         });
       }
       obj.years = yearArr;
@@ -602,13 +602,12 @@ angular.module('heidaApp', ['ngDialog'])
       obj.subDepartment = data.subUnitId;
       obj.departmentDesc = data.otherUnit;
       obj.indicator = data.indicator;
-
       var yearArr = [];
 
       for (var year in data.yearsValues) {
         yearArr.push({
           "year":year,
-          "value": data.yearsValues[year]*1
+          "value": $scope.ind.valueType == "yes/no" ? data.yearsValues[year] : data.yearsValues[year]*1
         });
       }
       obj.years = yearArr;

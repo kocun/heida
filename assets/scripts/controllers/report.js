@@ -5,7 +5,7 @@ angular.module('heidaApp')
     success(function(data) {
       $scope.me = data;
     });
-  Restangular.all('/api/data/').getList().then(function (datas) {
+  Restangular.all('/api/data').getList().then(function (datas) {
     $scope.datas = $scope.allDatas = datas;
   });
   Restangular.all('/api/indicator').getList().then(function (indicators) {
@@ -20,8 +20,11 @@ angular.module('heidaApp')
   Restangular.all('/api/subGroup').getList().then(function (subgroups) {
     $scope.subgroups = subgroups;
   });
+
+
   $scope.clearFilter = function () {
     $scope.datas = $scope.allDatas;
+    $scope.filterState = false;
   }
 
   $scope.getSubDepartments = function (department) {
@@ -35,22 +38,13 @@ angular.module('heidaApp')
       for (; i < iL; i++) {
         var obj = $scope.allDatas[i];
 
-        if ( $scope.filteredDepartment && !$scope.filteredIndicator ) {
-          if (obj.department && obj.department.id == $scope.filteredDepartment) {
-            filteredDatas.push(obj)
-          }
-        } else if ( !$scope.filteredDepartment && $scope.filteredIndicator ) {
-          if ( obj.indicator && obj.indicator.id == $scope.filteredIndicator) {
-            filteredDatas.push(obj)
-          }
-        } else {
-          if ( obj.department && obj.indicator && obj.indicator.id == $scope.filteredIndicator && obj.department.id == $scope.filteredDepartment ) {
-            filteredDatas.push(obj)
-          }
+        if (obj.subDepartment && obj.subDepartment.id == $scope.filteredSubDepartment.id) {
+          filteredDatas.push(obj)
         }
       }
 
       $scope.datas = filteredDatas;
+      $scope.filterState = true;
     }
 
     $scope.getSubGroups = function (group) {
@@ -58,36 +52,25 @@ angular.module('heidaApp')
         $scope.subgroups = subgroups;
       });
     }
+
     $scope.filterState = false;
+
     $scope.filterGroup = function (subgroup,goal) {
-
-      debugger;
-      Restangular.all('/api/indicator?subgroup=' + subgroup).getList().then(function (indicators) {
-        $scope.indicators = indicators;
-        $scope.filterGoal = goal;
-        $scope.filterState = true;
-      });
-
       var i = 0, iL = $scope.allDatas.length;
       var filteredDatas = [];
       for (; i < iL; i++) {
         var obj = $scope.allDatas[i];
 
-        if ( $scope.filteredGoal && !$scope.filteredGroup ) {
-          if (obj.goal && obj.indicator.goal == $scope.filteredGoal) {
-            filteredDatas.push(obj)
-          }
-        } else if ( !$scope.filteredGoal && $scope.filteredGroup ) {
-          if ( obj.group && obj.group.id == $scope.filteredGroup) {
+        if (obj.indicator && obj.indicator.subgroup == subgroup) {
+          if (obj.indicator[goal] > 1) {
             filteredDatas.push(obj)
           }
         }
-        }
+      }
 
       $scope.datas = filteredDatas;
-
-      console.log($scope.datas)
-      }
+      $scope.filterState = true;
+    }
 
     $scope.deleteReport = function(dataId) {
       if (confirm('Are you sure you want to delete this indicator?')) {
