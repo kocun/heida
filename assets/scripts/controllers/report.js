@@ -5,7 +5,7 @@ angular.module('heidaApp')
     success(function(data) {
       $scope.me = data;
     });
-  Restangular.all('/api/data/').getList().then(function (datas) {
+  Restangular.all('/api/data').getList().then(function (datas) {
     $scope.datas = $scope.allDatas = datas;
   });
   Restangular.all('/api/indicator').getList().then(function (indicators) {
@@ -14,9 +14,17 @@ angular.module('heidaApp')
   Restangular.all('/api/department').getList().then(function (departments) {
     $scope.departments = departments;
   });
+  Restangular.all('/api/group').getList().then(function (groups) {
+    $scope.groups = groups;
+  });
+  Restangular.all('/api/subGroup').getList().then(function (subgroups) {
+    $scope.subgroups = subgroups;
+  });
+
 
   $scope.clearFilter = function () {
     $scope.datas = $scope.allDatas;
+    $scope.filterState = false;
   }
 
   $scope.getSubDepartments = function (department) {
@@ -24,28 +32,44 @@ angular.module('heidaApp')
       $scope.subdepartments = subdepartments;
     });
   }
-    $scope.filter = function () {
+    $scope.filterUnit = function () {
       var i = 0, iL = $scope.allDatas.length;
       var filteredDatas = [];
       for (; i < iL; i++) {
         var obj = $scope.allDatas[i];
 
-        if ( $scope.filteredDepartment && !$scope.filteredIndicator ) {
-          if (obj.department && obj.department.id == $scope.filteredDepartment) {
-            filteredDatas.push(obj)
-          }
-        } else if ( !$scope.filteredDepartment && $scope.filteredIndicator ) {
-          if ( obj.indicator && obj.indicator.id == $scope.filteredIndicator) {
-            filteredDatas.push(obj)
-          }
-        } else {
-          if ( obj.department && obj.indicator && obj.indicator.id == $scope.filteredIndicator && obj.department.id == $scope.filteredDepartment ) {
+        if (obj.subDepartment && obj.subDepartment.id == $scope.filteredSubDepartment.id) {
+          filteredDatas.push(obj)
+        }
+      }
+
+      $scope.datas = filteredDatas;
+      $scope.filterState = true;
+    }
+
+    $scope.getSubGroups = function (group) {
+      Restangular.all('/api/subGroup?group=' + group).getList().then(function (subgroups) {
+        $scope.subgroups = subgroups;
+      });
+    }
+
+    $scope.filterState = false;
+
+    $scope.filterGroup = function (subgroup,goal) {
+      var i = 0, iL = $scope.allDatas.length;
+      var filteredDatas = [];
+      for (; i < iL; i++) {
+        var obj = $scope.allDatas[i];
+
+        if (obj.indicator && obj.indicator.subgroup == subgroup) {
+          if (obj.indicator[goal] > 1) {
             filteredDatas.push(obj)
           }
         }
       }
 
       $scope.datas = filteredDatas;
+      $scope.filterState = true;
     }
 
     $scope.deleteReport = function(dataId) {
