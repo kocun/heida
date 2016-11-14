@@ -108,10 +108,10 @@
         <td>
           {{data.departmentDesc}}
         </td>
-        <td ng-if="data.answer" class="success">
+        <td ng-if="data.departmentDesc" class="success">
           Completed
         </td>
-        <td ng-if="!data.answer" class="not-success">
+        <td ng-if="!data.departmentDesc" class="not-success">
           Incomplete
         </td>
         <td ng-if="me.role == 4">
