@@ -210,34 +210,41 @@ angular.module('heidaApp', ['ngDialog'])
 
       obj.periodType = data.periodType;
       obj.public = data.public;
+
       /*obj.goals = data.goals;
        obj.subGroup = data.subGroupId;
        obj.subUnit = data.subUnitId;
        obj.group = $scope.groups[data.groupIndex].id;*/
-      if ( $scope.editRowtoIndicator ) {
+      if (!obj.department || !obj.years) {
+        alert('You must choose a Department and/or Year to save your selection');
+        return false
+      } else {
 
-        var maniReq = {
-          method: 'PUT',
-          url: '/api/data/'+data.id,
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          data: obj
-        }
+        if ( $scope.editRowtoIndicator ) {
 
-        $http(maniReq).then(function(){
+          var maniReq = {
+            method: 'PUT',
+            url: '/api/data/'+data.id,
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data: obj
+          }
+
+          $http(maniReq).then(function(){
+            $state.go('dashboard.data', $stateParams, {
+              reload: true,
+              inherit: true
+            });
+          }, function(err){console.log(err)});
+        } else {
+          var datas = Restangular.all('/api/data');
+          datas.post(obj);
           $state.go('dashboard.data', $stateParams, {
             reload: true,
             inherit: true
           });
-        }, function(err){console.log(err)});
-      } else {
-        var datas = Restangular.all('/api/data');
-        datas.post(obj);
-        $state.go('dashboard.data', $stateParams, {
-          reload: true,
-          inherit: true
-        });
+        }
       }
     }
 

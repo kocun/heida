@@ -108,13 +108,13 @@
         <td>
           {{data.departmentDesc}}
         </td>
-        <td ng-if="data.answer" class="success">
+        <td ng-if="data.departmentDesc" class="success">
           Completed
         </td>
-        <td ng-if="!data.answer" class="not-success">
+        <td ng-if="!data.departmentDesc" class="not-success">
           Incomplete
         </td>
-        <td>
+        <td ng-if="me.role == 4">
           <a ui-sref="dashboard.data_edit({id:data.id})">Edit</a>
         </td>
         <td>
@@ -123,7 +123,7 @@
         <td>
           <a ui-sref="dashboard.report_print({dataId:data.id, valueType:data.indicator.valueType})">Print</a>
         </td>
-        <td>
+        <td ng-if="me.role == 4">
           <a ng-click="deleteReport({dataId:data.id})" href="">Delete</a>
         </td>
       </tr>
