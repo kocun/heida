@@ -25,7 +25,11 @@
           <option value="percentage">Percentage</option>
         </select></td>
         <td class="text-center">
-          <input type="checkbox" value="" ng-model="indicator.public">
+          <select class="form-control" ng-model="indicator.public">
+            <option value="public">Public</option>
+            <option value="staffonly">Staff Only</option>
+            <option value="notsure">Not Sure</option>
+          </select>
         </td>
       </tr>
       </tbody>

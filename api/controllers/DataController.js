@@ -19,7 +19,7 @@ module.exports = {
       department: req.body.department,
       indicator: req.body.indicator,
       years: req.body.years,
-      subDepartment: req.body.subdepartment,
+      subDepartment: req.body.subDepartment,
       departmentDesc: req.body.departmentDesc,
       criterias: req.body.criterias,
       periodType: req.body.periodType,
@@ -35,13 +35,17 @@ module.exports = {
   },
   findOne: function(req, res) {
     Data.findOne(req.param('id')).populate("department").populate("subDepartment").populate("indicator").populate("criterias").populate("years").exec(function(err, data) {
-      Indicator.findOne(data.indicator).populate('subgroup').exec(function(err, indicator) {
-        data.indicator = indicator;
-        SubDepartment.findOne(data.subDepartment.id).exec(function(err, sd) {
-          data.subDepartment=sd;
-          res.json(data);
+      Indicator.findOne(data.indicator).populate('subgroup').exec(function(err, ind) {
+        console.log(ind);
+        Group.findOne(ind.subgroup.group).exec(function(err, grp) {
+          console.log(grp);
+          ind.group = grp;
+          data.indicator = ind;
+          SubDepartment.findOne(data.subDepartment.id).exec(function(err, sd) {
+            data.subDepartment = sd;
+            res.json(data);
+          });
         });
-
       });
     });
   }
