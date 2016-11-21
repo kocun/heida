@@ -81,6 +81,6 @@ module.exports = {
 
 ``sails lift``
 
-Then you should point your browser to http://<HOST>:<PORT> 
+Then you should point your browser to http://HOST:PORT
 
 
