@@ -36,21 +36,49 @@ This guide follows installation on Linux and MacOS needs some work on Windows. C
 
 7 . And then with your favorite editor you can change your private settings.
 
-```module.exports = {
-
-  admins: [{
-    email: 'admin1@ku.edu.tr',email: 'admin2@ku.edu.tr',
-
-  }],
-
-  connections: {
-    mongo: {
-      adapter: 'sails-mongo',
-      host: '127.0.0.1',
-      port: 33001,
-      // user: 'username',
-      // password: 'password',
-      database: 'heida'
+```
+module.exports = {
+    admins: [{
+        email: 'admin1@ku.edu.tr',
+        email: 'admin2@ku.edu.tr'
+    }],
+    host: '127.0.0.1',
+    port: 8080,
+    google: {
+      clientID: 'Your Google App Client Id Here',
+      clientSecret: 'Your Client Secret Here',
+      callbackURL: 'http://heida.test.ku.edu.tr:8080/api/auth/google/callback',
+      scope: ['profile', 'email']
+    },
+    models: {
+      connection: 'mongo'
+    },
+    connections: {
+        mongo: {
+            adapter: 'sails-mongo',
+            host: '127.0.0.1',
+            port: 27017,
+            // user: 'username',
+            // password: 'password',
+            database: 'heida'
+        }
     }
-  }
-}```
+}
+```
+**admins** : The email of pre defined admins. These people are always admin and manage the software.
+
+**host** : The IP address of the server which software will run. We usually run it behind a public nginx Server and use 127.0.0.1 to run software which is not available to public.
+
+**port** : Port number to bind.
+
+**google** : Authentication is made by Google so you should create a google app. Basically you can create a new **Web Application** one by [Google API Console](https://console.developers.google.com), then you have a clientId and clientSecret.  
+
+**callbackURL** : This is very important part of the software that after a login attempt by the user, google redirects user to this URL where with authentication parameters. This URL must be configured both on Google API Console and this file. This must be a valid URL available to public.
+
+**connections** : Your Database connection declared here. 
+
+8 . Now you are ready to run. Type the following
+
+``sails lift``
+
+Then you should able to
