@@ -24,7 +24,7 @@
         </span>
       </td>
       <td style="padding:10px 5px 5px!important">
-        <a ng-click="editDataRow(data)" class="pull-right" style="margin-bottom:10px;">
+        <a ui-sref="dashboard.data_edit({id:data.id})" class="pull-right" style="margin-bottom:10px;">
           <i class="fa fa-pencil"></i> Edit
         </a>
       </td>
@@ -97,7 +97,7 @@
                 </label>
                 <input ng-if="newData.numeric" class="form-control" type="number" id="new_value_{{$index}}" ng-hide="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]"/>
                 <input ng-if="newData.percentage" ng-change="validatePercentage(newData.yearsValues[selectedYear], selectedYear)" class="form-control" type="number" id="new_value_{{$index}}_percentage" ng-hide="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]"/>
-                <select ng-if="newData.yesno" class="form-control" id="new_value_{{$index}}_yesno" ng-show="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]">
+                <select ng-if="newData.yesno" class="form-control" id="new_value_{{$index}}_yesno" ng-model="newData.yearsValues[selectedYear]">
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>
@@ -128,7 +128,7 @@
             </div>
             <div class="col-sm-6 text-right">
               <button type="button" class="btn btn-primary" ng-click="saveNewData(newData);"
-                      ng-disabled="!(newData.subUnitId && !newData.yearNotSelected)">
+                      >
                 Save
               </button>
             </div>

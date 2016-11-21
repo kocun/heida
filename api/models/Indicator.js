@@ -30,7 +30,7 @@ module.exports = {
             enum: ['yes/no', 'numeric', 'percentage']
         },
         public: {
-            enum: ['Public', 'Staff Only', 'Not Sure']
+            enum: ['public', 'staffonly', 'notsure']
         },
         subgroup: {
             model: 'SubGroup'
