@@ -84,3 +84,5 @@ module.exports = {
 Then you should point your browser to http://HOST:PORT
 
 
+For any [issues or questions](https://github.com/kocun/heida/issues) 
+
