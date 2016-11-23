@@ -2,11 +2,11 @@
   <div class="sidebar-nav navbar-collapse">
     <ul class="nav in" id="side-menu" ng-controller="LoginCtrl">
       <li class=" text-right show-on-mobile">
-          <a class="nav navbar-top-links navbar-right logout-button" ui-sref="login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+          <a class="nav navbar-top-links navbar-right logout-button" ui-sref="login"><i class="fa fa-sign-out fa-fw"></i> {{'Logout' | translate}}</a>
       </li>
       <li class="sidebar-search">
         <div class="input-group custom-search-form">
-          <input type="text" class="form-control" placeholder="Search Indicator" ng-model="searchText">
+          <input type="text" class="form-control" placeholder="{{'Search Indicator' | translate}}" ng-model="searchText">
         <span class="input-group-btn">
             <a class="btn btn-default" type="button" ui-sref="dashboard.search({text:searchText})">
               <i class="fa fa-search"></i>
@@ -15,54 +15,54 @@
         </div>
       </li>
       <li ui-sref-active="active">
-        <a ui-sref="dashboard.home"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+        <a ui-sref="dashboard.home"><i class="fa fa-dashboard fa-fw"></i> {{'Dashboard' | translate}}</a>
       </li>
       <li ng-class="{active: adminCollapseVar==1}" ng-if="me.role == 4">{{dropDown}}
-        <a href="" ng-click="adminCollapse(1)"><i class="fa fa-wrench fa-fw"></i> Admin Menu<span
+        <a href="" ng-click="adminCollapse(1)"><i class="fa fa-wrench fa-fw"></i> {{'Admin Menu' | translate}}<span
         class="fa arrow"></span></a>
         <ul class="nav nav-second-level" collapse="adminCollapseVar!=1" >
           <li ui-sref-active="active">
-            <a ui-sref="dashboard.users">Users</a>
+            <a ui-sref="dashboard.users" translate>Users</a>
           </li>
         </ul>
         <!-- /.nav-second-level -->
       </li>
       <li ng-class="{active: editorCollapseVar==1}" ng-if="me.role == 3 || me.role == 4">{{dropDown}}
-        <a href="" ng-click="editorCollapse(1)"><i class="fa fa-wrench fa-fw"></i> Editor Menu<span
+        <a href="" ng-click="editorCollapse(1)"><i class="fa fa-wrench fa-fw"></i> {{'Editor Menu' | translate}}<span
           class="fa arrow"></span></a>
         <ul class="nav nav-second-level" collapse="editorCollapseVar!=1" >
           <li ui-sref-active="active">
-            <a ui-sref="dashboard.departments">Units</a>
+            <a ui-sref="dashboard.departments" translate>Units</a>
           </li>
           <li ui-sref-active="active">
-            <a ui-sref="dashboard.sub-departments">Sub-Units</a>
+            <a ui-sref="dashboard.sub-departments" translate>Sub-Units</a>
           </li>
           <li ui-sref-active="active">
-            <a ui-sref="dashboard.goals">Goals</a>
+            <a ui-sref="dashboard.goals" translate>Goals</a>
           </li>
           <li ui-sref-active="active">
-            <a ui-sref="dashboard.groups">Groups</a>
+            <a ui-sref="dashboard.groups" translate>Groups</a>
           </li>
           <li ui-sref-active="active">
-            <a ui-sref="dashboard.sub-groups">Sub-Groups</a>
+            <a ui-sref="dashboard.sub-groups" translate>Sub-Groups</a>
           </li>
           <li ui-sref-active="active">
-            <a ui-sref="dashboard.indicators">Indicators</a>
+            <a ui-sref="dashboard.indicators" translate>Indicators</a>
           </li>
           <li ui-sref-active="active">
-            <a ui-sref="dashboard.criterias">Criterias</a>
+            <a ui-sref="dashboard.criterias" translate>Criterias</a>
           </li>
           <li ui-sref-active="active">
-            <a ui-sref="dashboard.questions">Questions</a>
+            <a ui-sref="dashboard.questions" translate>Questions</a>
           </li>
         </ul>
         <!-- /.nav-second-level -->
       </li>
       <li ng-class="{active: collapseVar==1}" ng-if="me.role == 4">
-        <a ui-sref="dashboard.data"><i class="fa fa-plus fa-fw"></i> Add Data</a>
+        <a ui-sref="dashboard.data"><i class="fa fa-plus fa-fw"></i> {{'Add Data' | translate}}</a>
       </li>
       <li ng-class="{active: collapseVar==1}">
-        <a ui-sref="dashboard.report"><i class="fa fa-database fa-fw"></i> Reports</a>
+        <a ui-sref="dashboard.report"><i class="fa fa-database fa-fw"></i> {{'Reports' | translate}}</a>
       </li>
     </ul>
   </div>

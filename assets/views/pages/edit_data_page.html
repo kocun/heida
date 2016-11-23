@@ -1,13 +1,13 @@
 <div class="data-edit-page" ng-if="me.role == 4">
   <div class="row">
-    <h3 class="page-header">{{ind.name}}</h3>
+    <h3 class="page-header" translate>{{ind.name}}</h3>
     <table class="table">
       <thead ng-hide="addNewRowtoIndicator || editRowtoIndicator">
       <tr>
-        <th width="200">Department</th>
-        <th width="75">Public</th>
-        <th>Year:Value</th>
-        <th width="55"></th>
+        <th width="200" translate>Department</th>
+        <th width="75" translate>Public</th>
+        <th translate>Year : Value</th>
+        <th width="85"></th>
       </tr>
       </thead>
       <tbody>
@@ -24,13 +24,13 @@
         </td>
         <td style="padding:10px 5px 5px!important">
           <a ng-click="editDataRow(data)" class="pull-right" style="margin-bottom:10px;">
-            <i class="fa fa-pencil"></i> Edit
+            <i class="fa fa-pencil"></i> {{'Edit' | translate}}
           </a>
         </td>
       </tr>
       <tr ng-show="currentDatas.length == 0">
         <td colspan="4">
-          <div class="no-data text-center pull-left" style="width:100%; color:#999999;" >
+          <div class="no-data text-center pull-left" style="width:100%; color:#999999;" translate>
             No data available
           </div>
         </td>
@@ -43,7 +43,7 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
-                  <label>Type of Unit</label>
+                  <label translate>Type of Unit</label>
                   <select class="form-control" id="new_department" ng-change="subUnits(newData.departmentId)" ng-model="newData.departmentId" required>
                     <option ng-repeat="department in departments" value="{{department.id}}" ng-selected="{{department.id == newData.departmentId}}">{{department.name}}</option>
                   </select>
@@ -51,7 +51,7 @@
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label>Type of Sub Unit</label>
+                  <label translate>Type of Sub-Unit</label>
                   <select class="form-control" id="new_subUnit" ng-model="newData.subUnitId" ng-disabled="!newData.departmentId || newData.departmentId == 'custom'">
                     <option ng-repeat="subUnit in newData.subdepartments" value="{{subUnit.id}}" ng-selected="{{subUnit.id == newData.subUnitId}}">{{subUnit.name}}</option>
                   </select>
@@ -59,7 +59,7 @@
               </div>
               <div class="col-md-4" ng-show="newData.departmentId == 'custom' || newData.subUnitId">
                 <div class="form-group">
-                  <label>Please write the name of your unit</label>
+                  <label translate>Please write the name of your unit</label>
                   <input  class="form-control" type="text" id="new_otherUnit" ng-model="newData.otherUnit"/>
                 </div>
               </div>
@@ -71,7 +71,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>Time Period</label>
+                  <label translate>Time Period</label>
                   <select class="form-control" id="new_periodType" ng-model="newData.periodType" ng-change="newData.year = [];newData.yearNotSelected = false;" required>
                     <option ng-repeat="period in periodArrObj" value="{{period.value}}" ng-selected="{{period.value == newData.periodType}}">{{period.label}}</option>
                   </select>
@@ -79,26 +79,26 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>Year</label>
+                  <label translate>Year</label>
                   <select class="form-control" id="new_period" ng-model="newData.year" ng-change="prepareYearsValues();"  multiple ng-multiple="true" required ng-disabled="!newData.periodType">
                     <option ng-repeat="per in periodRange(newData.periodType)" value="{{per}}" ng-selected="{{per == newData.year}}">{{per}}</option>
                   </select>
-                  <i class="info-text">You can select more by holding "CTRL" key</i>
+                  <i class="info-text" translate>You can select more by holding 'CTRL' key</i>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-2" ng-repeat="selectedYear in newData.year">
                 <div class="form-group">
-                  <label>Value of {{selectedYear}}
+                  <label translate>Value of {{selectedYear}}
                     <span ng-show="newData.percentage">(%)</span>
-                    <span ng-show="newData.yesno">(Yes/No)</span>
+                    <span ng-show="newData.yesno">({{'Yes/No' | translate}})</span>
                   </label>
                   <input ng-if="newData.numeric" class="form-control" type="number" id="new_value_{{$index}}" ng-hide="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]"/>
                   <input ng-if="newData.percentage" ng-change="validatePercentage(newData.yearsValues[selectedYear], selectedYear)" class="form-control" type="number" id="new_value_{{$index}}_percentage" ng-hide="newData[selectedYear]" ng-model="newData.yearsValues[selectedYear]"/>
                   <select ng-if="newData.yesno" class="form-control" id="new_value_{{$index}}_yesno" ng-model="newData.yearsValues[selectedYear]">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                    <option value="yes" translate>Yes</option>
+                    <option value="no" translate>No</option>
                   </select>
                 </div>
               </div>
@@ -114,7 +114,7 @@
                   <select class="form-control" id="new_survey_{{survey.id}}" ng-model="newData.criterias[survey.id]"  multiple ng-multiple="true" required ng-if="survey.multiple == true">
                     <option ng-repeat="answer in survey.questions" value="{{answer.id}}" ng-selected="{{answer.id == newData.criterias[survey.id]}}">{{answer.name}}</option>
                   </select>
-                  <i ng-if="survey.multiple == true" class="info-text">You can select more by holding "CTRL" key</i>
+                  <i ng-if="survey.multiple == true" class="info-text" translate>You can select more by holding 'CTRL' key</i>
                   <select class="form-control" id="new_survey_{{survey.id}}" ng-model="newData.criterias[survey.id]" required ng-if="!(survey.multiple == true)">
                     <option ng-repeat="answer in survey.questions" value="{{answer.id}}" ng-selected="{{answer.id == newData.criterias[survey.id]}}">{{answer.name}}</option>
                   </select>
@@ -123,11 +123,11 @@
             </div>
             <div class="row">
               <div class="col-sm-6 text-left">
-                <button type="button" class="btn btn-danger" ng-click="cancelNewData();">Cancel</button>
+                <button type="button" class="btn btn-danger" ng-click="cancelNewData();" translate>Cancel</button>
               </div>
               <div class="col-sm-6 text-right">
                 <button type="button" class="btn btn-primary" ng-click="saveNewData(newData);"
-                        ng-disabled="!(newData.subUnitId && !newData.yearNotSelected)">
+                        ng-disabled="!(newData.subUnitId && !newData.yearNotSelected)" translate>
                   Save
                 </button>
               </div>

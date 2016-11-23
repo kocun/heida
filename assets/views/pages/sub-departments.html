@@ -1,34 +1,34 @@
 <div class="subdepartments-page">
   <div class="row">
-    <h1 class="page-header">Sub-Units</h1>
+    <h1 class="page-header" translate>Sub-Units</h1>
   </div>
   <div class="row">
     <a ng-click="addSubdepartment=true" ng-hide="addSubdepartment" class="pull-right mb20 add-subdepartment">
-      <i class="fa fa-plus-circle"></i> Add New Sub-Unit
+      <i class="fa fa-plus-circle"></i> {{'Add New Sub-Unit' | translate}}
     </a>
     <div class="row mb40" ng-show="addSubdepartment">
       <div class="col-lg-4">
-        <input type="text" value="{{subdepartment.name}}" ng-model="subdepartment.name" class="form-control col-lg-6" placeholder="Add New Sub-Department" />
+        <input type="text" value="{{subdepartment.name}}" ng-model="subdepartment.name" class="form-control col-lg-6" placeholder="{{'Add New Sub-Department' | translate}}" />
       </div>
       <div class="col-lg-4">
         <select class="form-control col-lg-6" ng-options="department.name for department in departments track by department.id"  ng-model="subdepartment.department"></select>
       </div>
       <div class="col-lg-4">
-        <button class="btn btn-primary" type="button" ng-click="save(subdepartment)">Add</button>
+        <button class="btn btn-primary" type="button" ng-click="save(subdepartment)" translate>Add</button>
       </div>
     </div>
 
     <table class="table table-striped table-bordered">
       <thead>
       <tr>
-        <th>Name</th>
-        <th>Unit</th>
+        <th translate>Name</th>
+        <th translate>Unit</th>
       </tr>
       </thead>
       <tbody>
       <tr ng-repeat="subdepartment in subdepartments" ui-sref="dashboard.sub-departments_edit({id:subdepartment.id})" class="list-item" title="Edit {{subdepartment.name}}">
-        <td>{{subdepartment.name}}</td>
-        <td>{{subdepartment.department.name}}</td>
+        <td translate>{{subdepartment.name}}</td>
+        <td translate>{{subdepartment.department.name}}</td>
       </tr>
       </tbody>
     </table>

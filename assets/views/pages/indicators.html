@@ -1,10 +1,10 @@
 <div class="indicators-page" ng-if="me.role == 4">
   <div class="row">
-    <h1 class="page-header">Indicators</h1>
+    <h1 class="page-header" translate>Indicators</h1>
   </div>
   <div class="row">
     <a ng-click="addIndicator=true" ng-hide="addIndicator" class="pull-right mb20 add-indicator">
-      <i class="fa fa-plus-circle"></i> Add New Indicator
+      <i class="fa fa-plus-circle"></i> {{'Add New Indicator' | translate}}
     </a>
 
     <div ng-show="addIndicator">
@@ -12,96 +12,96 @@
       <table class="table table-bordered">
         <thead>
         <tr>
-          <th>Name</th>
-          <th>Subgroup</th>
-          <th>Value Type</th>
-          <th>Public</th>
-          <th>Goal 1</th>
-          <th>Goal 2</th>
-          <th>Goal 3</th>
-          <th>Goal 4</th>
-          <th>Goal 5</th>
+          <th translate>Name</th>
+          <th translate>Sub-Group</th>
+          <th translate>Value Type</th>
+          <th translate>Public</th>
+          <th translate>Goal 1</th>
+          <th translate>Goal 2</th>
+          <th translate>Goal 3</th>
+          <th translate>Goal 4</th>
+          <th translate>Goal 5</th>
         </tr>
         </thead>
         <tbody>
         <tr>
           <input type="hidden" ng-model="indicator.code" disabled>
-          <td><input type="text" ng-model="indicator.name"></td>
+          <td><input type="text" ng-model="indicator.name" class="form-control"></td>
           <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id"
                       ng-model="indicator.subgroup">
           </select></td>
           <td><select class="form-control" ng-model="indicator.valueType">
-            <option value="yes/no">Yes / No</option>
-            <option value="numeric">Numeric</option>
-            <option value="percentage">Percentage</option>
+            <option value="yes/no" translate>Yes / No</option>
+            <option value="numeric" translate>Numeric</option>
+            <option value="percentage" translate>Percentage</option>
           </select></td>
           <td class="text-center">
             <select class="form-control" ng-model="indicator.public">
-              <option value="public">Public</option>
-              <option value="staffonly">Staff Only</option>
-              <option value="notsure">Not Sure</option>
+              <option value="public" translate>Public</option>
+              <option value="staffonly" translate>Staff Only</option>
+              <option value="notsure" translate>Not Sure</option>
             </select>
           </td>
           <td>
             <select class="form-control" ng-model="indicator.goal1">
-              <option value="0">Not Relevant</option>
-              <option value="1">Low</option>
-              <option value="2">Moderately</option>
-              <option value="3">Highly</option>
+              <option value="0" translate>Not Relevant</option>
+              <option value="1" translate>Low</option>
+              <option value="2" translate>Moderately</option>
+              <option value="3" translate>Highly</option>
             </select></td>
           <td>
             <select class="form-control" ng-model="indicator.goal2">
-              <option value="0">Not Relevant</option>
-              <option value="1">Low</option>
-              <option value="2">Moderately</option>
-              <option value="3">Highly</option>
+              <option value="0" translate>Not Relevant</option>
+              <option value="1" translate>Low</option>
+              <option value="2" translate>Moderately</option>
+              <option value="3" translate>Highly</option>
             </select></td>
           <td>
             <select class="form-control" ng-model="indicator.goal3">
-              <option value="0">Not Relevant</option>
-              <option value="1">Low</option>
-              <option value="2">Moderately</option>
-              <option value="3">Highly</option>
+              <option value="0" translate>Not Relevant</option>
+              <option value="1" translate>Low</option>
+              <option value="2" translate>Moderately</option>
+              <option value="3" translate>Highly</option>
             </select></td>
           <td>
             <select class="form-control" ng-model="indicator.goal4">
-              <option value="0">Not Relevant</option>
-              <option value="1">Low</option>
-              <option value="2">Moderately</option>
-              <option value="3">Highly</option>
+              <option value="0" translate>Not Relevant</option>
+              <option value="1" translate>Low</option>
+              <option value="2" translate>Moderately</option>
+              <option value="3" translate>Highly</option>
             </select></td>
           <td>
             <select class="form-control" ng-model="indicator.goal5">
-              <option value="0">Not Relevant</option>
-              <option value="1">Low</option>
-              <option value="2">Moderately</option>
-              <option value="3">Highly</option>
+              <option value="0" translate>Not Relevant</option>
+              <option value="1" translate>Low</option>
+              <option value="2" translate>Moderately</option>
+              <option value="3" translate>Highly</option>
             </select></td>
           </td>
         </tr>
         </tbody>
       </table>
 
-      <button class="btn btn-primary pull-right mb40" type="button" ng-click="save(indicator)">Add</button>
+      <button class="btn btn-primary pull-right mb40" type="button" ng-click="save(indicator)" translate>Add</button>
     </div>
     <table class="table table-bordered table-striped">
       <thead>
       <tr>
-        <th width="5%">Code</th>
-        <th>Name</th>
-        <th>subgroup</th>
-        <th>Value Type</th>
-        <th class="col-lg-1">Public</th>
+        <th width="5%" translate>Code</th>
+        <th translate>Name</th>
+        <th translate>Sub-Group</th>
+        <th translate>Value Type</th>
+        <th class="col-lg-1" translate>Public</th>
       </tr>
       </thead>
       <tbody>
       <tr ng-repeat="indicator in indicators " ui-sref="dashboard.indicators_edit({id:indicator.id})" class="list-item"
           title="Edit {{indicator.name}}">
-        <td>{{indicator.code}}</td>
-        <td>{{indicator.name}}</td>
-        <td>{{indicator.subgroup.name}}</td>
-        <td>{{indicator.valueType}}</td>
-        <td>{{indicator.public}}</td>
+        <td translate>{{indicator.code}}</td>
+        <td translate>{{indicator.name}}</td>
+        <td translate>{{indicator.subgroup.name}}</td>
+        <td translate>{{indicator.valueType}}</td>
+        <td translate>{{indicator.public}}</td>
       </tr>
       </tbody>
     </table>

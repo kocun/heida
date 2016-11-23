@@ -4,8 +4,8 @@
     <table class="table table-bordered table-striped">
       <thead>
       <tr>
-        <th>Name</th>
-        <Th>Relevancy</Th>
+        <th translate>Name</th>
+        <th translate>Relevancy</th>
       </tr>
       </thead>
       <tbody>
@@ -13,15 +13,15 @@
         <td><input type="text" value="{{goal.name}}" ng-model="goal.name" class="form-control"></td>
         <td>
           <select  ng-model="goal.relevancy" class="form-control">
-            <option value="Not Relevant">Not Relevant</option>
-            <option value="Low">Low</option>
-            <option value="Moderately">Moderately</option>
-            <option value="Highly">Highly</option>
+            <option value="Not Relevant" translate>Not Relevant</option>
+            <option value="Low" translate>Low</option>
+            <option value="Moderately" translate>Moderately</option>
+            <option value="Highly" translate>Highly</option>
           </select>
         </td>
       </tr>
       </tbody>
     </table>
-    <button type="button" class="btn btn-primary pull-right" ng-click="update()">Update</button>
+    <button type="button" class="btn btn-primary pull-right" ng-click="update()" translate>Update</button>
   </div>
 </div>
