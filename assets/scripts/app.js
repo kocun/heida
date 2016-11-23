@@ -28,6 +28,7 @@ angular
       })
       .preferredLanguage('tr')
       .useMissingTranslationHandlerLog();
+
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider

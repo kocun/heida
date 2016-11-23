@@ -1,23 +1,23 @@
 <div class="criteria-page" ng-if="me.role == 4">
   <div class="row">
-    <h1 class="page-header">Criterias</h1>
+    <h1 class="page-header" translate>Criterias</h1>
   </div>
   <div class="row">
     <a ng-click="addCriteria=true" ng-hide="addCriteria" class="pull-right mb20 add-criteria">
-      <i class="fa fa-plus-circle"></i> Add New Criteria
+      <i class="fa fa-plus-circle"></i> {{'Add New Criteria' | translate}}
     </a>
     <div ng-show="addCriteria">
       <table class="table table-bordered table-striped">
         <thead>
         <tr>
-          <th>Criteria</th>
-          <th>Multiple</th>
+          <th translate>Criteria</th>
+          <th translate>Multiple</th>
         </tr>
         </thead>
         <tbody>
         <tr>
           <td>
-            <textarea class="form-control" rows="3" value="{{criteria.name}}" placeholder="Add New Criteria"></textarea>
+            <textarea class="form-control" rows="3" value="{{criteria.name}}" placeholder="{{'Add New Criteria' | translate}}"></textarea>
           </td>
           <td>
             <input type="checkbox" value="" ng-model="criteria.multiple" id="criteria-checkbox" />
@@ -25,20 +25,20 @@
         </tr>
         </tbody>
       </table>
-      <button type="button" class="btn btn-primary pull-right mb40" ng-click="save(criteria)">Add</button>
+      <button type="button" class="btn btn-primary pull-right mb40" ng-click="save(criteria)" translate>Add</button>
     </div>
 
     <table class="table table-striped table-bordered">
       <thead>
       <tr>
-        <th>Name</th>
-        <th class="col-lg-1 text-center">Multiple</th>
+        <th translate>Name</th>
+        <th class="col-lg-1 text-center" translate>Multiple</th>
       </tr>
       </thead>
       <tbody>
       <tr ng-repeat="criteria in criterias" ui-sref="dashboard.criterias_edit({id:criteria.id})" class="list-item" title="Edit {{criteria.name}}">
-        <td>{{criteria.name}}</td>
-        <td class="col-lg-1 text-center">{{criteria.multiple}}</td>
+        <td translate>{{criteria.name}}</td>
+        <td class="col-lg-1 text-center" translate>{{criteria.multiple}}</td>
       </tr>
       </tbody>
     </table>

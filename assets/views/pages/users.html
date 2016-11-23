@@ -1,6 +1,6 @@
 <div class="users-page" ng-if="me.role == 4">
   <div class="row">
-      <h1 class="page-header">Users</h1>
+      <h1 class="page-header" translate>Users</h1>
   </div>
   <!-- /.table-responsive -->
   <div class="row">
@@ -8,11 +8,11 @@
         <thead>
           <tr>
             <th class="text-center">#</th>
-            <th>Username</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Department</th>
-            <th>Role</th>
+            <th translate>Username</th>
+            <th translate>Name</th>
+            <th translate>Email</th>
+            <th translate>Department</th>
+            <th translate>Role</th>
           </tr>
         </thead>
         <tbody>
@@ -21,12 +21,12 @@
             <td>{{user.username}}</td>
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
-            <td>{{user.department[0].name}}</td>
+            <td translate>{{user.department[0].name}}</td>
             <td ng-switch on="user.role">
-              <div ng-switch-when="1">Read-only</div>
-              <div ng-switch-when="2">Member</div>
-              <div ng-switch-when="3">Editor</div>
-              <div ng-switch-when="4">Admin</div>
+              <div ng-switch-when="1" translate>Read-only</div>
+              <div ng-switch-when="2" translate>Member</div>
+              <div ng-switch-when="3" translate>Editor</div>
+              <div ng-switch-when="4" translate>Admin</div>
             </td>
           </tr>
         </tbody>

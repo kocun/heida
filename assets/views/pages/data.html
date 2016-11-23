@@ -1,6 +1,6 @@
 <div class="create-reports-page" ng-if="me.role == 4">
   <div class="row">
-    <h1 class="page-header">Add Data</h1>
+    <h1 class="page-header" translate>Add Data</h1>
   </div>
 
   <div class="row">
@@ -9,21 +9,21 @@
       <table id="panel{{state}}" class="table table-bordered">
         <thead>
         <tr>
-          <th width="125">Goals</th>
-          <th width="40">Group</th>
-          <th width="35%">Sub-Group</th>
-          <th width="145"></th>
+          <th width="125" translate>Goals</th>
+          <th width="40" translate>Group</th>
+          <th width="35%" translate>Sub-Group</th>
+          <th width="145" translate></th>
         </tr>
         </thead>
         <tbody>
         <tr>
           <td>
             <select class="form-control" ng-model="data.filterGoal" required>
-              <option value="goal1">Goal 1 - to enhance the quality of education</option>
-              <option value="goal2">Goal 2 - to enhance the quality of research</option>
-              <option value="goal3">Goal 3 - to well-prepare students for life and work in an intercultural and globalising world</option>
-              <option value="goal4">Goal 4 - to enhance the international reputation and visibility of the unit</option>
-              <option value="goal5">Goal 5 - to provide service to society and community social engagement</option>
+              <option value="goal1" translate>Goal 1 - to enhance the quality of education</option>
+              <option value="goal2" translate>Goal 2 - to enhance the quality of research</option>
+              <option value="goal3" translate>Goal 3 - to well-prepare students for life and work in an intercultural and globalising world</option>
+              <option value="goal4" translate>Goal 4 - to enhance the international reputation and visibility of the unit</option>
+              <option value="goal5" translate>Goal 5 - to provide service to society and community social engagement</option>
             </select>
           </td>
           <td><select class="form-control" ng-options="group.name for group in groups track by group.id"
@@ -34,10 +34,10 @@
           </select></td>
           <td>
             <button type="button" class="btn btn-primary" ng-click="filter(data.subgroup.id,data.filterGoal);"
-                    ng-disabled="!(data.subgroup && data.group && data.filterGoal)">
+                    ng-disabled="!(data.subgroup && data.group && data.filterGoal)" translate>
               Filter
             </button>
-            <button type="button" class="btn btn-danger pull-right" ng-click="clearFilter();data.subgroup = undefined;data.group = undefined;data.filterGoal = undefined;">
+            <button type="button" class="btn btn-danger pull-right" ng-click="clearFilter();data.subgroup = undefined;data.group = undefined;data.filterGoal = undefined;" translate>
               Clear
             </button>
           </td>
@@ -49,7 +49,7 @@
           <tbody>
           <tr ng-repeat="indicator in indicators" ng-show="indicator[filterGoal] > 1">
             <td>
-              <a ng-click="addData(indicator)">{{indicator.name}}</a>
+              <a ng-click="addData(indicator)" translate>{{indicator.name}}</a>
             </td>
           </tr>
           </tbody>

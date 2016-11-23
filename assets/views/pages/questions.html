@@ -1,47 +1,47 @@
 <div class="questions-page" ng-if="me.role == 4">
   <div class="row">
-    <h1 class="page-header">Questions</h1>
+    <h1 class="page-header" translate>Questions</h1>
   </div>
   <div class="row">
     <a ng-click="addQuestion=true" ng-hide="addQuestion" class="pull-right mb20 add-question">
-      <i class="fa fa-plus-circle"></i> Add New Question
+      <i class="fa fa-plus-circle"></i> {{'Add New Question' | translate}}
     </a>
     <div ng-show="addQuestion">
       <table class="table table-bordered">
         <thead>
         <tr>
-          <th>Question</th>
-          <th>Value</th>
-          <th>Type</th>
-          <th>Criteria</th>
+          <th translate>Question</th>
+          <th translate>Value</th>
+          <th translate>Type</th>
+          <th translate>Criteria</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-          <td><input type="text" value="{{question.name}}" ng-model="question.name" placeholder="Add New Question" class="form-control" /></td>
-          <td><input type="text" value="{{question.value}}" ng-model="question.value" placeholder="Add New Value" class="form-control" /></td>
-          <td><input type="text" value="{{question.type}}" ng-model="question.type"  placeholder="Add New Type" class="form-control"/></td>
+          <td><input type="text" value="{{question.name}}" ng-model="question.name" placeholder="{{'Add New Question' | translate}}" class="form-control" /></td>
+          <td><input type="text" value="{{question.value}}" ng-model="question.value" placeholder="{{'Add New Value' | translate}}" class="form-control" /></td>
+          <td><input type="text" value="{{question.type}}" ng-model="question.type"  placeholder="{{'Add New Type' | translate}}" class="form-control"/></td>
           <td><select class="form-control" ng-options="criteria.name for criteria in criterias track by criteria.id"  ng-model="question.criteria" class="form-control"></select></td>
         </tr>
         </tbody>
       </table>
-      <button class="btn btn-primary pull-right mb40" type="button" ng-click="save(question)">Add</button>
+      <button class="btn btn-primary pull-right mb40" type="button" ng-click="save(question)" translate>Add</button>
     </div>
     <table class="table table-striped table-bordered">
       <thead>
       <tr>
-        <th>Question</th>
-        <th>Value</th>
-        <th class="col-lg-1 text-center">Type</th>
-        <th>Criteria</th>
+        <th translate>Question</th>
+        <th translate>Value</th>
+        <th class="col-lg-1 text-center" translate>Type</th>
+        <th translate>Criteria</th>
       </tr>
       </thead>
       <tbody>
       <tr ng-repeat="question in questions" ui-sref="dashboard.questions_edit({id:question.id})" class="list-item" title="Edit {{question.name}}">
-        <td>{{question.name}}</td>
-        <td>{{question.value}}</td>
-        <td class="col-lg-1 text-center">{{question.type}}</td>
-        <td>{{question.criteria.name}}</td>
+        <td translate>{{question.name}}</td>
+        <td translate>{{question.value}}</td>
+        <td class="col-lg-1 text-center" translate>{{question.type}}</td>
+        <td translate>{{question.criteria.name}}</td>
       </tr>
       </tbody>
     </table>

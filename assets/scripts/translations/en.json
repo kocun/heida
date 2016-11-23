@@ -1,5 +1,4 @@
 {
-  "HELLO": "Hello",
   "BUTTON_LANG_TR":"Türkçe",
   "BUTTON_LANG_EN":"English",
   "Sign in with Google": "Sign in with Google",
@@ -586,7 +585,8 @@
   "Open source/free data management/sharing software (eg. Google docs, other)": "Open source/free data management/sharing software (eg. Google docs, other)",
   "Institution's website": "Institution's website",
   "Commercial data management software": "Commercial data management software",
-  "Institutions' intranet": "Institutions' intranet",
-
+  "Institutions": "Institutions",
+  "intranet": "intranet",
+  "Dashboard": "Dashboard"
 }
 
