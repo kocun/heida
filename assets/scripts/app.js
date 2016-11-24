@@ -22,12 +22,12 @@ angular
       events: true
     });
     $translateProvider
+      .useSanitizeValueStrategy('escape')
       .useStaticFilesLoader({
         prefix: '/scripts/translations/',
         suffix: '.json'
       })
       .preferredLanguage('tr')
-      .useMissingTranslationHandlerLog();
 
     $urlRouterProvider.otherwise('/login');
 
