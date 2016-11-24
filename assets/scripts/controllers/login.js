@@ -7,9 +7,13 @@
  * Controller of the heidaApp
  */
 angular.module('heidaApp')
-  .controller('LoginCtrl', function($scope, $http) {
+  .controller('LoginCtrl', function($scope, $http,$translate) {
     $http.get('/api/me').
     success(function(data) {
         $scope.me = data;
     });
+
+      $scope.changeLanguage = function (langKey) {
+          $translate.use(langKey);
+      };
   });
