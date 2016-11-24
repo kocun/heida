@@ -102,7 +102,7 @@ passport.use(new LdapStrategy(getLDAPConfiguration,
             name: user.fullName,
             password: 'N/A',
             email: user.mail,
-            role: 3
+            role: 4
           };
           User.create(usr).exec(function(err, created) {
             if (created) {
@@ -173,7 +173,7 @@ passport.use(new GoogleStrategy({
             role = 4;
           }
           else {
-            role = 1;
+            role = 3;
           }
 
           var usr = {
