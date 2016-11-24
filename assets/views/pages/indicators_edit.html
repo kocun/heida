@@ -1,39 +1,39 @@
 <div class="indicators-page" ng-if="me.role == 4">
   <div class="row">
-    <h1 class="page-header">Edit {{indicators.name}}</h1>
+    <h1 class="page-header">{{'Edit' | translate}} {{indicators.name | translate}}</h1>
 
 
     <table class="table table-bordered">
       <thead>
       <tr>
-        <th width="7%">Code</th>
-        <th>Name</th>
-        <th>Subgroup</th>
-        <th>Value Type</th>
-        <th>Public</th>
+        <th width="7%" translate>Code</th>
+        <th translate>Name</th>
+        <th translate>Subgroup</th>
+        <th translate>Value Type</th>
+        <th translate>Public</th>
       </tr>
       </thead>
       <tbody>
       <tr>
         <td><input type="text" class="form-control" value="{{indicator.code}}" ng-model="indicator.code"></td>
-        <td><input type="text" class="form-control" value="{{indicator.name}}" ng-model="indicator.name"></td>
+        <td><input type="text" class="form-control" value="{{indicator.name | translate}}" ng-model="indicator.name"></td>
         <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id"  ng-model="indicator.subgroup">
         </select></td>
         <td><select class="form-control" ng-model="indicator.valueType">
-          <option value="yes/no">Yes / No</option>
-          <option value="numeric">Numeric</option>
-          <option value="percentage">Percentage</option>
+          <option value="yes/no" translate>Yes / No</option>
+          <option value="numeric" translate>Numeric</option>
+          <option value="percentage" translate>Percentage</option>
         </select></td>
         <td class="text-center">
           <select class="form-control" ng-model="indicator.public">
-            <option value="public">Public</option>
-            <option value="staffonly">Staff Only</option>
-            <option value="notsure">Not Sure</option>
+            <option value="public" translate>Public</option>
+            <option value="staffonly" translate>Staff Only</option>
+            <option value="notsure" translate>Not Sure</option>
           </select>
         </td>
       </tr>
       </tbody>
     </table>
-    <button type="button" class="btn btn-primary pull-right" ng-click="update()">Update</button>
+    <button type="button" class="btn btn-primary pull-right" ng-click="update()" translate>Update</button>
   </div>
 </div>

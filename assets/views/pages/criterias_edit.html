@@ -4,8 +4,8 @@
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th>Criteria</th>
-            <th>Multiple</th>
+            <th translate>Criteria</th>
+            <th translate>Multiple</th>
           </tr>
         </thead>
         <tbody>
@@ -13,12 +13,12 @@
             <td>
               <textarea class="form-control" rows="3" value="{{criteria.name}}">{{criteria.name}}</textarea>
             </td>
-            <td>
+            <td translate>
               <input type="checkbox" value="" ng-model="criteria.multiple">
             </td>
           </tr>
         </tbody>
       </table>
-    <button type="button" class="btn btn-primary pull-right" ng-click="update()">Update</button>
+    <button type="button" class="btn btn-primary pull-right" ng-click="update()" translate>Update</button>
 </div>
 </div>
