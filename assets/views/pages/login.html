@@ -20,11 +20,17 @@
           </form> -->
 
           <!-- Change this to a button or input when using this as a form -->
+
+          <select class="form-control mb20" name="lang-selector" ng-change="changeLanguage()" ng-model="selected">
+            <<option value="">{{'Choose Language' | translate}}</option>
+            <option value="tr" selected>{{'Turkish' | translate}}</option>
+            <option value="en">{{'English' | translate}}</option>
+            <option value="es">{{'Spanish' | translate}}</option>
+            <option value="si">{{'Slovene' | translate}}</option>
+          </select>
           <a href="/api/auth/process/google" class="btn btn-block btn-social btn-lg btn-google">
             <i class="fa fa-google"></i> {{"Sign in with Google" | translate}}
           </a>
-        <!--<button ng-click="changeLanguage('tr')" translate="BUTTON_LANG_TR"></button>-->
-        <!--<button ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></button>-->
         </div>
       </div>
     </div>
