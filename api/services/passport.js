@@ -102,7 +102,7 @@ passport.use(new LdapStrategy(getLDAPConfiguration,
             name: user.fullName,
             password: 'N/A',
             email: user.mail,
-            role: 4
+            role: 3
           };
           User.create(usr).exec(function(err, created) {
             if (created) {
