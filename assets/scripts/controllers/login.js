@@ -13,7 +13,8 @@ angular.module('heidaApp')
         $scope.me = data;
     });
 
-      $scope.changeLanguage = function (langKey) {
-          $translate.use(langKey);
-      };
+    $scope.changeLanguage = function (langKey) {
+        langKey = $scope.selected;
+        $translate.use(langKey);
+    };
   });
