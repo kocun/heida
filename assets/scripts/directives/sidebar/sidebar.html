@@ -58,7 +58,7 @@
         </ul>
         <!-- /.nav-second-level -->
       </li>
-      <li ng-class="{active: collapseVar==1}" ng-if="me.role == 4">
+      <li ng-class="{active: collapseVar==1}" ng-if="me.role == 3 ||me.role == 4">
         <a ui-sref="dashboard.data"><i class="fa fa-plus fa-fw"></i> {{'Add Data' | translate}}</a>
       </li>
       <li ng-class="{active: collapseVar==1}">
