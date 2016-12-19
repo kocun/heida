@@ -15,7 +15,7 @@
       </thead>
       <tbody>
       <tr>
-        <td><input type="text" class="form-control" value="{{indicator.code}}" ng-model="indicator.code"></td>
+        <td>{{indicator.code}}</td>
         <td><input type="text" class="form-control" value="{{indicator.name | translate}}" ng-model="indicator.name"></td>
         <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id"  ng-model="indicator.subgroup">
         </select></td>

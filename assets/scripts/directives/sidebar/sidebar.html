@@ -24,13 +24,6 @@
           <li ui-sref-active="active">
             <a ui-sref="dashboard.users" translate>Users</a>
           </li>
-        </ul>
-        <!-- /.nav-second-level -->
-      </li>
-      <li ng-class="{active: editorCollapseVar==1}" ng-if="me.role == 3 || me.role == 4">{{dropDown}}
-        <a href="" ng-click="editorCollapse(1)"><i class="fa fa-wrench fa-fw"></i> {{'Editor Menu' | translate}}<span
-          class="fa arrow"></span></a>
-        <ul class="nav nav-second-level" collapse="editorCollapseVar!=1" >
           <li ui-sref-active="active">
             <a ui-sref="dashboard.departments" translate>Units</a>
           </li>
@@ -47,9 +40,6 @@
             <a ui-sref="dashboard.sub-groups" translate>Sub-Groups</a>
           </li>
           <li ui-sref-active="active">
-            <a ui-sref="dashboard.indicators" translate>Indicators</a>
-          </li>
-          <li ui-sref-active="active">
             <a ui-sref="dashboard.criterias" translate>Criterias</a>
           </li>
           <li ui-sref-active="active">
@@ -58,7 +48,17 @@
         </ul>
         <!-- /.nav-second-level -->
       </li>
-      <li ng-class="{active: collapseVar==1}" ng-if="me.role == 3 ||me.role == 4">
+      <li ng-class="{active: editorCollapseVar==1}" ng-if="me.role == 3 || me.role == 4">{{dropDown}}
+        <a href="" ng-click="editorCollapse(1)"><i class="fa fa-wrench fa-fw"></i> {{'Editor Menu' | translate}}<span
+          class="fa arrow"></span></a>
+        <ul class="nav nav-second-level" collapse="editorCollapseVar!=1" >
+          <li ui-sref-active="active">
+            <a ui-sref="dashboard.indicators" translate>Indicators</a>
+          </li>
+        </ul>
+        <!-- /.nav-second-level -->
+      </li>
+      <li ng-class="{active: collapseVar==1}" ng-show="me.role == 3 ||me.role == 4">
         <a ui-sref="dashboard.data"><i class="fa fa-plus fa-fw"></i> {{'Add Data' | translate}}</a>
       </li>
       <li ng-class="{active: collapseVar==1}">

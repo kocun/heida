@@ -8,11 +8,11 @@
     <button ng-show="lang == 'en'" ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></button> -->
   </div>
   <select class="form-control" name="lang-selector" ng-change="changeLanguage()" ng-model="selected" style="width:200px; display:inline-block;margin-top:10px">
-    <option value="">{{'Choose Language' | translate}}</option>
-    <option value="tr" selected>{{'Turkish' | translate}}</option>
-    <option value="en">{{'English' | translate}}</option>
-    <option value="es">{{'Spanish' | translate}}</option>
-    <option value="si">{{'Slovene' | translate}}</option>
+    <option value="">Choose Language</option>
+    <option value="tr" selected>Turkish</option>
+    <option value="en">English</option>
+    <option value="es">Spanish</option>
+    <option value="si">Slovene</option>
   </select>
   <a class="nav navbar-top-links navbar-right logout-button hide-on-mobile" ui-sref="login"><i
     class="fa fa-sign-out fa-fw"></i> {{'Logout' | translate}}</a>
