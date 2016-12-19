@@ -49,7 +49,7 @@
           <tbody>
           <tr ng-repeat="indicator in indicators" ng-show="indicator[filterGoal] > 1">
             <td>
-              <a ng-click="addData(indicator)" translate>{{indicator.name}}</a>
+              <a ng-click="addData(indicator)" translate>{{indicator.name}}</a><span>({{indicator.code}})</span>
             </td>
           </tr>
           </tbody>

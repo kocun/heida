@@ -12,11 +12,14 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="data in searchDatas"  class="list-item">
-        <td>{{data.code}}</td>
-        <td>{{data.name}}</td>
-        <td>{{data.subgroup.name}}</td>
-      </tr>
+        <tr ng-show="!searchDatas.length">
+          <td colspan="3" translate>There is no data for this indicator</td>
+        </tr>
+        <tr ng-repeat="data in searchDatas" class="list-item" ui-sref="dashboard.report_detail({dataId:data.id, valueType:data.valueType})" style="cursor:pointer">
+          <td>{{data.code}}</td>
+          <td>{{data.name}}</td>
+          <td>{{data.subgroup.name}}</td>
+        </tr>
       </tbody>
     </table>
   </div>
