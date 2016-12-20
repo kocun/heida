@@ -28,12 +28,7 @@ module.exports = {
   process: function(req, res) {
     console.log(req.param('provider'));
     var provider = req.param('provider') || 'local';
-    console.log("1-" + provider);
     passport.authenticate(provider, function(err, user, info) {
-
-      console.log("err:" + err);
-      console.log(user);
-      console.log(info);
       if ((err) || (!user)) {
         req.flash('message');
         return res.redirect('/#/login');
@@ -52,9 +47,6 @@ module.exports = {
   },
   callback: function(req, res) {
     passport.authenticate('google', function(err, user, info) {
-      console.log("err:" + err);
-      console.log(user);
-      console.log(info);
       if ((err) || (!user)) {
         req.flash('message');
         return res.redirect('/#/login');

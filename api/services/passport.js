@@ -160,12 +160,6 @@ passport.use(new GoogleStrategy({
           return done(null, err);
         }
         if (!userdb) {
-          console.log("u");
-          console.log(sails.config.admins);
-          console.log(profile.emails[0].value);
-          console.log(_.findIndex(sails.config.admins, {
-            email: profile.emails[0].value
-          }));
           var role = 1;
           if (_.findIndex(sails.config.admins, {
               email: profile.emails[0].value

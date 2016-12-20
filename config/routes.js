@@ -56,7 +56,15 @@ module.exports.routes = {
   'get /api/search/:text': {
     controller: 'IndicatorController',
     action: 'search'
-  }
+  },
+  'get /api/data/nof/:nameOfUnit': {
+    controller: 'DataController',
+    action: 'findByNameOfUnit'
+  },
+  'get /api/data/ic/:indicatorCode': {
+    controller: 'DataController',
+    action: 'findByIndicatorCode'
+  },
   /***************************************************************************
    *                                                                          *
    * Custom routes here...                                                    *

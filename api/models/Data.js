@@ -31,7 +31,7 @@ module.exports = {
             enum: ['academic', 'calendar']
         },
         public: {
-            type: 'string'
+          enum: ['public', 'staffonly', 'notsure']
         }
     }
 };

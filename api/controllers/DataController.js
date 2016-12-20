@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing data
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
+var  _  = require('underscore');
 module.exports = {
 
   chart: function(req, res) {
@@ -31,6 +31,25 @@ module.exports = {
   find: function(req, res) {
     Data.find().populate("department").populate("subDepartment").populate("indicator").populate("criterias").populate("years").exec(function(err, data) {
       res.json(data);
+    });
+  },
+  findByNameOfUnit:function(req, res) {
+    Data.find({departmentDesc:req.param('nameOfUnit')}).populate("department").populate("subDepartment").populate("indicator").populate("criterias").populate("years").exec(function(err, data) {
+      res.json(data);
+    });
+  },
+  findByIndicatorCode:function(req, res) {
+    var indcode=req.param('indicatorCode');
+    Data.find().populate("department").populate("subDepartment").populate("indicator").populate("criterias").populate("years").exec(function(err, data) {
+      //console.log(data);
+      var rrr = _.filter(data,function(ind){
+        console.log(ind);
+        if(ind.indicator.code==indcode){
+          return ind;
+        }
+      });
+      res.json(rrr);
+
     });
   },
   findOne: function(req, res) {
