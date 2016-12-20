@@ -8,14 +8,17 @@
 module.exports = {
 
   attributes: {
-    indicator : {
-      model:'Indicator'
+    indicator: {
+      model: 'Indicator'
     },
-    criteria : {
-      model:'Criteria'
+    criteria: {
+      model: 'Criteria'
     },
-    questions:{
-      collection:'Question'
+    questions: {
+      collection: 'Question'
+    },
+    freeText: {
+      type: 'string'
     }
   }
 };
