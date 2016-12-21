@@ -3,6 +3,41 @@
     <h1 class="page-header" translate>Indicators</h1>
   </div>
   <div class="row">
+
+    <form name="myForm">
+      <table id="panel{{state}}" class="table table-bordered">
+        <thead>
+        <tr>
+          <th width="42%" translate>Code</th>
+          <th width="42%" translate>Sub-Group</th>
+          <!--<th width="28%">Indicator</th>-->
+          <th width="16%"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><select class="form-control" ng-model="filteredIndicator" ng-options="indicator.code for indicator in indicators track by indicator.id">
+          </select></td>
+          <td><select class="form-control" ng-model="filteredSubGroup" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id">
+          </select></td>
+          <!--<td><select class="form-control" ng-model="filteredIndicator">-->
+          <!--<option ng-repeat="indicator in indicators" value="{{indicator.id}}">{{indicator.name}}</option>-->
+          <!--</select></td>-->
+          <td>
+            <button type="button" class="btn btn-primary" ng-click="filterIndicator(filteredIndicator.code, filteredSubGroup.id);"
+                    ng-disabled="!(filteredIndicator || filteredSubGroup)" translate>
+              Filter
+            </button>
+            <button type="button" class="btn btn-danger pull-right" ng-click="clearFilter();filteredIndicator = undefined;filteredSubGroup = undefined;" translate>
+              Clear
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+  <div class="row">
     <a ng-click="addIndicator=true" ng-hide="addIndicator" class="pull-right mb20 add-indicator">
       <i class="fa fa-plus-circle"></i> {{'Add New Indicator' | translate}}
     </a>
@@ -84,7 +119,7 @@
 
       <button class="btn btn-primary pull-right mb40" type="button" ng-click="save(indicator)" translate>Add</button>
     </div>
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped" ng-show="filterState">
       <thead>
       <tr>
         <th width="5%" translate>Code</th>
@@ -95,6 +130,9 @@
       </tr>
       </thead>
       <tbody>
+      <tr ng-show="!indicators.length">
+        <td colspan="5" translate>There is no indicator for this filter</td>
+      </tr>
       <tr ng-repeat="indicator in indicators " ui-sref="dashboard.indicators_edit({id:indicator.id})" class="list-item"
           title="Edit {{indicator.name}}">
         <td translate>{{indicator.code}}</td>
@@ -106,4 +144,5 @@
       </tbody>
     </table>
   </div>
+
 </div>
