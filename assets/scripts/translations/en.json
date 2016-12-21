@@ -587,6 +587,8 @@
   "Commercial data management software": "Commercial data management software",
   "Institutions": "Institutions",
   "intranet": "intranet",
-  "Dashboard": "Dashboard"
+  "Dashboard": "Dashboard",
+  "There is no indicator for this filter": "There is no indicator for this filter",
+  "There is no data for this indicator": "There is no data for this indicator"
 }
 
