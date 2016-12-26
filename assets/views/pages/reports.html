@@ -1,15 +1,15 @@
 <div class="report-page">
   <div class="row">
-    <h1 class="page-header">Reports</h1>
+    <h1 class="page-header" translate>Reports</h1>
   </div>
   <div class="row">
-    <h4>Filter indicators by unit</h4>
+    <h4 translate>Filter indicators by unit</h4>
     <form name="myForm">
       <table id="panel{{state}}" class="table table-bordered">
         <thead>
         <tr>
-          <th width="42%">Unit</th>
-          <th width="42%">Sub-Unit</th>
+          <th width="42%" translate>Unit</th>
+          <th width="42%" translate>Sub-Unit</th>
           <!--<th width="28%">Indicator</th>-->
           <th width="16%"></th>
         </tr>
@@ -21,15 +21,12 @@
           </select></td>
           <td><select class="form-control" ng-model="filteredSubDepartment" ng-options="subdepartment.name for subdepartment in subdepartments track by subdepartment.id">
           </select></td>
-          <!--<td><select class="form-control" ng-model="filteredIndicator">-->
-            <!--<option ng-repeat="indicator in indicators" value="{{indicator.id}}">{{indicator.name}}</option>-->
-          <!--</select></td>-->
           <td>
             <button type="button" class="btn btn-primary" ng-click="filterUnit();"
-                    ng-disabled="!(filteredIndicator || filteredSubDepartment)">
+                    ng-disabled="!(filteredIndicator || filteredSubDepartment)" translate>
               Filter
             </button>
-            <button type="button" class="btn btn-danger pull-right" ng-click="clearFilter();filteredIndicator = undefined;filteredSubDepartment = undefined;">
+            <button type="button" class="btn btn-danger pull-right" ng-click="clearFilter();filteredIndicator = undefined;filteredSubDepartment = undefined;" translate>
               Clear
             </button>
           </td>
@@ -39,26 +36,26 @@
     </form>
   </div>
   <div class="row">
-    <h4>Or, Filter indicators by goal and groups</h4>
+    <h4 translate>Or, Filter indicators by goal and groups</h4>
     <form name="myForm">
       <table id="panel{{state}}" class="table table-bordered">
         <thead>
         <tr>
-          <th width="125">Goals</th>
-          <th width="40">Group</th>
-          <th width="35%">Sub-Group</th>
-          <th width="145"></th>
+          <th width="125" translate>Goals</th>
+          <th width="40" translate>Group</th>
+          <th width="35%" translate>Sub-Group</th>
+          <th width="145" translate></th>
         </tr>
         </thead>
         <tbody>
         <tr>
           <td>
             <select class="form-control" ng-model="data.filterGoal" required>
-              <option value="goal1">Goal 1 - to enhance the quality of education</option>
-              <option value="goal2">Goal 2 - to enhance the quality of research</option>
-              <option value="goal3">Goal 3 - to well-prepare students for life and work in an intercultural and globalising world</option>
-              <option value="goal4">Goal 4 - to enhance the international reputation and visibility of the unit</option>
-              <option value="goal5">Goal 5 - to provide service to society and community social engagement</option>
+              <option value="goal1" translate>Goal 1 - to enhance the quality of education</option>
+              <option value="goal2" translate>Goal 2 - to enhance the quality of research</option>
+              <option value="goal3" translate>Goal 3 - to well-prepare students for life and work in an intercultural and globalising world</option>
+              <option value="goal4" translate>Goal 4 - to enhance the international reputation and visibility of the unit</option>
+              <option value="goal5" translate>Goal 5 - to provide service to society and community social engagement</option>
             </select>
           </td>
           <td><select class="form-control" ng-options="group.name for group in groups track by group.id"
@@ -69,10 +66,10 @@
           </select></td>
           <td>
             <button type="button" class="btn btn-primary" ng-click="filterGroup(data.subgroup.id,data.filterGoal);"
-                    ng-disabled="!(data.subgroup && data.group && data.filterGoal)">
+                    ng-disabled="!(data.subgroup && data.group && data.filterGoal)" translate>
               Filter
             </button>
-            <button type="button" class="btn btn-danger pull-right" ng-click="clearFilter();data.subgroup = undefined;data.group = undefined;data.filterGoal = undefined;">
+            <button type="button" class="btn btn-danger pull-right" ng-click="clearFilter();data.subgroup = undefined;data.group = undefined;data.filterGoal = undefined;" translate>
               Clear
             </button>
           </td>
@@ -81,16 +78,36 @@
       </table>
     </form>
   </div>
+  <div class="row table-header">
+    <div class="col-sm-7 text-right">
+      <h5 translate>Sort by</h5>
+    </div>
+    <div class="col-sm-3 ">
+      <select class="form-control" ng-model="sortName" ng-change="sortData(sortName)">
+        <option value="ind-code" translate>Indicator Code</option>
+        <option value="ind-name" translate>Indicator Name</option>
+        <option value="unit" translate>Unit</option>
+        <option value="subUnit" translate>Sub-Unit</option>
+        <option value="nameUnit" translate>Name Of Unit</option>
+      </select>
+    </div>
+    <div class="col-sm-2">
+      <select class="form-control" ng-model="sortType" ng-change="sortData(undefined, sortType)" ng-disabled="sortName == 'none'"}>
+        <option value="asc">Asc</option>
+        <option value="desc">Desc</option>
+      </select>
+    </div>
+  </div>
   <div class="row">
     <table class="table table-bordered table-striped">
       <thead>
-      <th>Indicator Code</th>
-      <th>Indicator Name</th>
-      <th>Unit</th>
-      <th>Sub-Unit</th>
-      <th>Name Of Unit</th>
-      <th>Status</th>
-      <th colspan="4">Actions</th>
+      <th translate>Indicator Code</th>
+      <th translate>Indicator Name</th>
+      <th translate>Unit</th>
+      <th translate>Sub-Unit</th>
+      <th translate>Name Of Unit</th>
+      <th translate>Status</th>
+      <th colspan="4" translate>Actions</th>
       </thead>
       <tbody>
       <tr ng-repeat="data in datas">
@@ -108,23 +125,23 @@
         <td>
           {{data.departmentDesc}}
         </td>
-        <td ng-if="data.departmentDesc" class="success">
+        <td ng-if="data.departmentDesc" class="success" translate>
           Completed
         </td>
-        <td ng-if="!data.departmentDesc" class="not-success">
+        <td ng-if="!data.departmentDesc" class="not-success" translate>
           Incomplete
         </td>
         <td ng-if="me.role == 4">
-          <a ui-sref="dashboard.data_edit({id:data.id})">Edit</a>
+          <a ui-sref="dashboard.data_edit({id:data.id})" translate>Edit</a>
         </td>
         <td>
-          <a ui-sref="dashboard.report_detail({dataId:data.id, valueType:data.indicator.valueType})">Visualize</a>
+          <a ui-sref="dashboard.report_detail({dataId:data.id, valueType:data.indicator.valueType})" translate>Visualize</a>
         </td>
         <td>
-          <a ui-sref="dashboard.report_print({dataId:data.id, valueType:data.indicator.valueType})">Print</a>
+          <a ui-sref="dashboard.report_print({dataId:data.id, valueType:data.indicator.valueType})" translate>Print</a>
         </td>
         <td ng-if="me.role == 4">
-          <a ng-click="deleteReport({dataId:data.id})" href="">Delete</a>
+          <a ng-click="deleteReport({dataId:data.id})" href="" translate>Delete</a>
         </td>
       </tr>
       </tbody>
