@@ -21,9 +21,6 @@
           </select></td>
           <td><select class="form-control" ng-model="filteredSubDepartment" ng-options="subdepartment.name for subdepartment in subdepartments track by subdepartment.id">
           </select></td>
-          <!--<td><select class="form-control" ng-model="filteredIndicator">-->
-            <!--<option ng-repeat="indicator in indicators" value="{{indicator.id}}">{{indicator.name}}</option>-->
-          <!--</select></td>-->
           <td>
             <button type="button" class="btn btn-primary" ng-click="filterUnit();"
                     ng-disabled="!(filteredIndicator || filteredSubDepartment)" translate>
@@ -80,6 +77,26 @@
         </tbody>
       </table>
     </form>
+  </div>
+  <div class="row table-header">
+    <div class="col-sm-7 text-right">
+      <h5 translate>Sort by</h5>
+    </div>
+    <div class="col-sm-3 ">
+      <select class="form-control" ng-model="sortName" ng-change="sortData(sortName)">
+        <option value="ind-code" translate>Indicator Code</option>
+        <option value="ind-name" translate>Indicator Name</option>
+        <option value="unit" translate>Unit</option>
+        <option value="subUnit" translate>Sub-Unit</option>
+        <option value="nameUnit" translate>Name Of Unit</option>
+      </select>
+    </div>
+    <div class="col-sm-2">
+      <select class="form-control" ng-model="sortType" ng-change="sortData(undefined, sortType)" ng-disabled="sortName == 'none'"}>
+        <option value="asc">Asc</option>
+        <option value="desc">Desc</option>
+      </select>
+    </div>
   </div>
   <div class="row">
     <table class="table table-bordered table-striped">
