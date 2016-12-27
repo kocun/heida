@@ -11,22 +11,22 @@
 }
 
 .flex-container, #wrapper {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 
 nav {
   -webkit-box-ordinal-group:1;
-      -ms-flex-order:0;
-          order:0;
+  -ms-flex-order:0;
+  order:0;
 }
 
 .navbar {
@@ -49,14 +49,14 @@ nav {
 
 .flex-content, #page-wrapper {
   -webkit-box-ordinal-group: 2;
-      -ms-flex-order: 1;
-          order: 1;
+  -ms-flex-order: 1;
+  order: 1;
   -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 
-          position: relative;
-          min-height: auto!important;
+  position: relative;
+  min-height: auto!important;
 }
 
 .flex-content {
@@ -70,8 +70,8 @@ nav {
 
 .flex-footer {
   -webkit-box-ordinal-group: 3;
-      -ms-flex-order: 2;
-          order: 2;
+  -ms-flex-order: 2;
+  order: 2;
 }
 
 .dashboard-footer {

@@ -134,5 +134,7 @@
   "English": "İngilizce",
   "Spanish": "İspanyolca",
   "Slovene": "Slovence",
-  "Choose Language": "Dil Seçiniz"
+  "Choose Language": "Dil Seçiniz",
+  "There is no indicator for this filter": "Filtrelemenize uygun gösterge bulunamadı",
+  "There is no data for this indicator": "Göstergenin verileri bulunamadı"
 }

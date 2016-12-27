@@ -14,7 +14,7 @@ angular.module('heidaApp')
       });
 
     Restangular.all('/api/indicator?limit=-1').getList().then(function(indicators) {
-      $scope.indicators = indicators;
+      $scope.indicators = $scope.allIndicators = indicators;
     });
 
     Restangular.all('/api/subgroup').getList().then(function(subgroups) {
@@ -35,6 +35,26 @@ angular.module('heidaApp')
         inherit: true
       });
     }
+
+  $scope.filterIndicator = function (filteredIndicator,filteredSubGroup) {
+      var i = 0, iL = $scope.allIndicators.length;
+      var filteredDatas = [];
+      for (; i < iL; i++) {
+          var obj = $scope.allIndicators[i];
+
+          if (obj.code == filteredIndicator && obj.subgroup.id  == filteredSubGroup) {
+              filteredDatas.push(obj)
+          }
+      }
+
+      $scope.indicators = filteredDatas;
+      $scope.filterState = true;
+  }
+
+  $scope.clearFilter = function () {
+      $scope.indicators = $scope.allIndicators;
+      $scope.filterState = false;
+  }
 
   }).controller('IndicatorEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
 
