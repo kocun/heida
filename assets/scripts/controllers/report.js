@@ -75,7 +75,38 @@ angular.module('heidaApp')
       $scope.datas = $scope.datas.sort(dynamicSort(sortName, $scope.sortType));
 
     }
+    $scope.filterDuplicateIndicatorCode = function(indicatorCode){
 
+        var i = 0, iL = $scope.allDatas.length;
+        var filteredDatas = [];
+        for (; i < iL; i++) {
+            var obj = $scope.allDatas[i];
+
+            if (obj.indicator.code == indicatorCode) {
+                filteredDatas.push(obj)
+            }
+
+        }
+
+        $scope.datas = filteredDatas;
+        $scope.filterState = true;
+      }
+      $scope.filterDuplicateIndicatorNameOfUnit = function(nameOfUnit){
+
+          var i = 0, iL = $scope.allDatas.length;
+          var filteredDatas = [];
+          for (; i < iL; i++) {
+              var obj = $scope.allDatas[i];
+
+              if (obj.departmentDesc == nameOfUnit) {
+                  filteredDatas.push(obj)
+              }
+
+          }
+
+          $scope.datas = filteredDatas;
+          $scope.filterState = true;
+      }
     $scope.getSubDepartments = function (department) {
       Restangular.all('/api/subDepartment?department=' + department.id).getList().then(function (subdepartments) {
         $scope.subdepartments = subdepartments;
