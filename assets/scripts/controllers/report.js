@@ -75,6 +75,34 @@ angular.module('heidaApp')
       $scope.datas = $scope.datas.sort(dynamicSort(sortName, $scope.sortType));
 
     }
+    $scope.filterIndicatorType = function(){
+        if($scope.indicatorTypeValue == true){
+          var i = 0, iL = $scope.allDatas.length;
+          var filteredDatas = [];
+          for (; i < iL; i++) {
+              var obj = $scope.allDatas[i];
+
+              if (obj.indicator.code.slice([1],[3]) == '10') {
+                  filteredDatas.push(obj);
+                  $scope.indicatorTypeValue = true;
+                  $scope.datas = filteredDatas;
+              } else {
+                  $scope.datas = $scope.allDatas;
+                  $scope.indicatorTypeValue = false;
+              }
+
+          }
+
+          $scope.filterState = true;
+
+
+      } else {
+          $scope.datas = $scope.allDatas;
+          $scope.filterState = false;
+          $scope.indicatorTypeValue = false;
+      }
+
+    }
     $scope.filterDuplicateIndicatorCode = function(indicatorCode){
 
         var i = 0, iL = $scope.allDatas.length;
