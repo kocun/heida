@@ -13,8 +13,16 @@ angular.module('heidaApp')
         $scope.me = data;
     });
 
+    var selectedLang = window.localStorage.getItem('selectedLang');
+
+    if ( selectedLang ) {
+      $translate.use( selectedLang );
+      $scope.selected = selectedLang;
+    }
+
     $scope.changeLanguage = function (langKey) {
-        langKey = $scope.selected;
-        $translate.use(langKey);
+      langKey = $scope.selected;
+      window.localStorage.setItem('selectedLang', langKey);
+      $translate.use(langKey);
     };
   });
