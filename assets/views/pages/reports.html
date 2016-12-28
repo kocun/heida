@@ -112,7 +112,8 @@
       <tbody>
       <tr ng-repeat="data in datas">
         <td>
-          {{data.indicator.code}}</td>
+          <a href="" ng-click="filterDuplicateIndicator(data.indicator.code)">{{data.indicator.code}}</a>
+        </td>
         <td>
           {{data.indicator.name}}
         </td>
@@ -123,7 +124,7 @@
           {{data.subDepartment.name}}
         </td>
         <td>
-          {{data.departmentDesc}}
+          <a href="" ng-click="filterDuplicateIndicatorNameOfUnit(data.departmentDesc)">{{data.departmentDesc}}</a>
         </td>
         <td ng-if="data.departmentDesc" class="success" translate>
           Completed
