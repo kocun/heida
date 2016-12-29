@@ -79,7 +79,11 @@
     </form>
   </div>
   <div class="row table-header">
-    <div class="col-sm-7 text-right">
+    <div class="col-sm-5">
+      <label for="customizedIndicators" translate>Customized Indicators</label>
+      <input type="checkbox" id="customizedIndicators" ng-change="filterIndicatorType()" ng-model="indicatorTypeValue"/>
+    </div>
+    <div class="col-sm-2 text-right">
       <h5 translate>Sort by</h5>
     </div>
     <div class="col-sm-3 ">
@@ -92,7 +96,7 @@
       </select>
     </div>
     <div class="col-sm-2">
-      <select class="form-control" ng-model="sortType" ng-change="sortData(undefined, sortType)" ng-disabled="sortName == 'none'"}>
+      <select class="form-control" ng-model="sortType" ng-change="sortData(undefined, sortType)" ng-disabled="sortName == 'none'">
         <option value="asc">Asc</option>
         <option value="desc">Desc</option>
       </select>
@@ -112,7 +116,8 @@
       <tbody>
       <tr ng-repeat="data in datas">
         <td>
-          {{data.indicator.code}}</td>
+          <a href="" ng-click="filterDuplicateIndicator(data.indicator.code)">{{data.indicator.code}}</a>
+        </td>
         <td>
           {{data.indicator.name}}
         </td>
@@ -123,7 +128,7 @@
           {{data.subDepartment.name}}
         </td>
         <td>
-          {{data.departmentDesc}}
+          <a href="" ng-click="filterDuplicateIndicatorNameOfUnit(data.departmentDesc)">{{data.departmentDesc}}</a>
         </td>
         <td ng-if="data.departmentDesc" class="success" translate>
           Completed
