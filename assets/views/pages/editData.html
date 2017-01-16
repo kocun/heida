@@ -124,9 +124,12 @@
                   <option ng-repeat="answer in survey.questions" value="{{answer.id}}" ng-selected="{{answer.id == newData.criterias[survey.id]}}">{{answer.name}}</option>
                 </select>
                 <i ng-if="survey.multiple == true" class="info-text" translate>You can select more by holding 'CTRL' key</i>
-                <select class="form-control" id="new_survey_{{survey.id}}" ng-model="newData.criterias[survey.id]" required ng-if="!(survey.multiple == true)">
+                <select class="form-control" id="new_survey_{{survey.id}}" ng-model="newData.criterias[survey.id]" ng-change="isOtherSelected('#new_survey_'+survey.id,survey)" required ng-if="!(survey.multiple == true)">
                   <option ng-repeat="answer in survey.questions" value="{{answer.id}}" ng-selected="{{answer.id == newData.criterias[survey.id]}}" translate>{{answer.name}}</option>
                 </select>
+                <div class="form-group" style="margin-top:5px;">
+                  <input type="text" class="form-control" ng-if="otherTexts[survey.id]" id="other_text_{{survey.id}}" placeholder="Other" ng-model="newData.criterias[survey.id+'_other']">
+                </div>
               </div>
             </div>
           </div>

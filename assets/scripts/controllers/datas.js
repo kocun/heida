@@ -81,6 +81,24 @@ angular.module('heidaApp', ['ngDialog'])
       return $scope[type+"Arr"];
     }
 
+    $scope.otherTexts = {};
+
+    $scope.isOtherSelected = function (id, surveyData) {
+      var id = $(id).val();
+      var isOther = false;
+
+      surveyData.questions.forEach(function (e) {
+        if (id == e.id) {
+          if (e.name.toLowerCase() == "other") {
+            isOther = true;
+          }
+        }
+      })
+
+      $scope.otherTexts[surveyData.id] = isOther;
+
+    }
+
     $scope.periodArrObj = [{
       value: "calendar",
       label: 'Calendar Year'
@@ -403,6 +421,7 @@ angular.module('heidaApp', ['ngDialog'])
     });
     Restangular.all('/api/criteria').getList().then(function (criterias) {
       $scope.criterias = criterias;
+      debugger;
     });
     Restangular.all('/api/goal').getList().then(function (goals) {
       $scope.goals = goals;
@@ -504,7 +523,23 @@ angular.module('heidaApp', ['ngDialog'])
     $scope.periodRange = function (type) {
       return $scope[type+"Arr"];
     }
+    $scope.otherTexts = {};
 
+    $scope.isOtherSelected = function (id, surveyData) {
+      var id = $(id).val();
+      var isOther = false;
+
+      surveyData.questions.forEach(function (e) {
+        if (id == e.id) {
+          if (e.name.toLowerCase() == "other") {
+            isOther = true;
+          }
+        }
+      })
+
+      $scope.otherTexts[surveyData.id] = isOther;
+
+    }
     $scope.periodArrObj = [{
       value: "calendar",
       label: 'Calendar Year'
