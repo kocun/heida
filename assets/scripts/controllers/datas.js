@@ -242,7 +242,6 @@ angular.module('heidaApp', ['ngDialog'])
       var criteriaArr = [];
 
       for (var criteria in data.criterias) {
-        debugger;
         var answerObj = {
           "indicator":data.indicator,
           "criteria":criteria,
