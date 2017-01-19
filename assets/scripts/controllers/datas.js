@@ -99,6 +99,30 @@ angular.module('heidaApp', ['ngDialog'])
 
     }
 
+    $scope.isMultipleOtherSelected = function (id, surveyData) {
+      var select = $(id)[0];
+      var selectedValues = $(select).val();
+      var options = $(select.options);
+      var otherId;
+
+      options.each(function (i,e) {
+        if (e.text.toLowerCase() == 'other' ) {
+          otherId = e.value;
+        }
+      })
+
+      var isOther = false;
+
+      selectedValues.forEach(function (el) {
+        if ( el == otherId ) {
+          isOther = true;
+        }
+      })
+
+      $scope.otherTexts[surveyData.id] = isOther;
+
+    };
+
     $scope.periodArrObj = [{
       value: "calendar",
       label: 'Calendar Year'
@@ -218,11 +242,18 @@ angular.module('heidaApp', ['ngDialog'])
       var criteriaArr = [];
 
       for (var criteria in data.criterias) {
-        criteriaArr.push({
+        debugger;
+        var answerObj = {
           "indicator":data.indicator,
           "criteria":criteria,
           "question": data.criterias[criteria]
-        });
+        };
+
+        if ( data.criterias[criteria+'_other'] ) {
+          answerObj.freeText = data.criterias[criteria+'_other'];
+        }
+
+        criteriaArr.push(answerObj);
       }
       obj.criterias = criteriaArr;
 
@@ -421,7 +452,7 @@ angular.module('heidaApp', ['ngDialog'])
     });
     Restangular.all('/api/criteria').getList().then(function (criterias) {
       $scope.criterias = criterias;
-      debugger;
+
     });
     Restangular.all('/api/goal').getList().then(function (goals) {
       $scope.goals = goals;
@@ -501,6 +532,8 @@ angular.module('heidaApp', ['ngDialog'])
       return selectArr;
     })();
 
+    $scope.otherTexts = {};
+
     $scope.academicArr = (function(){
       var thisYear = new Date().getFullYear();
 
@@ -539,7 +572,32 @@ angular.module('heidaApp', ['ngDialog'])
 
       $scope.otherTexts[surveyData.id] = isOther;
 
-    }
+    };
+
+    $scope.isMultipleOtherSelected = function (id, surveyData) {
+      var select = $(id)[0];
+      var selectedValues = $(select).val();
+      var options = $(select.options);
+      var otherId;
+
+      options.each(function (i,e) {
+        if (e.text.toLowerCase() == 'other' ) {
+          otherId = e.value;
+        }
+      })
+
+      var isOther = false;
+
+      selectedValues.forEach(function (el) {
+        if ( el == otherId ) {
+          isOther = true;
+        }
+      })
+
+      $scope.otherTexts[surveyData.id] = isOther;
+
+    };
+
     $scope.periodArrObj = [{
       value: "calendar",
       label: 'Calendar Year'
