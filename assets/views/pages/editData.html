@@ -120,7 +120,7 @@
             <div class="col-md-12">
               <div class="form-group" ng-repeat="survey in criterias">
                 <label>{{survey.name}}</label>
-                <select class="form-control" id="new_survey_{{survey.id}}" ng-model="newData.criterias[survey.id]"  multiple ng-multiple="true" required ng-if="survey.multiple == true">
+                <select class="form-control" id="new_survey_{{survey.id}}" ng-model="newData.criterias[survey.id]" ng-change="isMultipleOtherSelected('#new_survey_'+survey.id,survey)" multiple ng-multiple="true" required ng-if="survey.multiple == true">
                   <option ng-repeat="answer in survey.questions" value="{{answer.id}}" ng-selected="{{answer.id == newData.criterias[survey.id]}}">{{answer.name}}</option>
                 </select>
                 <i ng-if="survey.multiple == true" class="info-text" translate>You can select more by holding 'CTRL' key</i>
