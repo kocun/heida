@@ -106,18 +106,22 @@
           </div>
 
           <div>
-            <hr/>
+            <hr/>asdasd
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group" ng-repeat="survey in criterias">
                   <label>{{survey.name}}</label>
-                  <select class="form-control" id="new_survey_{{survey.id}}" ng-model="newData.criterias[survey.id]"  multiple ng-multiple="true" required ng-if="survey.multiple == true">
+                  <select class="form-control" id="new_survey_{{survey.id}}" ng-model="newData.criterias[survey.id]" ng-change="isMultipleOtherSelected('#new_survey_'+survey.id,survey)" multiple ng-multiple="true" required ng-if="survey.multiple == true">
                     <option ng-repeat="answer in survey.questions" value="{{answer.id}}" ng-selected="{{answer.id == newData.criterias[survey.id]}}">{{answer.name}}</option>
                   </select>
                   <i ng-if="survey.multiple == true" class="info-text" translate>You can select more by holding 'CTRL' key</i>
-                  <select class="form-control" id="new_survey_{{survey.id}}" ng-model="newData.criterias[survey.id]" required ng-if="!(survey.multiple == true)">
-                    <option ng-repeat="answer in survey.questions" value="{{answer.id}}" ng-selected="{{answer.id == newData.criterias[survey.id]}}">{{answer.name}}</option>
+                  <select class="form-control" id="new_survey_{{survey.id}}" ng-model="newData.criterias[survey.id]" ng-change="isOtherSelected('#new_survey_'+survey.id,survey)" required ng-if="!(survey.multiple == true)">
+                    <option ng-repeat="answer in survey.questions" value="{{answer.id}}" ng-selected="{{answer.id == newData.criterias[survey.id]}}" translate>{{answer.name}}</option>
                   </select>
+
+                  <div class="form-group" style="margin-top:5px;" ng-if="newData.criterias[survey.id+'_other']" >
+                    <input type="text" class="form-control" id="other_text_{{survey.id}}" placeholder="Other" ng-model="newData.criterias[survey.id+'_other']">
+                  </div>
                 </div>
               </div>
             </div>

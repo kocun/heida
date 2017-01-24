@@ -166,6 +166,7 @@ angular.module('heidaApp', ['ngDialog'])
 
     var _prepareDataToEdit = function(data) {
 
+      debugger;
       var originalData = data;
       var editData = originalData;
       editData.isInvalid= true;
@@ -639,7 +640,6 @@ angular.module('heidaApp', ['ngDialog'])
     }
 
     var _prepareDataToEdit = function(data) {
-
       var originalData = data;
       var editData = originalData;
       editData.isInvalid= true;
@@ -665,14 +665,20 @@ angular.module('heidaApp', ['ngDialog'])
       editData.yearsValues = yearsValues;
 
       var k = 0, kL = data.criterias.length;
+      var otherTextsObj = {};
 
       if (kL != 0) {
         var criteriasObj = {};
         for (; k < kL ; k++ ) {
           var obj = data.criterias[k];
           criteriasObj[obj.criteria] = obj.question;
+          if(obj.freeText) {
+            otherTextsObj[obj.criteria] = obj.freeText;
+            criteriasObj[obj.criteria+'_other'] = obj.freeText;
+          }
         }
         editData.criterias = criteriasObj;
+        editData.otherText = otherTextsObj;
       }
 
       editData.id = data.id;
