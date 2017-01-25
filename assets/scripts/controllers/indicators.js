@@ -50,7 +50,6 @@ angular.module('heidaApp')
   // };
 
   $scope.filterIndicator = function (filteredSubGroup) {
-          debugger;
           var i = 0, iL = $scope.allIndicators.length;
           var filteredDatas = [];
           for (; i < iL; i++) {
