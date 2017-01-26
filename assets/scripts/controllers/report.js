@@ -237,20 +237,29 @@ angular.module('heidaApp')
         criObj.answers = [];
 
         item.questions.forEach(function (answer) {
-          var myCriteriaAnswer = data.criterias[i].question;
+          var dataCriterias = data.criterias[i];
+          var myCriteriaAnswer = dataCriterias.question;
 
           if (item.multiple == true) {
-            myCriteriaAnswer.forEach(function (myAnswer) {
-              if (answer.id == myAnswer) {
-                criObj.answers.push(answer.name);
-              }
-            })
+
+              myCriteriaAnswer.forEach(function (myAnswer) {
+                  if (answer.id == myAnswer) {
+                      criObj.answers.push(answer.name);
+
+                      if(answer.name.trim().toLowerCase() == "other") {
+                          var myCriteriaFreeText = dataCriterias.freeText;
+                          criObj.answers.push(myCriteriaFreeText);
+                      }
+                  }
+              })
+
           } else {
             if (answer.id == myCriteriaAnswer) {
               criObj.answers.push(answer.name);
             }
           }
         })
+          debugger;
         $scope.criteriasAndAnswers.push(criObj)
       })
     });
