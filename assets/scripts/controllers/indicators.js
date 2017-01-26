@@ -13,7 +13,7 @@ angular.module('heidaApp')
         $scope.me = data;
       });
 
-    Restangular.all('/api/indicator?limit=-1').getList().then(function(indicators) {
+    Restangular.all('/api/indicator').getList().then(function(indicators) {
       $scope.indicators = $scope.allIndicators = indicators;
     });
 
