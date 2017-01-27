@@ -13,7 +13,7 @@ angular.module('heidaApp')
         $scope.me = data;
       });
 
-    Restangular.all('/api/indicator?limit=-1').getList().then(function(indicators) {
+    Restangular.all('/api/indicator').getList().then(function(indicators) {
       $scope.indicators = $scope.allIndicators = indicators;
     });
 
@@ -24,9 +24,6 @@ angular.module('heidaApp')
       $scope.goals_to_add = goals;
       $scope.goals = goals;
     });
-    Restangular.all('/api/indicator').getList().then(function(indicators) {
-      $scope.indicators = indicators;
-    });
 
     $scope.save = function(indicator) {
       $scope.indicators.post(indicator);
@@ -34,22 +31,38 @@ angular.module('heidaApp')
         reload: true,
         inherit: true
       });
-    }
+    };
 
-  $scope.filterIndicator = function (filteredIndicator,filteredSubGroup) {
-      var i = 0, iL = $scope.allIndicators.length;
-      var filteredDatas = [];
-      for (; i < iL; i++) {
-          var obj = $scope.allIndicators[i];
+  // $scope.filterIndicatorByCode = function (filteredIndicator) {
+  //     debugger;
+  //     var i = 0, iL = $scope.allIndicators.length;
+  //     var filteredDatas = [];
+  //     for (; i < iL; i++) {
+  //         var obj = $scope.allIndicators[i];
+  //
+  //         if (obj.code == filteredIndicator) {
+  //             filteredDatas.push(obj)
+  //         }
+  //     }
+  //
+  //     $scope.indicators = filteredDatas;
+  //     $scope.filterState = true;
+  // };
 
-          if (obj.code == filteredIndicator && obj.subgroup.id  == filteredSubGroup) {
-              filteredDatas.push(obj)
+  $scope.filterIndicator = function (filteredSubGroup) {
+          var i = 0, iL = $scope.allIndicators.length;
+          var filteredDatas = [];
+          for (; i < iL; i++) {
+              var obj = $scope.allIndicators[i];
+
+              if (obj.subgroup && obj.subgroup.id  == filteredSubGroup) {
+                  filteredDatas.push(obj)
+              }
           }
-      }
 
-      $scope.indicators = filteredDatas;
-      $scope.filterState = true;
-  }
+          $scope.indicators = filteredDatas;
+          $scope.filterState = true;
+      };
 
   $scope.clearFilter = function () {
       $scope.indicators = $scope.allIndicators;
