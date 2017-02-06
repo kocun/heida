@@ -17,6 +17,10 @@ angular.module('heidaApp')
       $scope.indicators = $scope.allIndicators = indicators;
     });
 
+      Restangular.all('/api/group').getList().then(function(groups) {
+          $scope.groups = groups;
+      });
+
     Restangular.all('/api/subgroup').getList().then(function(subgroups) {
       $scope.subgroups = subgroups;
     });
@@ -48,6 +52,12 @@ angular.module('heidaApp')
   //     $scope.indicators = filteredDatas;
   //     $scope.filterState = true;
   // };
+
+      $scope.getSubGroups = function (group) {
+          Restangular.all('/api/subGroup?group=' + group).getList().then(function (subgroups) {
+              $scope.subgroups = subgroups;
+          });
+      }
 
   $scope.filterIndicator = function (filteredSubGroup) {
           var i = 0, iL = $scope.allIndicators.length;
@@ -82,13 +92,20 @@ angular.module('heidaApp')
       {id:2,val:"Moderately"},
       {id:3,val:"Highly"}
     ];
-
+    Restangular.all('/api/group').getList().then(function(groups) {
+        $scope.groups = groups;
+    });
     Restangular.all('/api/subgroup').getList().then(function(subgroups) {
       $scope.subgroups = subgroups;
     });
     Restangular.one('/api/indicator', $stateParams.id).get().then(function(indicator) {
       $scope.indicator = indicator;
     });
+    $scope.getSubGroups = function (group) {
+        Restangular.all('/api/subGroup?group=' + group).getList().then(function (subgroups) {
+            $scope.subgroups = subgroups;
+        });
+    }
     $scope.update = function() {
       $scope.indicator.save();
       $state.go('dashboard.indicators', $stateParams, {
