@@ -1,39 +1,45 @@
-<div class="indicators-page" ng-if="me.role == 4">
-  <div class="row">
-    <h1 class="page-header">{{'Edit' | translate}} {{indicators.name | translate}}</h1>
+<div class="indicators-page" ng-if="me.role == 3 || me.role == 4">
+    <div class="row">
+        <h1 class="page-header">{{'Edit' | translate}} {{indicators.name | translate}}</h1>
 
 
-    <table class="table table-bordered">
-      <thead>
-      <tr>
-        <th width="7%" translate>Code</th>
-        <th translate>Name</th>
-        <th translate>Subgroup</th>
-        <th translate>Value Type</th>
-        <th translate>Public</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>{{indicator.code}}</td>
-        <td><input type="text" class="form-control" value="{{indicator.name | translate}}" ng-model="indicator.name"></td>
-        <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id"  ng-model="indicator.subgroup">
-        </select></td>
-        <td><select class="form-control" ng-model="indicator.valueType">
-          <option value="yes/no" translate>Yes / No</option>
-          <option value="numeric" translate>Numeric</option>
-          <option value="percentage" translate>Percentage</option>
-        </select></td>
-        <td class="text-center">
-          <select class="form-control" ng-model="indicator.public">
-            <option value="public" translate>Public</option>
-            <option value="staffonly" translate>Staff Only</option>
-            <option value="notsure" translate>Not Sure</option>
-          </select>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-    <button type="button" class="btn btn-primary pull-right" ng-click="update()" translate>Update</button>
-  </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th width="7%" translate>Code</th>
+                <th translate>Name</th>
+                <th translate>Group</th>
+                <th translate>Subgroup</th>
+                <th translate>Value Type</th>
+                <th translate>Public</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{indicator.code}}</td>
+                <td><input type="text" class="form-control" value="{{indicator.name | translate}}"
+                           ng-model="indicator.name"></td>
+                <td><select class="form-control" ng-options="group.name for group in groups track by group.id"
+                            ng-model="data.group" ng-change="getSubGroups(data.group.id)" required>
+                </select></td>
+                <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id "
+                            ng-model="filteredSubGroup" required>
+                </select></td>
+                <td><select class="form-control" ng-model="indicator.valueType">
+                    <option value="yes/no" translate>Yes / No</option>
+                    <option value="numeric" translate>Numeric</option>
+                    <option value="percentage" translate>Percentage</option>
+                </select></td>
+                <td class="text-center">
+                    <select class="form-control" ng-model="indicator.public">
+                        <option value="public" translate>Public</option>
+                        <option value="staffonly" translate>Staff Only</option>
+                        <option value="notsure" translate>Not Sure</option>
+                    </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary pull-right" ng-click="update()" translate>Update</button>
+    </div>
 </div>
