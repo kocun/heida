@@ -243,6 +243,12 @@ angular.module('heidaApp', ['ngDialog'])
       var criteriaArr = [];
 
       for (var criteria in data.criterias) {
+
+        if (criteria.indexOf('_other')>-1) {
+          continue;
+        }
+
+
         var answerObj = {
           "indicator":data.indicator,
           "criteria":criteria,
@@ -531,8 +537,6 @@ angular.module('heidaApp', ['ngDialog'])
 
       return selectArr;
     })();
-
-    $scope.otherTexts = {};
 
     $scope.academicArr = (function(){
       var thisYear = new Date().getFullYear();

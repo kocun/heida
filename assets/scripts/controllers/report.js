@@ -231,24 +231,39 @@ angular.module('heidaApp')
 
       $scope.criteriasAndAnswers = [];
 
+      var lastCriteriaId;
+
       $scope.criterias.forEach(function (item, i) {
         var criObj = {};
         criObj.name = item.name;
         criObj.answers = [];
 
+          var dataCriterias = $scope.data.criterias[i];
+
+
+          if (dataCriterias.criteria.indexOf('_other') > -1 ) {
+              return false;
+          }
+
         item.questions.forEach(function (answer) {
-          var dataCriterias = data.criterias[i];
+
           var myCriteriaAnswer = dataCriterias.question;
+
 
           if (item.multiple == true) {
 
+              if ( typeof myCriteriaAnswer == "string" )
+                  myCriteriaAnswer = [myCriteriaAnswer];
+
               myCriteriaAnswer.forEach(function (myAnswer) {
                   if (answer.id == myAnswer) {
-                      criObj.answers.push(answer.name);
+
 
                       if(answer.name.trim().toLowerCase() == "other") {
                           var myCriteriaFreeText = dataCriterias.freeText;
                           criObj.answers.push(myCriteriaFreeText);
+                      } else {
+                          criObj.answers.push(answer.name);
                       }
                   }
               })
@@ -259,7 +274,6 @@ angular.module('heidaApp')
             }
           }
         })
-          debugger;
         $scope.criteriasAndAnswers.push(criObj)
       })
     });

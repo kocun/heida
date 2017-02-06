@@ -8,6 +8,7 @@
       <table id="panel{{state}}" class="table table-bordered">
         <thead>
         <tr>
+          <th width="42%" translate>Group</th>
           <th width="42%" translate>Sub-Group</th>
           <!--<th width="28%">Indicator</th>-->
           <th width="16%"></th>
@@ -15,7 +16,11 @@
         </thead>
         <tbody>
         <tr>
-          <td><select class="form-control" ng-model="filteredSubGroup" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id">
+          <td><select class="form-control" ng-options="group.name for group in groups track by group.id"
+                      ng-model="data.group" ng-change="getSubGroups(data.group.id)" required>
+          </select></td>
+          <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id "
+                      ng-model="filteredSubGroup" required>
           </select></td>
           <!--<td><select class="form-control" ng-model="filteredIndicator">-->
           <!--<option ng-repeat="indicator in indicators" value="{{indicator.id}}">{{indicator.name}}</option>-->
@@ -131,7 +136,7 @@
         <td colspan="5" translate>There is no indicator for this filter</td>
       </tr>
       <tr ng-repeat="indicator in indicators" ui-sref="dashboard.indicators_edit({id:indicator.id})" class="list-item"
-          title="Edit {{indicator.name}}">
+          title="Edit {{indicator.name}}" translate>
         <td>{{indicator.code}}</td>
         <td translate>{{indicator.name}}</td>
         <td translate>{{indicator.subgroup.name}}</td>
