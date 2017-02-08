@@ -19,10 +19,10 @@
                 <td>{{indicator.code}}</td>
                 <td><input type="text" class="form-control" value="{{indicator.name | translate}}"
                            ng-model="indicator.name"></td>
-                <td><select class="form-control" ng-options="group.name for group in groups track by group.id"
+                <td><select class="form-control" ng-options="group.name | translate for group in groups track by group.id"
                             ng-model="data.group" ng-change="getSubGroups(data.group.id)" required>
                 </select></td>
-                <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id "
+                <td><select class="form-control" ng-options="subgroup.name | translate for subgroup in subgroups track by subgroup.id "
                             ng-model="filteredSubGroup" required>
                 </select></td>
                 <td><select class="form-control" ng-model="indicator.valueType">

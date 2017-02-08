@@ -21,7 +21,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="group in groups" ui-sref="dashboard.groups_edit({id:group.id})" class="list-item" title="Edit {{group.name}}">
+      <tr ng-repeat="group in groups" ui-sref="dashboard.groups_edit({id:group.id})" class="list-item" title="Edit {{group.name | translate}}">
         <td translate>{{group.name}}</td>
         <td class="text-center col-lg-1">{{group.subs.length}}</td>
       </tr>

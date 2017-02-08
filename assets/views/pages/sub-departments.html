@@ -11,7 +11,7 @@
         <input type="text" value="{{subdepartment.name}}" ng-model="subdepartment.name" class="form-control col-lg-6" placeholder="{{'Add New Sub-Department' | translate}}" />
       </div>
       <div class="col-lg-4">
-        <select class="form-control col-lg-6" ng-options="department.name for department in departments track by department.id"  ng-model="subdepartment.department"></select>
+        <select class="form-control col-lg-6" ng-options="department.name | translate for department in departments track by department.id"  ng-model="subdepartment.department"></select>
       </div>
       <div class="col-lg-4">
         <button class="btn btn-primary" type="button" ng-click="save(subdepartment)" translate>Add</button>

@@ -11,7 +11,7 @@
       <tbody>
       <tr >
         <td><input type="text" value="{{subgroup.name}}" ng-model="subgroup.name" class="form-control"></td>
-        <td><select class="form-control" ng-options="group.name for group in groups track by group.id"  ng-model="subgroup.group"></select></td>
+        <td><select class="form-control" ng-options="group.name | translate for group in groups track by group.id"  ng-model="subgroup.group"></select></td>
       </tr>
       </tbody>
     </table>
