@@ -11,7 +11,7 @@
       <tbody>
       <tr >
         <td><input type="text" value="{{subdepartment.name}}" ng-model="subdepartment.name" class="form-control"></td>
-        <td><select class="form-control" ng-options="department.name for department in departments track by department.id"  ng-model="subdepartment.department"></select></td>
+        <td><select class="form-control" ng-options="department.name | translate for department in departments track by department.id"  ng-model="subdepartment.department"></select></td>
       </tr>
       </tbody>
     </table>

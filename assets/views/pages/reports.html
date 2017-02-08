@@ -16,10 +16,10 @@
         </thead>
         <tbody>
         <tr>
-          <td><select class="form-control" ng-model="filteredDepartment" ng-options="department.name for department in departments track by department.id"
+          <td><select class="form-control" ng-model="filteredDepartment" ng-options="department.name | translate for department in departments track by department.id"
                       ng-change="getSubDepartments(filteredDepartment)">
           </select></td>
-          <td><select class="form-control" ng-model="filteredSubDepartment" ng-options="subdepartment.name for subdepartment in subdepartments track by subdepartment.id">
+          <td><select class="form-control" ng-model="filteredSubDepartment" ng-options="subdepartment.name | translate for subdepartment in subdepartments track by subdepartment.id" translate>
           </select></td>
           <td>
             <button type="button" class="btn btn-primary" ng-click="filterUnit();"
@@ -58,10 +58,10 @@
               <option value="goal5" translate>Goal 5 - to provide service to society and community social engagement</option>
             </select>
           </td>
-          <td><select class="form-control" ng-options="group.name for group in groups track by group.id"
+          <td><select class="form-control" ng-options="group.name | translate for group in groups track by group.id"
                       ng-model="data.group" ng-change="getSubGroups(data.group.id)" required>
           </select></td>
-          <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id "
+          <td><select class="form-control" ng-options="subgroup.name | translate for subgroup in subgroups track by subgroup.id "
                       ng-model="data.subgroup" required>
           </select></td>
           <td>
