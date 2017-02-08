@@ -16,10 +16,10 @@
         </thead>
         <tbody>
         <tr>
-          <td><select class="form-control" ng-options="group.name for group in groups track by group.id"
+          <td><select class="form-control" ng-options="group.name | translate for group in groups track by group.id"
                       ng-model="data.group" ng-change="getSubGroups(data.group.id)" required>
           </select></td>
-          <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id "
+          <td><select class="form-control" ng-options="subgroup.name | translate for subgroup in subgroups track by subgroup.id"
                       ng-model="filteredSubGroup" required>
           </select></td>
           <!--<td><select class="form-control" ng-model="filteredIndicator">-->
@@ -50,6 +50,7 @@
         <thead>
         <tr>
           <th translate>Name</th>
+          <th translate>Group</th>
           <th translate>Sub-Group</th>
           <th translate>Value Type</th>
           <th translate>Public</th>
@@ -64,8 +65,11 @@
         <tr>
           <input type="hidden" ng-model="indicator.code" disabled>
           <td><input type="text" ng-model="indicator.name" class="form-control"></td>
-          <td><select class="form-control" ng-options="subgroup.name for subgroup in subgroups track by subgroup.id"
-                      ng-model="indicator.subgroup">
+          <td><select class="form-control" ng-options="group.name | translate for group in groups track by group.id"
+                      ng-model="data.group" ng-change="getSubGroups(data.group.id)" required>
+          </select></td>
+          <td><select class="form-control" ng-options="subgroup.name | translate for subgroup in subgroups track by subgroup.id"
+                      ng-model="filteredSubGroup" required>
           </select></td>
           <td><select class="form-control" ng-model="indicator.valueType">
             <option value="yes/no" translate>Yes / No</option>
@@ -136,7 +140,7 @@
         <td colspan="5" translate>There is no indicator for this filter</td>
       </tr>
       <tr ng-repeat="indicator in indicators" ui-sref="dashboard.indicators_edit({id:indicator.id})" class="list-item"
-          title="Edit {{indicator.name}}" translate>
+          title="Edit {{indicator.name}}">
         <td>{{indicator.code}}</td>
         <td translate>{{indicator.name}}</td>
         <td translate>{{indicator.subgroup.name}}</td>
