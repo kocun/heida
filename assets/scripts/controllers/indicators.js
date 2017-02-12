@@ -60,7 +60,6 @@ angular.module('heidaApp')
 
         $scope.filterIndicator = function (filteredSubGroup) {
             Restangular.all('/api/indicator?subgroup=' + filteredSubGroup).getList().then(function (indicators) {
-                debugger;
                 $scope.indicators = indicators;
                 $scope.filterState = true;
             });
