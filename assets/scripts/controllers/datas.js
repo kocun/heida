@@ -165,8 +165,6 @@ angular.module('heidaApp', ['ngDialog'])
     }
 
     var _prepareDataToEdit = function(data) {
-
-      debugger;
       var originalData = data;
       var editData = originalData;
       editData.isInvalid= true;
