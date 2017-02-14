@@ -6,7 +6,7 @@
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      {{ind}} - {{dept}}
+      {{ind | translate}} - {{dept | translate}}
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
@@ -26,25 +26,25 @@
       </div>
       <div class="visible-print col-lg-6 col-md-6">
         <div class="report-detail-subunit" style="padding: 5px 0;">
-          <b>{{'Unit' | translate}} :</b> {{data.department.name}}
+          <b>{{'Unit' | translate}} :</b> {{data.department.name | translate}}
         </div>
         <div class="report-detail-subunit" style="padding: 5px 0;">
-          <b>{{'Sub-Unit' | translate}} :</b> {{data.subDepartment.name}}
+          <b>{{'Sub-Unit' | translate}} :</b> {{data.subDepartment.name | translate}}
         </div>
         <div class="report-detail-department-desc" style="padding: 5px 0;">
-          <b>{{'Name Of Unit' | translate}} :</b> {{data.departmentDesc}}
+          <b>{{'Name Of Unit' | translate}} :</b> {{data.departmentDesc | translate}}
         </div>
         <div class="report-detail-department-desc" style="padding: 5px 0;">
-          <b>{{'Indicator Code' | translate}} :</b> {{data.indicator.code}}
+          <b>{{'Indicator Code' | translate}} :</b> {{data.indicator.code | translate}}
         </div>
         <div class="report-detail-department-desc" style="padding: 5px 0;">
-          <b>{{'Group' | translate}} / {{'Subgroup' | translate}} :</b> {{data.groupName}} / {{data.indicator.subgroup.name}}
+          <b>{{'Group' | translate}} / {{'Subgroup' | translate}} :</b> {{data.groupName | translate}} / {{data.indicator.subgroup.name | translate}}
         </div>
         <div class="report-detail-department-desc" style="padding: 5px 0;">
-          <b>{{'Value Type' | translate}} :</b> {{data.indicator.valueType}}
+          <b>{{'Value Type' | translate}} :</b> {{data.indicator.valueType | translate}}
         </div>
         <div class="report-detail-department-desc" style="padding: 5px 0;">
-          <b>{{'Public' | translate}}</b> {{data.public}}
+          <b>{{'Public' | translate}}</b> {{data.public | translate}}
         </div>
         <div class="report-detail-years" ng-repeat="year in data.years" style="padding: 5px 0;">
           <b>{{year.year}} :</b> {{year.value}}
@@ -88,8 +88,8 @@
         <h4 translate>Criterias</h4>
         <ul>
           <li class="col-sm-12" ng-repeat="criterias in criteriasAndAnswers" style="padding: 5px 0;">
-            <b>{{criterias.name}}</b>
-              <span style="display: block" ng-repeat="answer in criterias.answers">
+            <b translate>{{criterias.name}}</b>
+              <span style="display: block" ng-repeat="answer in criterias.answers" translate>
                 {{answer}}
               </span>
           </li>
