@@ -34,26 +34,6 @@
   text-align: center;
 }
 
-
-@media (min-width: 768px) {
-  .show-on-mobile {
-    display: none!important;
-  }
-  .hide-on-mobile {
-    display: block!important;
-  }
-}
-@media (max-width: 768px) {
-  .show-on-mobile {
-    display: block!important;
-  }
-  .hide-on-mobile {
-    display: none!important;
-  }
-}
-
-
-
 /* General CSS  End */
 
 /* Bootstrap Encapsulation Start */
@@ -313,4 +293,43 @@
 
 .table-header > div {
   padding:0 5px;
+}
+
+
+/*  Header language selectbox start */
+.lang-selectbox {
+  width:200px;
+  display:inline-block;
+  margin-top:10px
+}
+/*  Header language selectbox end */
+
+
+
+@media (min-width: 768px) {
+  .show-on-mobile {
+    display: none!important;
+  }
+  .hide-on-mobile {
+    display: block!important;
+  }
+}
+@media (max-width: 768px) {
+  .login-content {
+    margin: 0!important
+  }
+  .show-on-mobile {
+    display: block!important;
+  }
+  .hide-on-mobile {
+    display: none!important;
+  }
+  .navbar-header {
+    display: inline-block !important;
+  }
+  .lang-selectbox {
+    width: 45% !important;
+    margin: 10px 10px 0 0;
+    float: right;
+  }
 }
