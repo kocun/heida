@@ -16,7 +16,7 @@ angular
     'restangular',
     'pascalprecht.translate'
   ])
-  .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider','$translateProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider,$translateProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$translateProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $translateProvider, $locationProvider) {
     $ocLazyLoadProvider.config({
       debug: false,
       events: true
@@ -30,13 +30,14 @@ angular
       .preferredLanguage('tr')
 
     $urlRouterProvider.otherwise('/login');
+    $locationProvider.hashPrefix('');
 
     $stateProvider
       .state('dashboard', {
         url: '/dashboard',
         templateUrl: 'views/dashboard/main.html',
         resolve: {
-          loadMyDirectives: function($ocLazyLoad) {
+          loadMyDirectives: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -71,7 +72,7 @@ angular
         controller: 'MainCtrl',
         templateUrl: 'views/dashboard/home.html',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -88,7 +89,7 @@ angular
         controller: 'LoginCtrl',
         templateUrl: 'views/pages/login.html',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -102,7 +103,7 @@ angular
         templateUrl: 'views/pages/sidebar.html',
         controller: 'LoginCtrl',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -117,7 +118,7 @@ angular
         url: '/chart',
         controller: 'ChartCtrl',
         resolve: {
-          loadMyFile: function($ocLazyLoad) {
+          loadMyFile: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'chart.js',
               files: [
@@ -137,7 +138,7 @@ angular
         templateUrl: 'views/pages/profile.html',
         url: '/profile',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -156,7 +157,7 @@ angular
         templateUrl: 'views/pages/users.html',
         url: '/users',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -172,7 +173,7 @@ angular
         templateUrl: 'views/pages/users_edit.html',
         url: '/users/:id',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -192,7 +193,7 @@ angular
         templateUrl: 'views/pages/departments.html',
         url: '/units',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -207,7 +208,7 @@ angular
         templateUrl: 'views/pages/departments_edit.html',
         url: '/units/:id',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -227,7 +228,7 @@ angular
         templateUrl: 'views/pages/sub-departments.html',
         url: '/sub-units',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -242,7 +243,7 @@ angular
         templateUrl: 'views/pages/sub-departments_edit.html',
         url: '/sub-units/:id',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -258,7 +259,7 @@ angular
         templateUrl: 'views/pages/goals.html',
         url: '/goals',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -278,7 +279,7 @@ angular
         templateUrl: 'views/pages/goals_edit.html',
         url: '/goals/:id',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -298,7 +299,7 @@ angular
         templateUrl: 'views/pages/groups.html',
         url: '/groups',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -313,7 +314,7 @@ angular
         templateUrl: 'views/pages/groups_edit.html',
         url: '/groups/:id',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -333,7 +334,7 @@ angular
         templateUrl: 'views/pages/sub-groups.html',
         url: '/sub-groups',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -348,7 +349,7 @@ angular
         templateUrl: 'views/pages/sub-groups_edit.html',
         url: '/sub-groups/:id',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -368,7 +369,7 @@ angular
         templateUrl: 'views/pages/indicators.html',
         url: '/indicators',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -388,7 +389,7 @@ angular
         templateUrl: 'views/pages/indicators_new.html',
         url: '/indicators/new',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -408,7 +409,7 @@ angular
         templateUrl: 'views/pages/indicators_edit.html',
         url: '/indicators/:id',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -429,7 +430,7 @@ angular
         templateUrl: 'views/pages/criterias.html',
         url: '/criterias',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -448,7 +449,7 @@ angular
         templateUrl: 'views/pages/criterias_edit.html',
         url: '/criterias/:id',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -467,7 +468,7 @@ angular
         templateUrl: 'views/pages/questions.html',
         url: '/questions',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -486,7 +487,7 @@ angular
         templateUrl: 'views/pages/questions_edit.html',
         url: '/questions/:id',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -505,7 +506,7 @@ angular
         templateUrl: 'views/pages/data.html',
         url: '/data',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -522,7 +523,7 @@ angular
         templateUrl: 'views/pages/edit_data_page.html',
         url: '/data/:id',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -539,7 +540,7 @@ angular
         templateUrl: 'views/pages/reports.html',
         url: '/report',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
@@ -554,7 +555,7 @@ angular
         url: '/report/detail/:dataId/:valueType',
         controller: 'DataReportDetailCtrl',
         resolve: {
-          loadMyFile: function($ocLazyLoad) {
+          loadMyFile: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'chart.js',
               files: [
@@ -574,7 +575,7 @@ angular
         url: '/report/detail/:dataId/:valueType/print',
         controller: 'DataReportDetailCtrl',
         resolve: {
-          loadMyFile: function($ocLazyLoad) {
+          loadMyFile: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'chart.js',
               files: [
@@ -594,7 +595,7 @@ angular
         templateUrl: 'views/pages/search.html',
         url: '/search/:text',
         resolve: {
-          loadMyFiles: function($ocLazyLoad) {
+          loadMyFiles: function ($ocLazyLoad) {
             return $ocLazyLoad.load({
               name: 'heidaApp',
               files: [
