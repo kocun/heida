@@ -13,7 +13,7 @@ angular.module('heidaApp')
         $scope.me = data;
       });
 
-    Restangular.all('/api/search/'+ $stateParams.text).getList().then(function(searchDatas) {
+    Restangular.all('api/search/'+ $stateParams.text).getList().then(function(searchDatas) {
       $scope.searchDatas = searchDatas;
     });
   })

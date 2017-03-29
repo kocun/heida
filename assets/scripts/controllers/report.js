@@ -5,19 +5,19 @@ angular.module('heidaApp')
     success(function(data) {
       $scope.me = data;
     });
-    Restangular.all('/api/data').getList().then(function (datas) {
+    Restangular.all('api/data').getList().then(function (datas) {
       $scope.datas = $scope.allDatas = datas;
     });
-    Restangular.all('/api/indicator').getList().then(function (indicators) {
+    Restangular.all('api/indicator').getList().then(function (indicators) {
       $scope.indicators = indicators;
     });
-    Restangular.all('/api/department').getList().then(function (departments) {
+    Restangular.all('api/department').getList().then(function (departments) {
       $scope.departments = departments;
     });
-    Restangular.all('/api/group').getList().then(function (groups) {
+    Restangular.all('api/group').getList().then(function (groups) {
       $scope.groups = groups;
     });
-    Restangular.all('/api/subGroup').getList().then(function (subgroups) {
+    Restangular.all('api/subGroup').getList().then(function (subgroups) {
       $scope.subgroups = subgroups;
     });
 
@@ -136,7 +136,7 @@ angular.module('heidaApp')
           $scope.filterState = true;
       }
     $scope.getSubDepartments = function (department) {
-      Restangular.all('/api/subDepartment?department=' + department.id).getList().then(function (subdepartments) {
+      Restangular.all('api/subDepartment?department=' + department.id).getList().then(function (subdepartments) {
         $scope.subdepartments = subdepartments;
       });
     }
@@ -156,7 +156,7 @@ angular.module('heidaApp')
     }
 
     $scope.getSubGroups = function (group) {
-      Restangular.all('/api/subGroup?group=' + group).getList().then(function (subgroups) {
+      Restangular.all('api/subGroup?group=' + group).getList().then(function (subgroups) {
         $scope.subgroups = subgroups;
       });
     }
@@ -198,7 +198,7 @@ angular.module('heidaApp')
   })
   .controller('DataReportDetailCtrl', function ($scope, $http, Restangular, $state, $stateParams, $location) {
 
-    Restangular.all('/api/criteria').getList().then(function (criterias) {
+    Restangular.all('api/criteria').getList().then(function (criterias) {
       $scope.criterias = criterias;
     });
 
