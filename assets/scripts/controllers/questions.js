@@ -13,10 +13,10 @@ angular.module('heidaApp')
         $scope.me = data;
       });
 
-    Restangular.all('/api/criteria').getList().then(function(criterias) {
+    Restangular.all('api/criteria').getList().then(function(criterias) {
       $scope.criterias = criterias;
     });
-    Restangular.all('/api/question').getList().then(function(questions) {
+    Restangular.all('api/question').getList().then(function(questions) {
       $scope.questions = questions;
     });
 
@@ -33,10 +33,10 @@ angular.module('heidaApp')
       success(function(data) {
         $scope.me = data;
       });
-    Restangular.all('/api/criteria').getList().then(function(criterias) {
+    Restangular.all('api/criteria').getList().then(function(criterias) {
       $scope.criterias = criterias;
     });
-    Restangular.all('/api/question').getList().then(function(questions) {
+    Restangular.all('api/question').getList().then(function(questions) {
       $scope.questions = questions;
     });
     Restangular.one('/api/question', $stateParams.id).get().then(function(question) {
