@@ -13,7 +13,7 @@ angular.module('heidaApp')
       success(function(data) {
         $scope.me = data;
       });
-    Restangular.all('/api/department').getList().then(function(departments) {
+    Restangular.all('api/department').getList().then(function(departments) {
       $scope.departments = departments;
     });
     $scope.delete = function(department) {
