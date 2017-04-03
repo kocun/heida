@@ -14,22 +14,22 @@ angular.module('heidaApp')
       });
 
     // Get Users
-    Restangular.all('/api/user').getList().then(function(users) {
+    Restangular.all('api/user').getList().then(function(users) {
       $scope.users = users;
     });
 
     // Get Departments
-    Restangular.all('/api/department').getList().then(function(departments) {
+    Restangular.all('api/department').getList().then(function(departments) {
       $scope.departments = departments;
     });
 
     // get Indicators
-    Restangular.all('/api/indicator').getList().then(function (indicators) {
+    Restangular.all('api/indicator').getList().then(function (indicators) {
       $scope.indicators = indicators;
     });
 
     // Get Data
-    Restangular.all('/api/data').getList().then(function (datas) {
+    Restangular.all('api/data').getList().then(function (datas) {
       $scope.datas = datas;
     });
 
