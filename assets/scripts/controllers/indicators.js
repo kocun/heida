@@ -12,18 +12,18 @@ angular.module('heidaApp')
             $scope.me = data;
         });
 
-        Restangular.all('/api/indicator').getList().then(function (indicators) {
+        Restangular.all('api/indicator').getList().then(function (indicators) {
             $scope.indicators = $scope.allIndicators = indicators;
         });
 
-        Restangular.all('/api/group').getList().then(function (groups) {
+        Restangular.all('api/group').getList().then(function (groups) {
             $scope.groups = groups;
         });
 
-        Restangular.all('/api/subgroup').getList().then(function (subgroups) {
+        Restangular.all('api/subgroup').getList().then(function (subgroups) {
             $scope.subgroups = subgroups;
         });
-        Restangular.all('/api/goal').getList().then(function (goals) {
+        Restangular.all('api/goal').getList().then(function (goals) {
             $scope.goals_to_add = goals;
             $scope.goals = goals;
         });
@@ -53,13 +53,13 @@ angular.module('heidaApp')
         // };
 
         $scope.getSubGroups = function (group) {
-            Restangular.all('/api/subGroup?group=' + group).getList().then(function (subgroups) {
+            Restangular.all('api/subGroup?group=' + group).getList().then(function (subgroups) {
                 $scope.subgroups = subgroups;
             });
         };
 
         $scope.filterIndicator = function (filteredSubGroup) {
-            Restangular.all('/api/indicator?subgroup=' + filteredSubGroup).getList().then(function (indicators) {
+            Restangular.all('api/indicator?subgroup=' + filteredSubGroup).getList().then(function (indicators) {
                 $scope.indicators = indicators;
                 $scope.filterState = true;
             });
@@ -82,17 +82,17 @@ angular.module('heidaApp')
         {id: 2, val: "Moderately"},
         {id: 3, val: "Highly"}
     ];
-    Restangular.all('/api/group').getList().then(function (groups) {
+    Restangular.all('api/group').getList().then(function (groups) {
         $scope.groups = groups;
     });
-    Restangular.all('/api/subgroup').getList().then(function (subgroups) {
+    Restangular.all('api/subgroup').getList().then(function (subgroups) {
         $scope.subgroups = subgroups;
     });
     Restangular.one('/api/indicator', $stateParams.id).get().then(function (indicator) {
         $scope.indicator = indicator;
     });
     $scope.getSubGroups = function (group) {
-        Restangular.all('/api/subGroup?group=' + group).getList().then(function (subgroups) {
+        Restangular.all('api/subGroup?group=' + group).getList().then(function (subgroups) {
             $scope.subgroups = subgroups;
         });
     }

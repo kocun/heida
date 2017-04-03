@@ -13,7 +13,7 @@ angular.module('heidaApp')
       success(function(data) {
         $scope.me = data;
       });
-    Restangular.all('/api/group').getList().then(function(groups) {
+    Restangular.all('api/group').getList().then(function(groups) {
       $scope.groups = groups;
     });
 
@@ -32,7 +32,7 @@ angular.module('heidaApp')
         $scope.me = data;
       });
 
-    Restangular.all('/api/group').getList().then(function(groups) {
+    Restangular.all('api/group').getList().then(function(groups) {
       $scope.groups = groups;
     });
 

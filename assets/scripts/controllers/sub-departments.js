@@ -12,11 +12,11 @@ angular.module('heidaApp')
       success(function(data) {
         $scope.me = data;
       });
-    Restangular.all('/api/department').getList().then(function(departments) {
+    Restangular.all('api/department').getList().then(function(departments) {
       $scope.departments = departments;
     });
 
-    Restangular.all('/api/subdepartment').getList().then(function(subdepartments) {
+    Restangular.all('api/subdepartment').getList().then(function(subdepartments) {
       $scope.subdepartments = subdepartments;
     });
 
@@ -35,7 +35,7 @@ angular.module('heidaApp')
         $scope.me = data;
       });
 
-    Restangular.all('/api/department').getList().then(function(departments) {
+    Restangular.all('api/department').getList().then(function(departments) {
       $scope.departments = departments;
     });
 
