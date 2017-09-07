@@ -5,7 +5,7 @@
   "description": "HEIDA",
   "keywords": [],
   "dependencies": {
-    "bcrypt": "^0.8.5",
+    "bcrypt": "^1.0.3",
     "bower": "^1.7.7",
     "ejs": "~2.5.1",
     "graceful-fs": "^4.1.3",
