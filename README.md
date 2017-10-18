@@ -47,7 +47,7 @@ module.exports = {
     google: {
       clientID: 'Your Google App Client Id Here',
       clientSecret: 'Your Client Secret Here',
-      callbackURL: 'http://heida.test.ku.edu.tr:8080/api/auth/google/callback',
+      callbackURL: 'http://heida.test.ku.edu.tr:8080/api/auth/google/callback', //Your callback URL here
       scope: ['profile', 'email']
     },
     models: {
