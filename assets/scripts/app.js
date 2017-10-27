@@ -16,7 +16,7 @@ angular
     'restangular',
     'pascalprecht.translate'
   ])
-  .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$translateProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $translateProvider, $locationProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$translateProvider', '$locationProvider','RestangularProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $translateProvider, $locationProvider,$RestangularProvider) {
     $ocLazyLoadProvider.config({
       debug: false,
       events: true
@@ -29,6 +29,9 @@ angular
       })
       .preferredLanguage('tr')
 
+    $urlRouterProvider.otherwise('/login');
+    $locationProvider.hashPrefix('');
+    RestangularProvider.setBaseUrl('http://localhost:8880');
     $urlRouterProvider.otherwise('/login');
     $locationProvider.hashPrefix('');
 
