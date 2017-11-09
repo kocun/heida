@@ -16,7 +16,7 @@ angular
     'restangular',
     'pascalprecht.translate'
   ])
-  .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$translateProvider', '$locationProvider','RestangularProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $translateProvider, $locationProvider,$RestangularProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$translateProvider', '$locationProvider', 'RestangularProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $translateProvider, $locationProvider, RestangularProvider) {
     $ocLazyLoadProvider.config({
       debug: false,
       events: true

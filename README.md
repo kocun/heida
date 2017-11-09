@@ -26,41 +26,43 @@ This guide follows installation on Linux and MacOS needs some work on Windows. C
 
 3 . Install [sailsjs](http://sailsjs.org/) ``sudo npm -g install sails``
 
-4 . Clone this repo, ``git clone https://github.com/kocun/heida.git``
+4 . Install [bower](http://bowerjs.org/) ``sudo npm -g install bower``
 
-5 . Enter heida directory ``cd heida``
+5 . Clone this repo, ``git clone https://github.com/kocun/heida.git``
 
-6 . You must have a **local.js** file which is not included in git repo. This file has sensitive data thus it is no included in git repo. You can create a new one
+6 . Enter heida directory ``cd heida``
+
+7 . You must have a **local.js** file which is not included in git repo. This file has sensitive data thus it is no included in git repo. You can create a new one
 
 ``touch config/local.js``
 
-7 . And then with your favorite editor you can change your private settings.
+8 . And then with your favorite editor you can change your private settings.
 
 ```
 module.exports = {
     admins: [{
-        email: 'admin1@ku.edu.tr',
-        email: 'admin2@ku.edu.tr'
+        email: 'admin1@ku.edu.tr', // Change this for your admins
+        email: 'admin2@ku.edu.tr' // Change this for your admins
     }],
-    host: '127.0.0.1',
-    port: 8080,
+    host: '127.0.0.1',  //IP Address to bind server
+    port: 8080,  // Port to bind server
     google: {
       clientID: 'Your Google App Client Id Here',
       clientSecret: 'Your Client Secret Here',
-      callbackURL: 'http://heida.test.ku.edu.tr:8080/api/auth/google/callback', //Your callback URL here
+      callbackURL: 'http://xxx.yyy.edu.tr:8080/api/auth/google/callback', //Your callback URL here
       scope: ['profile', 'email']
     },
     models: {
-      connection: 'mongo'
+      connection: 'mongo' // refers to below
     },
     connections: {
         mongo: {
-            adapter: 'sails-mongo',
-            host: '127.0.0.1',
-            port: 27017,
-            // user: 'username',
-            // password: 'password',
-            database: 'heida'
+            adapter: 'sails-mongo', // Mongo Adapter, you may change this to MySQL
+            host: '127.0.0.1', // IP Address of your database
+            port: 27017, // Port of the MongoDb
+            // user: 'username',  // User name of mongodb account.
+            // password: 'password', // password of mongodb  account
+            database: 'heida' //Name of the database
         }
     }
 }
@@ -71,18 +73,22 @@ module.exports = {
 
 **port** : Port number to bind.
 
-**google** : Authentication is made by Google so you should create a google app. Basically you can create a new **Web Application** one by [Google API Console](https://console.developers.google.com), then you have a clientId and clientSecret.  
+**google** : Authentication is made by Google so you should create a google app. Basically you can create a new **Web Application** one by [Google API Console](https://console.developers.google.com), then you have a clientId and clientSecret.
 
 **callbackURL** : This is very important part of the software that after a login attempt by the user, google redirects user to this URL where with authentication parameters. This URL must be configured both on Google API Console and this file. This must be a valid URL available to public.
 
-**connections** : Your Database connection declared here. 
+**connections** : Your Database connection declared here.
 
-8 . Now you are ready to run. Type the following
+9 . run ``npm install`` on installed directory. This will install all required libraries.
 
-``sails lift``
+10 . type ``cd assets`` on installed directory, and then type  ``bower install`` . This will install all client libraries.
+
+11 . ``cd ..`` to your installation directory and  now you are ready to run. Type the following
+
+``sails lift --prod``
 
 Then you should point your browser to http://HOST:PORT
 
 
-For any [issues or questions](https://github.com/kocun/heida/issues) 
+For any [issues or questions](https://github.com/kocun/heida/issues)
 
