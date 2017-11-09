@@ -31,7 +31,7 @@ angular
 
     $urlRouterProvider.otherwise('/login');
     $locationProvider.hashPrefix('');
-    RestangularProvider.setBaseUrl('http://localhost:8880');
+    RestangularProvider.setBaseUrl(window.location.origin);
     $urlRouterProvider.otherwise('/login');
     $locationProvider.hashPrefix('');
 
