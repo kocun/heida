@@ -39,7 +39,7 @@ angular.module('heidaApp')
     Restangular.all('api/question').getList().then(function(questions) {
       $scope.questions = questions;
     });
-    Restangular.one('/api/question', $stateParams.id).get().then(function(question) {
+    Restangular.one('api/question', $stateParams.id).get().then(function(question) {
       $scope.question = question;
     });
     $scope.update = function() {

@@ -29,10 +29,10 @@ angular.module('heidaApp')
       success(function(data) {
         $scope.me = data;
       });
-    Restangular.all('/api/criteria').getList().then(function(criterias) {
+    Restangular.all('api/criteria').getList().then(function(criterias) {
       $scope.criterias = criterias;
     });
-    Restangular.one('/api/criteria', $stateParams.id).get().then(function(criteria) {
+    Restangular.one('api/criteria', $stateParams.id).get().then(function(criteria) {
       $scope.criteria = criteria;
     });
     $scope.update = function() {

@@ -12,17 +12,17 @@ angular.module('heidaApp')
       success(function(data) {
         $scope.me = data;
       });
-    Restangular.all('/api/user').getList().then(function(users) {
+    Restangular.all('api/user').getList().then(function(users) {
       $scope.users = users;
     });
-    Restangular.all('/api/department').getList().then(function(departments) {
+    Restangular.all('api/department').getList().then(function(departments) {
       $scope.departments = departments;
     });
   }).controller('UserEditCtrl', function($scope, $position, Restangular, $stateParams, $state) {
-    Restangular.one('/api/user', $stateParams.id).get().then(function(user) {
+    Restangular.one('api/user', $stateParams.id).get().then(function(user) {
       $scope.user = user;
     });
-    Restangular.all('/api/department').getList().then(function(departments) {
+    Restangular.all('api/department').getList().then(function(departments) {
       $scope.departments = departments;
     });
     $scope.update = function() {

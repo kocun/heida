@@ -182,7 +182,7 @@ angular.module('heidaApp')
 
     $scope.deleteReport = function(dataId) {
       if (confirm('Are you sure you want to delete this indicator?')) {
-        $http.delete('/api/data/' + dataId.dataId)
+        $http.delete('api/data/' + dataId.dataId)
           .success(function () {
             $state.go('dashboard.report', $stateParams, {
               reload: true,
@@ -202,11 +202,11 @@ angular.module('heidaApp')
       $scope.criterias = criterias;
     });
 
-    $http.get('/api/data/' + $stateParams.dataId).
+    $http.get('api/data/' + $stateParams.dataId).
     success(function(data) {
       $scope.data = data;
 
-      $http.get('/api/group/' + $scope.data.indicator.subgroup.group).success(function(grp) { $scope.data.groupName = grp.name;});
+      $http.get('api/group/' + $scope.data.indicator.subgroup.group).success(function(grp) { $scope.data.groupName = grp.name;});
 
       $scope.dept = $scope.data.department.name;
       $scope.ind = $scope.data.indicator.name;

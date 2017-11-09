@@ -15,28 +15,28 @@ angular.module('heidaApp', ['ngDialog'])
     success(function(data) {
       $scope.me = data;
     });
-    Restangular.all('/api/group').getList().then(function (groups) {
+    Restangular.all('api/group').getList().then(function (groups) {
       $scope.groups = groups;
     });
-    Restangular.all('/api/subGroup').getList().then(function (subgroups) {
+    Restangular.all('api/subGroup').getList().then(function (subgroups) {
       $scope.subgroups = subgroups;
     });
-    Restangular.all('/api/indicator').getList().then(function (indicators) {
+    Restangular.all('api/indicator').getList().then(function (indicators) {
       $scope.indicators = indicators;
     });
-    Restangular.all('/api/department').getList().then(function (departments) {
+    Restangular.all('api/department').getList().then(function (departments) {
       $scope.departments = departments;
     });
-    Restangular.all('/api/subdepartment').getList().then(function (subdepartments) {
+    Restangular.all('api/subdepartment').getList().then(function (subdepartments) {
       $scope.subdepartments = subdepartments;
     });
-    Restangular.all('/api/data').getList().then(function (allDatas) {
+    Restangular.all('api/data').getList().then(function (allDatas) {
       $scope.allDatas = allDatas;
     });
-    Restangular.all('/api/criteria').getList().then(function (criterias) {
+    Restangular.all('api/criteria').getList().then(function (criterias) {
       $scope.criterias = criterias;
     });
-    Restangular.all('/api/goal').getList().then(function (goals) {
+    Restangular.all('api/goal').getList().then(function (goals) {
       $scope.goals = goals;
     });
 
@@ -277,7 +277,7 @@ angular.module('heidaApp', ['ngDialog'])
 
           var maniReq = {
             method: 'PUT',
-            url: '/api/data/'+data.id,
+            url: 'api/data/'+data.id,
             headers: {
               'Content-Type': 'application/json'
             },
@@ -291,7 +291,7 @@ angular.module('heidaApp', ['ngDialog'])
             });
           }, function(err){console.log(err)});
         } else {
-          var datas = Restangular.all('/api/data');
+          var datas = Restangular.all('api/data');
           datas.post(obj);
           $state.go('dashboard.data', $stateParams, {
             reload: true,
@@ -398,13 +398,13 @@ angular.module('heidaApp', ['ngDialog'])
 
     $scope.completed = false;
     $scope.getSubGroups = function (group) {
-      Restangular.all('/api/subGroup?group=' + group).getList().then(function (subgroups) {
+      Restangular.all('api/subGroup?group=' + group).getList().then(function (subgroups) {
         $scope.subgroups = subgroups;
       });
     }
     $scope.filterState = false;
     $scope.filter = function (subgroup,goal) {
-      Restangular.all('/api/indicator?subgroup=' + subgroup).getList().then(function (indicators) {
+      Restangular.all('api/indicator?subgroup=' + subgroup).getList().then(function (indicators) {
         $scope.indicators = indicators;
         $scope.filterGoal = goal;
         $scope.filterState = true;
@@ -413,7 +413,7 @@ angular.module('heidaApp', ['ngDialog'])
     $scope.clearFilter = function (subgroup) {
       $scope.filterState = false;
       $scope.filterGoal = false;
-      Restangular.all('/api/indicator').getList().then(function (indicators) {
+      Restangular.all('api/indicator').getList().then(function (indicators) {
         $scope.indicators = indicators;
       });
     }
@@ -436,33 +436,33 @@ angular.module('heidaApp', ['ngDialog'])
       success(function(data) {
         $scope.me = data;
       });
-    Restangular.all('/api/group').getList().then(function (groups) {
+    Restangular.all('api/group').getList().then(function (groups) {
       $scope.groups = groups;
     });
-    Restangular.all('/api/subGroup').getList().then(function (subgroups) {
+    Restangular.all('api/subGroup').getList().then(function (subgroups) {
       $scope.subgroups = subgroups;
     });
-    Restangular.all('/api/indicator').getList().then(function (indicators) {
+    Restangular.all('api/indicator').getList().then(function (indicators) {
       $scope.indicators = indicators;
     });
-    Restangular.all('/api/department').getList().then(function (departments) {
+    Restangular.all('api/department').getList().then(function (departments) {
       $scope.departments = departments;
     });
-    Restangular.all('/api/subdepartment').getList().then(function (subdepartments) {
+    Restangular.all('api/subdepartment').getList().then(function (subdepartments) {
       $scope.subdepartments = subdepartments;
     });
-    Restangular.all('/api/data').getList().then(function (allDatas) {
+    Restangular.all('api/data').getList().then(function (allDatas) {
       $scope.allDatas = allDatas;
     });
-    Restangular.all('/api/criteria').getList().then(function (criterias) {
+    Restangular.all('api/criteria').getList().then(function (criterias) {
       $scope.criterias = criterias;
 
     });
-    Restangular.all('/api/goal').getList().then(function (goals) {
+    Restangular.all('api/goal').getList().then(function (goals) {
       $scope.goals = goals;
     });
 
-    Restangular.one('/api/data', $stateParams.id).get().then(function() {
+    Restangular.one('api/data', $stateParams.id).get().then(function() {
       $scope.cancelNewData();
       $scope.newData = {value:1, isInvalid: true, yearsValues: {}, criterias: {} }; //...
       var datas = $scope.allDatas;
@@ -740,7 +740,7 @@ angular.module('heidaApp', ['ngDialog'])
 
         var maniReq = {
           method: 'PUT',
-          url: '/api/data/'+data.id,
+          url: 'api/data/'+data.id,
           headers: {
             'Content-Type': 'application/json'
           },
@@ -754,7 +754,7 @@ angular.module('heidaApp', ['ngDialog'])
           });
         }, function(err){console.log(err)});
       } else {
-        var datas = Restangular.all('/api/data');
+        var datas = Restangular.all('api/data');
         datas.post(obj);
         $state.go('dashboard.data', $stateParams, {
           reload: true,
@@ -796,7 +796,7 @@ angular.module('heidaApp', ['ngDialog'])
 
     $scope.completed = false;
     $scope.getSubGroups = function (group) {
-      Restangular.all('/api/subGroup?group=' + group).getList().then(function (subgroups) {
+      Restangular.all('api/subGroup?group=' + group).getList().then(function (subgroups) {
         $scope.subgroups = subgroups;
       });
     }

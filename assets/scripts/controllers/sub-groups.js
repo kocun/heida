@@ -39,7 +39,7 @@ angular.module('heidaApp')
       $scope.groups = groups;
     });
 
-    Restangular.one('/api/subgroup', $stateParams.id).get().then(function(subgroup) {
+    Restangular.one('api/subgroup', $stateParams.id).get().then(function(subgroup) {
       $scope.subgroup = subgroup;
     });
     $scope.update = function() {
