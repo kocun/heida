@@ -34,7 +34,7 @@ angular.module('heidaApp')
       $scope.goals = goals;
     });
 
-    Restangular.one('/api/goal', $stateParams.id).get().then(function(goal) {
+    Restangular.one('api/goal', $stateParams.id).get().then(function(goal) {
       $scope.goal = goal;
     });
     $scope.update = function() {

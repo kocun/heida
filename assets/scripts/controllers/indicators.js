@@ -88,7 +88,7 @@ angular.module('heidaApp')
     Restangular.all('api/subgroup').getList().then(function (subgroups) {
         $scope.subgroups = subgroups;
     });
-    Restangular.one('/api/indicator', $stateParams.id).get().then(function (indicator) {
+    Restangular.one('api/indicator', $stateParams.id).get().then(function (indicator) {
         $scope.indicator = indicator;
     });
     $scope.getSubGroups = function (group) {

@@ -26,41 +26,43 @@ This guide follows installation on Linux and MacOS needs some work on Windows. C
 
 3 . Install [sailsjs](http://sailsjs.org/) ``sudo npm -g install sails``
 
-4 . Clone this repo, ``git clone https://github.com/kocun/heida.git``
+4 . Install [bower](http://bowerjs.org/) ``sudo npm -g install bower``
 
-5 . Enter heida directory ``cd heida``
+5 . Clone this repo, ``git clone https://github.com/kocun/heida.git``
 
-6 . You must have a **local.js** file which is not included in git repo. This file has sensitive data thus it is no included in git repo. You can create a new one
+6 . Enter heida directory ``cd heida``
+
+7 . You must have a **local.js** file which is not included in git repo. This file has sensitive data thus it is no included in git repo. You can create a new one
 
 ``touch config/local.js``
 
-7 . And then with your favorite editor you can change your private settings.
+8 . And then with your favorite editor you can change your private settings.
 
-```
+```js
 module.exports = {
     admins: [{
-        email: 'admin1@ku.edu.tr',
-        email: 'admin2@ku.edu.tr'
+        email: 'admin1@ku.edu.tr', // Change this for your admins
+        email: 'admin2@ku.edu.tr' // Change this for your admins
     }],
-    host: '127.0.0.1',
-    port: 8080,
+    host: '127.0.0.1',  //IP Address to bind server
+    port: 8080,  // Port to bind server
     google: {
       clientID: 'Your Google App Client Id Here',
       clientSecret: 'Your Client Secret Here',
-      callbackURL: 'http://heida.test.ku.edu.tr:8080/api/auth/google/callback', //Your callback URL here
+      callbackURL: 'http://xxx.yyy.edu.tr:8080/api/auth/google/callback', //Your callback URL here
       scope: ['profile', 'email']
     },
     models: {
-      connection: 'mongo'
+      connection: 'mongo' // refers to below
     },
     connections: {
         mongo: {
-            adapter: 'sails-mongo',
-            host: '127.0.0.1',
-            port: 27017,
-            // user: 'username',
-            // password: 'password',
-            database: 'heida'
+            adapter: 'sails-mongo', // Mongo Adapter, you may change this to MySQL
+            host: '127.0.0.1', // IP Address of your database
+            port: 27017, // Port of the MongoDb
+            // user: 'username',  // User name of mongodb account.
+            // password: 'password', // password of mongodb  account
+            database: 'heida' //Name of the database
         }
     }
 }
@@ -71,18 +73,132 @@ module.exports = {
 
 **port** : Port number to bind.
 
-**google** : Authentication is made by Google so you should create a google app. Basically you can create a new **Web Application** one by [Google API Console](https://console.developers.google.com), then you have a clientId and clientSecret.  
+**google** : Authentication is made by Google so you should create a google app. Basically you can create a new **Web Application** one by [Google API Console](https://console.developers.google.com), then you have a clientId and clientSecret.
+**If you want use LDAP structure please see bottom of page.**
 
 **callbackURL** : This is very important part of the software that after a login attempt by the user, google redirects user to this URL where with authentication parameters. This URL must be configured both on Google API Console and this file. This must be a valid URL available to public.
 
-**connections** : Your Database connection declared here. 
+**connections** : Your Database connection declared here.
 
-8 . Now you are ready to run. Type the following
+9 . run ``npm install`` on installed directory. This will install all required libraries.
 
-``sails lift``
+10 . type ``cd assets`` on installed directory, and then type  ``bower install`` . This will install all client libraries.
+
+11 . ``cd ..`` to your installation directory and  now you are ready to run. Type the following
+
+``sails lift --prod``
 
 Then you should point your browser to http://HOST:PORT
 
 
-For any [issues or questions](https://github.com/kocun/heida/issues) 
+For any [issues or questions](https://github.com/kocun/heida/issues)
 
+## Using LDAP
+
+**/api/services/passport.js** we have arranged the LdapStrategy under the LDAP schema of our university. We also used the **user.Uid** field, so we used the **user.SAMAccountName** field. We have all uid fields sorted by **sAMAccountName**.
+
+```js
+passport.use(new LdapStrategy(getLDAPConfiguration,
+  function(user, done) {
+    process.nextTick(function() {
+      findByUsername(user.sAMAccountName, function(err, userdb) {
+        if (err) {
+          return done(null, err);
+        }
+        if (!userdb) {
+          var usr = {
+            username: user.sAMAccountName,
+            name: user.fullName,
+            password: 'N/A',
+            email: user.mail,
+            role: 4
+          };
+          User.create(usr).exec(function(err, created) {
+            if (created) {
+              return done(null, created);
+            }
+          });
+        }
+        else {
+          var returnUser = {
+            username: userdb.username,
+            createdAt: userdb.createdAt,
+            id: userdb.id
+          };
+          return done(null, returnUser, {
+            message: 'Logged In Successfully'
+          });
+        }
+      });
+
+    });
+    //return done(null, user);
+  }
+));
+```
+
+```js
+function getLDAPConfiguration(req, callback) {
+  // Fetching things from database or whatever
+
+  process.nextTick(function() {
+    var opts = {
+      server: {
+        url: 'ldap://LDAP_SUNUCU_ADI.aydin.edu.tr:389',
+        // bu hesap LDAP'ta arama i?in yetkisi bulunan bir hesap.
+        bindDn: 'CN=KULLANICI_ADI,OU=KULLANICININ_BULUNDU?U_OU,DC=aydin,DC=edu,DC=tr',
+        bindCredentials: 'KULLANICI_??FRES?',
+        searchBase: 'ou=ARAMANIN_BA?LAYACA?I_OU,DC=aydin,DC=edu,DC=tr',
+        // yetkilendirilecek kullan?c? i?in ldap sorgusu
+        searchFilter: '(sAMAccountName=' + req.body.username + ')'
+      }
+    };
+
+    callback(null, opts);
+  });
+
+};
+```
+
+**/assets/views/pages/login.html** comment line When we opened the form to **"/api/auth/process/ldapauth"**, we closed the codeblock related to Google OAuth login.
+
+```html
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 login-content">
+      <i class="logo-heida mb40"></i>
+          <form role="form" action="/api/auth/process/ldapauth" method="POST">
+            <fieldset>
+              <div class="form-group">
+                <input class="form-control" placeholder="username" name="username" type="username" autofocus>
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Password" name="password" type="password" value="">
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                </label>
+              </div>
+          </fieldset>
+          <input type="submit" id="submit" value="Login"/>
+          </form>
+
+          <!-- Change this to a button or input when using this as a form -->
+
+          <!--<select class="form-control mb20" name="lang-selector" ng-change="changeLanguage()" ng-model="selected">
+            <<option value="">{{'Choose Language' | translate}}</option>
+            <option value="tr" selected>{{'Turkish' | translate}}</option>
+            <option value="en">{{'English' | translate}}</option>
+            <option value="es">{{'Spanish' | translate}}</option>
+            <option value="si">{{'Slovene' | translate}}</option>
+          </select>
+          <a href="/api/auth/process/ldap" class="btn btn-block btn-social btn-lg btn-google">
+            <i class="fa fa-google"></i> {{"Sign in with Google" | translate}}
+          </a>-->
+        <br /><br />
+          This is a test version of the Heida tool for collecting and sharing internationalization indicators. You can only login with a Google account. Once it is installed in your university, you and others can use your university email addresses. For more information visit <a href="https://heida.ku.edu.tr">Heida</a> or email us at <a href="mailto:heida@ku.edu.tr">heida@ku.edu.tr</a>
+        </div>
+      </div>
+    </div>
+```

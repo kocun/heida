@@ -37,7 +37,7 @@ angular.module('heidaApp')
       success(function(data) {
         $scope.me = data;
       });
-    Restangular.one('/api/department', $stateParams.id).get().then(function(department) {
+    Restangular.one('api/department', $stateParams.id).get().then(function(department) {
       $scope.department = department;
     });
     $scope.update = function() {
