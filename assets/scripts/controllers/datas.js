@@ -11,7 +11,7 @@ angular.module('heidaApp', ['ngDialog'])
     $scope.state = 0;
     $scope.data;
     $scope.ind = "";
-    $http.get('/api/me').
+    $http.get('api/me').
     success(function(data) {
       $scope.me = data;
     });
@@ -432,7 +432,7 @@ angular.module('heidaApp', ['ngDialog'])
     $scope.state = 0;
     $scope.data;
     $scope.ind = "";
-    $http.get('/api/me').
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });

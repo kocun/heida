@@ -8,7 +8,7 @@
  */
 angular.module('heidaApp')
   .controller('SearchCtrl', function($scope, $http, Restangular, $state, $stateParams, $location) {
-    $http.get('/api/me').
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });

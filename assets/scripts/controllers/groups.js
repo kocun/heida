@@ -9,7 +9,7 @@
 
 angular.module('heidaApp')
   .controller('GroupCtrl', function($scope, $http, Restangular, $stateParams, $state) {
-    $http.get('/api/me').
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });
@@ -27,7 +27,7 @@ angular.module('heidaApp')
 
   }).controller('GroupEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
 
-    $http.get('/api/me').
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });

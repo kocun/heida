@@ -9,7 +9,7 @@
 
 angular.module('heidaApp')
   .controller('DepartmentCtrl', function($scope, $position, Restangular, $stateParams, $state, $http) {
-    $http.get('/api/me').
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });
@@ -33,7 +33,7 @@ angular.module('heidaApp')
       });
     }
   }).controller('DepartmentEditCtrl', function($scope, $position, Restangular, $stateParams, $state, $http) {
-    $http.get('/api/me').
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });

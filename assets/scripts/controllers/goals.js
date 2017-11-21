@@ -8,7 +8,7 @@
  */
 angular.module('heidaApp')
   .controller('GoalCtrl', function($scope, $http, Restangular, $state, $stateParams) {
-    $http.get('/api/me').
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });
@@ -25,7 +25,7 @@ angular.module('heidaApp')
     }
   }).controller('GoalEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
 
-    $http.get('/api/me').
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });

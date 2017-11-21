@@ -8,7 +8,7 @@
  */
 angular.module('heidaApp')
     .controller('IndicatorCtrl', function ($scope, $http, Restangular, $state, $stateParams) {
-        $http.get('/api/me').success(function (data) {
+        $http.get('api/me').success(function (data) {
             $scope.me = data;
         });
 
@@ -72,7 +72,7 @@ angular.module('heidaApp')
 
     }).controller('IndicatorEditCtrl', function ($scope, $http, Restangular, $state, $stateParams) {
 
-    $http.get('/api/me').success(function (data) {
+    $http.get('api/me').success(function (data) {
         $scope.me = data;
     });
 

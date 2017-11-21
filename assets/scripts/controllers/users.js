@@ -8,7 +8,7 @@
  */
 angular.module('heidaApp')
   .controller('UserCtrl', function($scope, $http, Restangular) {
-    $http.get('/api/me').
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });

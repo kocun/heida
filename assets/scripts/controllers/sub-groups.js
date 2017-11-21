@@ -8,7 +8,7 @@
  */
 angular.module('heidaApp')
   .controller('SubgroupCtrl', function($scope, $http, Restangular, $state, $stateParams) {
-    $http.get('/api/me').
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });
@@ -30,7 +30,7 @@ angular.module('heidaApp')
     }
   }).controller('SubgroupEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
 
-    $http.get('/api/me').
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });
