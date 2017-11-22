@@ -8,7 +8,7 @@
  */
 
 angular.module('heidaApp')
-  .controller('DepartmentCtrl', function($scope, $position, Restangular, $stateParams, $state, $http) {
+  .controller('DepartmentCtrl', function($scope, Restangular, $stateParams, $state, $http) {
     $http.get('api/me').
       success(function(data) {
         $scope.me = data;
@@ -32,7 +32,7 @@ angular.module('heidaApp')
         inherit: false
       });
     }
-  }).controller('DepartmentEditCtrl', function($scope, $position, Restangular, $stateParams, $state, $http) {
+  }).controller('DepartmentEditCtrl', function($scope, Restangular, $stateParams, $state, $http) {
     $http.get('api/me').
       success(function(data) {
         $scope.me = data;

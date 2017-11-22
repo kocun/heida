@@ -18,7 +18,7 @@ angular.module('heidaApp')
     Restangular.all('api/department').getList().then(function(departments) {
       $scope.departments = departments;
     });
-  }).controller('UserEditCtrl', function($scope, $position, Restangular, $stateParams, $state) {
+  }).controller('UserEditCtrl', function($scope, Restangular, $stateParams, $state) {
     Restangular.one('api/user', $stateParams.id).get().then(function(user) {
       $scope.user = user;
     });
