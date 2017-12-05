@@ -40,11 +40,13 @@ angular.module('heidaApp')
     Restangular.one('api/department', $stateParams.id).get().then(function(department) {
       $scope.department = department;
     });
-    $scope.update = function() {
-      $scope.department.save();
-      $state.go('dashboard.departments', $stateParams, {
-        reload: true,
-        inherit: false
+    $scope.update = function () {
+      $scope.department.save().then(function() {
+        $state.go('dashboard.departments', $stateParams, {
+          reload: true,
+          inherit: true,
+          notify: true
+        });
       });
-    }
+    };
   });

@@ -95,12 +95,14 @@ angular.module('heidaApp')
         Restangular.all('api/subGroup?group=' + group).getList().then(function (subgroups) {
             $scope.subgroups = subgroups;
         });
-    }
+    };
     $scope.update = function () {
-        $scope.indicator.save();
+      $scope.indicator.save().then(function() {
         $state.go('dashboard.indicators', $stateParams, {
-            reload: true,
-            inherit: true
+          reload: true,
+          inherit: true,
+          notify: true
         });
-    }
+      });
+    };
 });

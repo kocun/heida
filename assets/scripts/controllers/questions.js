@@ -42,11 +42,13 @@ angular.module('heidaApp')
     Restangular.one('api/question', $stateParams.id).get().then(function(question) {
       $scope.question = question;
     });
-    $scope.update = function() {
-      $scope.question.save();
-      $state.go('dashboard.questions', $stateParams, {
-        reload: true,
-        inherit: true
+    $scope.update = function () {
+      $scope.question.save().then(function() {
+        $state.go('dashboard.questions', $stateParams, {
+          reload: true,
+          inherit: true,
+          notify: true
+        });
       });
     }
   });

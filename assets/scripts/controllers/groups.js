@@ -39,11 +39,13 @@ angular.module('heidaApp')
     Restangular.one('api/group', $stateParams.id).get().then(function(group) {
       $scope.group = group;
     });
-    $scope.update = function() {
-      $scope.group.save();
-      $state.go('dashboard.groups', $stateParams, {
-        reload: true,
-        inherit: true
+    $scope.update = function () {
+      $scope.group.save().then(function() {
+        $state.go('dashboard.groups', $stateParams, {
+          reload: true,
+          inherit: true,
+          notify: true
+        });
       });
-    }
+    };
   });

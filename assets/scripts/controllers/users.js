@@ -25,12 +25,14 @@ angular.module('heidaApp')
     Restangular.all('api/department').getList().then(function(departments) {
       $scope.departments = departments;
     });
-    $scope.update = function() {
-      $scope.user.put();
-      $state.go('dashboard.users', $stateParams, {
-        reload: true,
-        inherit: true
+    $scope.update = function () {
+      $scope.user.put().then(function() {
+        $state.go('dashboard.users', $stateParams, {
+          reload: true,
+          inherit: true,
+          notify: true
+        });
       });
-    }
+    };
   });
 
