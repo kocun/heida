@@ -28,12 +28,15 @@ angular.module('heidaApp')
             $scope.goals = goals;
         });
 
-        $scope.save = function (indicator) {
-            $scope.indicators.post(indicator);
+
+        $scope.save = function () {
+          $scope.indicators.post().then(function() {
             $state.go('dashboard.indicators', $stateParams, {
-                reload: true,
-                inherit: true
+              reload: true,
+              inherit: true,
+              notify: true
             });
+          });
         };
 
         // $scope.filterIndicatorByCode = function (filteredIndicator) {
