@@ -8,7 +8,7 @@
  */
 angular.module('heidaApp')
   .controller('SubgroupCtrl', function($scope, $http, Restangular, $state, $stateParams) {
-    $http.get('/api/me').
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });
@@ -30,7 +30,7 @@ angular.module('heidaApp')
     }
   }).controller('SubgroupEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
 
-    $http.get('/api/me').
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });
@@ -42,11 +42,13 @@ angular.module('heidaApp')
     Restangular.one('api/subgroup', $stateParams.id).get().then(function(subgroup) {
       $scope.subgroup = subgroup;
     });
-    $scope.update = function() {
-      $scope.subgroup.save();
-      $state.go('dashboard.sub-groups', $stateParams, {
-        reload: true,
-        inherit: true
+    $scope.update = function () {
+      $scope.subgroup.save().then(function() {
+        $state.go('dashboard.sub-groups', $stateParams, {
+          reload: true,
+          inherit: true,
+          notify: true
+        });
       });
-    }
+    };
   });

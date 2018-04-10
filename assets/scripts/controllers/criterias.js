@@ -7,15 +7,14 @@
  * Controller of the heidaApp
  */
 angular.module('heidaApp')
-  .controller('CriteriaCtrl', function($scope, $http, Restangular, $state, $stateParams) {
-    $http.get('/api/me').
-      success(function(data) {
-        $scope.me = data;
-      });
-    Restangular.all('/api/criteria').getList().then(function(criterias) {
+  .controller('CriteriaCtrl', function ($scope, $http, Restangular, $state, $stateParams) {
+    $http.get('api/me').success(function (data) {
+      $scope.me = data;
+    });
+    Restangular.all('/api/criteria').getList().then(function (criterias) {
       $scope.criterias = criterias;
     });
-    $scope.save = function(criteria) {
+    $scope.save = function (criteria) {
       $scope.criterias.post(criteria);
       $state.go('dashboard.criterias', $stateParams, {
         reload: true,
@@ -23,23 +22,25 @@ angular.module('heidaApp')
       });
     }
 
-  }).controller('CriteriaEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
+  }).controller('CriteriaEditCtrl', function ($scope, $http, Restangular, $state, $stateParams) {
 
-    $http.get('/api/me').
-      success(function(data) {
-        $scope.me = data;
-      });
-    Restangular.all('api/criteria').getList().then(function(criterias) {
-      $scope.criterias = criterias;
-    });
-    Restangular.one('api/criteria', $stateParams.id).get().then(function(criteria) {
-      $scope.criteria = criteria;
-    });
-    $scope.update = function() {
-      $scope.criteria.save();
+  $http.get('api/me').success(function (data) {
+    $scope.me = data;
+  });
+  Restangular.all('api/criteria').getList().then(function (criterias) {
+    $scope.criterias = criterias;
+  });
+  Restangular.one('api/criteria', $stateParams.id).get().then(function (criteria) {
+    $scope.criteria = criteria;
+  });
+
+  $scope.update = function () {
+    $scope.criteria.save().then(function() {
       $state.go('dashboard.criterias', $stateParams, {
         reload: true,
-        inherit: true
+        inherit: true,
+        notify: true
       });
-    }
-  });
+    });
+  }
+});

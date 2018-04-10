@@ -8,8 +8,8 @@
  */
 
 angular.module('heidaApp')
-  .controller('DepartmentCtrl', function($scope, $position, Restangular, $stateParams, $state, $http) {
-    $http.get('/api/me').
+  .controller('DepartmentCtrl', function($scope, Restangular, $stateParams, $state, $http) {
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });
@@ -32,19 +32,21 @@ angular.module('heidaApp')
         inherit: false
       });
     }
-  }).controller('DepartmentEditCtrl', function($scope, $position, Restangular, $stateParams, $state, $http) {
-    $http.get('/api/me').
+  }).controller('DepartmentEditCtrl', function($scope, Restangular, $stateParams, $state, $http) {
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });
     Restangular.one('api/department', $stateParams.id).get().then(function(department) {
       $scope.department = department;
     });
-    $scope.update = function() {
-      $scope.department.save();
-      $state.go('dashboard.departments', $stateParams, {
-        reload: true,
-        inherit: false
+    $scope.update = function () {
+      $scope.department.save().then(function() {
+        $state.go('dashboard.departments', $stateParams, {
+          reload: true,
+          inherit: true,
+          notify: true
+        });
       });
-    }
+    };
   });

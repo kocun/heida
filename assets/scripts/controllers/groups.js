@@ -9,7 +9,7 @@
 
 angular.module('heidaApp')
   .controller('GroupCtrl', function($scope, $http, Restangular, $stateParams, $state) {
-    $http.get('/api/me').
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });
@@ -27,7 +27,7 @@ angular.module('heidaApp')
 
   }).controller('GroupEditCtrl', function($scope, $http, Restangular, $state, $stateParams) {
 
-    $http.get('/api/me').
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });
@@ -39,11 +39,13 @@ angular.module('heidaApp')
     Restangular.one('api/group', $stateParams.id).get().then(function(group) {
       $scope.group = group;
     });
-    $scope.update = function() {
-      $scope.group.save();
-      $state.go('dashboard.groups', $stateParams, {
-        reload: true,
-        inherit: true
+    $scope.update = function () {
+      $scope.group.save().then(function() {
+        $state.go('dashboard.groups', $stateParams, {
+          reload: true,
+          inherit: true,
+          notify: true
+        });
       });
-    }
+    };
   });

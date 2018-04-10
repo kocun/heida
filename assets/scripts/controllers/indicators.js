@@ -8,7 +8,7 @@
  */
 angular.module('heidaApp')
     .controller('IndicatorCtrl', function ($scope, $http, Restangular, $state, $stateParams) {
-        $http.get('/api/me').success(function (data) {
+        $http.get('api/me').success(function (data) {
             $scope.me = data;
         });
 
@@ -28,12 +28,15 @@ angular.module('heidaApp')
             $scope.goals = goals;
         });
 
-        $scope.save = function (indicator) {
-            $scope.indicators.post(indicator);
+
+        $scope.save = function () {
+          $scope.indicators.post().then(function() {
             $state.go('dashboard.indicators', $stateParams, {
-                reload: true,
-                inherit: true
+              reload: true,
+              inherit: true,
+              notify: true
             });
+          });
         };
 
         // $scope.filterIndicatorByCode = function (filteredIndicator) {
@@ -72,7 +75,7 @@ angular.module('heidaApp')
 
     }).controller('IndicatorEditCtrl', function ($scope, $http, Restangular, $state, $stateParams) {
 
-    $http.get('/api/me').success(function (data) {
+    $http.get('api/me').success(function (data) {
         $scope.me = data;
     });
 
@@ -95,12 +98,14 @@ angular.module('heidaApp')
         Restangular.all('api/subGroup?group=' + group).getList().then(function (subgroups) {
             $scope.subgroups = subgroups;
         });
-    }
+    };
     $scope.update = function () {
-        $scope.indicator.save();
+      $scope.indicator.save().then(function() {
         $state.go('dashboard.indicators', $stateParams, {
-            reload: true,
-            inherit: true
+          reload: true,
+          inherit: true,
+          notify: true
         });
-    }
+      });
+    };
 });

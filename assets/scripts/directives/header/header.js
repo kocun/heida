@@ -14,7 +14,7 @@ angular.module('heidaApp')
         replace: true
       }
   }).controller('HeaderCtrl', function($scope, $http,$translate) {
-    $http.get('/api/me').
+    $http.get('api/me').
     success(function(data) {
         $scope.me = data;
     });

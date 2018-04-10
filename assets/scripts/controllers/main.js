@@ -7,8 +7,8 @@
  * Controller of the heidaApp
  */
 angular.module('heidaApp')
-  .controller('MainCtrl', function($scope, $position, Restangular, $http) {
-    $http.get('/api/me').
+  .controller('MainCtrl', function($scope, Restangular, $http) {
+    $http.get('api/me').
       success(function(data) {
         $scope.me = data;
       });
